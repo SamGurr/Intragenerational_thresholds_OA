@@ -10,7 +10,7 @@
 library("XML")
 library("plyr")
 
-xmlfile <- xmlParse("http://192.168.1.200:80/cgi-bin/datalog.xml?sdate=190419&days=67") #read in the date plus x days of Apex data
+xmlfile <- xmlParse("http://192.168.1.100:80/cgi-bin/datalog.xml?sdate=190622&days=4") #read in the date plus x days of Apex data
 
 Apex.Data <- ldply(xmlToList(xmlfile), data.frame) #convert xml to dataframe
 head(Apex.Data) # check the first few lines to see the first few hrs of the extracted data
@@ -83,7 +83,7 @@ lines(as.numeric(as.character(pH_T1)) ~ Date.Time, Probe.Data, col = "red")
 lines(as.numeric(as.character(pH_T2)) ~ Date.Time, Probe.Data, col = "blue")
 lines(as.numeric(as.character(pH_T3)) ~ Date.Time, Probe.Data, col = "black")
 lines(as.numeric(as.character(pH_T4)) ~ Date.Time, Probe.Data, col = "green")
-lines(as.numeric(as.character(pH_T5)) ~ Date.Time, Probe.Data, col = "purple")s
+lines(as.numeric(as.character(pH_T5)) ~ Date.Time, Probe.Data, col = "purple")
 lines(as.numeric(as.character(pH_T6)) ~ Date.Time, Probe.Data, col = "orange")
 lines(as.numeric(as.character(pH_T7)) ~ Date.Time, Probe.Data, col = "brown")
 axis.POSIXct(side=1, Probe.Data$Date.Time)
