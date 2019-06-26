@@ -10,8 +10,8 @@
 # 
 
 #Created by Nyssa Silbiger 03/28/2014
-#modified 20180627 Hollie Putnam
-#new acid bottle 20180712 Emma Strand
+#modified 20190626 Sam Gurr
+#new acid bottle 20190626 by Sam Gurr
 #line 68 changed SampleID to Sample.ID - Sam Gurr 20180713
 #
 #------------------------------------------------------------
@@ -28,13 +28,13 @@ library(seacarb) #used to calculate TA
 library(tidyverse)
 
 #CHANGE THESE VALUES EVERY DAY----------------------------------------------
-path<-"Data/TA/20190408" #the location of all your titration files
-massfile<-"20190408mass_RUN2.csv" # name of your file with masses
-titrationfile<-'20190408_RUN2.csv'# name of the last titration file run
+path<-"Data/TA/20190626" #the location of all your titration files
+massfile<-"20190626mass_RUN1.csv" # name of your file with masses
+titrationfile<-'20190626_RUN1.csv'# name of the last titration file run
 
 
 # Date that the data were run
-date<-'20190408'
+date<-'20190626'
 
 
 #DO NOT CHANGE ANYTHING BELOW THIS LINE UNLESS A NEW BOTTLE OF ACID IS USED
