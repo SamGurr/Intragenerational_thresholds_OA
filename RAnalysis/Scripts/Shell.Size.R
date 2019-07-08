@@ -30,6 +30,19 @@ library("lubridate")
 library("chron")
 library('plyr')
 library('dplyr')
+# Load packages and pacage version/date/import/depends info
+library(dplyr)          # Version 0.7.6, Packaged: 2018-06-27, Depends: R (>= 3.1.2)Imports: assertthat (>= 0.2.0), bindrcpp (>= 0.2.0.9000), glue (>=1.1.1), magrittr (>= 1.5), methods, pkgconfig (>= 2.0.1), R6(>= 2.2.2), Rcpp (>= 0.12.15), rlang (>= 0.2.0), tibble (>=1.3.1), tidyselect (>= 0.2.3), utils
+library(ggplot2)        # Version 2.2.1, Packaged: 2016-12-30, Depends: R (>= 3.1)Imports: digest, grid, gtable (>= 0.1.1), MASS, plyr (>= 1.7.1),reshape2, scales (>= 0.4.1), stats, tibble, lazyeval
+library(ggpubr)         # Version: 0.1.8 Date: 2018-08-30, Depends: R (>= 3.1.0), ggplot2, magrittrImports: ggrepel, grid, ggsci, stats, utils, tidyr, purrr, dplyr(>=0.7.1), cowplot, ggsignif, scales, gridExtra, glue, polynom
+library(Rmisc)          # Version: 1.5 Packaged: 2013-10-21, Depends: lattice, plyr
+library(plotrix)        # Version: 3.7-4, Date/Publication: 2018-10-03
+library(lsmeans)        # Version: 2.27-62, Date/Publication: 2018-05-11, Depends: methods, R (>= 3.2)
+library(gridExtra)      # Version: 2.3, Date/Publication: 2017-09-09, Imports: gtable, grid, grDevices, graphics, utils
+library(reshape)        # Version: 0.8.7, Date/Publication: 2017-08-06, Depends: R (>= 2.6.1) Imports: plyr
+library(multcompView)   # Version: 0.1-7, Date/Publication: 2015-07-31, Imports: grid
+library(Rmisc)
+library(lmtest)
+library(car)
 
 #Required Data files
 
@@ -42,6 +55,19 @@ Size.data <- read.csv(file="Data/Shell_length/20190628_shell_size.csv", header=T
 # Analysis
 ttest_size_20190628 <- t.test(Length ~ Treatment, data = Size.data)
 ttest_size_20190628 # view t test results - significant difference between treatments
+
+aov.mod_1 <- aov(Length ~ Treatment+ID, data = Size.data)
+anova(aov.mod_1)
+
+aov.mod <- aov(Length ~ ID, data = Size.data)
+anova(aov.mod)
+
+TukeyHSD(aov.mod, which = "ID")
+
+ID.size.ANOVA <- lsmeans(aov.mod, pairwise ~ ID)# pariwise Tukey Post-hoc test between repeated treatments
+ID.size.ANOVA # view post hoc summary
+Treatment.pairs.05 <- cld(ID.size.ANOVA, alpha=.05, Letters=letters) #list pairwise tests and letter display p < 0.05
+Treatment.pairs.05 #view results
 
 # plot data
 size_plot_20190628 <- ggplot(Size.data, aes(x = factor(ID), y = Length, fill = Treatment)) +
