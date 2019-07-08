@@ -1,0 +1,127 @@
+rm(list = ls())
+library(shiny)
+rsconnect::setAccountInfo(name='sam-geoduck',
+                          token='340A1FE56E654C48A346EDD10D0CC45F',
+                          secret='hmitiSg16pfLx0ckLCu/1+/GByjPw/sdhcjzw4N/')
+  rsconnect::deployApp('C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Scripts/RShiny_algae/Juvenile_feed_routine_ui_and_server')
+
+ui <- shinyUI(fluidPage(
+  mainPanel(
+    numericInput("tank_volume", "tank_volume (L)", 250 ,min = 0, max = 5000),
+    numericInput("how_many_tanks", "how_many_tanks of the same volume", 4,min = 1, max = 10),
+    numericInput("flow_rate", "flow_rate (LPM)", 0.4,min = 0.00, max = 5.00),
+    numericInput("target_cell_density", "target_cell_density (cells per mL)", 50000,min = 0, max = 1000000),
+    numericInput("feed_conical", "target mL per hour continuous feed", 1000 ,min = 0, max = 1000),
+    numericInput("algae_1", "Algae #1 cells mL-1 (pav, iso, tet, nano, etc.)", 2000000,min = 0, max = 2000000),
+    numericInput("perc_algae1", "Percent_comp_1", 40,min = 0, max = 100),
+    numericInput("algae_2", "Algae #2 cells mL-1  (pav, iso, tet, nano, etc.)", 2000000,min = 0, max = 2000000),
+    numericInput("perc_algae2", "Percent_comp_2", 40,min = 0, max = 100),
+    numericInput("algae_3", "Algae #3 cells mL-1  (pav, iso, tet, nano, etc.)", 2000000,min = 0, max = 2000000),
+    numericInput("perc_algae3", "Percent_comp_3", 20,min = 0, max = 100),
+    textOutput("signature"),
+    textOutput("contactinfo"),
+    textOutput("batchtotal"),
+    textOutput("batch_algae1"),
+    textOutput("batch_algae2"),
+    textOutput("batch_algae3"),
+    textOutput("hourly_flow_loss"),
+    textOutput("replenish"),
+    textOutput("total_continuous"),
+    textOutput("cont_algae1"),
+    textOutput("cont_algae2"),
+    textOutput("cont_algae3"),
+    textOutput("dilution"))
+))
+
+server <- shinyServer(function(input, output,session){
+  
+  vals <- reactiveValues()
+  observe({
+    vals$x                   <- input$tank_volume*1000 # convert to cells per milliliter
+    vals$t                   <- input$target_cell_density # in cells per milliliter
+    vals$q                   <- input$how_many_tanks
+    vals$f                   <- input$flow_rate*1000 # convert to milliliters
+    vals$total_cells         <- vals$x*vals$t
+    vals$vol                 <- input$feed_conical
+    vals$algae_mix_conc      <- (input$algae_1*(input$perc_algae1/100)) + 
+                                  (input$algae_2*(input$perc_algae2/100)) + 
+                                     (input$algae_3*(input$perc_algae3/100)) # total cell concentration of mixed diet
+    vals$assumed_hourly_loss <- (vals$f*60)*vals$t  # in cells per milliliter
+    vals$percent_loss_hourly <- (vals$assumed_hourly_loss/vals$total_cells)*100 
+    vals$Liters_algae_initial <- ((((vals$total_cells*(input$perc_algae1/100))/input$algae_1)/1000)+
+                                    (((vals$total_cells*(input$perc_algae2/100))/input$algae_2)/1000)+
+                                        (((vals$total_cells*(input$perc_algae3/100))/input$algae_3)/1000))
+    vals$LPH_feed <- ((vals$percent_loss_hourly/100)*vals$Liters_algae_initial)
+    
+  }) 
+  
+  output$signature <- renderText({
+    paste("App created by Sam J. Gurr - last update 02/04/2019") 
+          
+  })
+  
+  output$contactinfo <- renderText({
+    paste("Contact: samjgurr@gmail.com") 
+          
+  })
+  
+  output$batchtotal <- renderText({
+    paste("BATCH FEED: total volume feed per tank (L) =", 
+          vals$Liters_algae_initial)
+  })
+  
+  output$batch_algae1 <- renderText({
+    paste("BATCH FEED: algae 1 (L per tank) =",
+          ((vals$total_cells*(input$perc_algae1/100))/input$algae_1)/1000)
+    })
+  
+  output$batch_algae2 <- renderText({
+    paste("BATCH FEED: algae 2 (L per tank) =",
+          ((vals$total_cells*(input$perc_algae2/100))/input$algae_2)/1000)
+    })
+  
+  output$batch_algae3 <- renderText({
+    paste( "BATCH FEED: algae 3 (L per tank) =",
+          ((vals$total_cells*(input$perc_algae3/100))/input$algae_3)/1000)
+    })
+  
+  output$hourly_flow_loss <- renderText({
+    paste("Hourly loss from flow through (cells mL) =",
+          vals$assumed_hourly_loss)
+    })
+  
+  output$replenish <- renderText({
+    paste("Volume to replenish conical/tank-1  hour-1 (L) =",
+          (vals$assumed_hourly_loss/vals$algae_mix_conc)/1000) 
+    })
+  
+  output$total_continuous <- renderText({
+    paste("CONTINUOUS FEED: total volume mixed algae (L) =",
+          ((vals$percent_loss_hourly/100)*vals$Liters_algae_initial)*24*vals$q)
+     })
+  
+  output$cont_algae1 <- renderText({
+    paste("CONTINUOUS FEED: algae 1 (L) =",
+          (((((vals$percent_loss_hourly/100)*vals$total_cells)*24*vals$q)*(input$perc_algae1/100))/(input$algae_1))/1000)
+     })
+  
+  output$cont_algae2 <- renderText({
+     paste("CONTINUOUS FEED: algae 2 (L) =",
+          (((((vals$percent_loss_hourly/100)*vals$total_cells)*24*vals$q)*(input$perc_algae2/100))/(input$algae_2))/1000)
+     })
+  
+  output$cont_algae3 <- renderText({
+     paste("CONTINUOUS FEED: algae 3 (L) =",
+          (((((vals$percent_loss_hourly/100)*vals$total_cells)*24*vals$q)*(input$perc_algae3/100))/(input$algae_3))/1000)
+     })
+  
+  output$dilution <- renderText({
+     paste("DILUTION: FILTERED SEAWATER (L) =", 
+    ((input$feed_conical/1000)-((vals$assumed_hourly_loss/vals$algae_mix_conc)/1000))*24*vals$q) 
+    
+    })
+  
+})
+
+
+shinyApp(ui = ui, server = server)
