@@ -1,23 +1,24 @@
 rm(list = ls())
 library(shiny)
-rsconnect::setAccountInfo(name='sam-geoduck',
-                          token='340A1FE56E654C48A346EDD10D0CC45F',
-                          secret='hmitiSg16pfLx0ckLCu/1+/GByjPw/sdhcjzw4N/')
-  rsconnect::deployApp('C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Scripts/RShiny_algae/Juvenile_feed_routine_ui_and_server')
+# push lines 4 - 7 to send edits of ui and server scripts to URL
+# rsconnect::setAccountInfo(name='sam-geoduck',
+                         # token='340A1FE56E654C48A346EDD10D0CC45F',
+                          # secret='') #fill secret here to edit (owned by Sam J. Gurr)
+ # rsconnect::deployApp('C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Scripts/RShiny_algae/Juvenile_feed_routine_ui_and_server')
 
 ui <- shinyUI(fluidPage(
   mainPanel(
     numericInput("tank_volume", "tank_volume (L)", 250 ,min = 0, max = 5000),
-    numericInput("how_many_tanks", "how_many_tanks of the same volume", 4,min = 1, max = 10),
+    numericInput("how_many_tanks", "how_many_tanks of the same volume", 3,min = 1, max = 10),
     numericInput("flow_rate", "flow_rate (LPM)", 0.4,min = 0.00, max = 5.00),
-    numericInput("target_cell_density", "target_cell_density (cells per mL)", 50000,min = 0, max = 1000000),
+    numericInput("target_cell_density", "target_cell_density (cells per mL)", 25000,min = 0, max = 1000000),
     numericInput("feed_conical", "target mL per hour continuous feed", 1000 ,min = 0, max = 1000),
-    numericInput("algae_1", "Algae #1 cells mL-1 (pav, iso, tet, nano, etc.)", 2000000,min = 0, max = 2000000),
-    numericInput("perc_algae1", "Percent_comp_1", 40,min = 0, max = 100),
+    numericInput("algae_1", "Algae #1 cells mL-1 (pav, iso, tet, nano, etc.)", 450000,min = 0, max = 2000000),
+    numericInput("perc_algae1", "Percent_comp_1", 100,min = 0, max = 100),
     numericInput("algae_2", "Algae #2 cells mL-1  (pav, iso, tet, nano, etc.)", 2000000,min = 0, max = 2000000),
-    numericInput("perc_algae2", "Percent_comp_2", 40,min = 0, max = 100),
+    numericInput("perc_algae2", "Percent_comp_2", 0,min = 0, max = 100),
     numericInput("algae_3", "Algae #3 cells mL-1  (pav, iso, tet, nano, etc.)", 2000000,min = 0, max = 2000000),
-    numericInput("perc_algae3", "Percent_comp_3", 20,min = 0, max = 100),
+    numericInput("perc_algae3", "Percent_comp_3", 0,min = 0, max = 100),
     textOutput("signature"),
     textOutput("contactinfo"),
     textOutput("batchtotal"),
