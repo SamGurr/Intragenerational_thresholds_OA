@@ -28,13 +28,13 @@ library(seacarb) #used to calculate TA
 library(tidyverse)
 
 #CHANGE THESE VALUES EVERY DAY----------------------------------------------
-path<-"Data/TA/20190703" #the location of all your titration files
-massfile<-"20190703mass_CRM.csv" # name of your file with masses
-titrationfile<-'20190703_CRM.csv'# name of the last titration file run
+path<-"Data/TA/20190709" #the location of all your titration files
+massfile<-"20190709mass_RUN2.csv" # name of your file with masses
+titrationfile<-'20190709_RUN2.csv'# name of the last titration file run
 
 
 # Date that the data were run
-date<-'20190703'
+date<-'20190709'
 
 
 #DO NOT CHANGE ANYTHING BELOW THIS LINE UNLESS A NEW BOTTLE OF ACID IS USED
