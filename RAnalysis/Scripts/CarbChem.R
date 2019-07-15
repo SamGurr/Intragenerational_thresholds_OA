@@ -1,11 +1,12 @@
 #Geoduck Conditioning
-#Data published in X
+#Data published in ___
 #Title: 
 #Contact: Hollie Putnam hollieputnam@gmail.com
 #Supported by: FFAR
 #See Readme file for details on data files and metadata
 
-# path changes made on 20180712 sor SJG personal comp at Pt Whitney - original paths kept with #
+# path changes made on 20180712 sor SJG personal comp at Pt Whitney - original paths kept with
+# added loop to print anova results  - SJG on 20170714
 
 rm(list=ls()) # removes all prior objects
 
@@ -27,7 +28,7 @@ library(xtable) #version 1.8-2 Date/Publication: 2016-01-08 Depends: R (>= 2.10.
 library(lme4) #version: 1.1-13 Date/Publication: 2017-04-19 Depends: R (>= 3.0.2), Matrix (>= 1.1.1), methods, stats Imports: graphics, grid, splines, utils, parallel, MASS, lattice, nlme(>= 3.1-123), minqa (>= 1.1.15), nloptr (>= 1.0.4)
 library(blmeco) #version: 1.1 Date/Publication: 2015-08-22 Depends: R (>= 3.0.0), stats, MASS Imports: MuMIn, arm, lme4
 library(MuMIn) #version: 1.15.6 Date/Publication: 2016-01-07 Depends: R (>= 3.0.0) Imports: graphics, methods, Matrix, stats, stats4
-
+library(dplyr)
 #####Required Data files#####
 
 #CRM_TA_Data.csv
@@ -115,6 +116,7 @@ carb.output$DIC <- carb.output$DIC*1000000 #convert to µmol kg-1
 carb.output <- carb.output[,-c(1,4,5,8,10:13,19)] #subset variables of interest
 carb.output <- cbind(SW.chem$Date,  SW.chem$Sample.ID,  SW.chem$Treatment, carb.output) #combine the sample information with the seacarb output
 colnames(carb.output) <- c("Date",  "Tank",  "Treatment",	"Salinity",	"Temperature", "pH",	"CO2",	"pCO2","HCO3",	"CO3",	"DIC", "TA",	"Aragonite.Sat") #Rename columns to describe contents
+
 # write.table(carb.output, "~/MyProjects/BioMin_HIS/RAnalysis/Output/Seawater_chemistry_table_Output_All.csv", sep=",", row.names = FALSE) #save data
 write.table(carb.output, "C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Seawater_chemistry_table_Output_All.csv", sep=",", row.names = FALSE) #save data
 
@@ -125,6 +127,67 @@ mean.carb.output <-ddply(carbo.melted, .(Treatment, variable), summarize, #For e
                          sem = (sd(value)/sqrt(N))) #calculate the SEM as the sd/sqrt of the count or data length
 mean.carb.output # display mean and sem 
 
+head(carb.output)
+
+# For loop of anova tables for treatment effects on pH, pCO2, TA, and Aragonite.Sat
+short.table <- carb.output %>%  # call full table of carbonate chemistry
+  distinct(Date, Treatment, pH, pCO2, TA, Aragonite.Sat) # call all unique values for target carbon chemistry
+short.table <- as.data.frame(short.table) # call as data frame
+date.table <- data.frame(unique(short.table$Date)) # call data frame of unique date value to loop
+aov.results.table <- data.frame(matrix(nrow = 1,ncol = 17)) # template table to output anova results
+colnames(aov.results.table) <-c('Date', 'pval.pH','pval.pCO2', 'pval.TA', 'pval.Aragonite.Sat',
+                           'df.pH','df.pCO2', 'df.TA', 'df.Aragonite.Sat',
+                           'df.Res.pH','df.Res.pCO2', 'df.Res.TA', 'df.Res.Aragonite.Sat',
+                           'F.pH','F.pCO2', 'F.TA', 'F.Aragonite.Sat') # names for columns in the for loop
+aov.results.FINAL <- data.frame()
+
+for(i in 1:nrow(date.table)) {
+ each.day.table <- short.table %>% 
+   filter(Date == date.table[i,1])
+      #ph aov 
+      pH.anova.table <- summary(aov(lm(pH ~ Treatment, data = each.day.table)))
+      x.pH <- as.data.frame(pH.anova.table[[1]])
+      #pCO2 aov 
+      pCO2.anova.table <- summary(aov(lm(pCO2 ~ Treatment, data = each.day.table)))
+      x.pCO2 <- as.data.frame(pCO2.anova.table[[1]])
+      #TA aov 
+      TA.anova.table <- summary(aov(lm(TA ~ Treatment, data = each.day.table)))
+      x.TA <- as.data.frame(TA.anova.table[[1]])
+      #aragonite sat aov 
+      Aragonite.Sat.anova.table <- summary(aov(lm(Aragonite.Sat ~ Treatment, data = each.day.table)))
+      x.Aragonite.Sat <- as.data.frame(Aragonite.Sat.anova.table[[1]])
+      # date
+      aov.results.table$Date <- date.table[i,1] # all files have date in the form of yyyymmdd at the start of each csv name
+      # p.values call = table[1,5]
+      aov.results.table$pval.pH <- x.pH[1,5] 
+      aov.results.table$pval.pCO2 <- x.pCO2[1,5]
+      aov.results.table$pval.TA <- x.TA[1,5]
+      aov.results.table$pval.Aragonite.Sat <- x.Aragonite.Sat[1,5]
+      # df treatment  call = table[1,1]
+      aov.results.table$df.pH <- x.pH[1,1]
+      aov.results.table$df.pCO2 <- x.pCO2[1,1]
+      aov.results.table$df.TA <- x.TA[1,1]
+      aov.results.table$df.Aragonite.Sat <- x.Aragonite.Sat[1,1]
+      # F call = table[1,4]
+      aov.results.table$df.Res.pH <- x.pH[1,4]
+      aov.results.table$df.Res.pCO2 <- x.pCO2[1,4]
+      aov.results.table$df.Res.TA <- x.TA[1,4]
+      aov.results.table$df.Res.Aragonite.Sat <- x.Aragonite.Sat[1,4]
+      # df residuals  call = table[2,1]
+      aov.results.table$F.pH <- x.pH[2,1]
+      aov.results.table$F.pCO2 <- x.pCO2[2,1]
+      aov.results.table$F.TA <- x.TA[2,1]
+      aov.results.table$F.Aragonite.Sat <- x.Aragonite.Sat[2,1]
+      
+      aov.df <- data.frame(aov.results.table) # name dataframe for this single row
+      aov.results.FINAL <- rbind(aov.results.FINAL,aov.df) #bind to a cumulative list dataframe
+      print(aov.results.FINAL) # print final data table
+}
+
+# write a table for anova results
+write.table(aov.results.FINAL,"C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Carb.chem.anova.table.csv",sep=",", row.names=FALSE)  # write out to the path names outputNAME
+
+  
 # pdf("~/MyProjects/Geoduck_Conditioning/RAnalysis/Output/Water_Chem_withTA.pdf")
 # CHECK YOUR Y AXIS!
 pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Water_Chem_withTA.pdf")
