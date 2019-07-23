@@ -59,14 +59,21 @@ setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnal
 APEX_1<-read.csv("Data/Apex_data/Output/20190520_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
 APEX_2<-read.csv("Data/Apex_data/Output/20190621_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
 APEX_3<-read.csv("Data/Apex_data/Output/20190625_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
-APEX_data<- do.call("rbind", list(APEX_1, APEX_2, APEX_3)) # bind all data together
+APEX_4<-read.csv("Data/Apex_data/Output/20190722_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
+APEX_data<- do.call("rbind", list(APEX_1, APEX_2, APEX_3, APEX_4)) # bind all data together
 APEX_data$Date.Time <-as.POSIXct(APEX_data$Date.Time, format="%Y-%m-%d %H:%M:%S") #convert date format
+APEX_data$X <- 1:nrow(APEX_data) # make new column for cumulative number of rows
 
-#plot raw data
+##########################################      HEATH STACK CHEMISTRY    #################################################
+# ------------------------------------- pediveliger to juvenile in two treatments ---------------------------------------#
+# T5 - pH and temperature of head tank of the moderate low pH (elevated pCO2)
+# T6 - pH and temperature of H1_T1; a low pH tray in the heath stack
+# T7 - pH of H1_T2 of an ambient tray in the heat stack + temp of the ambient head tank conical T7 (senor did not reach H1_T2)
+
+#plot raw data 
 plot(APEX_data$Date.Time,APEX_data$pH_T5) # tail end is after exposure experiment
 plot(APEX_data$Date.Time,APEX_data$pH_T6) # tail end is after exposure experiment
 plot(APEX_data$Date.Time,APEX_data$pH_T7) # start and tail end show before and after exposure experiment
-plot(APEX_data$Date.Time,APEX_data$pH_T3) # tail end is after exposure experiment
 plot(APEX_data$Date.Time,APEX_data$TMP_T5)
 plot(APEX_data$Date.Time,APEX_data$TMP_T6)
 plot(APEX_data$Date.Time,APEX_data$TMP_T7)
@@ -85,43 +92,43 @@ pH.low_t5 <- do.call(data.frame,aggregate(pH_T5 ~ datehour + days, data = APEX_d
 pH.low_t6 <- do.call(data.frame,aggregate(pH_T6 ~ datehour + days, data = APEX_data, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
 pH.amb_t7 <- do.call(data.frame,aggregate(pH_T7 ~ datehour + days, data = APEX_data, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
 
-pH.low_t5$Treatment <- "Low_headtank" #Add treatment Information
+pH.low_t5$Treatment <- "MODERATE_conical" #Add treatment Information
 colnames(pH.low_t5) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
-pH.low_t6$Treatment <- "Low_tray" #Add treatment Information
+pH.low_t6$Treatment <- "MODERATE_tray" #Add treatment Information
 colnames(pH.low_t6) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
-pH.amb_t7$Treatment <- "Ambient_tray" #Add treatment Information
+pH.amb_t7$Treatment <- "AMBIENT_tray" #Add treatment Information
 colnames(pH.amb_t7) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
 
-hourly.pH <- rbind(pH.low_t5, pH.low_t6, pH.amb_t7) #bind treatment data 
-hourly.pH <- hourly.pH[!is.na(hourly.pH$se), ] # ommit rows with NA for stand error
-hourly.pH <- hourly.pH[!(hourly.pH$se > 0.2),] # ommit rows with high stand error (conical cleaning)
-hourly.pH #view data
+hourly.pH.heathstack <- rbind(pH.low_t5, pH.low_t6, pH.amb_t7) #bind treatment data 
+hourly.pH.heathstack <- hourly.pH.heathstack[!is.na(hourly.pH.heathstack$se), ] # ommit rows with NA for stand error
+hourly.pH.heathstack <- hourly.pH.heathstack[!(hourly.pH.heathstack$se > 0.09),] # ommit rows with high stand error (conical cleaning)
+hourly.pH.heathstack #view data
 
 # temp tables and graphs for all exposures 
 TMP.low_t5 <- do.call(data.frame,aggregate(TMP_T5 ~ datehour + days, data = APEX_data, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
 TMP.low_t6 <- do.call(data.frame,aggregate(TMP_T6 ~ datehour + days, data = APEX_data, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
 TMP.amb_t7 <- do.call(data.frame,aggregate(TMP_T7 ~ datehour + days, data = APEX_data, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
 
-TMP.low_t5$Treatment <- "Low_headtank" #Add treatment Information
+TMP.low_t5$Treatment <- "MODERATE_conical" #Add treatment Information
 colnames(TMP.low_t5) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
-TMP.low_t6$Treatment <- "Low_tray" #Add treatment Information
+TMP.low_t6$Treatment <- "MODERATE_tray" #Add treatment Information
 colnames(TMP.low_t6) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
-TMP.amb_t7$Treatment <- "Ambient_tray" #Add treatment Information
+TMP.amb_t7$Treatment <- "AMBIENT_tray" #Add treatment Information
 colnames(TMP.amb_t7) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
 
-hourly.temp <- rbind(TMP.low_t5, TMP.low_t6, TMP.amb_t7) #bind treatment data 
-hourly.temp <- hourly.temp[!is.na(hourly.pH$se), ] # ommit rows with NA for stand error
-hourly.temp <- hourly.temp[!(hourly.pH$se > 0.2),] # ommit rows with high stand error (conical cleaning)
-hourly.temp #view data
+hourly.temp.heathstack <- rbind(TMP.low_t5, TMP.low_t6, TMP.amb_t7) #bind treatment data 
+hourly.temp.heathstack <- hourly.temp.heathstack[!is.na(hourly.temp.heathstack$se), ] # ommit rows with NA for stand error
+hourly.temp.heathstack <- hourly.temp.heathstack[!(hourly.temp.heathstack$se > 0.2),] # ommit rows with high stand error (conical cleaning)
+hourly.temp.heathstack #view data
 
 # Plot daily averages of pH data from 4/20 - 6/25  (continuous APEX data)
-hourly.pH$datehour <- as.POSIXct(hourly.pH$datehour, format="%Y-%m-%d %H:%M:%S") #format datehour 
-pH.Apex.FIG <- ggplot(hourly.pH, aes(x=datehour, y=mean, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+hourly.pH.heathstack$datehour <- as.POSIXct(hourly.pH.heathstack$datehour, format="%Y-%m-%d %H:%M:%S") #format datehour 
+FIG.pH.Apex.heathstack <- ggplot(hourly.pH.heathstack, aes(x=datehour, y=mean, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
   #geom_line() +
   geom_point(aes(x = datehour, y = mean, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
   geom_errorbar(aes(x=datehour, ymax=mean+se, ymin=mean-se), 
-                position=position_dodge(0.9), data=hourly.pH, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
-  ggtitle("A) Hourly pH (NBS)") + #Label the graph with the main title
+                position=position_dodge(0.9), data=hourly.pH.heathstack, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("A) Heath stack hourly pH (NBS)") + #Label the graph with the main title
   #scale_x_date(date_minor_breaks = "1 day") +
   #scale_x_date(breaks = APEX.pH.Exp1$datehour[seq(1, length(APEX.pH.Exp1$datehour), by = 24)]) +
   ylim(6.8,8.2) + #Set Y axis limits
@@ -143,18 +150,18 @@ pH.Apex.FIG <- ggplot(hourly.pH, aes(x=datehour, y=mean, group=Treatment, color=
         legend.key = element_blank(), #remove the legend background
         legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
 
-pH.Apex.FIG_2 <- pH.Apex.FIG + scale_color_manual(values=c("#009E73", "#0072B2", "#E69F00")) #colorblindess color theme
-pH.Apex.FIG_2 # view figure
+FIG.pH.Apex.heathstack_2 <- FIG.pH.Apex.heathstack + scale_color_manual(values=c("#009E73", "#0072B2", "#56B4E9")) #colorblindess color theme
+FIG.pH.Apex.heathstack_2 # view figure
 
 
 # Plot daily averages of temperatyre  data from 4/20 - 6/25  (continuous APEX data)
-hourly.temp$datehour <- as.POSIXct(hourly.temp$datehour, format="%Y-%m-%d %H:%M:%S") #format datehour 
-TMP.Apex.FIG <- ggplot(hourly.temp, aes(x=datehour, y=mean, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+hourly.temp.heathstack$datehour <- as.POSIXct(hourly.temp.heathstack$datehour, format="%Y-%m-%d %H:%M:%S") #format datehour 
+FIG.temp.Apex.heathstack<- ggplot(hourly.temp.heathstack, aes(x=datehour, y=mean, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
   #geom_line() +
   geom_point(aes(x = datehour, y = mean, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
   geom_errorbar(aes(x=datehour, ymax=mean+se, ymin=mean-se), 
-                position=position_dodge(0.9), data=hourly.pH, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
-  ggtitle("B) Hourly temperature (C)") + #Label the graph with the main title
+                position=position_dodge(0.9), data=hourly.temp.heathstack, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("B) Heath stack hourly temperature (C)") + #Label the graph with the main title
   #scale_x_date(date_minor_breaks = "1 day") +
   #scale_x_date(breaks = APEX.pH.Exp1$datehour[seq(1, length(APEX.pH.Exp1$datehour), by = 24)]) +
   ylim(10,20) + #Set Y axis limits
@@ -176,14 +183,162 @@ TMP.Apex.FIG <- ggplot(hourly.temp, aes(x=datehour, y=mean, group=Treatment, col
         legend.key = element_blank(), #remove the legend background
         legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
 
-TMP.Apex.FIG_2 <- TMP.Apex.FIG + scale_color_manual(values=c("#009E73", "#0072B2", "#E69F00")) #colorblindess color theme
-TMP.Apex.FIG_2 # view figure
+FIG.temp.Apex.heathstack_2 <- FIG.temp.Apex.heathstack + scale_color_manual(values=c("#009E73", "#0072B2", "#56B4E9")) #colorblindess color theme
+FIG.temp.Apex.heathstack_2 # view figure
 
-Fig.continuous.pH.temp <- grid.arrange(arrangeGrob(pH.Apex.FIG_2, 
-                                                   left="pH", ncol=1), 
-                                            arrangeGrob(TMP.Apex.FIG_2, 
-                                                        left="Temperature", ncol=1), ncol=1)
-Fig.continuous.pH.temp # view figure
+
+
+##########################################      HEATH STACK CHEMISTRY    #################################################
+# ------------------------------------- pediveliger to juvenile in two treatments ---------------------------------------#
+# T0 - AMBIENT head tank - feeds tanks 25 - 36 in water bath trays 0_1 and 0_2
+# T1 - SEVERE low pH head tank - feed tanks 13 - 24 in water bath trays 1_1 and 1_2
+# T2 - MODERATE low pH head tank - feed tanks 1 - 12 in water bath trays 2_1 and 2_2
+# T3 - in tank #16; tray 1_1 - pH and temperature of SEVERE treatment from conical T1
+# T4 - in tank #4; tray 2_1 - pH and temperature of MODERATE treatment from conical T1
+APEX_data[,1]
+APEX_data[c(10878),] #  july 6 at 00:00:00 - x = 870; use this to filter data
+APEX_data.experiment <- APEX_data %>% 
+  filter(X  > 10878)
+head(APEX_data.experiment) # data for this analysis/figure output will start with 7/6/19
+
+#plot raw data 
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$pH_T0) # tail end is after exposure experiment
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$pH_T1) # tail end is after exposure experiment
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$pH_T2) # start and tail end show before and after exposure experiment
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$pH_T3) # tail end is after exposure experiment
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$pH_T4) # tail end is after exposure experiment
+
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$TMP_T0)
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$TMP_T1)
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$TMP_T2)
+plot(APEX_data.experiment$Date.Time,APEX_data.experiment$TMP_T4) 
+
+APEX_data.experiment$datehour <- cut(as.POSIXct(APEX_data.experiment$Date.Time),
+                          format="%d-%m-%Y %H:%M:%S", breaks="hour") # create new column for datehour to aggregate data
+head(APEX_data.experiment) # check this new column - all 10 minute increment data is called for the hour as "datehour"
+
+date <- format(as.POSIXct(APEX_data.experiment$Date.Time) ,format = "%Y-%m-%d %H") # call year month and date
+days <- as.Date(date) - as.Date(date[1]) # subtract from start to get number of days
+days <- as.numeric(days) # convert to numeric
+
+# pH tables and graphs for all exposures 
+pH.amb.conical_T0 <- do.call(data.frame,aggregate(pH_T0 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+pH.severe.conical_T1 <- do.call(data.frame,aggregate(pH_T1 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+pH.moderate.conical_T2 <- do.call(data.frame,aggregate(pH_T2 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+pH.severe.tank_T3 <- do.call(data.frame,aggregate(pH_T3 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+pH.moderate.tank_T4 <- do.call(data.frame,aggregate(pH_T4 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+
+pH.amb.conical_T0$Treatment <- "AMBIENT_conical" #Add treatment Information
+colnames(pH.amb.conical_T0) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+pH.severe.conical_T1$Treatment <- "SEVERE_conical" #Add treatment Information
+colnames(pH.severe.conical_T1) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+pH.moderate.conical_T2$Treatment <- "MODERATE_conical" #Add treatment Information
+colnames(pH.moderate.conical_T2) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+pH.severe.tank_T3$Treatment <- "SEVERE_tank" #Add treatment Information
+colnames(pH.severe.tank_T3) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+pH.moderate.tank_T4$Treatment <- "MODERATE_tank" #Add treatment Information
+colnames(pH.moderate.tank_T4) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+
+hourly.pH.experiment <- rbind(pH.amb.conical_T0, pH.severe.conical_T1, pH.moderate.conical_T2,
+                              pH.severe.tank_T3, pH.moderate.tank_T4) #bind treatment data 
+hourly.pH.experiment <- hourly.pH.experiment[!is.na(hourly.pH.experiment$se), ] # ommit rows with NA for stand error
+hourly.pH.experiment <- hourly.pH.experiment[!(hourly.pH.experiment$se > 0.09),] # ommit rows with high stand error (conical cleaning)
+hourly.pH.experiment #view data
+
+# temp tables and graphs for all exposures 
+TMP.amb.conical_T0 <- do.call(data.frame,aggregate(TMP_T0 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+TMP.severe.conical_T1 <- do.call(data.frame,aggregate(TMP_T1 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+TMP.moderate.conical_T2 <- do.call(data.frame,aggregate(TMP_T2 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+TMP.severe.tank_T3 <- do.call(data.frame,aggregate(TMP_T3 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+TMP.moderate.tank_T4 <- do.call(data.frame,aggregate(TMP_T4 ~ datehour + days, data = APEX_data.experiment, function(x) c(mean = mean(x), se = std.error(x)))) #calculate mean and sem of each treatment by Hour
+
+TMP.amb.conical_T0$Treatment <- "AMBIENT_conical" #Add treatment Information
+colnames(TMP.amb.conical_T0) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+TMP.severe.conical_T1$Treatment <- "SEVERE_conical" #Add treatment Information
+colnames(TMP.severe.conical_T1) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+TMP.moderate.conical_T2$Treatment <- "MODERATE_conical" #Add treatment Information
+colnames(TMP.moderate.conical_T2) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+TMP.severe.tank_T3$Treatment <- "SEVERE_tank" #Add treatment Information
+colnames(TMP.severe.tank_T3) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+TMP.moderate.tank_T4$Treatment <- "MODERATE_tank" #Add treatment Information
+colnames(TMP.moderate.tank_T4) <- c("datehour", "days", "mean", "se", "Treatment") #rename columns to generic format
+
+hourly.temp.experiment <- rbind(TMP.amb.conical_T0, TMP.severe.conical_T1, TMP.moderate.conical_T2,
+                                TMP.severe.tank_T3, TMP.moderate.tank_T4) #bind treatment data 
+hourly.temp.experiment <- hourly.temp.experiment[!is.na(hourly.temp.experiment$se), ] # ommit rows with NA for stand error
+hourly.temp.experiment <- hourly.temp.experiment[!(hourly.temp.experiment$se > 0.2),] # ommit rows with high stand error (conical cleaning)
+hourly.temp.experiment #view data
+
+# Plot daily averages of pH data from 4/20 - 6/25  (continuous APEX data)
+hourly.pH.experiment$datehour <- as.POSIXct(hourly.pH.experiment$datehour, format="%Y-%m-%d %H:%M:%S") #format datehour 
+FIG.pH.Apex.experiment <- ggplot(hourly.pH.experiment, aes(x=datehour, y=mean, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  #geom_line() +
+  geom_point(aes(x = datehour, y = mean, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=datehour, ymax=mean+se, ymin=mean-se), 
+                position=position_dodge(0.9), data=hourly.pH.experiment, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("A) Experiment hourly pH (NBS)") + #Label the graph with the main title
+  #scale_x_date(date_minor_breaks = "1 day") +
+  #scale_x_date(breaks = APEX.pH.Exp1$datehour[seq(1, length(APEX.pH.Exp1$datehour), by = 24)]) +
+  ylim(6.5,8.2) + #Set Y axis limits
+  xlab("Time") + #Label the X Axis
+  ylab("pH (NBS)") + #Label the Y Axis
+  #scale_x_date(date_minor_breaks = "1 day") +
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 90, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+
+FIG.pH.Apex.experiment_2 <- FIG.pH.Apex.experiment + scale_color_manual(values=c("#009E73", "#0072B2", "#56B4E9",  "#D55E00", "#E69F00")) #colorblindess color theme
+FIG.pH.Apex.experiment_2 # view figure
+
+
+# Plot daily averages of temperatyre  data from 4/20 - 6/25  (continuous APEX data)
+hourly.temp.experiment$datehour <- as.POSIXct(hourly.temp.experiment$datehour, format="%Y-%m-%d %H:%M:%S") #format datehour 
+FIG.temp.Apex.experiment<- ggplot(hourly.temp.experiment, aes(x=datehour, y=mean, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  #geom_line() +
+  geom_point(aes(x = datehour, y = mean, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=datehour, ymax=mean+se, ymin=mean-se), 
+                position=position_dodge(0.9), data=hourly.temp.experiment, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("B) Experiment hourly temperature (C)") + #Label the graph with the main title
+  #scale_x_date(date_minor_breaks = "1 day") +
+  #scale_x_date(breaks = APEX.pH.Exp1$datehour[seq(1, length(APEX.pH.Exp1$datehour), by = 24)]) +
+  ylim(10,20) + #Set Y axis limits
+  xlab("Time") + #Label the X Axis
+  ylab("temperature (C)") + #Label the Y Axis
+  #scale_x_date(date_minor_breaks = "1 day") +
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 90, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+
+FIG.temp.Apex.experiment_2 <- FIG.temp.Apex.experiment + scale_color_manual(values=c("#009E73", "#0072B2", "#56B4E9",  "#D55E00", "#E69F00")) #colorblindess color theme
+FIG.temp.Apex.experiment_2 # view figure
+
+
+#compilwe figures and output 
+FIG.FINAL.pH.temp <- grid.arrange(arrangeGrob(FIG.pH.Apex.heathstack_2, FIG.temp.Apex.heathstack_2,
+                                              FIG.pH.Apex.experiment_2, FIG.temp.Apex.experiment_2, ncol=2, nrow =2))
+FIG.FINAL.pH.temp # view figure
 
 # output figure
-ggsave(file="Output/Fig.continuous.pH.temp.pdf", Fig.continuous.pH.temp, width = 12, height = 8, units = c("in"))
+ggsave(file="Output/Fig.continuous.pH.temp.pdf", FIG.FINAL.pH.temp, width = 12, height = 8, units = c("in"))

@@ -79,7 +79,7 @@ x.2 #view new table
 
 # modify x.2 -> x.3 by removing unnecessary columns & ommitting repeated values
 x.3 <- x.2 %>%  # call table
-  select(-c(Notes, Length)) %>% # ommit notes and length 
+  select(-c(Notes, Length)) # ommit notes and length 
 x.3$Date_SDR_Run <- paste(x.3$Date, x.3$SDR_position, x.3$RUN, sep = "_") # merge a unique column
 x.3 <- x.3[!duplicated(x.3$Date_SDR_Run), ] # ommit all duplicates based on unique column
 x.3 # view table
@@ -234,7 +234,7 @@ RESP.plots.MEAN.shell <- ggplot(Final.resp.table, aes(x = factor(Date), y = resp
   #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   #ylim(0,10) + 
-  labs(y=expression("Respiration rate (mean shell length)"~ng~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
   # + geom_errorbar(aes(ymin=resp.MEAN.ug.L.hr.mm-SEM , ymax=resp.MEAN.ug.L.hr.mm+SEM ), width=.1)
 
 RESP.plots.MEAN.shell # view plot 
@@ -255,7 +255,7 @@ RESP.plots.TOTAL.shell <- ggplot(Final.resp.table, aes(x = factor(Date), y = res
                position = position_dodge(preserve = "single")) +
   #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
-  labs(y=expression("Respiration rate (total shell length)"~ng~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+  labs(y=expression("Respiration rate (total shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
   #geom_errorbar(aes(ymin=mean_resp-SEM , ymax=mean_resp+SEM ), width=.1)
 
 RESP.plots.TOTAL.shell # view plot 
