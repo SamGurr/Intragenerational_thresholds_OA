@@ -5,3 +5,7 @@ Date,ZeroPoint,Slope,pH4,pH7,pH10,temp,status,notes,initials
 20190714,6.996,-56.48,170.6,-1.5,-173.3,19.7,pass,2nd zeropt and slope, SJG
 20190716,7,-56.53,170.9,-1.1,-172.9,20.1,pass,2nd zeropt and slope, SJG
 20190717,7.007,-56.58,171,-0.1,-171.2,20.2,pass,2nd zeropt and slope, SJG
+20190723,7.006,-56.37,170.4,-0.2,-170.9,19.6,pass,2nd zeropt and slope, SJG
+20190724,7.018,-56.5,171.1,-0.1,-170.7,20.6,pass,3rd zeropt and slope, SJG
+20190725,7.008,-56.53,171.5,-0.4,-171.7,21.2,pass,4th zeropt and slope, SJG
+20190726,7.01,-56.21,170.5,-0.5,-171.2,20.3,pass,5th zeropt and slope, SJG
