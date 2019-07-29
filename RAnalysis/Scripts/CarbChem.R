@@ -38,14 +38,14 @@ library(dplyr)
 
 #############################################################
 setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Data") #set working directory
-#setwd("~/MyProjects/Geoduck_Conditioning/RAnalysis/Data") #set working directory
+#setwd("~/MyProjects/Intragenerational_thresholds_OA/RAnalysis/Data") #set working directory
 mainDir<-'C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/' #set main directory
 # mainDir<-'~/MyProjects/Geoduck_Conditioning/RAnalysis/' #set main directory
 #############################################################
 
 
 ##### DISCRETE pH CALCULATIONS #####
-# path <-("~/MyProjects/Geoduck_Conditioning/RAnalysis/Data/pH_Calibration_Files/")
+# path <-("~/MyProjects/Intragenerational_thresholds_OA/RAnalysis/Data/pH_Calibration_Files")
 path <-("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Data/pH_Calibration_Files/")
 file.names<-list.files(path = path, pattern = "csv$") #list all the file names in the folder to get only get the csv files
 pH.cals <- data.frame(matrix(NA, nrow=length(file.names), ncol=3, dimnames=list(file.names,c("Date", "Intercept", "Slope")))) #generate a 3 column dataframe with specific column names
@@ -80,18 +80,18 @@ SW.chem$pH.Total<-phTris+(mvTris/1000-SW.chem$pH.MV/1000)/(R*(SW.chem$Temperatur
 
 # pdf("~/MyProjects/Geoduck_Conditioning/RAnalysis/Output/Daily_Treatment_Measures.pdf")
 pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Daily_Treatment_Measures.pdf")
-par(mfrow=c(3,2))
-plot(SW.chem$Treatment, SW.chem$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(12,20))
-plot(SW.chem$Treatment, SW.chem$pH.Total, xlab="Treatment", ylab="pH Total Scale", ylim=c(7.0,8.2))
-plot(SW.chem$Treatment, SW.chem$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(26,30))
+par(mfrow=c(2,2))
+plot(SW.chem$Treatment, SW.chem$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(12,20), las=2)
+plot(SW.chem$Treatment, SW.chem$pH.Total, xlab="Treatment", ylab="pH Total Scale", ylim=c(7.0,8.2), las=2)
+plot(SW.chem$Treatment, SW.chem$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(26,30), las=2)
 dev.off()
 
 # pdf("~/MyProjects/Geoduck_Conditioning/RAnalysis/Output/Daily_Tank_Measures.pdf")
 pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Daily_Treatment_Measures.pdf")
-par(mfrow=c(3,2))
+par(mfrow=c(3,1))
 plot(SW.chem$Sample.ID, SW.chem$Temperature, xlab="Tank", ylab="Temperature°C", ylim=c(12,20),las=2)
 plot(SW.chem$Sample.ID, SW.chem$pH.Total, xlab="Tank", ylab="pH Total Scale", ylim=c(6.5,8.2),las=2)
-plot(SW.chem$Sample.ID, SW.chem$Salinity, xlab="Tank", ylab="Salinity psu", ylim=c(26,30))
+plot(SW.chem$Sample.ID, SW.chem$Salinity, xlab="Tank", ylab="Salinity psu", ylim=c(26,30),las=2)
 dev.off()
 
 ##### DISCRETE TA CALCULATIONS #####
@@ -129,15 +129,28 @@ mean.carb.output # display mean and sem
 
 head(carb.output)
 
+#need to separate out tank name from date
+
 # pdf("~/MyProjects/Geoduck_Conditioning/RAnalysis/Output/Water_Chem_withTA.pdf")
 # CHECK YOUR Y AXIS!
-pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Water_Chem_withTA.pdf")
+pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Treatment_Water_Chem_withTA.pdf")
 par(mfrow=c(3,2))
-plot(carb.output$Treatment, carb.output$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(12,20))
-plot(carb.output$Treatment, carb.output$pH, xlab="Treatment", ylab="pH Total Scale", ylim=c(6.5,8.2))
-plot(carb.output$Treatment, carb.output$pCO2, xlab="Treatment", ylab="pCO2 µmol kg-1", ylim=c(350,8000))
-plot(carb.output$Treatment, carb.output$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(25,30))
-plot(carb.output$Treatment, carb.output$TA, xlab="Treatment", ylab="Total Alkalinity µmol kg-1", ylim=c(1800,2400))
-plot(carb.output$Treatment, carb.output$Aragonite.Sat, xlab="Treatment", ylab="Aragonite Saturation State", ylim=c(0,2))
+plot(carb.output$Treatment, carb.output$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(12,20), las=2)
+plot(carb.output$Treatment, carb.output$pH, xlab="Treatment", ylab="pH Total Scale", ylim=c(6.5,8.2), las=2)
+plot(carb.output$Treatment, carb.output$pCO2, xlab="Treatment", ylab="pCO2 µmol kg-1", ylim=c(350,8000), las=2)
+plot(carb.output$Treatment, carb.output$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(25,30), las=2)
+plot(carb.output$Treatment, carb.output$TA, xlab="Treatment", ylab="Total Alkalinity µmol kg-1", ylim=c(1800,2400), las=2)
+plot(carb.output$Treatment, carb.output$Aragonite.Sat, xlab="Treatment", ylab="Aragonite Saturation State", ylim=c(0,2), las=2)
 dev.off()
+
+pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Tank_Water_Chem_withTA.pdf")
+par(mfrow=c(3,2))
+plot(carb.output$Tank, carb.output$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(12,20), las=2)
+plot(carb.output$Tank, carb.output$pH, xlab="Treatment", ylab="pH Total Scale", ylim=c(6.5,8.2), las=2)
+plot(carb.output$Tank, carb.output$pCO2, xlab="Treatment", ylab="pCO2 µmol kg-1", ylim=c(350,8000), las=2)
+plot(carb.output$Tank, carb.output$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(25,30), las=2)
+plot(carb.output$Tank, carb.output$TA, xlab="Treatment", ylab="Total Alkalinity µmol kg-1", ylim=c(1800,2400), las=2)
+plot(carb.output$Tank, carb.output$Aragonite.Sat, xlab="Treatment", ylab="Aragonite Saturation State", ylim=c(0,2), las=2)
+dev.off()
+
 
