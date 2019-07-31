@@ -61,6 +61,10 @@ cumulative_resp_table <- read.csv(file="Data/SDR_data/Cumulative_resp_alpha0.4.c
 # call the Size info of shell length and number of individuals per trial ( Size info called above)
 x <- merge(cumulative_resp_table, Size.Info, by=c("Date","SDR_position", "RUN"))
 
+################################################################## #
+# SECTION I - create new columns for shell size data  ############ #
+################################################################## #
+
 #------------- Add columns to new table (x.2) for MEAN shell length, SUM shell length, & COUNT ----------
 
 # TOTAL SHELL LENGTH, MEAN SHELL LENGTH
@@ -94,7 +98,12 @@ x.4 <- merge(Tank.info, x.3, by=c("Tank.ID")) # Creates new column for "Treatmen
 # after the mean blank value (from table x) is obtained
 # x.3 = clean and ready for analysis
 
-#--------------------------------------TABLE OF BLANKS--------------------------------------------------
+########################################### #
+# SECTION II - analyze blanks  ############ #
+########################################### #
+
+# ------------ (1) ------------#
+# loop to average oxygen consumption by treatment and date 
 
 dates.runs <- x %>%  # call table
   filter(!is.na(Sw.Condition)) %>% # ommit empty vials
@@ -135,7 +144,40 @@ blanks <- data %>%
 }
 
 blanks_total # view blanks table
-      
+
+# ------------ (2) ------------#
+# get the mean and st.dev for the volume of water in the blanks
+# this will be used to calculate biovolume 
+
+all.blank.data <- x %>% 
+  dplyr::filter(Type == "Blank") # all only blanks
+
+all.blank.data$row.num <- seq.int(nrow(all.blank.data)) # make new column for run numbers
+
+average.blank.volume <- all.blank.data %>% 
+  dplyr::filter(row.num > 18) %>%  # call only data after vival volume was measured, before 20190725 just assumed 4 ml
+  dplyr::summarise(mean_vol = mean(SDR.vial.volume.ml), # call mean vol
+                   sd_vol=sd(SDR.vial.volume.ml)) # call st dev vol
+average.blank.volume # view table
+
+ml.blank <- average.blank.volume[1,1] # ml.blank is the call to calculate biovolume
+
+#################################################### #
+# SECTION III calculate mean biovolume  ############ #
+#################################################### #
+as.data.frame(colnames(x.4)) # view column order to make for loop
+
+cumulative.biovolume <- data.frame(matrix(nrow = 1,ncol = 1))
+colnames(cumulative.biovolume)<-c('mean.biovolume.ml')
+
+for(i in 1:nrow(x.4)) {
+  x.4$mean.biovolume.ml[i] <- ((ml.blank - x.4[i,15])/x.4[i,8])
+}
+  
+##################################################### #
+# SECTION IV - calc respiration rate  ############### #
+##################################################### #
+
 #----------------------------Respiration rate calculation -------------------------------------------
 # data summary
 x # used to calc blanks total, not used here
@@ -146,18 +188,18 @@ CALC.table <- merge(x.4, blanks_total, by=c("Date", "Sw.Condition")) # NOTE: thi
 
 # call dataframe and build table to rbind in for loop
 Final.resp.table <- data.frame() # start dataframe 
-Cumulative.resp <- data.frame(matrix(nrow = 1,ncol = 13)) # make a table template
+Cumulative.resp <- data.frame(matrix(nrow = 1,ncol = 15)) # make a table template
 colnames(Cumulative.resp)<-c('Date', 'RUN', 'SDR_position', 'Tank.ID', 'Sw.Condition', 
-                             'mean_length', 'sum_length', 'count_individuals',
-                             'Treatment.ID', 'resp.RAW.ug.L.hr', 'resp.MEAN.ug.L.hr.mm', 'resp.TOTAL.ug.L.hr.mm', 
-                            'resp.COUNT.ug.L.hr.indiv') # names for comuns in the for loop
+                             'mean_length', 'sum_length', 'count_individuals', 'mean_biovolume',
+                             'Treatment.ID', 'resp.RAW.µg.L.hr', 'resp.MEAN.µg.L.hr.mm', 'resp.TOTAL.µg.L.hr.mm', 
+                            'resp.COUNT.µg.L.hr.indiv', 'resp.MEAN.µg.L.hr.ml') # names for comuns in the for loop
 
 # NOTE: the raw data is in umol L-1 4ml-1
-# "resp.RAW.ugLhr" calculation = ((((((abs(Lpc)) - (BLANK.mean.Lpc))*(4/1000))*(60))*31.998))
-# (1) corrects for blank (2) converts to Liters (3) converts to hours (4) converts moles to grams; final unit = ug O2 L-1 h-1
-# "resp.MEAN.SHELL" calculation = resp.RAW.ugLhr / mean shell length per vial (individual mean)
-# "resp.TOTAL.SHELL" calculation = resp.RAW.ugLhr / sum of shell lengths per vial
-# "resp.COUNT" calculation = resp.RAW.ugLhr / number of individuals
+# "resp.RAW.µgLhr" calculation = ((((((abs(Lpc)) - (BLANK.mean.Lpc))*(4/1000))*(60))*31.998))
+# (1) corrects for blank (2) converts to Liters (3) converts to hours (4) converts moles to grams; final unit = µg O2 L-1 h-1
+# "resp.MEAN.SHELL" calculation = resp.RAW.µgLhr / mean shell length per vial (individual mean)
+# "resp.TOTAL.SHELL" calculation = resp.RAW.µgLhr / sum of shell lengths per vial
+# "resp.COUNT" calculation = resp.RAW.µgLhr / number of individuals
 
 as.data.frame(colnames(CALC.table)) # view column order to make for loop
 
@@ -165,29 +207,34 @@ for(i in 1:nrow(CALC.table)) {
   
   vial.vol <- CALC.table[i,15] # volume in the sdr vial measured after respiration run (variable due to size of geoduck(s))
   
-  resp.RAW.ugLhr <-
-    ((((((abs(CALC.table[i,10])) - (CALC.table[i,17]))*(vial.vol/1000))*(60))*31.998))
+  resp.RAW.µgLhr <-
+    ((((((abs(CALC.table[i,10])) - (CALC.table[i,18]))*(vial.vol/1000))*(60))*31.998))
   resp.MEAN.SHELL <-
-    resp.RAW.ugLhr/CALC.table[i,7]
+    resp.RAW.µgLhr/CALC.table[i,7]
   resp.TOTAL.SHELL <-
-    resp.RAW.ugLhr/CALC.table[i,8]
+    resp.RAW.µgLhr/CALC.table[i,8]
   resp.COUNT <-
-    resp.RAW.ugLhr/CALC.table[i,9]
+    resp.RAW.µgLhr/CALC.table[i,9]
+  resp.MEAN.BIOVOLUME <-
+    resp.RAW.µgLhr/CALC.table[i,17]
+  
   Cumulative.resp$Date                      <- CALC.table[i,1]
   Cumulative.resp$RUN                       <- CALC.table[i,6]
   Cumulative.resp$SDR_position              <- CALC.table[i,5]
   Cumulative.resp$mean_length               <- CALC.table[i,7]
   Cumulative.resp$sum_length                <- CALC.table[i,8]
   Cumulative.resp$count_individuals         <- CALC.table[i,9]
+  Cumulative.resp$mean_biovolume            <-CALC.table[i,17]
   Cumulative.resp$Tank.ID                   <- CALC.table[i,3]
   Cumulative.resp$Sw.Condition              <- CALC.table[i,2]
   Cumulative.resp$Treatment.ID              <- CALC.table[i,4]
   #Cumulative.resp$Treat.initial             <- CALC.table[i,15]
   #Cumulative.resp$Treat.Secondary           <- CALC.table[i,16]
-  Cumulative.resp$resp.RAW.ug.L.hr          <- resp.RAW.ugLhr
-  Cumulative.resp$resp.MEAN.ug.L.hr.mm      <- resp.MEAN.SHELL
-  Cumulative.resp$resp.TOTAL.ug.L.hr.mm     <- resp.TOTAL.SHELL
-  Cumulative.resp$resp.COUNT.ug.L.hr.indiv  <- resp.COUNT
+  Cumulative.resp$resp.RAW.µg.L.hr          <- resp.RAW.µgLhr
+  Cumulative.resp$resp.MEAN.µg.L.hr.mm      <- resp.MEAN.SHELL
+  Cumulative.resp$resp.TOTAL.µg.L.hr.mm     <- resp.TOTAL.SHELL
+  Cumulative.resp$resp.COUNT.µg.L.hr.indiv  <- resp.COUNT
+  Cumulative.resp$resp.MEAN.µg.L.hr.ml      <- resp.MEAN.BIOVOLUME
   
   df.resp <- data.frame(Cumulative.resp) # name dataframe for this singl e row
   Final.resp.table <- rbind(Final.resp.table,df.resp) #bind to a cumulative list dataframe
@@ -195,12 +242,17 @@ for(i in 1:nrow(CALC.table)) {
 }
 
 Final.resp.table # view table 
+Final.resp.table$row.num <- seq.int(nrow(Final.resp.table)) # make new column for run numbers
 
-#-------------------------------plot the data --------------------------------------------
+Final.resp.table.EXP <- Final.resp.table %>% # table for all data on and after 20190723 
+  dplyr::filter(row.num > 22) 
+########################################### #
+# SECTION V - plot the data ############### #
+########################################### #
 
-# (1) Mean and total shell size & raw respiration rate 
+#---------------------- (1) Mean, total shell size, and biovolume against raw respiration rate 
 
-Raw.vs.MEAN <- ggplot(Final.resp.table, aes(x = mean_length, y = resp.RAW.ug.L.hr, shape = Sw.Condition)) +
+Raw.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length, y = resp.RAW.µg.L.hr, shape = Sw.Condition)) +
   geom_point() +
   theme_classic() +
   #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
@@ -208,23 +260,65 @@ Raw.vs.MEAN <- ggplot(Final.resp.table, aes(x = mean_length, y = resp.RAW.ug.L.h
   labs(y=expression("Resp.rate.RAW"~(~µg~O[2]*hr^{-1})), 
        x=expression("MEAN.shell.length"~(mm)))
 Raw.vs.MEAN <- Raw.vs.MEAN + stat_smooth(method="lm", se=FALSE)
+Raw.vs.MEAN
 
-
-Raw.vs.TOTAL <- ggplot(Final.resp.table, aes(x = sum_length,y = resp.RAW.ug.L.hr, shape = Sw.Condition)) +
+Raw.vs.TOTAL <- ggplot(Final.resp.table.EXP, aes(x = sum_length,y = resp.RAW.µg.L.hr, shape = Sw.Condition)) +
   geom_point() +
   theme_classic() +
   #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   #ylim(4,13) + 
   labs(y=expression("Resp.rate.RAW"~(~µg~O[2]*hr^{-1})), 
        x=expression("TOTAL.shell.length"~(mm)))
+Raw.vs.TOTAL <- Raw.vs.TOTAL + stat_smooth(method="lm", se=FALSE)
+Raw.vs.TOTAL
+ 
+
+Raw.vs.MEAN.BIOVOLUME <- ggplot(Final.resp.table.EXP, aes(x = mean_biovolume,y = resp.RAW.µg.L.hr, shape = Sw.Condition)) +
+  geom_point() +
+  theme_classic() +
+  #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  #ylim(4,13) + 
+  labs(y=expression("Resp.rate.RAW"~(~µg~O[2]*hr^{-1})), 
+       x=expression("MEAN.biovolume"~(ml)))
+Raw.vs.MEAN.BIOVOLUME <- Raw.vs.MEAN.BIOVOLUME + stat_smooth(method="lm", se=FALSE)
+Raw.vs.MEAN.BIOVOLUME
+
 
 # Raw.vs.TOTAL<- Raw.vs.TOTAL + stat_smooth(method="lm", se=FALSE) # Adds line
-Resp.vs.Shell.length.plot <- ggarrange(Raw.vs.TOTAL, Raw.vs.MEAN, ncol = 1, nrow = 2) # combine plots 
+Resp.vs.Biometrics.plot <- ggarrange(Raw.vs.TOTAL, Raw.vs.MEAN,Raw.vs.MEAN.BIOVOLUME, ncol = 3, nrow = 1) # combine plots 
+Resp.vs.Biometrics.plot # view plots
 
-# (2) Respiration rate plots
 
-# corrected for mean shell length
-RESP.plots.MEAN.shell <- ggplot(Final.resp.table, aes(x = factor(Date), y = resp.MEAN.ug.L.hr.mm, fill = Treatment.ID)) + 
+#--------------------- (2) Respiration rate plots
+
+# --------------------  (A) ------------------------#
+# RAW DATA 
+
+RESP.plots.RAW <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.RAW.µg.L.hr, fill = Treatment.ID)) + 
+  theme_classic() +
+  scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
+  #  labels=c("AH","EH", "Severe")) +
+  geom_boxplot(alpha = 0.5, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
+               width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  #ylim(0,10) + 
+  labs(y=expression("Respiration rate (raw data corrected to blank)"~µg~O[2]*hr^{-1}), x=expression("Date"))
+# + geom_errorbar(aes(ymin=resp.MEAN.µg.L.hr.mm-SEM , ymax=resp.MEAN.µg.L.hr.mm+SEM ), width=.1)
+
+RESP.plots.RAW # view plot 
+#RESP.plots.MEAN.shell <- RESP.plots.MEAN.shell + stat_smooth(method="lm", se=FALSE)
+
+# --------------------  (B) ------------------------#
+# corrected for MEAN SHELL LENGTH
+
+RESP.plots.MEAN.shell <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID)) + 
   theme_classic() +
   scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
                   #  labels=c("AH","EH", "Severe")) +
@@ -240,13 +334,15 @@ RESP.plots.MEAN.shell <- ggplot(Final.resp.table, aes(x = factor(Date), y = resp
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   #ylim(0,10) + 
   labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
-  # + geom_errorbar(aes(ymin=resp.MEAN.ug.L.hr.mm-SEM , ymax=resp.MEAN.ug.L.hr.mm+SEM ), width=.1)
+  # + geom_errorbar(aes(ymin=resp.MEAN.µg.L.hr.mm-SEM , ymax=resp.MEAN.µg.L.hr.mm+SEM ), width=.1)
 
 RESP.plots.MEAN.shell # view plot 
 #RESP.plots.MEAN.shell <- RESP.plots.MEAN.shell + stat_smooth(method="lm", se=FALSE)
 
-# corrected for total shell length
-RESP.plots.TOTAL.shell <- ggplot(Final.resp.table, aes(x = factor(Date), y = resp.TOTAL.ug.L.hr.mm, fill = Treatment.ID)) + 
+# --------------------  (C) ------------------------#
+# corrected for TOTAL SHELL LENGTH
+
+RESP.plots.TOTAL.shell <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.TOTAL.µg.L.hr.mm, fill = Treatment.ID)) + 
   theme_classic() +
   scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
                   #labels=c("AH","EH", "Severe")) +
@@ -264,17 +360,123 @@ RESP.plots.TOTAL.shell <- ggplot(Final.resp.table, aes(x = factor(Date), y = res
   #geom_errorbar(aes(ymin=mean_resp-SEM , ymax=mean_resp+SEM ), width=.1)
 
 RESP.plots.TOTAL.shell # view plot 
-#RESP.plots.TOTAL.shell <- RESP.plots.TOTAL.shell + stat_smooth(method="lm", se=FALSE)
 
-Resp.plots <- ggarrange(RESP.plots.MEAN.shell, RESP.plots.TOTAL.shell, ncol = 1, nrow = 2)
+# --------------------  (D) ------------------------#
+# corrected for NUMBER OF INDIVIDUALS
+
+RESP.plots.INDIV <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.COUNT.µg.L.hr.indiv, fill = Treatment.ID)) + 
+  theme_classic() +
+  scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
+  #labels=c("AH","EH", "Severe")) +
+  geom_boxplot(alpha = 0.5, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
+               width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (per individual)"~µg~O[2]*hr^{-1}*indiv^{-1}), x=expression("Date"))
+#geom_errorbar(aes(ymin=mean_resp-SEM , ymax=mean_resp+SEM ), width=.1)
+
+RESP.plots.INDIV # view plot 
+
+# --------------------  (E) ------------------------#
+# corrected for MEAN BIOVOLUME
+
+RESP.plots.MEAN.biovolume <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y =  resp.MEAN.µg.L.hr.ml, fill = Treatment.ID)) + 
+  theme_classic() +
+  scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
+  #labels=c("AH","EH", "Severe")) +
+  geom_boxplot(alpha = 0.5, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
+               width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (per mean biovolume)"~µg~O[2]*hr^{-1}*mL^{-1}), x=expression("Date"))
+#geom_errorbar(aes(ymin=mean_resp-SEM , ymax=mean_resp+SEM ), width=.1)
+
+RESP.plots.MEAN.biovolume # view plot 
 
 
-
+Resp.plots <- ggarrange(RESP.plots.MEAN.shell, RESP.plots.TOTAL.shell, 
+                        RESP.plots.INDIV, RESP.plots.MEAN.biovolume, ncol= 2, nrow = 2)
+Resp.plots # view plots
 
 #----------------------OUTPUT - save plots and cumulative tables-----------------------------------------
 
 write.table(blanks_total,"Data/SDR_data/All.blank.resp.rates.csv",sep=",", row.names=FALSE)  # write out to the path names outputNAME
 write.table(Final.resp.table,"Data/SDR_data/Final.resp.rates.csv",sep=",", row.names=FALSE)  # write out to the path names outputNAME
-ggsave(file="Output/Resp.vs.Length.pdf", Resp.vs.Shell.length.plot, width = 12, height = 8, units = c("in")) # respiration rate plots
+ggsave(file="Output/Resp.vs.Size.Biovolume.pdf", Resp.vs.Biometrics.plot, width = 12, height = 8, units = c("in")) # respiration rate plots
 ggsave(file="Output/Resp.plots.pdf", Resp.plots, width = 12, height = 8, units = c("in")) # respiration rate plots
 
+############################################################################################ #
+################################ STATISTICAL ANALYSIS  ##################################### #
+############################################################################################ #
+
+DAY1 <- Final.resp.table.EXP %>% 
+  dplyr::filter(Date == "20190725") # filter out day one to test anova effects
+
+#---------------------------- raw data ----------------------------#
+day1.mod.raw <- aov(resp.RAW.µg.L.hr ~ Treatment.ID, data = DAY1)
+shapiro.test(residuals(day1.mod.raw)) # shapiro test (model residuals) normal residuals p-value = 0.9886
+
+par(mfrow=c(1,3)) # hist qq residual diagnostic; set plotting configuration
+par(mar=c(1,1,1,1)) #set margins for plots
+hist(residuals(day1.mod.raw)) #plot histogram of residuals
+boxplot(residuals(day1.mod.raw)) #plot boxplot of residuals
+plot(fitted(day1.mod.raw),residuals(day1.mod.raw))
+qqnorm(residuals(day1.mod.raw)) # qqplot
+plot(lm(day1.mod.raw)) # plot and test model for heteroscedasticity
+leveneTest(day1.mod.raw) # Levene's test for homogeneity p = 0.2795
+bptest(lm(day1.mod.raw))  # Breusch-Pagan test p-value = 0.2508
+# summary of test
+summary(day1.mod.raw) # significant effect of treatment - 0.0406 *
+library(lsmeans)        # Version: 2.27-62, Date/Publication: 2018-05-11, Depends: methods, R (>= 3.2)
+day1.mod.raw.POSTHOC <- lsmeans(day1.mod.raw, pairwise ~  Treatment.ID) # pariwise Tukey Post-hoc test between repeated treatments
+day1.mod.raw.POSTHOC # view post hoc summary
+day1.mod.raw.POSTHOC.05 <- cld(day1.mod.raw.POSTHOC, alpha=.05, Letters=letters) #list pairwise tests and letter display p < 0.05
+day1.mod.raw.POSTHOC.05
+
+#---------------------------- corrected for mean biovolume ----------------------------#
+day1.mod.biovolume <- aov(resp.MEAN.µg.L.hr.ml ~ Treatment.ID, data = DAY1)
+shapiro.test(residuals(day1.mod.biovolume)) # shapiro test (model residuals) normal residuals p-value = 0.7549
+
+par(mfrow=c(1,3)) # hist qq residual diagnostic; set plotting configuration
+par(mar=c(1,1,1,1)) #set margins for plots
+hist(residuals(day1.mod.biovolume)) #plot histogram of residuals
+boxplot(residuals(day1.mod.biovolume)) #plot boxplot of residuals
+plot(fitted(day1.mod.biovolume),residuals(day1.mod.biovolume))
+qqnorm(residuals(day1.mod.biovolume)) # qqplot
+plot(lm(day1.mod.biovolume)) # plot and test model for heteroscedasticity
+leveneTest(day1.mod.biovolume) # Levene's test for homogeneity p = 0.9717
+bptest(lm(day1.mod.biovolume))  # Breusch-Pagan test p-value = 0.7344
+# summary of test
+summary(day1.mod.biovolume) # no significant effect, p = 0.459 
+
+#---------------------------- corrected for mean shell length ----------------------------#
+day1.mod.mean.length <- aov(resp.MEAN.µg.L.hr.mm  ~ Treatment.ID, data = DAY1)
+shapiro.test(residuals(day1.mod.mean.length)) # shapiro test (model residuals) normal residuals p-value = 0.9092
+
+par(mfrow=c(1,3)) # hist qq residual diagnostic; set plotting configuration
+par(mar=c(1,1,1,1)) #set margins for plots
+hist(residuals(day1.mod.mean.length)) #plot histogram of residuals
+boxplot(residuals(day1.mod.mean.length)) #plot boxplot of residuals
+plot(fitted(day1.mod.mean.length),residuals(day1.mod.mean.length))
+qqnorm(residuals(day1.mod.mean.length)) # qqplot
+plot(lm(day1.mod.mean.length)) # plot and test model for heteroscedasticity
+leveneTest(day1.mod.mean.length) # Levene's test for homogeneity p = 0.2852
+bptest(lm(day1.mod.mean.length))  # Breusch-Pagan test p-value = 0.2352
+# summary of test
+summary(day1.mod.mean.length) # significant effect, p = 0.048 *
+day1.mod.mean.length.POSTHOC <- lsmeans(day1.mod.mean.length, pairwise ~  Treatment.ID) # pariwise Tukey Post-hoc test between repeated treatments
+day1.mod.mean.length.POSTHOC # view post hoc summary
+day1.mod.mean.length.POSTHOC.05 <- cld(day1.mod.mean.length.POSTHOC, alpha=.05, Letters=letters) #list pairwise tests and letter display p < 0.05
+day1.mod.mean.length.POSTHOC.05

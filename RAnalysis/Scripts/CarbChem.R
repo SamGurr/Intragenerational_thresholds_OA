@@ -105,7 +105,6 @@ SW.chem$Sample.ID <- paste(SW.chem$Date, SW.chem$Sample.ID, sep='_') #generate n
 SW.chem <- merge(SW.chem,TA, by="Sample.ID", all = TRUE, sort = T) #merge seawater chemistry with total alkalinity
 SW.chem <- na.omit(SW.chem) #remove NA
 
-
 #Calculate CO2 parameters using seacarb
 carb.output <- carb(flag=8, var1=SW.chem$pH.Total, var2=SW.chem$TA/1000000, S= SW.chem$Salinity, T=SW.chem$Temperature, P=0, Pt=0, Sit=0, pHscale="T", kf="pf", k1k2="l", ks="d") #calculate seawater chemistry parameters using seacarb
 carb.output$ALK <- carb.output$ALK*1000000 #convert to µmol kg-1
@@ -120,6 +119,11 @@ colnames(carb.output) <- c("Date",  "Tank",  "Treatment",	"Salinity",	"Temperatu
 # write.table(carb.output, "~/MyProjects/BioMin_HIS/RAnalysis/Output/Seawater_chemistry_table_Output_All.csv", sep=",", row.names = FALSE) #save data
 write.table(carb.output, "C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Seawater_chemistry_table_Output_All.csv", sep=",", row.names = FALSE) #save data
 
+# new lines to condence data for the experimental tanks and call the tank ID without the date
+target <- c("tank.Ambient", "tank.Severe", "tank.Moderate") # target values
+carb.output <- filter(carb.output, Treatment %in% target) # call the target tanks during the experiment
+carb.output$Tank <- substr(carb.output$Tank, 10,11) # call only the tank number (new line for summer 19 experiments)
+
 carbo.melted <- melt(carb.output) #reshape the dataframe to more easily summarize all output parameters
 mean.carb.output <-ddply(carbo.melted, .(Treatment, variable), summarize, #For each subset of a data frame, apply function then combine results into a data frame.
                          N = length(na.omit(value)), #number of records
@@ -127,30 +131,28 @@ mean.carb.output <-ddply(carbo.melted, .(Treatment, variable), summarize, #For e
                          sem = (sd(value)/sqrt(N))) #calculate the SEM as the sd/sqrt of the count or data length
 mean.carb.output # display mean and sem 
 
-head(carb.output)
-
 #need to separate out tank name from date
 
 # pdf("~/MyProjects/Geoduck_Conditioning/RAnalysis/Output/Water_Chem_withTA.pdf")
 # CHECK YOUR Y AXIS!
 pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Treatment_Water_Chem_withTA.pdf")
 par(mfrow=c(3,2))
-plot(carb.output$Treatment, carb.output$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(12,20), las=2)
-plot(carb.output$Treatment, carb.output$pH, xlab="Treatment", ylab="pH Total Scale", ylim=c(6.5,8.2), las=2)
-plot(carb.output$Treatment, carb.output$pCO2, xlab="Treatment", ylab="pCO2 µmol kg-1", ylim=c(350,8000), las=2)
-plot(carb.output$Treatment, carb.output$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(25,30), las=2)
+plot(carb.output$Treatment, carb.output$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(16,20), las=2)
+plot(carb.output$Treatment, carb.output$pH, xlab="Treatment", ylab="pH Total Scale", ylim=c(6.8,8), las=2)
+plot(carb.output$Treatment, carb.output$pCO2, xlab="Treatment", ylab="pCO2 µmol kg-1", ylim=c(350,7000), las=2)
+plot(carb.output$Treatment, carb.output$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(28,30), las=2)
 plot(carb.output$Treatment, carb.output$TA, xlab="Treatment", ylab="Total Alkalinity µmol kg-1", ylim=c(1800,2400), las=2)
-plot(carb.output$Treatment, carb.output$Aragonite.Sat, xlab="Treatment", ylab="Aragonite Saturation State", ylim=c(0,2), las=2)
+plot(carb.output$Treatment, carb.output$Aragonite.Sat, xlab="Treatment", ylab="Aragonite Saturation State", ylim=c(0,1.5), las=2)
 dev.off()
 
 pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Tank_Water_Chem_withTA.pdf")
 par(mfrow=c(3,2))
-plot(carb.output$Tank, carb.output$Temperature, xlab="Treatment", ylab="Temperature°C", ylim=c(12,20), las=2)
-plot(carb.output$Tank, carb.output$pH, xlab="Treatment", ylab="pH Total Scale", ylim=c(6.5,8.2), las=2)
-plot(carb.output$Tank, carb.output$pCO2, xlab="Treatment", ylab="pCO2 µmol kg-1", ylim=c(350,8000), las=2)
-plot(carb.output$Tank, carb.output$Salinity, xlab="Treatment", ylab="Salinity psu", ylim=c(25,30), las=2)
-plot(carb.output$Tank, carb.output$TA, xlab="Treatment", ylab="Total Alkalinity µmol kg-1", ylim=c(1800,2400), las=2)
-plot(carb.output$Tank, carb.output$Aragonite.Sat, xlab="Treatment", ylab="Aragonite Saturation State", ylim=c(0,2), las=2)
+plot(carb.output$Tank, carb.output$Temperature, xlab="Tank.ID", ylab="Temperature°C", ylim=c(16,20), las=2)
+plot(carb.output$Tank, carb.output$pH, xlab="Tank.ID", ylab="pH Total Scale", ylim=c(6.8,8), las=2)
+plot(carb.output$Tank, carb.output$pCO2, xlab="Tank.ID", ylab="pCO2 µmol kg-1", ylim=c(350,7000), las=2)
+plot(carb.output$Tank, carb.output$Salinity, xlab="Tank.ID", ylab="Salinity psu", ylim=c(28,30), las=2)
+plot(carb.output$Tank, carb.output$TA, xlab="Tank.ID", ylab="Total Alkalinity µmol kg-1", ylim=c(1800,2400), las=2)
+plot(carb.output$Tank, carb.output$Aragonite.Sat, xlab="Treatment", ylab="Aragonite Saturation State", ylim=c(0,1.5), las=2)
 dev.off()
 
 
