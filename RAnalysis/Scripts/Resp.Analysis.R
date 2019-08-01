@@ -261,18 +261,7 @@ Raw.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length, y = resp.RAW.µg
        x=expression("MEAN.shell.length"~(mm)))
 Raw.vs.MEAN <- Raw.vs.MEAN + stat_smooth(method="lm", se=FALSE)
 Raw.vs.MEAN
-
-Raw.vs.TOTAL <- ggplot(Final.resp.table.EXP, aes(x = sum_length,y = resp.RAW.µg.L.hr, shape = Sw.Condition)) +
-  geom_point() +
-  theme_classic() +
-  #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
-  #ylim(4,13) + 
-  labs(y=expression("Resp.rate.RAW"~(~µg~O[2]*hr^{-1})), 
-       x=expression("TOTAL.shell.length"~(mm)))
-Raw.vs.TOTAL <- Raw.vs.TOTAL + stat_smooth(method="lm", se=FALSE)
-Raw.vs.TOTAL
  
-
 Raw.vs.MEAN.BIOVOLUME <- ggplot(Final.resp.table.EXP, aes(x = mean_biovolume,y = resp.RAW.µg.L.hr, shape = Sw.Condition)) +
   geom_point() +
   theme_classic() +
@@ -284,8 +273,18 @@ Raw.vs.MEAN.BIOVOLUME <- Raw.vs.MEAN.BIOVOLUME + stat_smooth(method="lm", se=FAL
 Raw.vs.MEAN.BIOVOLUME
 
 
+Biovol.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length,y = mean_biovolume, shape = Sw.Condition)) +
+  geom_point() +
+  theme_classic() +
+  #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  #ylim(4,13) + 
+  labs(y=expression("MEAN.biovolume"~(ml)), 
+       x=expression("TOTAL.shell.length"~(mm)))
+Biovol.vs.MEAN <- Biovol.vs.MEAN + stat_smooth(method="lm", se=FALSE)
+Biovol.vs.MEAN
+
 # Raw.vs.TOTAL<- Raw.vs.TOTAL + stat_smooth(method="lm", se=FALSE) # Adds line
-Resp.vs.Biometrics.plot <- ggarrange(Raw.vs.TOTAL, Raw.vs.MEAN,Raw.vs.MEAN.BIOVOLUME, ncol = 3, nrow = 1) # combine plots 
+Resp.vs.Biometrics.plot <- ggarrange(Raw.vs.MEAN,Raw.vs.MEAN.BIOVOLUME, Biovol.vs.MEAN,ncol = 3, nrow = 1) # combine plots 
 Resp.vs.Biometrics.plot # view plots
 
 
