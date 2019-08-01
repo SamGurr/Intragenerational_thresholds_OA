@@ -11,7 +11,7 @@
 
 #Created by Nyssa Silbiger 03/28/2014
 #modified 20190626 Sam Gurr
-#new acid bottle 20190626 by Sam Gurr
+#new acid bottle 20190626 by Sam Gurr - changed lines 
 #line 68 changed SampleID to Sample.ID - Sam Gurr 20180713
 #
 #------------------------------------------------------------
@@ -112,14 +112,17 @@ for(i in 1:nrows) {
   
   #CHANGE ONLY WHEN NEW BOTTLE OF ACID IS USED----------------------------------
   #Bottle A15 20190218 SJG  - acid titrant# , 
+  #Bottle A16 as of 20190731 SJG  - acid titrant# , 
   #density of your titrant: change every time acid is changed
   
-  d<-1.02901 -(0.0001233*mean(Data$Temperature[mV], na.rm=T)) - (0.0000037*(mean(Data$Temperature[mV], na.rm=T)^2)) 
   #Batch A15
+  #d<-1.02901 -(0.0001233*mean(Data$Temperature[mV], na.rm=T)) - (0.0000037*(mean(Data$Temperature[mV], na.rm=T)^2)) 
+  #Batch A16 changed on 20190731
+  d<-1.02884 -(0.0001065*mean(Data$Temperature[mV], na.rm=T)) - (0.0000041*(mean(Data$Temperature[mV], na.rm=T)^2)) 
   
   #concentration of your titrant: CHANGE EVERYTIME ACID IS CHANGED 
-  c<-0.100146 #Batch A15 first used by SJG on 20190218 NEW 
-  
+  #c<-0.100146 #Batch A15 first used by SJG on 20190218  
+  c<-0.100010 #Batch A16 first used by SJG on 20190731 
   #------------------------------------------------------------------------------
   
   #Salinity of your samples
