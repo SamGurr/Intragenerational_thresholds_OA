@@ -329,12 +329,21 @@ RESP.plots.MEAN.shell <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = 
   stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
                width = 0.6, size=0.4, linetype = "dashed", 
                position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted", 
+             color = "black", size=0.5) +
   #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   #ylim(0,10) + 
   labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
   # + geom_errorbar(aes(ymin=resp.MEAN.µg.L.hr.mm-SEM , ymax=resp.MEAN.µg.L.hr.mm+SEM ), width=.1)
 
+RESP.plots.MEAN.shell <- RESP.plots.MEAN.shell + 
+  annotate(geom="text", x=1, y=6, 
+           label="Pre-exp (trays)", color="black") +
+  annotate(geom="text", x=3, y=6, 
+           label="Initial treatment", color="black") +
+  annotate(geom="text", x=5, y=6, 
+           label="Ambient", color="black")
 RESP.plots.MEAN.shell # view plot 
 #RESP.plots.MEAN.shell <- RESP.plots.MEAN.shell + stat_smooth(method="lm", se=FALSE)
 
@@ -353,11 +362,20 @@ RESP.plots.TOTAL.shell <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y =
   stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
                width = 0.6, size=0.4, linetype = "dashed", 
                position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted", 
+             color = "black", size=0.5) +
   #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   labs(y=expression("Respiration rate (total shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
   #geom_errorbar(aes(ymin=mean_resp-SEM , ymax=mean_resp+SEM ), width=.1)
 
+RESP.plots.TOTAL.shell <- RESP.plots.TOTAL.shell + 
+  annotate(geom="text", x=1, y=2.1, 
+           label="Pre-exp (trays)", color="black") +
+  annotate(geom="text", x=3, y=2.1, 
+           label="Initial treatment", color="black") +
+  annotate(geom="text", x=5, y=2.1, 
+           label="Ambient", color="black")
 RESP.plots.TOTAL.shell # view plot 
 
 # --------------------  (D) ------------------------#
@@ -375,11 +393,20 @@ RESP.plots.INDIV <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.
   stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
                width = 0.6, size=0.4, linetype = "dashed", 
                position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted", 
+             color = "black", size=0.5) +
   #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   labs(y=expression("Respiration rate (per individual)"~µg~O[2]*hr^{-1}*indiv^{-1}), x=expression("Date"))
 #geom_errorbar(aes(ymin=mean_resp-SEM , ymax=mean_resp+SEM ), width=.1)
 
+RESP.plots.INDIV <- RESP.plots.INDIV + 
+  annotate(geom="text", x=1, y=16, 
+           label="Pre-exp (trays)", color="black") +
+  annotate(geom="text", x=3, y=16, 
+           label="Initial treatment", color="black") +
+  annotate(geom="text", x=5, y=16, 
+           label="Ambient", color="black")
 RESP.plots.INDIV # view plot 
 
 # --------------------  (E) ------------------------#
@@ -397,15 +424,22 @@ RESP.plots.MEAN.biovolume <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), 
   stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
                width = 0.6, size=0.4, linetype = "dashed", 
                position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted", 
+             color = "black", size=0.5) +
   #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   labs(y=expression("Respiration rate (per mean biovolume)"~µg~O[2]*hr^{-1}*mL^{-1}), x=expression("Date"))
 #geom_errorbar(aes(ymin=mean_resp-SEM , ymax=mean_resp+SEM ), width=.1)
 
-RESP.plots.MEAN.biovolume # view plot 
+RESP.plots.MEAN.biovolume <- RESP.plots.MEAN.biovolume + annotate(geom="text", x=1, y=500, 
+                                     label="Pre-exp (trays)", color="black") +
+                            annotate(geom="text", x=3, y=500, 
+                                     label="Initial treatment", color="black") +
+                            annotate(geom="text", x=5, y=500, 
+                                     label="Ambient", color="black")
+RESP.plots.MEAN.biovolume # view plot
 
-
-Resp.plots <- ggarrange(RESP.plots.MEAN.shell, RESP.plots.TOTAL.shell, 
+Resp.plots <- ggarrange(RESP.plots.MEAN.shell,
                         RESP.plots.INDIV, RESP.plots.MEAN.biovolume, ncol= 2, nrow = 2)
 Resp.plots # view plots
 
@@ -420,26 +454,27 @@ ggsave(file="Output/Resp.plots.pdf", Resp.plots, width = 12, height = 8, units =
 ################################ STATISTICAL ANALYSIS  ##################################### #
 ############################################################################################ #
 
-DAY1 <- Final.resp.table.EXP %>% 
-  dplyr::filter(Date == "20190725") # filter out day one to test anova effects
+Exp.resp <- Final.resp.table.EXP %>% 
+  dplyr::filter(Date == c("20190725", "20190728", "20190731", "20190801")) # filter out day one to test anova effects
 
 #---------------------------- raw data ----------------------------#
-day1.mod.raw <- aov(resp.RAW.µg.L.hr ~ Treatment.ID, data = DAY1)
-shapiro.test(residuals(day1.mod.raw)) # shapiro test (model residuals) normal residuals p-value = 0.9886
+Exp.resp$Date <- as.character(Exp.resp$Date)
+mod.raw <- aov(resp.MEAN.µg.L.hr.mm ~ Treatment.ID*Date, data = Exp.resp)
+shapiro.test(residuals(mod.raw)) # shapiro test (model residuals) normal residuals p-value = 0.9886
 
 par(mfrow=c(1,3)) # hist qq residual diagnostic; set plotting configuration
 par(mar=c(1,1,1,1)) #set margins for plots
-hist(residuals(day1.mod.raw)) #plot histogram of residuals
-boxplot(residuals(day1.mod.raw)) #plot boxplot of residuals
-plot(fitted(day1.mod.raw),residuals(day1.mod.raw))
-qqnorm(residuals(day1.mod.raw)) # qqplot
-plot(lm(day1.mod.raw)) # plot and test model for heteroscedasticity
-leveneTest(day1.mod.raw) # Levene's test for homogeneity p = 0.2795
-bptest(lm(day1.mod.raw))  # Breusch-Pagan test p-value = 0.2508
+hist(residuals(mod.raw)) #plot histogram of residuals
+boxplot(residuals(mod.raw)) #plot boxplot of residuals
+plot(fitted(day1.mod.raw),residuals(mod.raw))
+qqnorm(residuals(mod.raw)) # qqplot
+plot(lm(mod.raw)) # plot and test model for heteroscedasticity
+leveneTest(mod.raw) # Levene's test for homogeneity p = 0.2795
+bptest(lm(mod.raw))  # Breusch-Pagan test p-value = 0.2508
 # summary of test
-summary(day1.mod.raw) # significant effect of treatment - 0.0406 *
+summary(mod.raw) # significant effect of treatment - 0.0406 *
 library(lsmeans)        # Version: 2.27-62, Date/Publication: 2018-05-11, Depends: methods, R (>= 3.2)
-day1.mod.raw.POSTHOC <- lsmeans(day1.mod.raw, pairwise ~  Treatment.ID) # pariwise Tukey Post-hoc test between repeated treatments
+day1.mod.raw.POSTHOC <- lsmeans(mod.raw, pairwise ~  Treatment.ID*Date) # pariwise Tukey Post-hoc test between repeated treatments
 day1.mod.raw.POSTHOC # view post hoc summary
 day1.mod.raw.POSTHOC.05 <- cld(day1.mod.raw.POSTHOC, alpha=.05, Letters=letters) #list pairwise tests and letter display p < 0.05
 day1.mod.raw.POSTHOC.05
