@@ -10,7 +10,7 @@
 library("XML")
 library("plyr")
 
-xmlfile <- xmlParse("http://192.168.1.100:80/cgi-bin/datalog.xml?sdate=190625&days=27") #read in the date plus x days of Apex data
+xmlfile <- xmlParse("http://192.168.1.100:80/cgi-bin/datalog.xml?sdate=190722&days=14") #read in the date plus x days of Apex data
 
 Apex.Data <- ldply(xmlToList(xmlfile), data.frame) #convert xml to dataframe
 head(Apex.Data) # check the first few lines to see the first few hrs of the extracted data
@@ -61,13 +61,13 @@ colnames(Probe.Data) <- c("Date.Time", "TMP_T0", "pH_T0", "TMP_T4", "pH_T4", "TM
 Probe.Data$Date.Time <- as.POSIXct(Probe.Data$Date.Time, format = "%m/%d/%Y %H:%M:%S", tz="HST") #convert date to HI time
 # tail(Probe.Data) # to view the newest data and compare to APEX fusion for assigning column names
 # CHANGE DATE FOR NEW CSV (risk overwritting previous)
-write.csv(Probe.Data, "C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Data/Apex_data/Output/20190722_Apex_Data_Output.data.csv") #write file to save data
+write.csv(Probe.Data, "C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Data/Apex_data/Output/20190805_Apex_Data_Output.data.csv") #write file to save data
 
 #plot Temp and pH and save to output
 # CHANGE DATE FOR NEW PDF (risk overwritting previous)
-pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Data/Apex_data/Graphs/20190722_Apex_Data_Output.data.pdf")
+pdf("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Data/Apex_data/Graphs/20190805_Apex_Data_Output.data.pdf")
 par(mfrow=c(2,1))
-plot(as.numeric(as.character(TMP_T0)) ~ Date.Time, Probe.Data, col = "grey", type="l", ylim=c(10, 20),  xlab="Time", ylab="Temperature °C")
+plot(as.numeric(as.character(TMP_T0)) ~ Date.Time, Probe.Data, col = "grey", type="l", ylim=c(15, 20),  xlab="Time", ylab="Temperature °C")
 lines(as.numeric(as.character(TMP_T1)) ~ Date.Time, Probe.Data, col = "red")
 lines(as.numeric(as.character(TMP_T2)) ~ Date.Time, Probe.Data, col = "blue")
 lines(as.numeric(as.character(TMP_T3)) ~ Date.Time, Probe.Data, col = "black")
@@ -78,7 +78,7 @@ lines(as.numeric(as.character(TMP_T7)) ~ Date.Time, Probe.Data, col = "brown")
 
 axis.POSIXct(side=1, Probe.Data$Date.Time)
 
-plot(as.numeric(as.character(pH_T0)) ~ Date.Time, Probe.Data, col = "grey", type="l", ylim=c(3.5, 8.5),  xlab="Time", ylab="pH NBS")
+plot(as.numeric(as.character(pH_T0)) ~ Date.Time, Probe.Data, col = "grey", type="l", ylim=c(6, 8.5),  xlab="Time", ylab="pH NBS")
 lines(as.numeric(as.character(pH_T1)) ~ Date.Time, Probe.Data, col = "red")
 lines(as.numeric(as.character(pH_T2)) ~ Date.Time, Probe.Data, col = "blue")
 lines(as.numeric(as.character(pH_T3)) ~ Date.Time, Probe.Data, col = "black")
