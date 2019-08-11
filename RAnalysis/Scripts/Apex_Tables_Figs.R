@@ -60,7 +60,10 @@ APEX_1<-read.csv("Data/Apex_data/Output/20190520_Apex_Data_Output.data.csv", hea
 APEX_2<-read.csv("Data/Apex_data/Output/20190621_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
 APEX_3<-read.csv("Data/Apex_data/Output/20190625_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
 APEX_4<-read.csv("Data/Apex_data/Output/20190722_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
-APEX_data<- do.call("rbind", list(APEX_1, APEX_2, APEX_3, APEX_4)) # bind all data together
+APEX_5<-read.csv("Data/Apex_data/Output/20190805_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
+APEX_6<-read.csv("Data/Apex_data/Output/20190809_Apex_Data_Output.data.csv", header=T, sep=",", na.string="NA", as.is=T) 
+
+APEX_data<- do.call("rbind", list(APEX_1, APEX_2, APEX_3, APEX_4, APEX_5, APEX_6)) # bind all data together
 APEX_data$Date.Time <-as.POSIXct(APEX_data$Date.Time, format="%Y-%m-%d %H:%M:%S") #convert date format
 APEX_data$X <- 1:nrow(APEX_data) # make new column for cumulative number of rows
 

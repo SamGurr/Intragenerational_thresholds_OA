@@ -56,8 +56,10 @@ setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnal
 #Load Size Info
 Size.Info <- read.csv(file="Data/Shell_Length/Shell_length_data.csv", header=T) #read Size.info data
 Tank.info <- read.csv(file="Data/Tank.ID.reference.csv", header=T) #read Size.info data
+Tank.info.2 <- read.csv(file="Data/Tank.ID.reference.subsequent.csv", header=T) #read Size.info data
 # call the cumulative resp table of Lolin raw outputs
 cumulative_resp_table <- read.csv(file="Data/SDR_data/Cumulative_resp_alpha0.4.csv", header=T) #read Size.info data
+cumulative_resp_table <- na.omit(cumulative_resp_table)
 # call the Size info of shell length and number of individuals per trial ( Size info called above)
 x <- merge(cumulative_resp_table, Size.Info, by=c("Date","SDR_position", "RUN"))
 
@@ -88,7 +90,9 @@ x.3$Date_SDR_Run <- paste(x.3$Date, x.3$SDR_position, x.3$RUN, sep = "_") # merg
 x.3 <- x.3[!duplicated(x.3$Date_SDR_Run), ] # ommit all duplicates based on unique column
 x.3 # view table
 
-x.4 <- merge(Tank.info, x.3, by=c("Tank.ID")) # Creates new column for "Treatment.ID"
+Tank.info
+x.4 <- merge(Tank.info, x.3, by=c("Tank.ID"))
+x.4 <- merge(x.3, Tank.info.2, by=c("Tank.ID")) # Creates new column for "Treatment.ID"
 # NOTE: Treatment.ID shows EH and AH for history (pedivveliger to jjuvenile rearing) followed the initial and subseqent exposures to A, M, S
 
 # In summary...
@@ -171,7 +175,7 @@ cumulative.biovolume <- data.frame(matrix(nrow = 1,ncol = 1))
 colnames(cumulative.biovolume)<-c('mean.biovolume.ml')
 
 for(i in 1:nrow(x.4)) {
-  x.4$mean.biovolume.ml[i] <- ((ml.blank - x.4[i,15])/x.4[i,8])
+  x.4$mean.biovolume.ml[i] <- ((ml.blank - x.4[i,14])/x.4[i,7])
 }
   
 ##################################################### #
@@ -188,10 +192,12 @@ CALC.table <- merge(x.4, blanks_total, by=c("Date", "Sw.Condition")) # NOTE: thi
 
 # call dataframe and build table to rbind in for loop
 Final.resp.table <- data.frame() # start dataframe 
-Cumulative.resp <- data.frame(matrix(nrow = 1,ncol = 15)) # make a table template
-colnames(Cumulative.resp)<-c('Date', 'RUN', 'SDR_position', 'Tank.ID', 'Sw.Condition', 
-                             'mean_length', 'sum_length', 'count_individuals', 'mean_biovolume',
-                             'Treatment.ID', 'resp.RAW.µg.L.hr', 'resp.MEAN.µg.L.hr.mm', 'resp.TOTAL.µg.L.hr.mm', 
+Cumulative.resp <- data.frame(matrix(nrow = 1,ncol = 20)) # make a table template
+colnames(Cumulative.resp)<-c('Date', 'Tank.ID', 'Treatment.ID.initial', 'head.tank.INITIAL' , 'tray.ID.INTIAL',
+                             'Treatment.ID.SUBSQ','head.tank.SUBSQ' , 'tray.ID.SUBSQ',
+                             'RUN', 'SDR_position', 'Sw.Condition', 'mean_length', 'sum_length', 
+                             'count_individuals', 'mean_biovolume', 
+                             'resp.RAW.µg.L.hr', 'resp.MEAN.µg.L.hr.mm', 'resp.TOTAL.µg.L.hr.mm', 
                             'resp.COUNT.µg.L.hr.indiv', 'resp.MEAN.µg.L.hr.ml') # names for comuns in the for loop
 
 # NOTE: the raw data is in umol L-1 4ml-1
@@ -205,29 +211,34 @@ as.data.frame(colnames(CALC.table)) # view column order to make for loop
 
 for(i in 1:nrow(CALC.table)) {
   
-  vial.vol <- CALC.table[i,15] # volume in the sdr vial measured after respiration run (variable due to size of geoduck(s))
+  vial.vol <- CALC.table[i,14] # volume in the sdr vial measured after respiration run (variable due to size of geoduck(s))
   
   resp.RAW.µgLhr <-
-    ((((((abs(CALC.table[i,10])) - (CALC.table[i,18]))*(vial.vol/1000))*(60))*31.998))
+    ((((((abs(CALC.table[i,9])) - (CALC.table[i,27]))*(vial.vol/1000))*(60))*31.998))
   resp.MEAN.SHELL <-
-    resp.RAW.µgLhr/CALC.table[i,7]
+    resp.RAW.µgLhr/CALC.table[i,6]
   resp.TOTAL.SHELL <-
-    resp.RAW.µgLhr/CALC.table[i,8]
+    resp.RAW.µgLhr/CALC.table[i,7]
   resp.COUNT <-
-    resp.RAW.µgLhr/CALC.table[i,9]
+    resp.RAW.µgLhr/CALC.table[i,8]
   resp.MEAN.BIOVOLUME <-
-    resp.RAW.µgLhr/CALC.table[i,17]
+    resp.RAW.µgLhr/CALC.table[i,26]
   
   Cumulative.resp$Date                      <- CALC.table[i,1]
-  Cumulative.resp$RUN                       <- CALC.table[i,6]
-  Cumulative.resp$SDR_position              <- CALC.table[i,5]
-  Cumulative.resp$mean_length               <- CALC.table[i,7]
-  Cumulative.resp$sum_length                <- CALC.table[i,8]
-  Cumulative.resp$count_individuals         <- CALC.table[i,9]
-  Cumulative.resp$mean_biovolume            <-CALC.table[i,17]
+  Cumulative.resp$RUN                       <- CALC.table[i,5]
+  Cumulative.resp$SDR_position              <- CALC.table[i,4]
+  Cumulative.resp$mean_length               <- CALC.table[i,6]
+  Cumulative.resp$sum_length                <- CALC.table[i,7]
+  Cumulative.resp$count_individuals         <- CALC.table[i,8]
+  Cumulative.resp$mean_biovolume            <-CALC.table[i,26]
   Cumulative.resp$Tank.ID                   <- CALC.table[i,3]
   Cumulative.resp$Sw.Condition              <- CALC.table[i,2]
-  Cumulative.resp$Treatment.ID              <- CALC.table[i,4]
+  Cumulative.resp$Treatment.ID.initial      <- CALC.table[i,20]
+  Cumulative.resp$head.tank.INITIAL         <- CALC.table[i,17]
+  Cumulative.resp$tray.ID.INTIAL            <- CALC.table[i,18]
+  Cumulative.resp$Treatment.ID.SUBSQ        <- CALC.table[i,24]
+  Cumulative.resp$head.tank.SUBSQ           <- CALC.table[i,21]
+  Cumulative.resp$tray.ID.SUBSQ             <- CALC.table[i,22]
   #Cumulative.resp$Treat.initial             <- CALC.table[i,15]
   #Cumulative.resp$Treat.Secondary           <- CALC.table[i,16]
   Cumulative.resp$resp.RAW.µg.L.hr          <- resp.RAW.µgLhr
@@ -252,7 +263,7 @@ Final.resp.table.EXP <- Final.resp.table %>% # table for all data on and after 2
 
 #---------------------- (1) Mean, total shell size, and biovolume against raw respiration rate 
 
-Raw.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length, y = resp.RAW.µg.L.hr, shape = Sw.Condition)) +
+Raw.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length, y = resp.RAW.µg.L.hr)) +
   geom_point() +
   theme_classic() +
   #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
@@ -262,7 +273,7 @@ Raw.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length, y = resp.RAW.µg
 Raw.vs.MEAN <- Raw.vs.MEAN + stat_smooth(method="lm", se=FALSE)
 Raw.vs.MEAN
  
-Raw.vs.MEAN.BIOVOLUME <- ggplot(Final.resp.table.EXP, aes(x = mean_biovolume,y = resp.RAW.µg.L.hr, shape = Sw.Condition)) +
+Raw.vs.MEAN.BIOVOLUME <- ggplot(Final.resp.table.EXP, aes(x = mean_biovolume,y = resp.RAW.µg.L.hr)) +
   geom_point() +
   theme_classic() +
   #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
@@ -273,13 +284,13 @@ Raw.vs.MEAN.BIOVOLUME <- Raw.vs.MEAN.BIOVOLUME + stat_smooth(method="lm", se=FAL
 Raw.vs.MEAN.BIOVOLUME
 
 
-Biovol.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length,y = mean_biovolume, shape = Sw.Condition)) +
+Biovol.vs.MEAN <- ggplot(Final.resp.table.EXP, aes(x = mean_length,y = mean_biovolume)) +
   geom_point() +
   theme_classic() +
   #theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   #ylim(4,13) + 
   labs(y=expression("MEAN.biovolume"~(ml)), 
-       x=expression("TOTAL.shell.length"~(mm)))
+       x=expression("MEAN.shell.length"~(mm)))
 Biovol.vs.MEAN <- Biovol.vs.MEAN + stat_smooth(method="lm", se=FALSE)
 Biovol.vs.MEAN
 
@@ -290,26 +301,43 @@ Resp.vs.Biometrics.plot # view plots
 
 #--------------------- (2) Respiration rate plots
 
-# --------------------  (A) ------------------------#
-# RAW DATA 
+# pre, initial, and ambient exposure
+RESP.pre.initial.ambient <- Final.resp.table.EXP %>% dplyr::filter(Date < 20190808) # whole dataset 
 
-RESP.plots.RAW <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.RAW.µg.L.hr, fill = Treatment.ID)) + 
+EH.initial.exposure <- subset(RESP.pre.initial.ambient, grepl("^E", Treatment.ID.initial)) # subset from elevated history
+AH.initial.exposure <- subset(RESP.pre.initial.ambient, grepl("^A", Treatment.ID.initial))  # subset from ambient history
+
+# subsequent exposure
+RESP.subsequent <- Final.resp.table.EXP %>% dplyr::filter(Date > 20190807) # whole dataset
+
+EH.subs.exposure <- subset(RESP.subsequent, grepl("^E", Treatment.ID.SUBSQ)) # subset from elevated history
+EHA.subs.exposure <- subset(EH.subs.exposure, grepl("^EHA", Treatment.ID.SUBSQ)) # elev. history initial ambient
+EHM.subs.exposure <- subset(EH.subs.exposure, grepl("^EHM", Treatment.ID.SUBSQ)) # elev. history initial moderate
+EHS.subs.exposure <- subset(EH.subs.exposure, grepl("^EHS", Treatment.ID.SUBSQ)) # elev. history initial severe
+
+AH.subs.exposure  <- subset(RESP.subsequent, grepl("^A", Treatment.ID.SUBSQ)) # subset from ambient history
+AHA.subs.exposure <- subset(AH.subs.exposure, grepl("^AHA", Treatment.ID.SUBSQ)) # ambient history initial ambient
+AHM.subs.exposure <- subset(AH.subs.exposure, grepl("^AHM", Treatment.ID.SUBSQ)) # ambient history initial moderate
+AHS.subs.exposure <- subset(AH.subs.exposure, grepl("^AHS", Treatment.ID.SUBSQ)) # ambient history initial severe
+
+
+# --------------------  PRE, INITIAL EXPOSURE, AMBIENT RECOVERY  ------------------------#
+# RAW DATA 
+RESP.plots.RAW <- ggplot(RESP.pre.initial.ambient, aes(x = factor(Date), y = resp.RAW.µg.L.hr, fill = Treatment.ID.initial)) + 
   theme_classic() +
   scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
-  #  labels=c("AH","EH", "Severe")) +
   geom_boxplot(alpha = 0.5, # color hue
                width=0.5, # boxplot width
                outlier.size=0, # make outliers small
                position = position_dodge(preserve = "single")) + 
-  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
   stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
                width = 0.6, size=0.4, linetype = "dashed", 
                position = position_dodge(preserve = "single")) +
-  #scale_x_discrete(labels = c(8,12,16,20,24,32)) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted", 
+             color = "black", size=0.5) +
   theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
   #ylim(0,10) + 
   labs(y=expression("Respiration rate (raw data corrected to blank)"~µg~O[2]*hr^{-1}), x=expression("Date"))
-# + geom_errorbar(aes(ymin=resp.MEAN.µg.L.hr.mm-SEM , ymax=resp.MEAN.µg.L.hr.mm+SEM ), width=.1)
 
 RESP.plots.RAW # view plot 
 #RESP.plots.MEAN.shell <- RESP.plots.MEAN.shell + stat_smooth(method="lm", se=FALSE)
@@ -317,7 +345,7 @@ RESP.plots.RAW # view plot
 # --------------------  (B) ------------------------#
 # corrected for MEAN SHELL LENGTH
 
-RESP.plots.MEAN.shell <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID)) + 
+RESP.plots.MEAN.shell <- ggplot(RESP.pre.initial.ambient, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.initial)) + 
   theme_classic() +
   scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
                   #  labels=c("AH","EH", "Severe")) +
@@ -350,7 +378,7 @@ RESP.plots.MEAN.shell # view plot
 # --------------------  (C) ------------------------#
 # corrected for TOTAL SHELL LENGTH
 
-RESP.plots.TOTAL.shell <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.TOTAL.µg.L.hr.mm, fill = Treatment.ID)) + 
+RESP.plots.TOTAL.shell <- ggplot(RESP.pre.initial.ambient, aes(x = factor(Date), y = resp.TOTAL.µg.L.hr.mm, fill = Treatment.ID.initial)) + 
   theme_classic() +
   scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
                   #labels=c("AH","EH", "Severe")) +
@@ -381,7 +409,7 @@ RESP.plots.TOTAL.shell # view plot
 # --------------------  (D) ------------------------#
 # corrected for NUMBER OF INDIVIDUALS
 
-RESP.plots.INDIV <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y = resp.COUNT.µg.L.hr.indiv, fill = Treatment.ID)) + 
+RESP.plots.INDIV <- ggplot(RESP.pre.initial.ambient, aes(x = factor(Date), y = resp.COUNT.µg.L.hr.indiv, fill = Treatment.ID.initial)) + 
   theme_classic() +
   scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
   #labels=c("AH","EH", "Severe")) +
@@ -412,7 +440,7 @@ RESP.plots.INDIV # view plot
 # --------------------  (E) ------------------------#
 # corrected for MEAN BIOVOLUME
 
-RESP.plots.MEAN.biovolume <- ggplot(Final.resp.table.EXP, aes(x = factor(Date), y =  resp.MEAN.µg.L.hr.ml, fill = Treatment.ID)) + 
+RESP.plots.MEAN.biovolume <- ggplot(RESP.pre.initial.ambient, aes(x = factor(Date), y =  resp.MEAN.µg.L.hr.ml, fill = Treatment.ID.initial)) + 
   theme_classic() +
   scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
   #labels=c("AH","EH", "Severe")) +
@@ -443,12 +471,153 @@ Resp.plots <- ggarrange(RESP.plots.MEAN.shell,
                         RESP.plots.INDIV, RESP.plots.MEAN.biovolume, ncol= 2, nrow = 2)
 Resp.plots # view plots
 
+# ------------------------------ TOTAL PLOTS WITH MEAN SHELL LENGTH -------------------------------------------------#
+
+#######################################
+# ELEVATED HISTORY
+#######################################
+
+EH.pre.init.amb.PLOT <- ggplot(EH.initial.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.initial)) + 
+  theme_classic() + scale_fill_manual(values=c("orange", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
+  geom_boxplot(alpha = 0.5, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  ylim(0,7) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+EH.pre.init.amb.PLOT <- EH.pre.init.amb.PLOT + ggtitle("ELEVATED HISTORY") +
+  annotate(geom="text", x=1, y=6,  label="Pre-exp (trays)", color="black") +
+  annotate(geom="text", x=3, y=6,   label="Initial treatment", color="black") +
+  annotate(geom="text", x=6, y=6,  label="Ambient", color="black")
+EH.pre.init.amb.PLOT # view plot 
+
+EHA.subs.PLOT <- ggplot(EHA.subs.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.SUBSQ)) + 
+  theme_classic() + scale_fill_manual(values=c("blue1", "blue4")) +
+  geom_boxplot(alpha = 0.75, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  ylim(0,7) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+EHS.subs.PLOT <- ggplot(EHS.subs.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.SUBSQ)) + 
+  theme_classic() + scale_fill_manual(values=c("red1", "red4")) +
+  geom_boxplot(alpha = 0.75, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  ylim(0,7) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+EHM.subs.PLOT <- ggplot(EHM.subs.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.SUBSQ)) + 
+  theme_classic() + scale_fill_manual(values=c("orange1", "orange4")) +
+  geom_boxplot(alpha = 0.75, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  ylim(0,7) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+EH.sub.plots <- grid.arrange(EHA.subs.PLOT, EHM.subs.PLOT,EHS.subs.PLOT, nrow = 1)
+Elevated.plots.ALL <- grid.arrange(EH.pre.init.amb.PLOT, EH.sub.plots, nrow = 2)
+
+#######################################
+# AMBIENT HISTORY
+#######################################
+AH.pre.init.amb.PLOT <- ggplot(AH.initial.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.initial)) + 
+  theme_classic() + scale_fill_manual(values=c("blue", "blue", "orange", "red", "orange", "blue", "orange", "red")) +
+  geom_boxplot(alpha = 0.5, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  ylim(0,7) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+AH.pre.init.amb.PLOT <- AH.pre.init.amb.PLOT + ggtitle("AMBIENT HISTORY") +
+  annotate(geom="text", x=1, y=6,  label="Pre-exp (trays)", color="black") +
+  annotate(geom="text", x=3, y=6,   label="Initial treatment", color="black") +
+  annotate(geom="text", x=6, y=6,  label="Ambient", color="black")
+AH.pre.init.amb.PLOT # view plot 
+
+AHA.subs.PLOT <- ggplot(AHA.subs.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.SUBSQ)) + 
+  theme_classic() + scale_fill_manual(values=c("blue1", "blue4")) +
+  geom_boxplot(alpha = 0.75, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  ylim(0,7) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+AHS.subs.PLOT <- ggplot(AHS.subs.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.SUBSQ)) + 
+  theme_classic() + scale_fill_manual(values=c("red1", "red4")) +
+  geom_boxplot(alpha = 0.75, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  ylim(0,7) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+AHM.subs.PLOT <- ggplot(AHM.subs.exposure, aes(x = factor(Date), y = resp.MEAN.µg.L.hr.mm, fill = Treatment.ID.SUBSQ)) + 
+  theme_classic() + scale_fill_manual(values=c("orange1", "orange4")) +
+  geom_boxplot(alpha = 0.75, # color hue
+               width=0.5, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+  #geom_point(pch = 19, position = position_jitterdodge(0.05), size=1) +
+  stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..),   width = 0.6, size=0.4, linetype = "dashed", 
+               position = position_dodge(preserve = "single")) +
+  ylim(0,7) +
+  geom_vline(xintercept = c(1.5, 4.5), linetype="dotted",  color = "black", size=0.5) +
+  theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+  labs(y=expression("Respiration rate (mean shell length)"~µg~O[2]*hr^{-1}*mm^{-1}), x=expression("Date"))
+
+AH.sub.plots <- grid.arrange(AHA.subs.PLOT, AHM.subs.PLOT,AHS.subs.PLOT, nrow = 1)
+Ambient.plots.ALL <- grid.arrange(AH.pre.init.amb.PLOT, AH.sub.plots, nrow = 2)
+
 #----------------------OUTPUT - save plots and cumulative tables-----------------------------------------
 
 write.table(blanks_total,"Data/SDR_data/All.blank.resp.rates.csv",sep=",", row.names=FALSE)  # write out to the path names outputNAME
 write.table(Final.resp.table,"Data/SDR_data/Final.resp.rates.csv",sep=",", row.names=FALSE)  # write out to the path names outputNAME
 ggsave(file="Output/Resp.vs.Size.Biovolume.pdf", Resp.vs.Biometrics.plot, width = 12, height = 8, units = c("in")) # respiration rate plots
 ggsave(file="Output/Resp.plots.pdf", Resp.plots, width = 12, height = 8, units = c("in")) # respiration rate plots
+ggsave(file="Output/Ambient.plots.ALL.pdf", Ambient.plots.ALL, width = 12, height = 8, units = c("in")) # respiration rate plots
+ggsave(file="Output/Elevated.plots.ALLs.pdf", Elevated.plots.ALL, width = 12, height = 8, units = c("in")) # respiration rate plots
 
 ############################################################################################ #
 ################################ STATISTICAL ANALYSIS  ##################################### #
