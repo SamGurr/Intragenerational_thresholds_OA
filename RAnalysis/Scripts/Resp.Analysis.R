@@ -249,9 +249,10 @@ for(i in 1:nrow(CALC.table)) {
   
   df.resp <- data.frame(Cumulative.resp) # name dataframe for this singl e row
   Final.resp.table <- rbind(Final.resp.table,df.resp) #bind to a cumulative list dataframe
-  print(Final.resp.table) # print to monitor progress
+  #print(Final.resp.table) # print to monitor progress
 }
 
+Final.resp.table <- Final.resp.table[!is.na(Final.resp.table$resp.RAW.µg.L.hr),] # ommit NAs - there are two in which vial volume was spilled and not measured
 Final.resp.table # view table 
 #Final.resp.table <- read.csv(file="Data/SDR_data/Final.resp.rates.csv", header=T) #read Size.info data
 Final.resp.table$row.num <- seq.int(nrow(Final.resp.table)) # make new column for run numbers
@@ -320,7 +321,6 @@ AH.subs.exposure  <- subset(RESP.subsequent, grepl("^A", Treatment.ID.SUBSQ)) # 
 AHA.subs.exposure <- subset(AH.subs.exposure, grepl("^AHA", Treatment.ID.SUBSQ)) # ambient history initial ambient
 AHM.subs.exposure <- subset(AH.subs.exposure, grepl("^AHM", Treatment.ID.SUBSQ)) # ambient history initial moderate
 AHS.subs.exposure <- subset(AH.subs.exposure, grepl("^AHS", Treatment.ID.SUBSQ)) # ambient history initial severe
-
 
 # --------------------  PRE, INITIAL EXPOSURE, AMBIENT RECOVERY  ------------------------#
 # RAW DATA 
