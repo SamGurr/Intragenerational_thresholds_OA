@@ -228,13 +228,14 @@ FIG.temp.DAYS.7.to.14 <- ggplot(DAYS.7.to.14.hourly.temp, aes(x=datehour, y=mean
 FIG.temp.DAYS.7.to.14 <- FIG.temp.DAYS.7.to.14 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
 FIG.temp.DAYS.7.to.14 # view figure
 
-# ---------------# DAYS  14 - 21 - Amb v. Noderate vs. Severe exposure #-----------------# 
+# ---------------# DAYS  14 - 21 - Amb v. Moderate vs. Severe exposure #-----------------# 
 DAYS.15.to.21.hourly.pH <-  thresholds.exp.APEX %>% 
-  dplyr::filter(days %in% (33:40))  %>%  # pH data
+  dplyr::filter(days %in% (33:39))  %>%  # pH data
   dplyr::filter(Treatment %in% (c("MODERATE_tank","AMBIENT_conical")))
 DAYS.15.to.21.hourly.temp <-  thresholds.exp.APEX %>% 
-  dplyr::filter(days %in% (33:40)) %>% # temperature data
+  dplyr::filter(days %in% (33:39)) %>% # temperature data
   dplyr::filter(Treatment %in% (c("MODERATE_tank","AMBIENT_conical")))
+tail(DAYS.15.to.21.hourly.temp)
 
 # PH.FIGURE
 FIG.pH.DAYS.15.to.21 <- ggplot(DAYS.15.to.21.hourly.pH, aes(x=datehour, y=mean.ph, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
@@ -301,15 +302,16 @@ ggsave(file="Output/Fig.pH.temp.pdf", FIG.FINAL.pH.temp, width = 12, height = 8,
 path.p<-"Output/chem.tables/" #the location of all your respirometry files 
 file.names.full<-basename(list.files(path = path.p, pattern = "csv$", recursive = TRUE)) #list all csv file names
 df_total <- data.frame() # start dataframe 
-chem.final <- data.frame(matrix(nrow = 1, ncol = 10)) # create dataframe to save cumunalitively during for loop
+chem.final <- data.frame(matrix(nrow = 1, ncol = 12)) # create dataframe to save cumunalitively during for loop
 colnames(chem.final)<-c('date', 'Treatment', 'mean.Salinity', 'sem.Salinity', 'mean.Temperature', 'sem.Temperature' 
-                        , 'mean.pH', 'sem.pH', 'mean.Aragonite.Sat', 'sem.Aragonite.Sat') # names for comuns in the for loop
+                        , 'mean.pH', 'sem.pH', 'mean.pCO2',    'sem.pCO2', 'mean.Aragonite.Sat', 'sem.Aragonite.Sat') # names for comuns in the for loop
 
 for(i in 1:length(file.names.full)) { # for every file in list start at the first and run this following function
   chem.data <-read.table(file.path(path.p,file.names.full[i]), header=T, sep=",", na.string="NA", fill = TRUE, as.is=TRUE) #reads in the data files
   chem.data$date <- substr(file.names.full[i], 1,8)
   chem.data <- chem.data %>% 
-    select(date, Treatment, mean.Salinity, sem.Salinity, mean.Temperature, sem.Temperature,  mean.pH, sem.pH, mean.Aragonite.Sat,  sem.Aragonite.Sat)
+    dplyr::select(date, Treatment, mean.Salinity, sem.Salinity, mean.Temperature, sem.Temperature,  
+                  mean.pH, sem.pH, mean.pCO2, sem.pCO2, mean.Aragonite.Sat,  sem.Aragonite.Sat)
   df <- data.frame(chem.data) # name dataframe for this singl e row
   chem.final <- rbind(chem.final,df) #bind to a cumulative list dataframe
   print(chem.final) # print to monitor progress
@@ -319,16 +321,30 @@ chem.daily.discrete.TANK <- chem.final %>%
   filter(Treatment %in% c("tank.Ambient", "tank.Severe", "tank.Moderate")) %>% 
   filter(date > 20190723)
 
-# PH.FIGURE
-fig.test <- ggplot(chem.daily.discrete.TANK, aes(x=date, y=mean.pH, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+# divide data into the three experimental periods
+# days 1 - 7
+DISCRETE.1.to.7 <-  chem.daily.discrete.TANK %>% 
+  dplyr::filter(date %in% (20190724:20190731))  
+# days 7 - 14
+DISCRETE.7.to.14 <-  chem.daily.discrete.TANK %>% 
+  dplyr::filter(date %in% (20190801:20190807)) 
+# days 14 - 21
+DISCRETE.14.to.21 <-  chem.daily.discrete.TANK %>% 
+  dplyr::filter(date %in% (20190809:20190816)) 
+tail(DISCRETE.14.to.21)
+#################################### #
+###################### DAYS 1 - 7 #################################### #
+#################################### #
+# PH.FIGURE DAYS 1 - 7
+PH.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.pH, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
   geom_point(aes(x = date, y = mean.pH, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=mean.pH, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=position_dodge(0.9), data=chem.daily.discrete.TANK, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle(" pH (total scale)") + #Label the graph with the main title
-  ylim(6.5,8) + #Set Y axis limits
+  geom_line() + # add line to plot
+  ylim(6.8,8) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("pH (total scale)") + #Label the Y Axis
   theme_bw() + #Set the background color
-  geom_line() + # add line to plot
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
         axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
@@ -342,7 +358,396 @@ fig.test <- ggplot(chem.daily.discrete.TANK, aes(x=date, y=mean.pH, group=Treatm
         legend.text = element_text(size = 8), #set the legend text size
         legend.key = element_blank(), #remove the legend background
         legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
-fig.test <- FIG.pH.DAYS.15.to.21 + scale_color_manual(values=c("#56B4E9",  "#E69F00")) #colorblindess color theme
-fig.test # view figure
+PH.FIG.1.7 <- PH.FIG.1.7 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+PH.FIG.1.7 # view figure
 
+# pCO2.FIGURE DAYS 1 - 7
+pCO2.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.pCO2, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.pCO2, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("pCO2") + #Label the grapCO2 with the main title
+  geom_line() + # add line to plot
+  ylim(600,6000) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("pCO2") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+pCO2.FIG.1.7 <- pCO2.FIG.1.7 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+pCO2.FIG.1.7 # view figure
+
+# Aragonite.Sat.FIGURE DAYS 1 - 7
+Aragonite.Sat.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.Aragonite.Sat, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Aragonite.Sat, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Aragonite.Sat") + #Label the graAragonite.Sat with the main title
+  geom_line() + # add line to plot
+  ylim(0,1.5) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Aragonite.Sat") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Aragonite.Sat.FIG.1.7 <- Aragonite.Sat.FIG.1.7 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Aragonite.Sat.FIG.1.7 # view figure
+
+# Salinity.FIGURE DAYS 1 - 7
+Salinity.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.Salinity, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Salinity, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Salinity") + #Label the graSalinity with the main title
+  geom_line() + # add line to plot
+  ylim(29,29.5) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Salinity") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Salinity.FIG.1.7 <- Salinity.FIG.1.7 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Salinity.FIG.1.7 # view figure
+
+# Temperature.FIGURE DAYS 1 - 7
+Temperature.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.Temperature, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Temperature, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Temperature") + #Label the graTemperature with the main title
+  geom_line() + # add line to plot
+  ylim(16,20) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Temperature") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Temperature.FIG.1.7 <- Temperature.FIG.1.7 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Temperature.FIG.1.7 # view figure
+
+#compile figures and output 
+ALL.FIGS.1.7 <- grid.arrange(arrangeGrob(PH.FIG.1.7, pCO2.FIG.1.7,Aragonite.Sat.FIG.1.7,
+                                         Salinity.FIG.1.7, Temperature.FIG.1.7, ncol=2, nrow =3))
+ALL.FIGS.1.7 # view figure
+
+
+###################### DAYS 7 - 14 #################################### #
+#################################### #
+# PH.FIGURE DAYS 7 - 14
+PH.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.pH, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.pH, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle(" pH (total scale)") + #Label the graph with the main title
+  geom_line() + # add line to plot
+  ylim(6.8,8) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("pH (total scale)") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+PH.FIG.7.14 <- PH.FIG.7.14 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+PH.FIG.7.14 # view figure
+
+# pCO2.FIGURE DAYS 7 - 14
+pCO2.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.pCO2, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.pCO2, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("pCO2") + #Label the grapCO2 with the main title
+  geom_line() + # add line to plot
+  ylim(600,6000) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("pCO2") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+pCO2.FIG.7.14 <- pCO2.FIG.7.14 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+pCO2.FIG.7.14 # view figure
+
+# Aragonite.Sat.FIGURE DAYS 7 - 14
+Aragonite.Sat.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.Aragonite.Sat, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Aragonite.Sat, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Aragonite.Sat") + #Label the graAragonite.Sat with the main title
+  geom_line() + # add line to plot
+  ylim(0,1.5) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Aragonite.Sat") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Aragonite.Sat.FIG.7.14 <- Aragonite.Sat.FIG.7.14 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Aragonite.Sat.FIG.7.14 # view figure
+
+# Salinity.FIGURE DAYS 7 - 14
+Salinity.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.Salinity, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Salinity, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Salinity") + #Label the graSalinity with the main title
+  geom_line() + # add line to plot
+  ylim(29,29.5) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Salinity") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Salinity.FIG.7.14 <- Salinity.FIG.7.14 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Salinity.FIG.7.14 # view figure
+
+# Temperature.FIGURE DAYS 7 - 14
+Temperature.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.Temperature, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Temperature, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Temperature") + #Label the graTemperature with the main title
+  geom_line() + # add line to plot
+  ylim(16,20) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Temperature") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Temperature.FIG.7.14 <- Temperature.FIG.7.14 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Temperature.FIG.7.14 # view figure
+
+#compile figures and output 
+ALL.FIGS.7.14 <- grid.arrange(arrangeGrob(PH.FIG.7.14, pCO2.FIG.7.14,Aragonite.Sat.FIG.7.14,
+                                         Salinity.FIG.7.14, Temperature.FIG.7.14, ncol=2, nrow =3))
+ALL.FIGS.7.14 # view figure
+
+###################### DAYS 14 - 21 #################################### #
+#################################### #
+# PH.FIGURE DAYS 14 - 21
+PH.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.pH, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.pH, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle(" pH (total scale)") + #Label the graph with the main title
+  geom_line() + # add line to plot
+  ylim(6.8,8) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("pH (total scale)") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+PH.FIG.14.21 <- PH.FIG.14.21 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+PH.FIG.14.21 # view figure
+
+# pCO2.FIGURE DAYS 14 - 21
+pCO2.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.pCO2, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.pCO2, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("pCO2") + #Label the grapCO2 with the main title
+  geom_line() + # add line to plot
+  ylim(600,6000) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("pCO2") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+pCO2.FIG.14.21 <- pCO2.FIG.14.21 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+pCO2.FIG.14.21 # view figure
+
+# Aragonite.Sat.FIGURE DAYS 14 - 21
+Aragonite.Sat.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.Aragonite.Sat, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Aragonite.Sat, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Aragonite.Sat") + #Label the graAragonite.Sat with the main title
+  geom_line() + # add line to plot
+  ylim(0,1.5) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Aragonite.Sat") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Aragonite.Sat.FIG.14.21 <- Aragonite.Sat.FIG.14.21 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Aragonite.Sat.FIG.14.21 # view figure
+
+# Salinity.FIGURE DAYS 14 - 21
+Salinity.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.Salinity, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Salinity, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Salinity") + #Label the graSalinity with the main title
+  geom_line() + # add line to plot
+  ylim(29,29.5) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Salinity") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Salinity.FIG.14.21 <- Salinity.FIG.14.21 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Salinity.FIG.14.21 # view figure
+
+# Temperature.FIGURE DAYS 14 - 21
+Temperature.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.Temperature, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+  geom_point(aes(x = date, y = mean.Temperature, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
+  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  ggtitle("Temperature") + #Label the graTemperature with the main title
+  geom_line() + # add line to plot
+  ylim(16,20) + #Set Y axis limits
+  xlab("Date") + #Label the X Axis
+  ylab("Temperature") + #Label the Y Axis
+  theme_bw() + #Set the background color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        axis.ticks.length=unit(-0.2, "cm"), #turn ticks inward
+        axis.text.y = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm")), #set margins on labels
+        axis.text.x = element_text(margin=unit(c(0.5,0.5,0.5,0.5), "cm"), angle = 0, vjust = 0.5, hjust=1), #set margins on labels
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(), #Set the plot background
+        panel.border=element_rect(size=1.25, fill = NA), #set outer border
+        plot.title=element_text(hjust=0),
+        legend.position="bottom", #set legend location
+        legend.text = element_text(size = 8), #set the legend text size
+        legend.key = element_blank(), #remove the legend background
+        legend.title = element_text(size=8, face="bold")) #Justify the title to the top left
+Temperature.FIG.14.21 <- Temperature.FIG.14.21 + scale_color_manual(values=c("#56B4E9",  "#E69F00", "#D55E00")) #colorblindess color theme
+Temperature.FIG.14.21 # view figure
+
+#compile figures and output 
+ALL.FIGS.14.21 <- grid.arrange(arrangeGrob(PH.FIG.14.21, pCO2.FIG.14.21,Aragonite.Sat.FIG.14.21,
+                                          Salinity.FIG.14.21, Temperature.FIG.14.21, ncol=2, nrow =3))
+ALL.FIGS.14.21 # view figure
+
+
+# output figure
+ggsave(file="Output/Discrete.Fig.Days.1-7.pdf", ALL.FIGS.1.7, width = 12, height = 8, units = c("in"))
+ggsave(file="Output/Discrete.Fig.Days.8-14.pdf", ALL.FIGS.7.14, width = 12, height = 8, units = c("in"))
+ggsave(file="Output/Discrete.Fig.Days.15-21.pdf", ALL.FIGS.14.21, width = 12, height = 8, units = c("in"))
 
