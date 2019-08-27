@@ -335,12 +335,15 @@ tail(DISCRETE.14.to.21)
 #################################### #
 ###################### DAYS 1 - 7 #################################### #
 #################################### #
+ 
+pd <- position_dodge(0.5) # dodge between treatments to ease asthetics and interpretation
+                     
 # PH.FIGURE DAYS 1 - 7
 PH.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.pH, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.pH, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), data=DISCRETE.1.to.7, col="black",  width=.1, position=pd) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle(" pH (total scale)") + #Label the graph with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(6.8,8) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("pH (total scale)") + #Label the Y Axis
@@ -363,10 +366,10 @@ PH.FIG.1.7 # view figure
 
 # pCO2.FIGURE DAYS 1 - 7
 pCO2.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.pCO2, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.pCO2, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=pd, data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("pCO2") + #Label the grapCO2 with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(600,6000) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("pCO2") + #Label the Y Axis
@@ -389,10 +392,10 @@ pCO2.FIG.1.7 # view figure
 
 # Aragonite.Sat.FIGURE DAYS 1 - 7
 Aragonite.Sat.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.Aragonite.Sat, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Aragonite.Sat, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=pd, data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Aragonite.Sat") + #Label the graAragonite.Sat with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(0,1.5) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Aragonite.Sat") + #Label the Y Axis
@@ -415,10 +418,10 @@ Aragonite.Sat.FIG.1.7 # view figure
 
 # Salinity.FIGURE DAYS 1 - 7
 Salinity.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.Salinity, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Salinity, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=pd, data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Salinity") + #Label the graSalinity with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(29,29.5) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Salinity") + #Label the Y Axis
@@ -441,10 +444,10 @@ Salinity.FIG.1.7 # view figure
 
 # Temperature.FIGURE DAYS 1 - 7
 Temperature.FIG.1.7 <- ggplot(DISCRETE.1.to.7, aes(x=date, y=mean.Temperature, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Temperature, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=position_dodge(0.9), data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=pd, data=DISCRETE.1.to.7, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Temperature") + #Label the graTemperature with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(16,20) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Temperature") + #Label the Y Axis
@@ -475,10 +478,10 @@ ALL.FIGS.1.7 # view figure
 #################################### #
 # PH.FIGURE DAYS 7 - 14
 PH.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.pH, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.pH, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=pd, data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle(" pH (total scale)") + #Label the graph with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(6.8,8) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("pH (total scale)") + #Label the Y Axis
@@ -501,10 +504,10 @@ PH.FIG.7.14 # view figure
 
 # pCO2.FIGURE DAYS 7 - 14
 pCO2.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.pCO2, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.pCO2, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=pd, data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("pCO2") + #Label the grapCO2 with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(600,6000) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("pCO2") + #Label the Y Axis
@@ -527,10 +530,10 @@ pCO2.FIG.7.14 # view figure
 
 # Aragonite.Sat.FIGURE DAYS 7 - 14
 Aragonite.Sat.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.Aragonite.Sat, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Aragonite.Sat, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=pd, data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Aragonite.Sat") + #Label the graAragonite.Sat with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(0,1.5) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Aragonite.Sat") + #Label the Y Axis
@@ -553,11 +556,11 @@ Aragonite.Sat.FIG.7.14 # view figure
 
 # Salinity.FIGURE DAYS 7 - 14
 Salinity.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.Salinity, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Salinity, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+    geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=pd, data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Salinity") + #Label the graSalinity with the main title
-  geom_line() + # add line to plot
-  ylim(29,29.5) + #Set Y axis limits
+  geom_line(position=pd) + # add line to plot
+  ylim(28,29.5) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Salinity") + #Label the Y Axis
   theme_bw() + #Set the background color
@@ -579,10 +582,10 @@ Salinity.FIG.7.14 # view figure
 
 # Temperature.FIGURE DAYS 7 - 14
 Temperature.FIG.7.14 <- ggplot(DISCRETE.7.to.14, aes(x=date, y=mean.Temperature, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Temperature, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=position_dodge(0.9), data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=pd, data=DISCRETE.7.to.14, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Temperature") + #Label the graTemperature with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(16,20) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Temperature") + #Label the Y Axis
@@ -612,10 +615,10 @@ ALL.FIGS.7.14 # view figure
 #################################### #
 # PH.FIGURE DAYS 14 - 21
 PH.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.pH, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.pH, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.pH+sem.pH, ymin=mean.pH-sem.pH), position=pd, data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle(" pH (total scale)") + #Label the graph with the main title
-  geom_line() + # add line to plot
+  geom_line(position=pd) + # add line to plot
   ylim(6.8,8) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("pH (total scale)") + #Label the Y Axis
@@ -638,10 +641,10 @@ PH.FIG.14.21 # view figure
 
 # pCO2.FIGURE DAYS 14 - 21
 pCO2.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.pCO2, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.pCO2, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.pCO2+sem.pCO2, ymin=mean.pCO2-sem.pCO2), position=pd, data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("pCO2") + #Label the grapCO2 with the main title
-  geom_line() + # add line to plot
+    geom_line(position=pd) + # add line to plot
   ylim(600,6000) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("pCO2") + #Label the Y Axis
@@ -664,10 +667,10 @@ pCO2.FIG.14.21 # view figure
 
 # Aragonite.Sat.FIGURE DAYS 14 - 21
 Aragonite.Sat.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.Aragonite.Sat, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Aragonite.Sat, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Aragonite.Sat+sem.Aragonite.Sat, ymin=mean.Aragonite.Sat-sem.Aragonite.Sat), position=pd, data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Aragonite.Sat") + #Label the graAragonite.Sat with the main title
-  geom_line() + # add line to plot
+    geom_line(position=pd) + # add line to plot
   ylim(0,1.5) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Aragonite.Sat") + #Label the Y Axis
@@ -690,10 +693,10 @@ Aragonite.Sat.FIG.14.21 # view figure
 
 # Salinity.FIGURE DAYS 14 - 21
 Salinity.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.Salinity, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Salinity, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Salinity+sem.Salinity, ymin=mean.Salinity-sem.Salinity), position=pd, data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Salinity") + #Label the graSalinity with the main title
-  geom_line() + # add line to plot
+    geom_line(position=pd) + # add line to plot
   ylim(29,29.5) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Salinity") + #Label the Y Axis
@@ -716,10 +719,10 @@ Salinity.FIG.14.21 # view figure
 
 # Temperature.FIGURE DAYS 14 - 21
 Temperature.FIG.14.21 <- ggplot(DISCRETE.14.to.21, aes(x=date, y=mean.Temperature, group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
-  geom_point(aes(x = date, y = mean.Temperature, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
-  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=position_dodge(0.9), data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
+  geom_point(position=pd, size=0.5, shape=21, fill="white") + # 21 is filled circle
+  geom_errorbar(aes(x=date, ymax=mean.Temperature+sem.Temperature, ymin=mean.Temperature-sem.Temperature), position=pd, data=DISCRETE.14.to.21, col="black", width=0) + #set values for standard error bars and offset on the X axis for clarity
   ggtitle("Temperature") + #Label the graTemperature with the main title
-  geom_line() + # add line to plot
+    geom_line(position=pd) + # add line to plot
   ylim(16,20) + #Set Y axis limits
   xlab("Date") + #Label the X Axis
   ylab("Temperature") + #Label the Y Axis
