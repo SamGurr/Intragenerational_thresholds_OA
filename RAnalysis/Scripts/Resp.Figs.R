@@ -173,8 +173,17 @@ for(i in 1:nrow(DAYS.15.21.DATA)) {
   print(df_Days.15.21) # print to monitor progress
 }
 df_Days.15.21 # view data
+library(lsmeans)        # Version: 2.27-62, Date/Publication: 2018-05-11, Depends: methods, R (>= 3.2)
 
+model <- aov(lm(rel.resp.COUNT ~ Treatment*Date, data=df_Days.15.21))
+summary(model)
+shapiro.test(residuals(model))
+TukeyHSD(model)
 
+model2 <-aov(lm(rel.resp.COUNT ~ Treatment*Date, data=df_Days.1.14))
+summary(model2)
+shapiro.test(residuals(model2))
+TukeyHSD(model2)
 
 ##################################################### #
 ##################################################### #
@@ -204,6 +213,7 @@ names(rel.resp_Days.1.14.final)
 pd <- position_dodge(0.5) # dodge between treatments to ease asthetics and interpretation
 
 # days 1 - 14 rel metabolic rate (per individual)
+rel.resp_Days.1.14.final$Date <- as.character(rel.resp_Days.1.14.final$Date)
 FIGURE.rel.resp.COUNT.Days1.14 <- ggplot(rel.resp_Days.1.14.final, aes(x=Date, y=rel.resp.COUNT_mean, colour=Treatment, group=Treatment)) + 
   geom_errorbar(aes(ymin=rel.resp.COUNT_mean-rel.resp.COUNT_std.error, 
                     ymax=rel.resp.COUNT_mean+rel.resp.COUNT_std.error), colour="black", width=.1,position=pd) +
@@ -218,12 +228,17 @@ FIGURE.rel.resp.COUNT.Days1.14 <- ggplot(rel.resp_Days.1.14.final, aes(x=Date, y
   ggtitle("Days 1-14 relative metabolic rate") +
   expand_limits(y=0) +                        # Expand y range
   scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
+  geom_vline(xintercept = c(3.5), linetype="dotted", color = "black", size=0.5) + # add line between initial exposure nad ambient recovery
   theme_bw() +
-  theme(legend.justification=c(1,0),
-        legend.position=c(1,0))               # Position legend in bottom right
-FIGURE.rel.resp.COUNT.Days1.14 # view the plot
+  theme(legend.justification=c(1,1),
+        legend.position=c(1,1))               # Position legend in bottom right
+FIGURE.rel.resp.COUNT.Days1.14  <- FIGURE.rel.resp.COUNT.Days1.14 +  # add text
+  annotate(geom="text", x=2, y=6, label="Amb v. Mod. v. Sev (n = 6 treatments)", color="black") +
+  annotate(geom="text", x=5, y=6, label="Ambient recovery", color="black")
+FIGURE.rel.resp.COUNT.Days1.14 # view plot # view the plot
 
 # days 15- 21 rel metabolic rate (per individual)
+rel.resp_Days.15.21.final$Date <- as.character(rel.resp_Days.15.21.final$Date)
 FIGURE.rel.resp.COUNT.Days15.21 <- ggplot(rel.resp_Days.15.21.final, aes(x=Date, y=rel.resp.COUNT_mean, colour=Treatment, group=Treatment)) + 
   geom_errorbar(aes(ymin=rel.resp.COUNT_mean-rel.resp.COUNT_std.error, 
                     ymax=rel.resp.COUNT_mean+rel.resp.COUNT_std.error), colour="black", width=.1,position=pd) +
@@ -240,10 +255,11 @@ FIGURE.rel.resp.COUNT.Days15.21 <- ggplot(rel.resp_Days.15.21.final, aes(x=Date,
   expand_limits(y=0) +                        # Expand y range
   scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
   theme_bw() +
-  theme(legend.justification=c(1,0),
-        legend.position=c(1,0))               # Position legend in bottom right
-FIGURE.rel.resp.COUNT.Days15.21
-
+  theme(legend.justification=c(0,1),
+        legend.position=c(0,1))             # Position legend in bottom right
+FIGURE.rel.resp.COUNT.Days15.21  <- FIGURE.rel.resp.COUNT.Days15.21 +  # add text
+  annotate(geom="text", x=2, y=6, label="Reciprocal Amb v. Mod (n = 12 treatments)", color="black")
+FIGURE.rel.resp.COUNT.Days15.21 # view plot # view the plot
 
 # Arrange plots
 SMR.relative.plot <- ggarrange(FIGURE.rel.resp.COUNT.Days1.14, FIGURE.rel.resp.COUNT.Days15.21,ncol = 1, nrow = 2) # combine plots 
