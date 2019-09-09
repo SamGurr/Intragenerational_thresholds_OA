@@ -1,4 +1,4 @@
-#Title: Juvenile Repeat Exposure Experiment 2018
+#Title: Chem Figs
 #Project: FFAR
 #Author: HM Putnam & Sam Gurr
 #Edit by: Sam Gurr
@@ -374,10 +374,6 @@ D.15.21_MEAN_ST.E <- ddply(D.15.to.21.LONG.2, c("Treatment","variable"), summari
 D.15.21_MEAN_ST.E$period <- "DAYS.15.TO.21" # assign column for the exposure period
 D.15.21_MEAN_ST.E # view table
 
-# bind all data to a signle table & make horizontal ########################################################################## #
-
-TABLE.ALL.LONG <- rbind(D.1.7_MEAN_ST.E, D.8.14_MEAN_ST.E, D.15.21_MEAN_ST.E)
-# TABLE.ALL.WIDE.FINAL <- reshape2::dcast(TABLE.ALL.LONG, Treatment + N + period ~ mean , value.var=c("mean", "sem"))
 #################################### #
 ###################### DAYS 1 - 7 #################################### #
 #################################### #

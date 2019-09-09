@@ -51,6 +51,59 @@ library(car)
 setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/")
 #Load Sample Info
 Size.data <- read.csv(file="Data/Shell_length/20190628_shell_size.csv", header=T) #read sample.info data
+Size.data.ALL <- read.csv(file="Data/Shell_length/Shell_length_data.csv", header=T) #read sample.info data
+
+ID.reference.all <- read.csv(file="Data/Tank.ID.reference.subsequent.csv", header=T) #read sample.info data
+
+ID.reference.D.1.14 <- ID.reference.all %>% 
+  dplyr::filter(Tank.ID == 1:36) %>% 
+  dplyr::select(Tank.ID, INITIAL.TREATMENT.ID)
+
+ID.reference.D.15.21 <- ID.reference.all  %>% 
+  dplyr::select(Tank.ID, TREATMENT.ID.TOTAL)
+
+# filter and select to narrow a table of shell lengths during the 21 day experiment
+Size.data.EXPERIMENT <- Size.data.ALL %>% 
+  dplyr::filter(Date > 20190723) %>% 
+  dplyr::select(Date, Tank.ID, Sw.Condition, Length, Notes)
+Size.data.EXPERIMENT <- na.omit(Size.data.EXPERIMENT) # ommit NAs from the dataset
+Size.data.EXPERIMENT # view table
+
+# divide into the first 14 days and last 7 days to create a new column for treatment and merge to one dataframe
+Size.data.D.1.14 <- Size.data.EXPERIMENT %>% 
+  dplyr::filter(Date < 20190808) # days 1 - 14, make column for treatment initial
+Size.data.D.1.14 <- merge(Size.data.D.1.14, ID.reference.D.1.14, by= 'Tank.ID')
+colnames(Size.data.D.1.14)[6] <- "Treatment" # change column name to treatment to bind with "...D1.14"
+
+
+Size.data.D.15.21 <- Size.data.EXPERIMENT %>% 
+  dplyr::filter(Date > 20190807)  # days 15 - 21, make column for treatment secondary
+Size.data.D.15.21 <- merge(Size.data.D.15.21, ID.reference.D.15.21, by= 'Tank.ID')
+colnames(Size.data.D.15.21)[6] <- "Treatment" # change column name to treatment to bind with "...D1.14"
+
+
+Size.FINAL <- rbind(Size.data.D.1.14,Size.data.D.15.21)
+
+Size.FINAL
+
+ggplot(Size.FINAL, aes(x = factor(Notes), y = Length, fill = Treatment)) +
+          theme_classic() +
+          scale_fill_manual(values=c("blue", "orange", "blue", "orange", "blue", "orange", "blue", "orange",
+                                     "blue", "orange", "blue", "orange", "blue", "orange", "blue", "orange",
+                                     "blue", "orange")) +
+          geom_boxplot(alpha = 0.5, # color hue
+               width=0.6, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) + 
+         geom_point(pch = 19, position = position_jitterdodge(.3), size=1) +
+         stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
+               width = 0.6, size=0.4, linetype = "dashed", position = position_dodge(preserve = "single")) +
+         theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
+         ylim(0,12) +
+         labs(y=expression("Shell size"~(mm)), x=expression("Days"))
+
+
+
 
 # Analysis
 ttest_size_20190628 <- t.test(Length ~ Treatment, data = Size.data)
