@@ -91,6 +91,13 @@ threewayanova_D1.7 <- aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment
 shapiro.test(residuals(threewayanova_D1.7)) # shaprio wilk test of model residuals p = 0.162; normal distribution
 hist((residuals(threewayanova_D1.7)))
 summary(threewayanova_D1.7) # marginal effect of treatment history
+TukeyHSD(threewayanova_D1.7, 'Treatment.history', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+
+
+TukeyHSD(threewayanova_D1.7, 'Treatment.history:Treatment.EXP_1', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# marginal diff : Treatment.history:Treatment.EXP_1
+# EH:M-AH:M p = 0.0408163
+
 
 # MODELS FOR DAYS 8 - 14 -------------------------------------------------------- #
 
@@ -110,7 +117,7 @@ hist((residuals(threewayanova_D8.14)))
 summary(threewayanova_D8.14) # significant effect of treatment
 TukeyHSD(threewayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
 # significant difference between:
-# 20190807-20190801
+# 20190807-20190801 p = 0.0254093
 # D8.14_posthoc <- lsmeans(twowayanova_D8.14, pairwise ~ Date)# pariwise Tukey Post-hoc test between repeated treatments
 # D8.14_posthoc.05 <- cld(D8.14_posthoc, alpha=.05, Letters=letters) #letters
 # D8.14_posthoc.05
@@ -126,12 +133,13 @@ interaction.plot(DATA_Days.15.21$Treatment.history, DATA_Days.15.21$Treatment.EX
 interaction.plot(DATA_Days.15.21$Date, DATA_Days.15.21$Treatment.EXP_1, DATA_Days.15.21$resp.COUNT.µg.L.hr.indiv)
 
 # two way ANOVA treatment and date
-fourwayanova_D15.21 <-aov(resp.MEAN.µg.L.hr.mm ~ Treatment.history*Treatment.EXP_1*Treatment.EXP_2*Date, data=DATA_Days.15.21)
+fourwayanova_D15.21 <-aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment.EXP_1*Treatment.EXP_2*Date, data=DATA_Days.15.21)
 shapiro.test(residuals(fourwayanova_D15.21)) # shaprio wilk test of model residuals p = 0.15
 hist((residuals(fourwayanova_D15.21)))
 summary(fourwayanova_D15.21) # significant interaction between date and treatment
 TukeyHSD(fourwayanova_D15.21, 'Treatment.history:Treatment.EXP_1', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
-
+# sig effect of : Treatment.history:Treatment.EXP_1
+# EH:S-EH:A p = 0.0459861
 RESP_Days.15.21.final <- DATA_Days.15.21 %>% 
   dplyr::group_by(Treatment.EXP_1, Treatment.history) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))

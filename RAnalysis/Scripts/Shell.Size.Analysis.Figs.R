@@ -1,4 +1,4 @@
-#Title: Shell.size 
+#Title: Shell.size.Analysis 
 #Author: Sam Gurr 
 #Edited by: Sam Gurr
 #Date Last Modified: 20190628
@@ -54,90 +54,103 @@ Size.data <- read.csv(file="Data/Shell_length/20190628_shell_size.csv", header=T
 Size.data.ALL <- read.csv(file="Data/Shell_length/Shell_length_data.csv", header=T) #read sample.info data
 ID.reference.all <- read.csv(file="Data/Tank.ID.reference.subsequent.csv", header=T) #read sample.info data
 
-ID.reference.D.1.14 <- ID.reference.all %>% 
-  dplyr::filter(Tank.ID == 1:36) %>% 
-  dplyr::select(Tank.ID, INITIAL.TREATMENT.ID)
+################################################################################################################### #
+# DATA CARPENTRY FOR FIGURES AND STATISTICAL ANALYSIS   ########################################################### #
+################################################################################################################### #
 
-ID.reference.D.15.21 <- ID.reference.all  %>% 
-  dplyr::select(Tank.ID, TREATMENT.ID.TOTAL)
 
-# filter and select to narrow a table of shell lengths pre experiument and during the 21 day experiment
-Size.data.EXPERIMENT <- Size.data.ALL %>% 
-  dplyr::filter(Date > 20190722) %>% 
-  dplyr::select(Date, Tank.ID, Sw.Condition, Length, Notes)
+# Merge ID.ref with shell size; select desired columns; divide into treatment periods; rbind to one table
+# ID ref modifications - filter tank IDs for treatment periods
+# ID.reference.D.1.14 <- ID.reference.all %>%  dplyr::filter(Tank.ID == 1:36) %>%  dplyr::select(Tank.ID, INITIAL.TREATMENT.ID)
+# ID.reference.D.15.21 <- ID.reference.all  %>%  dplyr::select(Tank.ID, TREATMENT.ID.TOTAL)
+# filter and select dates of experiment and ommit NAs
+Size.data.EXPERIMENT <- Size.data.ALL %>% dplyr::filter(Date > 20190722) %>%  dplyr::select(Date, Tank.ID, Sw.Condition, Length, Notes) # select data since 20190723
 Size.data.EXPERIMENT <- na.omit(Size.data.EXPERIMENT) # ommit NAs from the dataset
 Size.data.EXPERIMENT # view table
-
-ID.reference.short <- ID.reference.all %>% dplyr::select(Tank.ID,TREATMENT.ID.TOTAL) # merge two tables by tank id to get treatments
-shell_size_data <- merge(Size.data.EXPERIMENT,ID.reference.short,by="Tank.ID")
+# modify ID ref columns and merge with shell size table = shell_size_data
+ID.reference.short <- ID.reference.all %>% dplyr::select(Tank.ID,TREATMENT.ID.TOTAL) # select columns desired from ID.references to merge with shell size below
+shell_size_data <- merge(Size.data.EXPERIMENT,ID.reference.short,by="Tank.ID") # merge shell size data and ID reference
+# modify shell_size_data for targetted columns and create new columns for different treatments
 shell_size_data <- shell_size_data %>% dplyr::select(Date, Length, TREATMENT.ID.TOTAL)
-shell_size_data$Treatment_history <- substr(shell_size_data$TREATMENT.ID.TOTAL, 1,1)
-shell_size_data$Treatment.EXP_1 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 3,3)
-shell_size_data$Treatment.EXP_2 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 4,4)
-
+shell_size_data$Treatment_history <- substr(shell_size_data$TREATMENT.ID.TOTAL, 1,1) # new column for treatment history
+shell_size_data$Treatment.EXP_1 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 3,3) # new column for d1-7 exposure
+shell_size_data$Treatment.EXP_2 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 4,4) # new column for d 15-21 exposure
+# divide shell_size_data into the 4 different periods (pre, first 7 days, second 7 days, third 7 days of 21-day experiment)
+# (1) Pre-experiment data
 Size.pre <- shell_size_data %>% dplyr::filter(Date %in% 20190723) 
-Size.pre$Treatment.EXP_1 <- "NA" # first exposure NA 
-Size.pre$Treatment.EXP_2 <- "NA" # second exposure NA
+Size.pre$Treatment.EXP_1 <- "NA" # first exposure NA - not needed in figure or analysis
+Size.pre$Treatment.EXP_2 <- "NA" # second exposure NA - not needed in figure or analysis # IMPORTANT! PRE-EXPERIMENT DATA
+# (2 and 3) First 14 days of the expeiment - Same treatments for figure and analsis (hisotyr and Exp_1 NOT Exp_2 during last 7-day period)
 Size.D.1.14 <- shell_size_data %>% dplyr::filter(Date %in% 20190725:20190807)  # filter data with six treatments
-Size.D.1.14$Treatment.EXP_2 <- "NA" # second exposure NA
-Size.D.15.21 <- shell_size_data %>% dplyr::filter(Date > 20190807)  # filter data with twelve treatments
-
+Size.D.1.14$Treatment.EXP_2 <- "NA" # second exposure NA - not needed in figure or analysis
+Size.D.1.7 <- Size.D.1.14 %>% dplyr::filter(Date < 20190801 ) # IMPORTANT! DAYS 1 - 7 DATA
+Size.D.8.14 <- Size.D.1.14 %>% dplyr::filter(Date > 20190731) # IMPORTANT! DAYS 8 - 14 DATA
+# (4) Last 7 days of the experiment 
+Size.D.15.21 <- shell_size_data %>% dplyr::filter(Date > 20190807)  # IMPORTANT! DAYS 15 - 21 DATA
+# bind all data to one table 
 SizeTableFINAL <- rbind(Size.pre, Size.D.1.14, Size.D.15.21)
+
+
+# NOTE - THESE ARE THE TARGETTED DATA FRAMES FOR FIGURES
+# Size.pre
+# Size.D.1.7
+# Size.D.8.14
+# Size.D.15.21
+
+################################################################################################################### #
+# STATISTICAL ANALYSIS  ########################################################################################### #
+################################################################################################################### #
+
+# PRE-EXPERIMENT T-TEST ------------------------------------------------------------------------------------------- #
 
 # t.test of "pre" data prior to the experiment
 t.test(Length~Treatment_history, data=Size.pre) # p-value = 0.5516; no difference between pCO2 treatment
 
-
-
-# MODELS FOR DAYS 1 - 7 -------------------------------------------------------- #
-
-Days.1.7 <- Size.D.1.14 %>% 
-  dplyr::filter(Date < 20190801 ) # filter dataframe for the correct dates
-
+# MODELS FOR DAYS 1 - 7 ------------------------------------------------------------------------------------------- #
 
 # interaction plots
-interaction.plot(Days.1.7$Treatment_history, Days.1.7$Date, Days.1.7$Length)
-interaction.plot(Days.1.7$Treatment_history, Days.1.7$Treatment.EXP_1, Days.1.7$Length)
-interaction.plot(Days.1.7$Date, Days.1.7$Treatment.EXP_1, Days.1.7$Length)
-# two way ANOVA treatment and date
+d.1.7.A <- interaction.plot(Size.D.1.7$Treatment_history, Size.D.1.7$Date, Size.D.1.7$Length)
+d.1.7.B <- interaction.plot(Size.D.1.7$Treatment_history, Size.D.1.7$Treatment.EXP_1, Size.D.1.7$Length)
+d.1.7.C <- interaction.plot(Size.D.1.7$Date, Size.D.1.7$Treatment.EXP_1, Size.D.1.7$Length)
+d.1.7.ints <- ggarrange(d.1.7.A,  d.1.7.B, d.1.7.C, ncol = 3, nrow = 1) # combine plots 
+d.1.7.ints # view interaction plots
+# three way ANOVA treatment and date
 # resp.MEAN.µg.L.hr.mm
 # resp.COUNT.µg.L.hr.indiv
-Days.1.7$Date <- as.factor(Days.1.7$Date)
-threewayanova_D1.7 <- aov(Length ~ Treatment_history*Treatment.EXP_1*Date, data=Days.1.7) # run the model
-shapiro.test(residuals(threewayanova_D1.7)) # shaprio wilk test of model residuals p = 0.162; normal distribution
-hist((residuals(threewayanova_D1.7)))
-summary(threewayanova_D1.7) # marginal effect of treatment history
+Size.D.1.7$Date <- as.factor(Size.D.1.7$Date)
+threewayanova_D1.7 <- aov(Length ~ Treatment_history*Treatment.EXP_1*Date, data=Size.D.1.7) # run the model
+shapiro.test(residuals(threewayanova_D1.7)) # shaprio wilk test of model residuals p = 0.0297; non-normal distribution
+hist((residuals(threewayanova_D1.7))) # histogram of model - looks normal
+boxplot(residuals(threewayanova_D1.7)) #plot boxplot of residuals - some outliers present
+plot(fitted(threewayanova_D1.7),residuals(threewayanova_D1.7)) # plot residuals
+qqnorm(residuals(threewayanova_D1.7)) # qqplot - looks normal
+summary(threewayanova_D1.7) # significant effect of time and marginal effect of treatment history
+TukeyHSD(threewayanova_D1.7, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# significant difference between:
+# 20190731-20190728 p = 0.0246426
 
+# MODELS FOR DAYS 8 - 14 ------------------------------------------------------------------------------------------ #
 
-
-# MODELS FOR DAYS 8 - 14 -------------------------------------------------------- #
-
-
-
-Size.D.1.14$Date <- as.character(Size.D.1.14$Date)
-Days.8.14 <- Size.D.1.14 %>% 
-  dplyr::filter(Date > 20190731) # make dataframe 
-# make date a character to address as a factor in the model
 # interaction plots
-interaction.plot(Days.8.14$Treatment_history, Days.8.14$Date, Days.8.14$Length)
-interaction.plot(Days.8.14$Treatment_history, Days.8.14$Treatment.EXP_1, Days.8.14$Length)
-interaction.plot(Days.8.14$Date, Days.8.14$Treatment.EXP_1, Days.8.14$Length)
-
-Days.8.14$Date <- as.factor(Days.8.14$Date) 
-# two way ANOVA treatment and date
-threewayanova_D8.14 <- aov(Length ~ Treatment_history*Treatment.EXP_1*Date, data=Days.8.14) # run the model
-shapiro.test(residuals(threewayanova_D8.14)) # shaprio wilk test of model residuals p = 0.8904; normal distribution
-hist((residuals(threewayanova_D8.14)))
-summary(threewayanova_D8.14) # significant effect of treatment
+Size.D.1.14$Date <- as.character(Size.D.1.14$Date) # make date as.character for interaction plots
+interaction.plot(Size.D.8.14$Treatment_history, Size.D.8.14$Date, Size.D.8.14$Length)
+interaction.plot(Size.D.8.14$Treatment_history, Size.D.8.14$Treatment.EXP_1, Size.D.8.14$Length)
+interaction.plot(Size.D.8.14$Date, Size.D.8.14$Treatment.EXP_1, Size.D.8.14$Length)
+# three way ANOVA treatment and date
+Size.D.8.14$Date <- as.factor(Size.D.8.14$Date) # make datae as.factors for ANOVA model
+threewayanova_D8.14 <- aov(Length ~ Treatment_history*Treatment.EXP_1*Date, data=Size.D.8.14) # run the model
+shapiro.test(residuals(threewayanova_D8.14)) # shaprio wilk test of model residuals p = 0.0003904;  non-normal distribution
+hist((residuals(threewayanova_D8.14))) # histogram of model - looks normal
+boxplot(residuals(threewayanova_D8.14)) #plot boxplot of residuals - some outliers present
+plot(fitted(threewayanova_D8.14),residuals(threewayanova_D8.14)) # plot residuals
+qqnorm(residuals(threewayanova_D8.14)) # qqplot - looks normal
+summary(threewayanova_D8.14) # significant effect of time
 TukeyHSD(threewayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
 # significant difference between:
+# 20190804-20190801 p = 0.0020821
+# 20190807-20190801 p = 0.0137083
 
-
-
-
-# MODELS FOR DAYS 15 - 21 -------------------------------------------------------- #
-
-
+# MODELS FOR DAYS 15 - 21  --------------------------------------------------------------------------------------- #
 
 # make date a character to address as a factor in the model
 Size.D.15.21$Date <- as.character(Size.D.15.21$Date) 
@@ -145,35 +158,51 @@ Size.D.15.21$Date <- as.character(Size.D.15.21$Date)
 interaction.plot(Size.D.15.21$Treatment_history, Size.D.15.21$Date, Size.D.15.21$Length)
 interaction.plot(Size.D.15.21$Treatment_history, Size.D.15.21$Treatment.EXP_1, Size.D.15.21$Length)
 interaction.plot(Size.D.15.21$Date, Size.D.15.21$Treatment.EXP_1, Size.D.15.21$Length)
-
-# two way ANOVA treatment and date
+# four way ANOVA treatment and date
 fourwayanova_D15.21 <-aov(Length ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2*Date, data=Size.D.15.21)
-shapiro.test(residuals(fourwayanova_D15.21)) # shaprio wilk test of model residuals p = 0.15
-hist((residuals(fourwayanova_D15.21)))
-summary(fourwayanova_D15.21) # significant interaction between date and treatment
-TukeyHSD(fourwayanova_D15.21, 'Treatment_history', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+shapiro.test(residuals(fourwayanova_D15.21)) # shaprio wilk test of model residuals p = 0.0005398;  non-normal distribution
+hist((residuals(fourwayanova_D15.21)))# histogram of model - looks normal
+boxplot(residuals(fourwayanova_D15.21)) #plot boxplot of residuals - some outliers present
+plot(fitted(fourwayanova_D15.21),residuals(fourwayanova_D15.21)) # plot residuals
+qqnorm(residuals(fourwayanova_D15.21)) # qqplot - looks normal
+summary(fourwayanova_D15.21) # FIVE significant interaction between date and treatment
+# history effect 
+# binary - no need for Tukey
 TukeyHSD(fourwayanova_D15.21, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+#Date
+# significant difference between:
+# 20190814-20190808 p = 0.0000000
+# 20190814-20190811 p = 0.0000004
 TukeyHSD(fourwayanova_D15.21, 'Treatment_history:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# Treatment_history:Treatment.EXP_2
+# E:M-A:M p = 0.0003035
 TukeyHSD(fourwayanova_D15.21, 'Treatment.EXP_1:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# no diffs present ??
 TukeyHSD(fourwayanova_D15.21, 'Treatment_history:Treatment.EXP_1:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# Treatment_history:Treatment.EXP_1:Treatment.EXP_2
+# E:S:M-A:S:M p =0.0006942
+# E:S:M-A:M:M p =0.0000504
+# E:S:M-E:S:A p =0.0001162
+# E:S:M-A:M:A p =0.0545451 # marginal
 
+################################################################################################################### #
+########## FIGURE CALCULATIONS (MEAN ± SE) ######################################################################### #
+################################################################################################################### #
 
-
-########## mean and st error calculations ########################### #
 # pre
 Size_Days.pre.final <- Size.pre %>% 
   dplyr::group_by(Date, Treatment.EXP_1, Treatment_history, Treatment.EXP_2, TREATMENT.ID.TOTAL) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))
 # days 1 - 7
-Days.1.7$TREATMENT <- paste(Days.1.7$Treatment_history, "H", Days.1.7$Treatment.EXP_1,sep="")
-Size_Days.1.7.final <- Days.1.7 %>% 
+Size.D.1.7$TREATMENT <- paste(Size.D.1.7$Treatment_history, "H", Size.D.1.7$Treatment.EXP_1,sep="")
+Size_Size.D.1.7.final <- Size.D.1.7 %>% 
   dplyr::select(Date, Length, TREATMENT) %>% 
   dplyr::group_by(Date, TREATMENT) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))
 
 # days 8 - 14
-Days.8.14$TREATMENT <- paste(Days.8.14$Treatment_history, "H", Days.8.14$Treatment.EXP_1,sep="")
-Size_Days.8.14.final <- Days.8.14 %>% 
+Size.D.8.14$TREATMENT <- paste(Size.D.8.14$Treatment_history, "H", Size.D.8.14$Treatment.EXP_1,sep="")
+Size_Size.D.8.14.final <- Size.D.8.14 %>% 
   dplyr::select(Date, Length, TREATMENT) %>% 
   dplyr::group_by(Date, TREATMENT) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))
@@ -183,24 +212,6 @@ Size_Days.15.21.final <- Size.D.15.21 %>%
   dplyr::select(Date, Length, TREATMENT.ID.TOTAL) %>% 
   dplyr::group_by(Date, TREATMENT.ID.TOTAL) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))
-
-
-# divide into the first 14 days and last 7 days to create a new column for treatment and merge to one dataframe
-Size.data.D.1.14 <- Size.data.EXPERIMENT %>% 
-  dplyr::filter(Date < 20190808) # days 1 - 14, make column for treatment initial
-Size.data.D.1.14 <- merge(Size.data.D.1.14, ID.reference.D.1.14, by= 'Tank.ID')
-colnames(Size.data.D.1.14)[6] <- "Treatment" # change column name to treatment to bind with "...D1.14"
-
-
-Size.data.D.15.21 <- Size.data.EXPERIMENT %>% 
-  dplyr::filter(Date > 20190807)  # days 15 - 21, make column for treatment secondary
-Size.data.D.15.21 <- merge(Size.data.D.15.21, ID.reference.D.15.21, by= 'Tank.ID')
-colnames(Size.data.D.15.21)[6] <- "Treatment" # change column name to treatment to bind with "...D1.14"
-
-
-Size.FINAL <- rbind(Size.data.D.1.14,Size.data.D.15.21)
-
-Size.FINAL
 
 ##################################################### #
 ##################################################### #
@@ -237,9 +248,8 @@ FIGURE.size.pre  <- print(FIGURE.size.pre + scale_colour_manual(values = c("skyb
 # days 1 - 7 rel metabolic rate (per individual) ----------------------------------------------------------------------------------------------- #
 
 
-names(Size_Days.1.7.final)
-Size_Days.1.7.final$Date <- as.factor(Size_Days.1.7.final$Date) # call date as a character
-FIGURE.size_Days.1.7 <- ggplot(Size_Days.1.7.final, aes(x=factor(Date), y=mean, group=TREATMENT, colour=TREATMENT)) + 
+Size_Size.D.1.7.final$Date <- as.factor(Size_Size.D.1.7.final$Date) # call date as a character
+FIGURE.size_Size.D.1.7 <- ggplot(Size_Size.D.1.7.final, aes(x=factor(Date), y=mean, group=TREATMENT, colour=TREATMENT)) + 
   geom_errorbar(aes(ymin=mean-std.error, 
                     ymax=mean+std.error), width=.1, position=pd) +
   geom_line(position=pd) +
@@ -256,7 +266,7 @@ FIGURE.size_Days.1.7 <- ggplot(Size_Days.1.7.final, aes(x=factor(Date), y=mean, 
   #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
   theme(legend.justification=c(1,1),
         legend.position=c(1,1))               # Position legend in bottom right
-FIGURE.size_Days.1.7  <- print(FIGURE.size_Days.1.7 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
+FIGURE.size_Size.D.1.7  <- print(FIGURE.size_Size.D.1.7 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
 
 
 # FIGURE 3
@@ -264,8 +274,8 @@ FIGURE.size_Days.1.7  <- print(FIGURE.size_Days.1.7 + scale_colour_manual(values
 
 
 
-Size_Days.8.14.final$Date <- as.character(Size_Days.8.14.final$Date)
-FIGURE.size_Days.8.14 <- ggplot(Size_Days.8.14.final, aes(x=factor(Date), y=mean, colour=TREATMENT, group=TREATMENT)) + 
+Size_Size.D.8.14.final$Date <- as.character(Size_Size.D.8.14.final$Date)
+FIGURE.size_Size.D.8.14 <- ggplot(Size_Size.D.8.14.final, aes(x=factor(Date), y=mean, colour=TREATMENT, group=TREATMENT)) + 
   geom_errorbar(aes(ymin=mean-std.error, 
                     ymax=mean+std.error), width=.1, position=pd) +
   geom_line(position=pd) +
@@ -282,7 +292,7 @@ FIGURE.size_Days.8.14 <- ggplot(Size_Days.8.14.final, aes(x=factor(Date), y=mean
   #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
   theme(legend.justification=c(1,1),
         legend.position=c(1,1))            # Position legend in bottom right
-FIGURE.size_Days.8.14  <- print(FIGURE.size_Days.8.14 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
+FIGURE.size_Size.D.8.14  <- print(FIGURE.size_Size.D.8.14 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
 
 
 
@@ -375,45 +385,16 @@ FIG.schematic.data  <- print(FIG.schematic.data +
 
 
 # Arrange plots
-SIZE.plot <- ggarrange(FIGURE.size.pre,  FIGURE.size_Days.1.7, FIGURE.size_Days.8.14, FIGURE.size_Days.15.21,ncol = 4, nrow = 1, widths = c(0.7,2,2,2), labels = c("B","C","D","E")) # combine plots 
+SIZE.plot <- ggarrange(FIGURE.size.pre,  FIGURE.size_Size.D.1.7, FIGURE.size_Size.D.8.14, FIGURE.size_Days.15.21,ncol = 4, nrow = 1, widths = c(0.7,2,2,2), labels = c("B","C","D","E")) # combine plots 
 SIZE.plot # view plots
 SIZE.plot.with.schematic <- ggarrange(FIG.schematic.data, SIZE.plot,ncol = 1, nrow = 2, heights = c(1, 2.0), labels = "A") # combine plots
 #gsave to Output
-ggsave(file="Output/SIZE.plot.pdf", SIZE.plot.with.schematic, width = 12, height = 8, units = c("in")) # sizeiration rate plots
+ggsave(file="Output/SIZE.plot.pdf", SIZE.plot.with.schematic, width = 12, height = 8, units = c("in")) # SIZE  plots
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+############################################################################################################ #
+############ PLOTS MADE FOR SHELL SIZE ON 6/28 ############################################################# #
+############################################################################################################ #
 
 # Analysis
 ttest_size_20190628 <- t.test(Length ~ Treatment, data = Size.data)
