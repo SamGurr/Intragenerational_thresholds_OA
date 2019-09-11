@@ -67,10 +67,12 @@ Resp.pre <- Short_resp_table %>% dplyr::filter(Date %in% 20190723)
 Resp.pre$Treatment.EXP_1 <- "NA" # first exposure NA 
 Resp.pre$Treatment.EXP_2 <- "NA" # second exposure NA
 Resp.D.1.14 <- Short_resp_table %>% dplyr::filter(Date %in% 20190725:20190807)  # filter data with six treatments
+Resp.D.1.14$Treatment.EXP_1 <- substr(Resp.D.1.14$Treatment.EXP_1, 3,3) # first exposure NA
 Resp.D.1.14$Treatment.EXP_2 <- "NA" # second exposure NA
 Resp.D.15.21 <- Short_resp_table %>% dplyr::filter(Date > 20190807)  # filter data with twelve treatments
 Resp.D.15.21$Treatment.history <- substr(Resp.D.15.21$Treatment.EXP_2, 1,2) # assign treatment history as first two characters of the 4 digit treatment in exp_2
-Resp.D.15.21$Treatment.EXP_1 <- substr(Resp.D.15.21$Treatment.EXP_2, 1,3) # assign treatment history as first three characters of the 4 digit treatment in exp_2
+Resp.D.15.21$Treatment.EXP_1 <- substr(Resp.D.15.21$Treatment.EXP_2, 3,3) # assign treatment history as first three characters of the 4 digit treatment in exp_2
+Resp.D.15.21$Treatment.EXP_2 <- substr(Resp.D.15.21$Treatment.EXP_2, 4,4) # assign treatment history as first three characters of the 4 digit treatment in exp_2
 
 TableFINAL <- rbind(Resp.pre, Resp.D.1.14, Resp.D.15.21)
 

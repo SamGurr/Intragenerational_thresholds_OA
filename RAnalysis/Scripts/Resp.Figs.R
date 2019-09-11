@@ -55,8 +55,252 @@ setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnal
 
 # upload the final resp rate data
 Final.resp.table <- read.csv(file="Data/SDR_data/Final.resp.rates.csv", header=T) #read Size.info data
+DATA <- read.csv(file="Data/SDR_data/Final_table_for_resp_analysis.csv", header=T) #read Size.info data
 Final.resp.table.EXP <- Final.resp.table %>% # table for all data on and after 20190723 
   dplyr::filter(row.num > 22) 
+
+############################################################################################# #
+############################################################################################# #
+#########################  RESP RATE DATA ################################################### #
+############################################################################################# #
+############################################################################################# #
+DATA
+DATA.pre <- DATA %>% dplyr::filter(Date %in% 20190723) %>% dplyr::select(Date, resp.COUNT.µg.L.hr.indiv,resp.MEAN.µg.L.hr.mm, Treatment.history) # pre experiment 
+DATA.Days.1.7 <- DATA %>% dplyr::filter(Date %in% 20190725:20190731) %>% dplyr::select(Date, resp.COUNT.µg.L.hr.indiv,resp.MEAN.µg.L.hr.mm, Treatment.EXP_1, Treatment.history) # d 1 - 7 experiment
+DATA_Days.8.14 <- DATA %>% dplyr::filter(Date %in% 20190801:20190807) %>% dplyr::select(Date, resp.COUNT.µg.L.hr.indiv,resp.MEAN.µg.L.hr.mm, Treatment.EXP_1, Treatment.history) # d 8 - 14 experiment
+DATA_Days.15.21 <- DATA %>% dplyr::filter(Date %in% 20190808:20190814) %>% dplyr::select(Date, resp.COUNT.µg.L.hr.indiv,resp.MEAN.µg.L.hr.mm, Treatment.EXP_2, Treatment.history, Treatment.EXP_1) # d 15-21 experiment
+
+########## mean and st error calculations ########################### #
+# pre
+resp_Days.pre.final <- DATA.pre %>% 
+  dplyr::group_by(Date, Treatment.history) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+# days 1 - 7
+resp_Days.1.7.final <- DATA.Days.1.7 %>% 
+  dplyr::group_by(Date, Treatment.EXP_1,Treatment.history) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+resp_Days.1.7.final$TREATMENT <- paste(resp_Days.1.7.final$Treatment.history,resp_Days.1.7.final$Treatment.EXP_1, sep="") # IMPORTANT - this combines history and first treatment exposure for figure treatments
+# days 8 - 14
+resp_Days.8.14.final <- DATA_Days.8.14 %>% 
+  dplyr::group_by(Date, Treatment.EXP_1, Treatment.history) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+resp_Days.8.14.final$TREATMENT <- paste(resp_Days.8.14.final$Treatment.history,resp_Days.8.14.final$Treatment.EXP_1, sep="") # IMPORTANT - this combines history and first treatment exposure for figure treatments
+# days 15 - 21
+resp_Days.15.21.final <- DATA_Days.15.21 %>% 
+  dplyr::group_by(Date, Treatment.EXP_2, Treatment.EXP_1, Treatment.history, Treatment.EXP_1, Treatment.EXP_2) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+resp_Days.15.21.final$TREATMENT <- paste(resp_Days.15.21.final$Treatment.history,resp_Days.15.21.final$Treatment.EXP_1,resp_Days.15.21.final$Treatment.EXP_2, sep="") # IMPORTANT - this combines history and first treatment exposure for figure treatments
+
+
+##################################################### #
+##################################################### #
+########## PLOT MEAN ST ERROR  RESP  ################ #----------------------------------------------------------------------------------------------- #
+##################################################### #
+##################################################### #
+names(resp_Days.1.7.final)
+
+pd <- position_dodge(0.25) # dodge between treatments to ease asthetics and interpretation
+
+
+# FIGURE 1
+resp_Days.pre.final$Date <- as.character(resp_Days.pre.final$Date) # call date as a character
+FIGURE.resp.pre <- ggplot(resp_Days.pre.final, aes(x=factor(Date), y=resp.COUNT.µg.L.hr.indiv_mean, colour=Treatment.history, group=Treatment.history)) + 
+  geom_errorbar(aes(ymin=resp.COUNT.µg.L.hr.indiv_mean-resp.COUNT.µg.L.hr.indiv_std.error, 
+                    ymax=resp.COUNT.µg.L.hr.indiv_mean+resp.COUNT.µg.L.hr.indiv_std.error), width=.1, position=pd) +
+  geom_line(position=pd) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SMR per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHA", "AHM", "AHS", "EHA","EHM", "EHS"),
+                   labels=c("Amb-Amb", "Amb-Mod", "Amb-Sev", "Elev-Amb", "Elev-Mod", "Elev-Sev"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Pre-experiment SMR") +
+  geom_point(position=pd, shape=c(21, 24), size=3,fill=("white")) + # 21 is filled circle
+  #expand_limits(y=0) +                        # Expand y range
+  ylim(0, 13.5) +
+  #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
+  theme(legend.justification=c(1,1),
+        legend.position=c(1,1))               # Position legend in bottom right
+FIGURE.resp.pre  <- print(FIGURE.resp.pre + scale_colour_manual(values = c("skyblue1", "tomato1"))+ theme(legend.position = "none"))
+
+
+# FIGURE 2
+# days 1 - 7 rel metabolic rate (per individual) ----------------------------------------------------------------------------------------------- #
+
+
+
+resp_Days.1.7.final$Date <- as.character(resp_Days.1.7.final$Date) # call date as a character
+FIGURE.resp_Days.1.7 <- ggplot(resp_Days.1.7.final, aes(x=factor(Date), y=resp.COUNT.µg.L.hr.indiv_mean, group=TREATMENT, colour=TREATMENT)) + 
+  geom_errorbar(aes(ymin=resp.COUNT.µg.L.hr.indiv_mean-resp.COUNT.µg.L.hr.indiv_std.error, 
+                    ymax=resp.COUNT.µg.L.hr.indiv_mean+resp.COUNT.µg.L.hr.indiv_std.error), width=.3, position=pd) +
+  geom_line(position=pd, width=.3) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SMR per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHA", "AHM", "AHS", "EHA","EHM", "EHS"),
+                   labels=c("Amb-Amb", "Amb-Mod", "Amb-Sev", "Elev-Amb", "Elev-Mod", "Elev-Sev"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Days 1-7 SMR") +
+  geom_point(position=pd, shape=c(21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24), size=3, fill=("white")) + # 21 is filled circle
+  #expand_limits(y=0) + 
+  ylim(0, 13.5) + 
+  #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
+  theme(legend.justification=c(1,1),
+        legend.position=c(1,1))               # Position legend in bottom right
+FIGURE.resp_Days.1.7  <- print(FIGURE.resp_Days.1.7 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
+
+
+# FIGURE 3
+# days 8-14 rel metabolic rate (per individual)----------------------------------------------------------------------------------------------- #
+
+
+
+resp_Days.8.14.final$Date <- as.character(resp_Days.8.14.final$Date)
+FIGURE.resp_Days.8.14 <- ggplot(resp_Days.8.14.final, aes(x=factor(Date), y=resp.COUNT.µg.L.hr.indiv_mean, colour=TREATMENT, group=TREATMENT)) + 
+  geom_errorbar(aes(ymin=resp.COUNT.µg.L.hr.indiv_mean-resp.COUNT.µg.L.hr.indiv_std.error, 
+                    ymax=resp.COUNT.µg.L.hr.indiv_mean+resp.COUNT.µg.L.hr.indiv_std.error), width=.3, position=pd) +
+  geom_line(position=pd, width=.3) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SMR per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHA", "AHM", "AHS", "EHA","EHM", "EHS"),
+                   labels=c("Amb-Amb", "Amb-Mod", "Amb-Sev", "Elev-Amb", "Elev-Mod", "Elev-Sev"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Days 8-14 SMR") +
+  geom_point(position=pd, shape=c(21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24), size=3, fill=("white")) + # 21 is filled circle
+  #expand_limits(y=0) +   
+  ylim(0, 13.5) +
+  #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
+  theme(legend.justification=c(1,1),
+        legend.position=c(1,1))            # Position legend in bottom right
+FIGURE.resp_Days.8.14  <- print(FIGURE.resp_Days.8.14 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
+
+
+
+# FIGURE 4
+# days 15-21 rel metabolic rate (per individual)    ----------------------------------------------------------------------------------------------- #
+
+
+
+resp_Days.15.21.final$Date <- as.character(resp_Days.15.21.final$Date)
+FIGURE.resp_Days.15.21 <- ggplot(resp_Days.15.21.final, aes(x=factor(Date), y=resp.COUNT.µg.L.hr.indiv_mean, colour=TREATMENT, group=TREATMENT, shape = Treatment.EXP_2)) + 
+  geom_errorbar(aes(ymin=resp.COUNT.µg.L.hr.indiv_mean-resp.COUNT.µg.L.hr.indiv_std.error, 
+                    ymax=resp.COUNT.µg.L.hr.indiv_mean+resp.COUNT.µg.L.hr.indiv_std.error), width=.3, position=pd) +
+  geom_line(position=pd, width=.3) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SMR per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHAA", "AHAM", "AHMA", "AHMM", 
+                            "AHSA","AHSM", "EHAA", "EHAM", 
+                            "EHMA", "EHMM", "EHSA", "EHSM"),
+                   labels=c("Amb-Amb-Amb", "Amb-Amb-Mod", "Amb-Mod-Amb", "Amb-Mod-Mod", 
+                            "Amb-Sev-Amb", "Amb-Sev-Mod", "Elev-Amb-Amb","Elev-Amb-Mod",
+                            "Elev-Mod-Amb", "Elev-Mod-Mod", "Elev-Sev-Amb", "Elev-Sev-Mod"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Days 15-21 SMR") +
+  geom_point(position=pd, shape=c(21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,  21, 21, 21, 21, 21, 21, 
+                                  24, 24, 24, 24, 24, 24, 21, 21, 21, 21, 21, 21,  24, 24, 24, 24, 24, 24), size=3, 
+             fill=c("firebrick4", "white", "red1", "white", "tomato1",
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1",
+                    "white", "firebrick4", "white", "red1", "white", "tomato1",
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1",
+                    "white", "firebrick4", "white", "red1", "white", "tomato1", 
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1","white")) + # all the colors needed
+  #expand_limits(y=0) +  
+  ylim(0, 13.5) +
+  #scale_y_continuous(breaks=0:20*4) +                          # Set tick every 4
+  theme(legend.justification=c(1,1),legend.position=c(1,1))    # Position legend in bottom right
+FIGURE.resp_Days.15.21  <- print(FIGURE.resp_Days.15.21 + scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3",
+                                                                  "blue", "blue", "tomato1", "tomato1", 
+                                                                  "red1", "red1", "firebrick4", "firebrick4")) + theme(legend.position = "none"))
+
+
+# EXPERIMENTAL DESIGN KEY/SCHEMATIC FOR SMR PLOT ------------------------------------- #
+
+
+
+schematic.data <- read.csv(file="Data/SDR_data/Experimental.design.data.csv", header=T) #read Size.info data
+schematic.data
+pd <- position_dodge(0)
+FIG.schematic.data <- ggplot(schematic.data, aes(x=factor(x.val), y=y.val, colour=treat, group=treat, shape = treat)) + 
+  geom_line() +
+  theme_bw() +
+  xlab("Experimental periods") +
+  ylab("") +
+  scale_colour_hue(name="treat",    # Legend label, use darker colors
+                   breaks=c("AHAA", "AHAM", "AHMA", "AHMM", 
+                            "AHSA","AHSM", "EHAA", "EHAM", 
+                            "EHMA", "EHMM", "EHSA", "EHSM"),
+                   labels=c("Amb-Amb-Amb", "Amb-Amb-Mod", "Amb-Mod-Amb", "Amb-Mod-Mod", 
+                            "Amb-Sev-Amb", "Amb-Sev-Mod", "Elev-Amb-Amb","Elev-Amb-Mod",
+                            "Elev-Mod-Amb", "Elev-Mod-Mod", "Elev-Sev-Amb", "Elev-Sev-Mod"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Experimental design schematic") +
+  geom_point(position = pd, shape=c(21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                  21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                  21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                  21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24), size=3, 
+             fill=c("white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "firebrick4", "white", "red1", "white", "tomato1", 
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1")) +
+  geom_vline(xintercept = c(1.5, 2.5, 3.5), linetype="dotted", 
+                          color = "black", size=0.5) # all the colors needed
+FIG.schematic.data  <- print(FIG.schematic.data +  
+                               scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3","blue", "blue", "tomato1", "tomato1",  "red1", "red1", "firebrick4", "firebrick4")) +
+                               scale_x_discrete(labels=c("1" = "Pre", "2" = "Days 1-7","3" = "Days 8-14","4" = "Days 15-21")) +
+                               theme(legend.position="none",panel.grid.major = element_blank(),
+                                     panel.grid.minor = element_blank(),panel.border = element_blank(),
+                                     axis.ticks = element_blank(),axis.text.y=element_blank()) +
+                               annotate(geom="text", x=c(1,1,2,2,2,2,2,2,3,3,3,3,3,3,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1), y=c(9.5,3.5,
+                                                                                                                   11.5,9.5,7.5,5.5,3.5,1.5,
+                                                                                                                   11.5,9.5,7.5,5.5,3.5,1.5,
+                                                                                                                   12.5,11.5,10.5,9.5,8.5,7.5,6.5,5.5,4.5,3.5,2.5,1.5), 
+                                                                                                            label=c("EH", "AH", # PRE
+                                                                                                            "EHA","EHM","EHS","AHA","AHM","AHS", # DAYS 1 -7
+                                                                                                            "EHA","EHM","EHS","AHA","AHM","AHS", # DAYS 8 - 14
+                                                                                                            "EHAM","EHAA","EHMM","EHMA","EHSM","EHSA","AHAM","AHAA","AHMM","AHMA","AHSM","AHSA"), size =3, color="black"))
+                               
+
+# Arrange plots
+SMR.plot <- ggarrange(FIGURE.resp.pre,  FIGURE.resp_Days.1.7, FIGURE.resp_Days.8.14, FIGURE.resp_Days.15.21,ncol = 4, nrow = 1, widths = c(0.7,2,2,2), labels = c("B","C","D","E")) # combine plots 
+SMR.plot # view plots
+SMR.plot.with.schematic <- ggarrange(FIG.schematic.data, SMR.plot,ncol = 1, nrow = 2, heights = c(1, 2.0), labels = "A") # combine plots
+#gsave to Output
+ggsave(file="Output/SMR.plot.pdf", SMR.plot.with.schematic, width = 12, height = 8, units = c("in")) # respiration rate plots
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################### #
+##################################################### #
+########## RELATIVE RESP RATE DATA  ################# #
+##################################################### #
+##################################################### #
 
 # upload relative SMR data (calculation for this table in "Resp.Tables.R")
 df <- read.csv(file="Data/SDR_data/Relative_resp_rates.csv", header=T) #read Size.info data
@@ -67,14 +311,10 @@ df_Days.1.14 <- df.experiment %>%  # divide dataset into first 14 days (same tre
 df_Days.15.21 <- df.experiment %>%  # and last 7 days (same treatment)
   dplyr::filter(Date > 20190807)
 
-##################################################### #
-##################################################### #
-########## SUMMARISE FOR MEAN AND STAND ERROR ####### #
-##################################################### #
-##################################################### #
 #df_Days.1.14$Date <- as.character(df_Days.1.14$Date)
 #df_Days.1.14$Treatment <- as.character(df_Days.1.14$Treatment)
 
+########## mean and st error calculations ########################### #
 rel.resp_Days.1.14.final <- df_Days.1.14 %>% 
   dplyr::group_by(Date, Treatment) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,sd,std.error))

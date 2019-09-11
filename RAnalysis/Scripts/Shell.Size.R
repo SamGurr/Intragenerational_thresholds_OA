@@ -52,7 +52,6 @@ setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnal
 #Load Sample Info
 Size.data <- read.csv(file="Data/Shell_length/20190628_shell_size.csv", header=T) #read sample.info data
 Size.data.ALL <- read.csv(file="Data/Shell_length/Shell_length_data.csv", header=T) #read sample.info data
-
 ID.reference.all <- read.csv(file="Data/Tank.ID.reference.subsequent.csv", header=T) #read sample.info data
 
 ID.reference.D.1.14 <- ID.reference.all %>% 
@@ -62,12 +61,129 @@ ID.reference.D.1.14 <- ID.reference.all %>%
 ID.reference.D.15.21 <- ID.reference.all  %>% 
   dplyr::select(Tank.ID, TREATMENT.ID.TOTAL)
 
-# filter and select to narrow a table of shell lengths during the 21 day experiment
+# filter and select to narrow a table of shell lengths pre experiument and during the 21 day experiment
 Size.data.EXPERIMENT <- Size.data.ALL %>% 
-  dplyr::filter(Date > 20190723) %>% 
+  dplyr::filter(Date > 20190722) %>% 
   dplyr::select(Date, Tank.ID, Sw.Condition, Length, Notes)
 Size.data.EXPERIMENT <- na.omit(Size.data.EXPERIMENT) # ommit NAs from the dataset
 Size.data.EXPERIMENT # view table
+
+ID.reference.short <- ID.reference.all %>% dplyr::select(Tank.ID,TREATMENT.ID.TOTAL) # merge two tables by tank id to get treatments
+shell_size_data <- merge(Size.data.EXPERIMENT,ID.reference.short,by="Tank.ID")
+shell_size_data <- shell_size_data %>% dplyr::select(Date, Length, TREATMENT.ID.TOTAL)
+shell_size_data$Treatment_history <- substr(shell_size_data$TREATMENT.ID.TOTAL, 1,1)
+shell_size_data$Treatment.EXP_1 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 3,3)
+shell_size_data$Treatment.EXP_2 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 4,4)
+
+Size.pre <- shell_size_data %>% dplyr::filter(Date %in% 20190723) 
+Size.pre$Treatment.EXP_1 <- "NA" # first exposure NA 
+Size.pre$Treatment.EXP_2 <- "NA" # second exposure NA
+Size.D.1.14 <- shell_size_data %>% dplyr::filter(Date %in% 20190725:20190807)  # filter data with six treatments
+Size.D.1.14$Treatment.EXP_2 <- "NA" # second exposure NA
+Size.D.15.21 <- shell_size_data %>% dplyr::filter(Date > 20190807)  # filter data with twelve treatments
+
+SizeTableFINAL <- rbind(Size.pre, Size.D.1.14, Size.D.15.21)
+
+# t.test of "pre" data prior to the experiment
+t.test(Length~Treatment_history, data=Size.pre) # p-value = 0.5516; no difference between pCO2 treatment
+
+
+
+# MODELS FOR DAYS 1 - 7 -------------------------------------------------------- #
+
+Days.1.7 <- Size.D.1.14 %>% 
+  dplyr::filter(Date < 20190801 ) # filter dataframe for the correct dates
+
+
+# interaction plots
+interaction.plot(Days.1.7$Treatment_history, Days.1.7$Date, Days.1.7$Length)
+interaction.plot(Days.1.7$Treatment_history, Days.1.7$Treatment.EXP_1, Days.1.7$Length)
+interaction.plot(Days.1.7$Date, Days.1.7$Treatment.EXP_1, Days.1.7$Length)
+# two way ANOVA treatment and date
+# resp.MEAN.µg.L.hr.mm
+# resp.COUNT.µg.L.hr.indiv
+Days.1.7$Date <- as.factor(Days.1.7$Date)
+threewayanova_D1.7 <- aov(Length ~ Treatment_history*Treatment.EXP_1*Date, data=Days.1.7) # run the model
+shapiro.test(residuals(threewayanova_D1.7)) # shaprio wilk test of model residuals p = 0.162; normal distribution
+hist((residuals(threewayanova_D1.7)))
+summary(threewayanova_D1.7) # marginal effect of treatment history
+
+
+
+# MODELS FOR DAYS 8 - 14 -------------------------------------------------------- #
+
+
+
+Size.D.1.14$Date <- as.character(Size.D.1.14$Date)
+Days.8.14 <- Size.D.1.14 %>% 
+  dplyr::filter(Date > 20190731) # make dataframe 
+# make date a character to address as a factor in the model
+# interaction plots
+interaction.plot(Days.8.14$Treatment_history, Days.8.14$Date, Days.8.14$Length)
+interaction.plot(Days.8.14$Treatment_history, Days.8.14$Treatment.EXP_1, Days.8.14$Length)
+interaction.plot(Days.8.14$Date, Days.8.14$Treatment.EXP_1, Days.8.14$Length)
+
+Days.8.14$Date <- as.factor(Days.8.14$Date) 
+# two way ANOVA treatment and date
+threewayanova_D8.14 <- aov(Length ~ Treatment_history*Treatment.EXP_1*Date, data=Days.8.14) # run the model
+shapiro.test(residuals(threewayanova_D8.14)) # shaprio wilk test of model residuals p = 0.8904; normal distribution
+hist((residuals(threewayanova_D8.14)))
+summary(threewayanova_D8.14) # significant effect of treatment
+TukeyHSD(threewayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# significant difference between:
+
+
+
+
+# MODELS FOR DAYS 15 - 21 -------------------------------------------------------- #
+
+
+
+# make date a character to address as a factor in the model
+Size.D.15.21$Date <- as.character(Size.D.15.21$Date) 
+#interaction plots
+interaction.plot(Size.D.15.21$Treatment_history, Size.D.15.21$Date, Size.D.15.21$Length)
+interaction.plot(Size.D.15.21$Treatment_history, Size.D.15.21$Treatment.EXP_1, Size.D.15.21$Length)
+interaction.plot(Size.D.15.21$Date, Size.D.15.21$Treatment.EXP_1, Size.D.15.21$Length)
+
+# two way ANOVA treatment and date
+fourwayanova_D15.21 <-aov(Length ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2*Date, data=Size.D.15.21)
+shapiro.test(residuals(fourwayanova_D15.21)) # shaprio wilk test of model residuals p = 0.15
+hist((residuals(fourwayanova_D15.21)))
+summary(fourwayanova_D15.21) # significant interaction between date and treatment
+TukeyHSD(fourwayanova_D15.21, 'Treatment_history', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+TukeyHSD(fourwayanova_D15.21, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+TukeyHSD(fourwayanova_D15.21, 'Treatment_history:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+TukeyHSD(fourwayanova_D15.21, 'Treatment.EXP_1:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+TukeyHSD(fourwayanova_D15.21, 'Treatment_history:Treatment.EXP_1:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+
+
+
+########## mean and st error calculations ########################### #
+# pre
+Size_Days.pre.final <- Size.pre %>% 
+  dplyr::group_by(Date, Treatment.EXP_1, Treatment_history, Treatment.EXP_2, TREATMENT.ID.TOTAL) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+# days 1 - 7
+Days.1.7$TREATMENT <- paste(Days.1.7$Treatment_history, "H", Days.1.7$Treatment.EXP_1,sep="")
+Size_Days.1.7.final <- Days.1.7 %>% 
+  dplyr::select(Date, Length, TREATMENT) %>% 
+  dplyr::group_by(Date, TREATMENT) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+
+# days 8 - 14
+Days.8.14$TREATMENT <- paste(Days.8.14$Treatment_history, "H", Days.8.14$Treatment.EXP_1,sep="")
+Size_Days.8.14.final <- Days.8.14 %>% 
+  dplyr::select(Date, Length, TREATMENT) %>% 
+  dplyr::group_by(Date, TREATMENT) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+
+# days 15 - 21
+Size_Days.15.21.final <- Size.D.15.21 %>% 
+  dplyr::select(Date, Length, TREATMENT.ID.TOTAL) %>% 
+  dplyr::group_by(Date, TREATMENT.ID.TOTAL) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
+
 
 # divide into the first 14 days and last 7 days to create a new column for treatment and merge to one dataframe
 Size.data.D.1.14 <- Size.data.EXPERIMENT %>% 
@@ -86,21 +202,215 @@ Size.FINAL <- rbind(Size.data.D.1.14,Size.data.D.15.21)
 
 Size.FINAL
 
-ggplot(Size.FINAL, aes(x = factor(Notes), y = Length, fill = Treatment)) +
-          theme_classic() +
-          scale_fill_manual(values=c("blue", "orange", "blue", "orange", "blue", "orange", "blue", "orange",
-                                     "blue", "orange", "blue", "orange", "blue", "orange", "blue", "orange",
-                                     "blue", "orange")) +
-          geom_boxplot(alpha = 0.5, # color hue
-               width=0.6, # boxplot width
-               outlier.size=0, # make outliers small
-               position = position_dodge(preserve = "single")) + 
-         geom_point(pch = 19, position = position_jitterdodge(.3), size=1) +
-         stat_summary(fun.y=mean, geom = "errorbar", aes(ymax = ..y.., ymin = ..y..), 
-               width = 0.6, size=0.4, linetype = "dashed", position = position_dodge(preserve = "single")) +
-         theme(legend.position = c(0.55,0.96), legend.direction="horizontal", legend.title=element_blank()) +
-         ylim(0,12) +
-         labs(y=expression("Shell size"~(mm)), x=expression("Days"))
+##################################################### #
+##################################################### #
+########## PLOT MEAN ST ERROR  size  ################ #----------------------------------------------------------------------------------------------- #
+##################################################### #
+##################################################### #
+
+pd <- position_dodge(0.25) # dodge between treatments to ease asthetics and interpretation
+
+
+# FIGURE 1
+Size_Days.pre.final$Date <- as.character(Size_Days.pre.final$Date) # call date as a character
+FIGURE.size.pre <- ggplot(Size_Days.pre.final, aes(x=factor(Date), y=mean, colour=Treatment_history, group=Treatment_history)) + 
+  geom_errorbar(aes(ymin=mean-std.error, 
+                    ymax=mean+std.error), width=.1, position=pd) +
+  geom_line(position=pd) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SIZE per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHA", "AHM", "AHS", "EHA","EHM", "EHS"),
+                   labels=c("Amb-Amb", "Amb-Mod", "Amb-Sev", "Elev-Amb", "Elev-Mod", "Elev-Sev"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Pre-experiment SIZE") +
+  geom_point(position=pd, shape=c(21, 24), size=3,fill=("white")) + # 21 is filled circle
+  #expand_limits(y=0) +                        # Expand y range
+  ylim(6.0,8.0) +
+  #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
+  theme(legend.justification=c(1,1),
+        legend.position=c(1,1))               # Position legend in bottom right
+FIGURE.size.pre  <- print(FIGURE.size.pre + scale_colour_manual(values = c("skyblue1", "tomato1"))+ theme(legend.position = "none"))
+
+
+# FIGURE 2
+# days 1 - 7 rel metabolic rate (per individual) ----------------------------------------------------------------------------------------------- #
+
+
+names(Size_Days.1.7.final)
+Size_Days.1.7.final$Date <- as.factor(Size_Days.1.7.final$Date) # call date as a character
+FIGURE.size_Days.1.7 <- ggplot(Size_Days.1.7.final, aes(x=factor(Date), y=mean, group=TREATMENT, colour=TREATMENT)) + 
+  geom_errorbar(aes(ymin=mean-std.error, 
+                    ymax=mean+std.error), width=.1, position=pd) +
+  geom_line(position=pd) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SIZE per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHA", "AHM", "AHS", "EHA","EHM", "EHS"),
+                   labels=c("Amb-Amb", "Amb-Mod", "Amb-Sev", "Elev-Amb", "Elev-Mod", "Elev-Sev"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Days 1-7 SIZE") +
+  geom_point(position=pd, shape=c(21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24), size=3, fill=("white")) + # 21 is filled circle
+  #expand_limits(y=0) + 
+  ylim(6.0,8.0) +
+  #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
+  theme(legend.justification=c(1,1),
+        legend.position=c(1,1))               # Position legend in bottom right
+FIGURE.size_Days.1.7  <- print(FIGURE.size_Days.1.7 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
+
+
+# FIGURE 3
+# days 8-14 rel metabolic rate (per individual)----------------------------------------------------------------------------------------------- #
+
+
+
+Size_Days.8.14.final$Date <- as.character(Size_Days.8.14.final$Date)
+FIGURE.size_Days.8.14 <- ggplot(Size_Days.8.14.final, aes(x=factor(Date), y=mean, colour=TREATMENT, group=TREATMENT)) + 
+  geom_errorbar(aes(ymin=mean-std.error, 
+                    ymax=mean+std.error), width=.1, position=pd) +
+  geom_line(position=pd) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SIZE per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHA", "AHM", "AHS", "EHA","EHM", "EHS"),
+                   labels=c("Amb-Amb", "Amb-Mod", "Amb-Sev", "Elev-Amb", "Elev-Mod", "Elev-Sev"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Days 8-14 SIZE") +
+  geom_point(position=pd, shape=c(21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24), size=3, fill=("white")) + # 21 is filled circle
+  #expand_limits(y=0) +   
+  ylim(6.0,8.0) +
+  #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
+  theme(legend.justification=c(1,1),
+        legend.position=c(1,1))            # Position legend in bottom right
+FIGURE.size_Days.8.14  <- print(FIGURE.size_Days.8.14 + scale_colour_manual(values = c("skyblue1", "deepskyblue3", "blue", "tomato1", "red1", "firebrick4"))+ theme(legend.position = "none"))
+
+
+
+# FIGURE 4
+# days 15-21 rel metabolic rate (per individual)    ----------------------------------------------------------------------------------------------- #
+
+
+
+Size_Days.15.21.final$Date <- as.character(Size_Days.15.21.final$Date)
+FIGURE.size_Days.15.21 <- ggplot(Size_Days.15.21.final, aes(x=factor(Date), y=mean, colour=TREATMENT.ID.TOTAL, group=TREATMENT.ID.TOTAL, shape = TREATMENT.ID.TOTAL)) + 
+  geom_errorbar(aes(ymin=mean-std.error, 
+                    ymax=mean+std.error), width=.1, position=pd) +
+  geom_line(position=pd, width=.3) +
+  theme_bw() +
+  xlab("Date") +
+  ylab("SIZE per individual") +
+  scale_colour_hue(name="Treatment",    # Legend label, use darker colors
+                   breaks=c("AHAA", "AHAM", "AHMA", "AHMM", 
+                            "AHSA","AHSM", "EHAA", "EHAM", 
+                            "EHMA", "EHMM", "EHSA", "EHSM"),
+                   labels=c("Amb-Amb-Amb", "Amb-Amb-Mod", "Amb-Mod-Amb", "Amb-Mod-Mod", 
+                            "Amb-Sev-Amb", "Amb-Sev-Mod", "Elev-Amb-Amb","Elev-Amb-Mod",
+                            "Elev-Mod-Amb", "Elev-Mod-Mod", "Elev-Sev-Amb", "Elev-Sev-Mod"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Days 15-21 SIZE") +
+  geom_point(position=pd, shape=c(21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,  21, 21, 21, 21, 21, 21, 
+                                  24, 24, 24, 24, 24, 24, 21, 21, 21, 21, 21, 21,  24, 24, 24, 24, 24, 24), size=3, 
+             fill=c("firebrick4", "white", "red1", "white", "tomato1",
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1",
+                    "white", "firebrick4", "white", "red1", "white", "tomato1",
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1",
+                    "white", "firebrick4", "white", "red1", "white", "tomato1", 
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1","white")) + # all the colors needed
+  #expand_limits(y=0) +  
+  ylim(6.0,8.0) +
+  #scale_y_continuous(breaks=0:20*4) +                          # Set tick every 4
+  theme(legend.justification=c(1,1),legend.position=c(1,1))    # Position legend in bottom right
+FIGURE.size_Days.15.21  <- print(FIGURE.size_Days.15.21 + scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3",
+                                                                                         "blue", "blue", "tomato1", "tomato1", 
+                                                                                         "red1", "red1", "firebrick4", "firebrick4")) + theme(legend.position = "none"))
+
+
+# EXPERIMENTAL DESIGN KEY/SCHEMATIC FOR SIZE PLOT ------------------------------------- #
+
+
+
+schematic.data <- read.csv(file="Data/SDR_data/Experimental.design.data.csv", header=T) #read Size.info data
+schematic.data
+pd <- position_dodge(0)
+FIG.schematic.data <- ggplot(schematic.data, aes(x=factor(x.val), y=y.val, colour=treat, group=treat, shape = treat)) + 
+  geom_line() +
+  theme_bw() +
+  xlab("Experimental periods") +
+  ylab("") +
+  scale_colour_hue(name="treat",    # Legend label, use darker colors
+                   breaks=c("AHAA", "AHAM", "AHMA", "AHMM", 
+                            "AHSA","AHSM", "EHAA", "EHAM", 
+                            "EHMA", "EHMM", "EHSA", "EHSM"),
+                   labels=c("Amb-Amb-Amb", "Amb-Amb-Mod", "Amb-Mod-Amb", "Amb-Mod-Mod", 
+                            "Amb-Sev-Amb", "Amb-Sev-Mod", "Elev-Amb-Amb","Elev-Amb-Mod",
+                            "Elev-Mod-Amb", "Elev-Mod-Mod", "Elev-Sev-Amb", "Elev-Sev-Mod"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Experimental design schematic") +
+  geom_point(position = pd, shape=c(21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                    21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                    21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                    21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24), size=3, 
+             fill=c("white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "firebrick4", "white", "red1", "white", "tomato1", 
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1")) +
+  geom_vline(xintercept = c(1.5, 2.5, 3.5), linetype="dotted", 
+             color = "black", size=0.5) # all the colors needed
+FIG.schematic.data  <- print(FIG.schematic.data +  
+                               scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3","blue", "blue", "tomato1", "tomato1",  "red1", "red1", "firebrick4", "firebrick4")) +
+                               scale_x_discrete(labels=c("1" = "Pre", "2" = "Days 1-7","3" = "Days 8-14","4" = "Days 15-21")) +
+                               theme(legend.position="none",panel.grid.major = element_blank(),
+                                     panel.grid.minor = element_blank(),panel.border = element_blank(),
+                                     axis.ticks = element_blank(),axis.text.y=element_blank()) +
+                               annotate(geom="text", x=c(1,1,2,2,2,2,2,2,3,3,3,3,3,3,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1), y=c(9.5,3.5,
+                                                                                                                                           11.5,9.5,7.5,5.5,3.5,1.5,
+                                                                                                                                           11.5,9.5,7.5,5.5,3.5,1.5,
+                                                                                                                                           12.5,11.5,10.5,9.5,8.5,7.5,6.5,5.5,4.5,3.5,2.5,1.5), 
+                                        label=c("EH", "AH", # PRE
+                                                "EHA","EHM","EHS","AHA","AHM","AHS", # DAYS 1 -7
+                                                "EHA","EHM","EHS","AHA","AHM","AHS", # DAYS 8 - 14
+                                                "EHAM","EHAA","EHMM","EHMA","EHSM","EHSA","AHAM","AHAA","AHMM","AHMA","AHSM","AHSA"), size =3, color="black"))
+
+
+# Arrange plots
+SIZE.plot <- ggarrange(FIGURE.size.pre,  FIGURE.size_Days.1.7, FIGURE.size_Days.8.14, FIGURE.size_Days.15.21,ncol = 4, nrow = 1, widths = c(0.7,2,2,2), labels = c("B","C","D","E")) # combine plots 
+SIZE.plot # view plots
+SIZE.plot.with.schematic <- ggarrange(FIG.schematic.data, SIZE.plot,ncol = 1, nrow = 2, heights = c(1, 2.0), labels = "A") # combine plots
+#gsave to Output
+ggsave(file="Output/SIZE.plot.pdf", SIZE.plot.with.schematic, width = 12, height = 8, units = c("in")) # sizeiration rate plots
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

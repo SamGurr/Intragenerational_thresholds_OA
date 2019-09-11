@@ -63,6 +63,8 @@ setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnal
 
 # upload relative SMR data (calculation for this table in "Resp.Tables.R")
 DATA <- read.csv(file="Data/SDR_data/Final_table_for_resp_analysis.csv", header=T) #read Size.info data
+DATA.pre <- DATA %>% 
+  dplyr::filter(Date %in% 20190723) # 21-day experiment began on 20190723
 DATA.experiment <- DATA %>% 
   dplyr::filter(Date > 20190723) # 21-day experiment began on 20190725
 DATA_Days.1.14 <- DATA.experiment %>%  # divide dataset into first 14 days (same treatment) 
@@ -70,34 +72,43 @@ DATA_Days.1.14 <- DATA.experiment %>%  # divide dataset into first 14 days (same
 DATA_Days.15.21 <- DATA.experiment %>%  # and last 7 days (same treatment)
   dplyr::filter(Date > 20190807)
 
+# t.test of "pre" data prior to the experiment
+t.test(resp.COUNT.µg.L.hr.indiv~Treatment.history, data=DATA.pre) # p-value = 0.5516; no difference between pCO2 treatment
 
 # MODELS FOR DAYS 1 - 7 -------------------------------------------------------- #
-
 Days.1.7 <- DATA_Days.1.14 %>% 
   dplyr::filter(Date < 20190801 ) # filter dataframe for the correct dates
 # make date a character to address as a factor in the model
-Days.1.7$Date <- as.character(Days.1.7$Date) 
-
+Days.1.7$Date <- as.factor(Days.1.7$Date) 
+# interaction plots
+interaction.plot(Days.1.7$Treatment.history, Days.1.7$Date, Days.1.7$resp.COUNT.µg.L.hr.indiv)
+interaction.plot(Days.1.7$Treatment.history, Days.1.7$Treatment.EXP_1, Days.1.7$resp.COUNT.µg.L.hr.indiv)
+interaction.plot(Days.1.7$Date, Days.1.7$Treatment.EXP_1, Days.1.7$resp.COUNT.µg.L.hr.indiv)
 # two way ANOVA treatment and date
-resp.MEAN.µg.L.hr.mm
-resp.COUNT.µg.L.hr.indiv
-twowayanova_D1.7 <- aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment.EXP_1*Date, data=Days.1.7) # run the model
-shapiro.test(residuals(twowayanova_D1.7)) # shaprio wilk test of model residuals p = 0.162; normal distribution
-hist((residuals(twowayanova_D1.7)))
-summary(twowayanova_D1.7) # marginal effect of treatment history
+# resp.MEAN.µg.L.hr.mm
+# resp.COUNT.µg.L.hr.indiv
+threewayanova_D1.7 <- aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment.EXP_1*Date, data=Days.1.7) # run the model
+shapiro.test(residuals(threewayanova_D1.7)) # shaprio wilk test of model residuals p = 0.162; normal distribution
+hist((residuals(threewayanova_D1.7)))
+summary(threewayanova_D1.7) # marginal effect of treatment history
 
 # MODELS FOR DAYS 8 - 14 -------------------------------------------------------- #
 
 Days.8.14 <- DATA_Days.1.14 %>% 
   dplyr::filter(Date > 20190731) # make dataframe 
 # make date a character to address as a factor in the model
-Days.8.14$Date <- as.character(Days.8.14$Date) 
+# interaction plots
+interaction.plot(Days.8.14$Treatment.history, Days.8.14$Date, Days.8.14$resp.COUNT.µg.L.hr.indiv)
+interaction.plot(Days.8.14$Treatment.history, Days.8.14$Treatment.EXP_1, Days.8.14$resp.COUNT.µg.L.hr.indiv)
+interaction.plot(Days.8.14$Date, Days.8.14$Treatment.EXP_1, Days.8.14$resp.COUNT.µg.L.hr.indiv)
+
+Days.8.14$Date <- as.factor(Days.8.14$Date) 
 # two way ANOVA treatment and date
-twowayanova_D8.14 <- aov(resp.MEAN.µg.L.hr.mm ~ Treatment.history*Treatment.EXP_1*Date, data=Days.8.14) # run the model
-shapiro.test(residuals(twowayanova_D8.14)) # shaprio wilk test of model residuals p = 0.8904; normal distribution
-hist((residuals(twowayanova_D8.14)))
-summary(twowayanova_D8.14) # significant effect of treatment
-TukeyHSD(twowayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+threewayanova_D8.14 <- aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment.EXP_1*Date, data=Days.8.14) # run the model
+shapiro.test(residuals(threewayanova_D8.14)) # shaprio wilk test of model residuals p = 0.8904; normal distribution
+hist((residuals(threewayanova_D8.14)))
+summary(threewayanova_D8.14) # significant effect of treatment
+TukeyHSD(threewayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
 # significant difference between:
 # 20190807-20190801
 # D8.14_posthoc <- lsmeans(twowayanova_D8.14, pairwise ~ Date)# pariwise Tukey Post-hoc test between repeated treatments
@@ -108,15 +119,22 @@ TukeyHSD(twowayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effect 
 # MODELS FOR DAYS 15 - 21 -------------------------------------------------------- #
 
 # make date a character to address as a factor in the model
-DATA_Days.15.21$Date <- as.character(DATA_Days.15.21$Date) 
+DATA_Days.15.21$Date <- as.factor(DATA_Days.15.21$Date) 
+#interaction plots
+interaction.plot(DATA_Days.15.21$Treatment.history, DATA_Days.15.21$Date, DATA_Days.15.21$resp.COUNT.µg.L.hr.indiv)
+interaction.plot(DATA_Days.15.21$Treatment.history, DATA_Days.15.21$Treatment.EXP_1, DATA_Days.15.21$resp.COUNT.µg.L.hr.indiv)
+interaction.plot(DATA_Days.15.21$Date, DATA_Days.15.21$Treatment.EXP_1, DATA_Days.15.21$resp.COUNT.µg.L.hr.indiv)
+
 # two way ANOVA treatment and date
-twowayanova_D15.21 <-aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment.EXP_1*Treatment.EXP_2*Date, data=DATA_Days.15.21)
-shapiro.test(residuals(twowayanova_D15.21)) # shaprio wilk test of model residuals p = 0.15
-hist((residuals(twowayanova_D15.21)))
-summary(twowayanova_D15.21) # significant interaction between date and treatment
-TukeyHSD(twowayanova_D15.21, 'Treatment.EXP_1', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+fourwayanova_D15.21 <-aov(resp.MEAN.µg.L.hr.mm ~ Treatment.history*Treatment.EXP_1*Treatment.EXP_2*Date, data=DATA_Days.15.21)
+shapiro.test(residuals(fourwayanova_D15.21)) # shaprio wilk test of model residuals p = 0.15
+hist((residuals(fourwayanova_D15.21)))
+summary(fourwayanova_D15.21) # significant interaction between date and treatment
+TukeyHSD(fourwayanova_D15.21, 'Treatment.history:Treatment.EXP_1', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
 
-
+RESP_Days.15.21.final <- DATA_Days.15.21 %>% 
+  dplyr::group_by(Treatment.EXP_1, Treatment.history) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,std.error))
 
 
 
