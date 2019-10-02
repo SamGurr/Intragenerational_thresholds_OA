@@ -117,7 +117,7 @@ FIGURE.resp.pre <- ggplot(resp_Days.pre.final, aes(x=factor(Date), y=resp.COUNT.
   ggtitle("Pre-experiment SMR") +
   geom_point(position=pd, shape=c(21, 24), size=3,fill=("white")) + # 21 is filled circle
   #expand_limits(y=0) +                        # Expand y range
-  ylim(0, 13.5) +
+  ylim(3.5, 13) +
   #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
   theme(legend.justification=c(1,1),
         legend.position=c(1,1))               # Position legend in bottom right
@@ -143,7 +143,7 @@ FIGURE.resp_Days.1.7 <- ggplot(resp_Days.1.7.final, aes(x=factor(Date), y=resp.C
   ggtitle("Days 1-7 SMR") +
   geom_point(position=pd, shape=c(21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24), size=3, fill=("white")) + # 21 is filled circle
   #expand_limits(y=0) + 
-  ylim(0, 13.5) + 
+  ylim(3.5, 13) +
   #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
   theme(legend.justification=c(1,1),
         legend.position=c(1,1))               # Position legend in bottom right
@@ -169,7 +169,7 @@ FIGURE.resp_Days.8.14 <- ggplot(resp_Days.8.14.final, aes(x=factor(Date), y=resp
   ggtitle("Days 8-14 SMR") +
   geom_point(position=pd, shape=c(21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24,21, 21, 21, 24, 24, 24), size=3, fill=("white")) + # 21 is filled circle
   #expand_limits(y=0) +   
-  ylim(0, 13.5) +
+  ylim(3.5, 13) +
   #scale_y_continuous(breaks=0:20*4) +         # Set tick every 4
   theme(legend.justification=c(1,1),
         legend.position=c(1,1))            # Position legend in bottom right
@@ -207,7 +207,7 @@ FIGURE.resp_Days.15.21 <- ggplot(resp_Days.15.21.final, aes(x=factor(Date), y=re
                     "white", "firebrick4", "white", "red1", "white", "tomato1", 
                     "white", "blue", "white", "deepskyblue3", "white", "skyblue1","white")) + # all the colors needed
   #expand_limits(y=0) +  
-  ylim(0, 13.5) +
+  ylim(3.5, 13) +
   #scale_y_continuous(breaks=0:20*4) +                          # Set tick every 4
   theme(legend.justification=c(1,1),legend.position=c(1,1))    # Position legend in bottom right
 FIGURE.resp_Days.15.21  <- print(FIGURE.resp_Days.15.21 + scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3",
