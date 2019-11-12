@@ -73,7 +73,8 @@ DATA_Days.15.21 <- DATA.experiment %>%  # and last 7 days (same treatment)
   dplyr::filter(Date > 20190807)
 
 # t.test of "pre" data prior to the experiment
-t.test(resp.COUNT.µg.L.hr.indiv~Treatment.history, data=DATA.pre) # p-value = 0.5516; no difference between pCO2 treatment
+ttest_summ <-t.test(resp.COUNT.µg.L.hr.indiv~Treatment.history, data=DATA.pre) # p-value = 0.5516; no difference between pCO2 treatment
+ttest_summ # view tet results
 
 # MODELS FOR DAYS 1 - 7 -------------------------------------------------------- #
 Days.1.7 <- DATA_Days.1.14 %>% 
@@ -92,9 +93,19 @@ shapiro.test(residuals(threewayanova_D1.7)) # shaprio wilk test of model residua
 hist((residuals(threewayanova_D1.7)))
 summary(threewayanova_D1.7) # marginal effect of treatment history
 TukeyHSD(threewayanova_D1.7, 'Treatment.history', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
-
-
 TukeyHSD(threewayanova_D1.7, 'Treatment.history:Treatment.EXP_1', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# EH and AH to get percent difference; effect of pCO2 history (marginal)
+EHandAH.D.1.7 <- Days.1.7 %>% 
+  dplyr::group_by(Treatment.history) %>% # group by treatment
+  dplyr::summarise(mean.resp = mean(resp.COUNT.µg.L.hr.indiv)) # get the mean values
+percent.diff.EHandAH <- ((EHandAH.D.1.7[2,2] - EHandAH.D.1.7[1,2])/ EHandAH.D.1.7[2,2])*100 # 12.372% difference
+# EHM and AHM to get percent difference; effect of pCO2 history × treatment (marginal)
+Days.1.7$treat.inital <- paste(Days.1.7$Treatment.history,Days.1.7$Treatment.EXP_1, sep ="")
+EHMandAHM.D.1.7 <- Days.1.7 %>% dplyr::filter(treat.inital %in% c('EHM', 'AHM'))
+EHMandAHM.D.1.7.MEANS <- EHMandAHM.D.1.7 %>% 
+  dplyr::group_by(treat.inital) %>% # group by treatment
+  dplyr::summarise(mean.resp = mean(resp.COUNT.µg.L.hr.indiv)) # get the mean values
+percent.diff.EHMandAHM <- ((EHMandAHM.D.1.7.MEANS[2,2] - EHMandAHM.D.1.7.MEANS[1,2])/ EHMandAHM.D.1.7.MEANS[2,2])*100 # 31.1947% difference
 # marginal diff : Treatment.history:Treatment.EXP_1
 # EH:M-AH:M p = 0.0408163
 

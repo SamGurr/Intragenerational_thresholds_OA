@@ -304,16 +304,16 @@ MASTER.PHYS.ASSAY$Dil.factor.TAC <- as.numeric(MASTER.PHYS.ASSAY$Dil.factor.TAC)
 MASTER.PHYS.ASSAY$TOTAL.mean.CRE <-  (MASTER.PHYS.ASSAY$µl.Total.Homog.Volume/MASTER.PHYS.ASSAY$µl.TAC)*(MASTER.PHYS.ASSAY$mean.CRE*MASTER.PHYS.ASSAY$Dil.factor.TAC)
 
 # Total protein corrected for AFDW
-MASTER.PHYS.ASSAY$mgProtein.mgAFDW <- (MASTER.PHYS.ASSAY$TOTAL.total.protein.mg.mL / ((MASTER.PHYS.ASSAY$TOTAL_AFDW)*1000))
+MASTER.PHYS.ASSAY$mgProtein.mgAFDW <- MASTER.PHYS.ASSAY$TOTAL.total.protein.mg.mL / MASTER.PHYS.ASSAY$mgTOTAL_AFDW
 # Total antioxidant capacity corrected for Total protein per gAFDW
 MASTER.PHYS.ASSAY$mMCuRedEqu.mgPro.mgAFDW <-  (MASTER.PHYS.ASSAY$TOTAL.mean.CRE / MASTER.PHYS.ASSAY$mgProtein.mgAFDW)/1000
 
 
-PHYS.DATA <- MASTER.PHYS.ASSAY %>% dplyr::select(Date.fixed, ID, Treatment, Exprmt.Day, Tank.ID, TOTAL_AFDW, mgProtein.mgAFDW, mMCuRedEqu.mgPro.mgAFDW )
+PHYS.DATA <- MASTER.PHYS.ASSAY %>% dplyr::select(Date.fixed, ID, Treatment, Exprmt.Day, Tank.ID, mgTOTAL_AFDW, mgProtein.mgAFDW, mMCuRedEqu.mgPro.mgAFDW )
 PHYS.DATA <- na.omit(PHYS.DATA)
 
 count.days <- PHYS.DATA %>%  dplyr::group_by(Exprmt.Day) %>% 
-  dplyr::summarise(count_replicated.by.day =n())
+  dplyr::summarise(count_replicated.by.day =n()) # day 1, 12; day 4, 12; day 7, 11; day 15, 15, day 18, 15; day 21, 15
 
 # write out tables
 write.table(PHYS.DATA, file="C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Phys.Assay.Table.csv", sep=",", row.names = FALSE) #save data to output file
