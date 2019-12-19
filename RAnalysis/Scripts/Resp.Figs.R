@@ -49,7 +49,7 @@ library(ggplot2)        # Version 2.2.1, Packaged: 2016-12-30, Depends: R (>= 3.
 library(ggpubr)         # Version: 0.1.8 Date: 2018-08-30, Depends: R (>= 3.1.0), ggplot2, magrittrImports: ggrepel, grid, ggsci, stats, utils, tidyr, purrr, dplyr(>=0.7.1), cowplot, ggsignif, scales, gridExtra, glue, polynom
 library(Rmisc)          # Version: 1.5 Packaged: 2013-10-21, Depends: lattice, plyr
 library(plotrix)        # Version: 3.7-4, Date/Publication: 2018-10-03
-
+library(ggpubr)
 # Set Working Directory:
 setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/")
 
@@ -94,8 +94,77 @@ resp_Days.15.21.final$TREATMENT <- paste(resp_Days.15.21.final$Treatment.history
 
 ##################################################### #
 ##################################################### #
-########## PLOT MEAN ST ERROR  RESP  ################ #----------------------------------------------------------------------------------------------- #
+########## PLOTS OF THE SIG EFFECTS  ################ #----------------------------------------------------------------------------------------------- #
 ##################################################### #
+##################################################### #
+
+# FIRST 7 DAYS (SECONDARY EXPOSURE) - SIG DIFFERENCE BTWN EHM AND AHM
+DATA.pre$Treat <- substr(DATA.pre$Treatment.history, 1,1)
+
+DATA.pre.PLOT <- ggviolin(DATA.pre, x = "Treat", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat",
+                          palette = c("#FC4E07", "#00AFBB"),add = "none", title = "A.Respiration_pre_experiment")
+DATA.pre.PLOT <- DATA.pre.PLOT %>% ggadd(c("boxplot", "jitter"),shape ="Treat", fill = "white") # Add box plot
+#DATA.pre.PLOT <- ggpar(DATA.pre.PLOT, ylim = c(-2,35))
+DATA.pre.PLOT
+
+DATA.pre.PLOTbox<- ggboxplot(DATA.pre, x = "Treat", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat",
+                             palette = c("#FC4E07", "#00AFBB"),add = "jitter", title = "Pre-conditioning", xlab = "Initial pCO2 Treatment")
+DATA.pre.PLOTbox <- ggpar(DATA.pre.PLOTbox, ylim = c(-2,18))
+DATA.pre.PLOTbox
+
+# TREATMENT HISTORY (INITIAL EXPOSURE) - NO DIFFERENCE BTWN TREATMENT
+DATA.Days.1.7$Treat.initial <- substr(DATA.Days.1.7$Treatment.history, 1,1)
+
+Days.1.7.PLOTviolin <- ggviolin(DATA.Days.1.7, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
+                                palette = c("#00AFBB", "#FC4E07"),add = "jitter", title = "Secondary Respiration Day 7")
+Days.1.7.PLOTviolin <- Days.1.7.PLOT %>%  ggadd(c("boxplot") ,fill = "Treat.initial") # Add box plot
+Days.1.7.PLOTviolin
+
+Days.1.7.PLOTbox<- ggboxplot(DATA.Days.1.7, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
+                             palette = c("#00AFBB", "#FC4E07") ,add = "jitter", title = "Secondary Respiration Day 7", xlab = "Secondary pCO2 Treatment")
+Days.1.7.PLOTbox <- ggpar(Days.1.7.PLOTbox, ylim = c(-2,18))
+Days.1.7.PLOTbox
+
+ggplot(DATA.Days.1.7, aes(x=factor(Treatment.EXP_1), y=resp.COUNT.µg.L.hr.indiv, fill=Treat.initial)) + 
+  geom_boxplot(alpha = 0.5, # color hue
+               width=0.6, # boxplot width
+               outlier.size=0, # make outliers small
+               position = position_dodge(preserve = "single")) +
+  geom_jitter(position = position_jitterdodge(jitter.width = 0.05, dodge.width = 0.8), size = 1.2) +
+  scale_y_continuous(name = "µg.L.hr.indiv",breaks = seq(0, 20, 5),limits=c(-2, 20)) +
+  theme_bw() +
+  xlab("Treatment") +
+  ggtitle("B.Respiration_secondary_exposure") +
+  theme(legend.justification=c(1,1),legend.position=c(1,1)) # Position legend in bottom right
+
+
+# TREATMENT HISTORY (INITIAL EXPOSURE) - NO DIFFERENCE BTWN TREATMENT
+DATA_Days.15.21$Treat.initial <- substr(DATA_Days.15.21$Treatment.history, 1,1)
+
+Days.15.21.PLOTviolin <- ggviolin(DATA_Days.15.21, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
+                                palette = c("#00AFBB", "#FC4E07"),add = "jitter", shape = "Treatment.EXP_2", title = "Tertiary Respiration Day 21",xlab = "Secondary pCO2 Treatment")
+Days.15.21.PLOTviolin <- Days.1.7.PLOT %>%  ggadd(c("boxplot") ,fill = "Treatment.EXP_2") # Add box plot
+Days.15.21.PLOTviolin
+
+Days.15.21.PLOTbox<- ggboxplot(DATA_Days.15.21, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
+                               palette = c("#00AFBB", "#FC4E07"),add = "jitter", shape = "Treatment.EXP_2", title = "Tertiary Respiration Day 21",xlab = "Secondary pCO2 Treatment")
+Days.15.21.PLOTbox <- ggpar(Days.15.21.PLOTbox, ylim = c(-2,18))
+Days.15.21.PLOTbox
+
+Days.15.21.PLOTbox.2<- ggboxplot(DATA_Days.15.21, x = "Treatment.EXP_2", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
+                               add = "jitter", shape = "Treatment.EXP_1", palette = c("#00AFBB", "#FC4E07"),
+                                title = "C.Respiration_tertiary_exposure")
+Days.15.21.PLOTbox.2
+
+Resp.plots <- ggarrange(DATA.pre.PLOTbox, Days.1.7.PLOTbox,Days.15.21.PLOTbox,nrow = 1, widths = c(0.5, 1, 1), labels = c("A","B","C"))
+ggsave(file="Output/Resp.plots.pdf", Resp.plots, width = 12, height = 8, units = c("in")) # respiration rate plots
+
+
+
+##################################################### #
+############PLOTS WITH TIME ######################### #
+########## PLOT MEAN ST ERROR  RESP  ################ #----------------------------------------------------------------------------------------------- #
+########### SUPPLEMENTARY PLOTS ##################### #
 ##################################################### #
 names(resp_Days.1.7.final)
 

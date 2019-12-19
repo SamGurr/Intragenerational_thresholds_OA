@@ -71,7 +71,7 @@ Size.data.EXPERIMENT # view table
 ID.reference.short <- ID.reference.all %>% dplyr::select(Tank.ID,TREATMENT.ID.TOTAL) # select columns desired from ID.references to merge with shell size below
 shell_size_data <- merge(Size.data.EXPERIMENT,ID.reference.short,by="Tank.ID") # merge shell size data and ID reference
 # modify shell_size_data for targetted columns and create new columns for different treatments
-shell_size_data <- shell_size_data %>% dplyr::select(Date, Length, TREATMENT.ID.TOTAL)
+shell_size_data <- shell_size_data %>% dplyr::select(Date, Length, TREATMENT.ID.TOTAL,Tank.ID)
 shell_size_data$Treatment_history <- substr(shell_size_data$TREATMENT.ID.TOTAL, 1,1) # new column for treatment history
 shell_size_data$Treatment.EXP_1 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 3,3) # new column for d1-7 exposure
 shell_size_data$Treatment.EXP_2 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 4,4) # new column for d 15-21 exposure
@@ -102,11 +102,31 @@ SizeTableFINAL <- rbind(Size.pre, Size.D.1.14, Size.D.15.21)
 ################################################################################################################### #
 
 # PRE-EXPERIMENT T-TEST ------------------------------------------------------------------------------------------- #
-
+library(ggpubr)
 # t.test of "pre" data prior to the experiment
 t.test(Length~Treatment_history, data=Size.pre) # p-value = 0.5516; no difference between pCO2 treatment
+PRE_dens <- ggdensity(Size.pre, x = "Length", fill = "Treatment_history", title = "Pre_Experiment" ,palette = "jco")
+PRE_dens
+PRE_violin.DATE <- ggviolin(Size.pre, x = "Treatment_history", y = "Length", fill = "Treatment_history", 
+                            palette = c("#FC4E07", "#00AFBB"), add = "none", title = "Pre_Experiment")
+PRE_violin.DATE <- PRE_violin.DATE %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
+PRE_violin.DATE <- ggpar(PRE_violin.DATE, ylim = c(4,12))
+PRE_violin.DATE
+
+tapply(Size.pre$Length, Size.pre$Treatment_history, mean) # mean value of Ambient and Elevated animals
+M <- as.table(tapply(Size.pre$Length, (paste(Size.pre$Treatment_history, Size.pre$Tank.ID)), mean)) # mean value of treatment and tray
+M.melt <- melt(M, id.vars=c("TREAT_TANK.ID")) # make into a table
+M.melt$TREAT <- substr(M.melt$indices, 1,1) # make new column for just treatment
+tapply(M.melt$value, M.melt$TREAT, mean) # get the mean of treat from the mean of tank; NOTE: this is the same as the mean W/O the tank ID above
+
+# look at the data for fun
+tapply(Size.D.1.7$Length, (paste(Size.D.1.7$Treatment_history, Size.D.1.7$Treatment.EXP_1, Size.D.1.7$Date)), mean)
+tapply(Size.D.8.14$Length, (paste(Size.D.8.14$Treatment_history,  Size.D.8.14$Treatment.EXP_1, Size.D.8.14$Date)), mean)
+tapply(Size.D.15.21$Length, (paste(Size.D.15.21$Treatment_history, Size.D.15.21$Date)), mean)
+
 
 # MODELS FOR DAYS 1 - 7 ------------------------------------------------------------------------------------------- #
+
 
 # interaction plots
 d.1.7.A <- interaction.plot(Size.D.1.7$Treatment_history, Size.D.1.7$Date, Size.D.1.7$Length)
@@ -117,18 +137,44 @@ d.1.7.ints # view interaction plots
 # three way ANOVA treatment and date
 # resp.MEAN.µg.L.hr.mm
 # resp.COUNT.µg.L.hr.indiv
-Size.D.1.7$Date <- as.factor(Size.D.1.7$Date)
+Size.D.1.7$Date <- as.factor(Size.D.1.7$Date) # make Date a factor
+# model on raw data
 threewayanova_D1.7 <- aov(Length ~ Treatment_history*Treatment.EXP_1*Date, data=Size.D.1.7) # run the model
 shapiro.test(residuals(threewayanova_D1.7)) # shaprio wilk test of model residuals p = 0.0297; non-normal distribution
-hist((residuals(threewayanova_D1.7))) # histogram of model - looks normal
+hist((residuals(threewayanova_D1.7))) # histogram of model - looks normal - slight left skew
 boxplot(residuals(threewayanova_D1.7)) #plot boxplot of residuals - some outliers present
 plot(fitted(threewayanova_D1.7),residuals(threewayanova_D1.7)) # plot residuals
 qqnorm(residuals(threewayanova_D1.7)) # qqplot - looks normal
-summary(threewayanova_D1.7) # significant effect of time and marginal effect of treatment history
-TukeyHSD(threewayanova_D1.7, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# model on transformed data
+Size.D.1.7$Length.log <- log(Size.D.1.7$Length)
+threewayanova_D1.7.LOG <- aov(Length.log ~ Treatment_history*Treatment.EXP_1*Date, data=Size.D.1.7) # run the model
+shapiro.test(residuals(threewayanova_D1.7.LOG)) # shaprio wilk test of model residuals p = 0.8429; normal distribution (log worked)
+hist((residuals(threewayanova_D1.7.LOG))) # histogram of model - looks normal
+boxplot(residuals(threewayanova_D1.7.LOG)) #plot boxplot of residuals - some outliers present
+plot(fitted(threewayanova_D1.7.LOG),residuals(threewayanova_D1.7.LOG)) # plot residuals
+qqnorm(residuals(threewayanova_D1.7.LOG)) # qqplot - looks normal
+# summary from the log model
+summary(threewayanova_D1.7.LOG) # significant effect of time and marginal effect of treatment history (same as the raw data)
+TukeyHSD(threewayanova_D1.7.LOG, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
 # significant difference between:
-# 20190731-20190728 p = 0.0246426
+# 20190731-20190728 p = 0.0235595 (very similar to the raw data model)
+Day1.7_dens.DATE <- ggdensity(Size.D.1.7, x = "Length", fill = "Date", title = "Day 1-7_.by.date" ,palette = "jco")
+Day1.7_dens.DATE
+Day8.14_violin.DATE <- ggviolin(Size.D.1.7, x = "Date", y = "Length", fill = "Date", 
+                                palette = "jco", add = "none", title = "Day 1-7_.by.date")
+Day8.14_violin.DATE <- Day8.14_violin.DATE %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
+Day8.14_violin.DATE <- ggpar(Day8.14_violin.DATE, ylim = c(4,12))
+Day8.14_violin.DATE
 
+Day1.7_dens.treathist <- ggdensity(Size.D.1.7, x = "Length", fill = "Treatment_history", title = "Day 1-7_by.treatmenthistory" ,palette = "jco")
+Day1.7_dens.treathist
+Day1.7_violin.treathist <- ggviolin(Size.D.1.7, x = "Treatment_history", y = "Length", fill = "Treatment_history", 
+                                    palette = c("#FC4E07", "#00AFBB"), add = "none", title = "Day 1-7_by.treatmenthistory")
+Day1.7_violin.treathist <- Day1.7_violin.treathist %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
+Day1.7_violin.treathist <- ggpar(Day1.7_violin.treathist, ylim = c(4,12))
+Day1.7_violin.treathist
+
+PLOTS.D.1.7 <- ggarrange(Day8.14_violin.DATE,Day1.7_violin.treathist, nrow = 1, ncol = 2)
 # MODELS FOR DAYS 8 - 14 ------------------------------------------------------------------------------------------ #
 
 # interaction plots
@@ -144,11 +190,28 @@ hist((residuals(threewayanova_D8.14))) # histogram of model - looks normal
 boxplot(residuals(threewayanova_D8.14)) #plot boxplot of residuals - some outliers present
 plot(fitted(threewayanova_D8.14),residuals(threewayanova_D8.14)) # plot residuals
 qqnorm(residuals(threewayanova_D8.14)) # qqplot - looks normal
-summary(threewayanova_D8.14) # significant effect of time
-TukeyHSD(threewayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# model on transformed data
+Size.D.8.14$Length.log <- log(Size.D.8.14$Length)
+threewayanova_D.8.14.LOG <- aov(Length.log ~ Treatment_history*Treatment.EXP_1*Date, data=Size.D.8.14) # run the model
+shapiro.test(residuals(threewayanova_D.8.14.LOG)) # shaprio wilk test of model residuals p = 0.3392; normal distribution (log worked)
+hist((residuals(threewayanova_D.8.14.LOG))) # histogram of model - looks normal
+boxplot(residuals(threewayanova_D.8.14.LOG)) #plot boxplot of residuals - some outliers present
+plot(fitted(threewayanova_D.8.14.LOG),residuals(threewayanova_D.8.14.LOG)) # plot residuals
+qqnorm(residuals(threewayanova_D.8.14.LOG)) # qqplot - looks normal
+# summary of transformed data
+summary(threewayanova_D.8.14.LOG) # significant effect of time
+TukeyHSD(threewayanova_D.8.14.LOG, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
 # significant difference between:
-# 20190804-20190801 p = 0.0020821
-# 20190807-20190801 p = 0.0137083
+# 20190804-20190801   0.0011880
+# 20190807-20190801   0.0132141
+Day8.14_dens.DATE <- ggdensity(Size.D.8.14, x = "Length", fill = "Date", title = "Day 8-14_.by.date" ,palette = "jco")
+Day8.14_dens.DATE
+Day8.14_violin.DATE <- ggviolin(Size.D.8.14, x = "Date", y = "Length", fill = "Date", 
+                                 palette = "jco", add = "none", title = "Day 8-14_.by.date")
+Day8.14_violin.DATE <- Day8.14_violin.DATE %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
+Day8.14_violin.DATE <- ggpar(Day8.14_violin.DATE, ylim = c(4,12))
+Day8.14_violin.DATE
+
 
 # MODELS FOR DAYS 15 - 21  --------------------------------------------------------------------------------------- #
 
@@ -165,26 +228,39 @@ hist((residuals(fourwayanova_D15.21)))# histogram of model - looks normal
 boxplot(residuals(fourwayanova_D15.21)) #plot boxplot of residuals - some outliers present
 plot(fitted(fourwayanova_D15.21),residuals(fourwayanova_D15.21)) # plot residuals
 qqnorm(residuals(fourwayanova_D15.21)) # qqplot - looks normal
-summary(fourwayanova_D15.21) # FIVE significant interaction between date and treatment
-# history effect 
-# binary - no need for Tukey
-TukeyHSD(fourwayanova_D15.21, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
-#Date
-# significant difference between:
-# 20190814-20190808 p = 0.0000000
-# 20190814-20190811 p = 0.0000004
-TukeyHSD(fourwayanova_D15.21, 'Treatment_history:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
-# Treatment_history:Treatment.EXP_2
-# E:M-A:M p = 0.0003035
-TukeyHSD(fourwayanova_D15.21, 'Treatment.EXP_1:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
-# no diffs present ??
-TukeyHSD(fourwayanova_D15.21, 'Treatment_history:Treatment.EXP_1:Treatment.EXP_2', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
-# Treatment_history:Treatment.EXP_1:Treatment.EXP_2
-# E:S:M-A:S:M p =0.0006942
-# E:S:M-A:M:M p =0.0000504
-# E:S:M-E:S:A p =0.0001162
-# E:S:M-A:M:A p =0.0545451 # marginal
+# model on transformed data
+Size.D.15.21$Length.log <- log(Size.D.15.21$Length)
+fourwayanova_D15.21.LOG <- aov(Length.log ~ Treatment_history*Treatment.EXP_1*Date, data=Size.D.15.21) # run the model
+shapiro.test(residuals(fourwayanova_D15.21.LOG)) # shaprio wilk test of model residuals p = 0.4294; normal distribution (log worked)
+hist((residuals(fourwayanova_D15.21.LOG))) # histogram of model - looks normal
+boxplot(residuals(fourwayanova_D15.21.LOG)) #plot boxplot of residuals - some outliers present
+plot(fitted(fourwayanova_D15.21.LOG),residuals(fourwayanova_D15.21.LOG)) # plot residuals
+qqnorm(residuals(fourwayanova_D15.21.LOG)) # qqplot - looks normal
+# summary of transformed data
+summary(fourwayanova_D15.21.LOG) # significant effect of time and treatment history
+TukeyHSD(fourwayanova_D15.21.LOG, 'Date', conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+# 20190814-20190808  0.0000000
+# 20190814-20190811  0.0000002
+#plots
+Day15.21_dens.DATE <- ggdensity(Size.D.15.21, x = "Length.log", fill = "Date", title = "Day 15-21_.by.date" ,palette = "jco")
+Day15.21_dens.DATE
+Day15.21_violin.DATE <- ggviolin(Size.D.15.21, x = "Date", y = "Length", fill = "Date", 
+                                   palette = "jco", add = "none", title = "Day 15-21_by.date")
+Day15.21_violin.DATE <- Day15.21_violin.DATE %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
+Day15.21_violin.DATE <- ggpar(Day15.21_violin.DATE, ylim = c(4,12))
+Day15.21_violin.DATE
+Day15.21_dens.treathist <- ggdensity(Size.D.8.14, x = "Length.log", fill = "Treatment_history", title = "Day 15-21_by.treatmenthistory" ,palette = "jco")
+Day15.21_dens.treathist
+Day15.21_violin.treathist <- ggviolin(Size.D.8.14, x = "Treatment_history", y = "Length", fill = "Treatment_history", 
+                                   palette = c("#FC4E07", "#00AFBB") , add = "none", title = "Day 15-21_by.treatmenthistory")
+Day15.21_violin.treathist <- Day15.21_violin.treathist %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
+Day15.21_violin.treathist <- ggpar(Day15.21_violin.treathist, ylim = c(4,12))
+Day15.21_violin.treathist
 
+
+PLOT.D.15.21 <- ggarrange(Day15.21_violin.DATE,Day15.21_violin.treathist, nrow = 1, ncol = 2)
+
+TOTAL.plots <- ggarrange(PRE_violin.DATE,PLOTS.D.1.7, Day8.14_violin.DATE, PLOT.D.15.21, nrow = 2, ncol = 2)
 ################################################################################################################### #
 ########## FIGURE CALCULATIONS (MEAN ± SE) ######################################################################### #
 ################################################################################################################### #

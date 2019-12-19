@@ -72,7 +72,7 @@ DF.TP.TOTAL # view cumulative data table
 TP.MERGE.Reference <- merge(DF.TP.TOTAL, TP.Reference, by = c('Date', 'Run', 'Well'))
 TP.MERGE.Reference <- na.omit(TP.MERGE.Reference) # ommit NAs
 TP.MERGE.Reference$Absorbance.RAW <- as.numeric(TP.MERGE.Reference$Absorbance.RAW) # make the absorbance values numeric (raw data from spec as characters)
-
+tail(TP.MERGE.Reference)
 # 2. ------------------------------------------------------------------------------------------------------------------------------------------ #
 
 TP.Blanks.means <- TP.MERGE.Reference %>% dplyr::filter(ID == 'I') %>% 
@@ -101,17 +101,30 @@ TP.Standards.MERGE.1 <- merge(TP.Standards.concentration, TP.Standards.means, by
 TP.Standards.MERGE.FINAL <- merge(TP.Standards.MERGE.1, TP.Blanks.means, by=c('Date', 'Run')) # merge with the mean blanks to correct BELOW
 TP.Standards.MERGE.FINAL$mean.absorbance.CORRECTED <- TP.Standards.MERGE.FINAL$mean.absorbance - TP.Standards.MERGE.FINAL$mean.blank # correct to mean blank absorbance as "mean.absorbance.CORRECTED"
 # NOTE: max standard is 2.6290
-TP.Standards.model <-lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.MERGE.FINAL) #runs a linear regression of mV as a function of temperature
-TP.b <- summary(TP.Standards.model)$coefficients[1]
-TP.m <- summary(TP.Standards.model)$coefficients[2]
-TP.R2<-summary(TP.Standards.model)$r.squared
-plot(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.MERGE.FINAL)
-summary(lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.MERGE.FINAL))
-abline(lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.MERGE.FINAL))
-legend('topleft', legend = c((bquote(R^2 == .(format(TP.R2), digits = 5))), 
-                             (bquote(slope == .(format(TP.m), digits = 5))),
-                             (bquote(intercept == .(format(TP.b), digits = 5)))),  bty='n')
-
+# SAMPLES ANNNALYZED ON 11/04
+TP.Standards.Nov <- TP.Standards.MERGE.FINAL %>% dplyr::filter(Date == '20191104')
+TP.Standards.model.Nov <- lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Nov) #runs a linear regression of mV as a function of temperature
+TP.b.Nov <- summary(TP.Standards.model.Nov)$coefficients[1] # 0.04205469
+TP.m.Nov <- summary(TP.Standards.model.Nov)$coefficients[2] # 1.334554
+TP.R2.Nov<-summary(TP.Standards.model.Nov)$r.squared # 0.9967063
+plot(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Nov)
+summary(lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Nov)) # Adjusted R-squared:  0.9962 
+abline(lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Nov))
+legend('topleft', legend = c((bquote(R^2 == .(format(TP.R2.Nov), digits = 5))), 
+                             (bquote(slope == .(format(TP.m.Nov), digits = 5))),
+                             (bquote(intercept == .(format(TP.b.Nov), digits = 5)))),  bty='n')
+# SAMPLES ANNNALYZED ON 12/16
+TP.Standards.Dec <- TP.Standards.MERGE.FINAL %>% dplyr::filter(Date == '20191216')
+TP.Standards.model.Dec <- lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Dec) #runs a linear regression of mV as a function of temperature
+TP.b.Dec <- summary(TP.Standards.model.Dec)$coefficients[1] # 0.04445541
+TP.m.Dec <- summary(TP.Standards.model.Dec)$coefficients[2] # 1.299334
+TP.R2.Dec <-summary(TP.Standards.model.Dec)$r.squared #  0.9953494
+plot(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Dec)
+summary(lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Dec)) # Adjusted R-squared:  0.9947 
+abline(lm(mean.absorbance.CORRECTED ~ mg.mL_BCA, data=TP.Standards.Dec))
+legend('topleft', legend = c((bquote(R^2 == .(format(TP.R2.Dec), digits = 5))), 
+                             (bquote(slope == .(format(TP.m.Dec), digits = 5))),
+                             (bquote(intercept == .(format(TP.b.Dec), digits = 5)))),  bty='n')
 
 # 6. ------------------------------------------------------------------------------------------------------------------------------------------ #
 
@@ -119,18 +132,27 @@ legend('topleft', legend = c((bquote(R^2 == .(format(TP.R2), digits = 5))),
 # remove standards from data, Calculate Total Protein
 TP.Samples.DF <- TP.MERGE.Reference %>% dplyr::filter(!Type == "Standard") # remove standards
 TP.MASTER.DF <- merge(TP.Samples.DF, TP.Blanks.means, by=c('Date')) # align blank values by date and run to correct absorbance values
+tail(TP.MASTER.DF) # view newer data
 TP.MASTER.DF$Absorbance.CORRECTED <- (TP.MASTER.DF$Absorbance.RAW -  TP.MASTER.DF$mean.blank) # subtract from the blank on the corresponding date (aligned from merge)
-TP.MASTER.DF$mg.mL_BCA  <- ((TP.MASTER.DF$Absorbance.CORRECTED - TP.b)/TP.m) # Calculate µg.mL_BCA 
-plot(Absorbance.CORRECTED ~ mg.mL_BCA, data=TP.MASTER.DF) # plot the data
 
-TP.MASTER.DF # view total protein dataframe
-TP.MASTER.DF <- na.omit(TP.MASTER.DF) # removes both duplicate measurements of ID 1161 and ONE measurement of ID 205 (over the spectrum of spec)
+
+TP.MASTER.DF.Nov <-  TP.MASTER.DF %>% dplyr::filter(Date == '20191104') 
+TP.MASTER.DF.Nov$mg.mL_BCA  <- ((TP.MASTER.DF.Nov$Absorbance.CORRECTED - TP.b.Nov)/TP.m.Nov) # Calculate µg.mL_BCA 
+plot(Absorbance.CORRECTED ~ mg.mL_BCA, data=TP.MASTER.DF.Nov) # plot the data
+
+TP.MASTER.DF.Dec <-  TP.MASTER.DF %>% dplyr::filter(Date == '20191216') 
+TP.MASTER.DF.Dec$mg.mL_BCA  <- ((TP.MASTER.DF.Dec$Absorbance.CORRECTED - TP.b.Dec)/TP.m.Dec) # Calculate µg.mL_BCA 
+plot(Absorbance.CORRECTED ~ mg.mL_BCA, data=TP.MASTER.DF.Dec) # plot the data
+
+
+TP.MASTER.DF.2 <- rbind(TP.MASTER.DF.Nov,TP.MASTER.DF.Dec) # view total protein dataframe
+TP.MASTER.DF.2 <- na.omit(TP.MASTER.DF.2) # removes both duplicate measurements of ID 1161 and ONE measurement of ID 205 (over the spectrum of spec)
 
 # 7. ------------------------------------------------------------------------------------------------------------------------------------------ #
 
 
 # Summarize by ID to obtain the median (assay completed in duplicates)
-MASTER.TP.MEANS <- TP.MASTER.DF %>%  
+MASTER.TP.MEANS <- TP.MASTER.DF.2 %>%  
  # dplyr::filter(Absorbance.CORRECTED < 2.6290) %>% 
   dplyr::group_by(Date, ID) %>% # call column to summarize 
   dplyr::summarise(mean.mg.mL_BCA = mean(mg.mL_BCA),
@@ -170,7 +192,7 @@ for(i in 1:length(TAC.file.names.full)) { # for every file name in list
   # script returns to next file in order and creates a new DF.TAC to rename as DF.loop and bind to DF.TAC.TOTAL wihtin the for loop
 }
 DF.TAC.TOTAL # view cumulative data table
-
+tail(DF.TAC.TOTAL, n = 50)
 # Analysis Steps
 # 1. Merge output with ID references  --------------------------------------------------------------------------------------------------------- #
 # 2. Seperate datasets into 'initial' and 'post' copper reaction ------------------------------------------------------------------------------ #
@@ -187,8 +209,9 @@ DF.TAC.TOTAL # view cumulative data table
 
 # merge with Reference and ommit NAs
 TAC.MERGE.Reference <- merge(DF.TAC.TOTAL, TAC.Reference, by = c('Date','Run', 'Well')) # merge with the reference data
+tail(TAC.MERGE.Reference, n = 50)
 TAC.MERGE.Reference <- na.omit(TAC.MERGE.Reference) # ommit NAs
-
+tail(TAC.MERGE.Reference, n = 50)
 
 # 2 and 3. ------------------------------------------------------------------------------------------------------------------------------------ #
 
@@ -196,10 +219,11 @@ TAC.MERGE.Reference <- na.omit(TAC.MERGE.Reference) # ommit NAs
 # INITIAL READS calculate median for duplicated values
 INITIAL.Calc.DF <- TAC.MERGE.Reference %>%  dplyr::filter(Initial.Post %in% 'i')# %>%  # call only initial data
 INITIAL.Calc.DF # view the table of mean values (actually the median of duplicates - prints the single value for readings not duplicated)
+tail(INITIAL.Calc.DF, n = 50)
 
 # POST READS (after the copper reaction)
 POST.DF <- TAC.MERGE.Reference %>%  dplyr::filter(Initial.Post %in% 'p') # call only post data
-POST.DF
+tail(POST.DF, n = 50)
 
 # 4. ------------------------------------------------------------------------------------------------------------------------------------------ #
 
@@ -217,18 +241,12 @@ run3less.than.stand <- MERGE.DF.3 %>%  dplyr::filter(Absorbance.diff < 0.03) # o
 
 MERGE.DF$Absorbance.diff <- ifelse(MERGE.DF$Absorbance.diff < 0.0000, 0, MERGE.DF$Absorbance.diff) # make negative value ZERO (only one in the third run)
 
-MERGE.DF.d <-  MERGE.DF %>% dplyr::filter(ID.x == 1483)
-
-# Master Data Frame 
-MASTER.TAC.DF <- MERGE.DF %>% dplyr::select(Date, Reagent.Date, ID.x, Type, Absorbance.diff) # select target columns
-colnames(MASTER.TAC.DF)[3] <- "ID" # change column name to ID
-MASTER.TAC.DF$Absorbance.diff.add.zero.stand <- MASTER.TAC.DF$Absorbance.diff + 0.03 # new column add the ZERO absorbance of the standard at zero
-MASTER.TAC.DF.means <- MASTER.TAC.DF %>% group_by(Date,ID,Type) %>% 
-  dplyr::summarise(Absorbance.mean = mean(Absorbance.diff.add.zero.stand))# summarize data table of the mean values for the absorbance corrected for the zero standard
+#MERGE.DF.d <-  MERGE.DF %>% dplyr::filter(ID.x == 1483)
 
 
 # 5. ------------------------------------------------------------------------------------------------------------------------------------------ #
-
+MASTER.TAC.DF <- MERGE.DF %>% dplyr::select(Date, Reagent.Date, ID.x, Type, Absorbance.diff) # select target columns
+colnames(MASTER.TAC.DF)[3] <- "ID" # change column name to ID
 
 # Standards 
 Stand.reference <- data.frame(matrix(nrow = 10, ncol = 2)) # create dataframe with 10 rwos (standards) and 2 columnds (ID and mM Uric Acid)
@@ -243,38 +261,78 @@ Standards.Median # view the table of mean values (actually the median of duplica
 Standards.MASTER <- merge(Standards.Median, Stand.reference, by = "ID")
 # NOTE: highest absorbance of standard 0.4925 
 # lowest standard absorbance is 0.0300
+#Standards.MASTER.2 <- Standards.MASTER %>% filter(Stand.ABS.median > 0.0301) # remove the zero standard
+#Standards.MASTER.2$Stand.ABS.median <- Standards.MASTER.2$Stand.ABS.median + 0.03 # add the absorbance of the zero standard to all other standards 
+# Note: this will give the accurate calculattion from the regression to calculation UAE based on all the data added by 0.03 (the zero standard absorbance)
 
-Standards.MASTER <- Standards.MASTER %>% dplyr::filter(mM.Uric.Acid < 1.0)
-Standards.model <-lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.MASTER) #runs a linear regression of mV as a function of temperature
-b <- 0.03#summary(Standards.model)$coefficients[1]
-m <- summary(Standards.model)$coefficients[2]
-R2<-summary(Standards.model)$r.squared
-plot(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.MASTER)
-summary(lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.MASTER))
-abline(lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.MASTER))
-legend('topleft', legend = bquote(R^2 == .(format(R2, digits = 3))), bty='n')
+
+# Standard Curves
+# Standard curve - OCTOBER run
+Standards.Oct <- Standards.MASTER %>% dplyr::filter(Date %in% '20191030')
+Standards.model.Oct <-lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Oct) #runs a linear regression of mV as a function of temperature
+plot(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Oct) # high standard is off
+
+Standards.Oct.2 <- Standards.Oct %>% dplyr::filter(mM.Uric.Acid < 1.0) # remove the high standard for better fit
+Standards.model.Oct.2 <-lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Oct.2) #runs a linear regression of mV as a function of temperature
+plot(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Oct.2) # better  fit
+summary(lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Oct.2)) # Adjusted R-squared:  0.9906 
+abline(lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Oct.2))
+#b.Oct <- 0.03#summary(Standards.model)$coefficients[1]
+b.Oct <- summary(Standards.model.Oct.2)$coefficients[1] # 0.03590498
+m.Oct <- summary(Standards.model.Oct.2)$coefficients[2] # 0.5781389
+R2.Oct<-summary(Standards.model.Oct.2)$r.squared # 0.9917731
+legend('topleft', legend = bquote(R^2 == .(format(R2.Oct, digits = 3))), bty='n',)
+
+
+# Standard curve - Dec run
+Standards.Dec <- Standards.MASTER %>% dplyr::filter(Date %in% '20191210')
+Standards.model.Dec <-lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Dec) #runs a linear regression of mV as a function of temperature
+plot(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Dec) # high standard is off
+abline(lm(Stand.ABS.median ~ mM.Uric.Acid, data=Standards.Dec))
+summary(Standards.model.Dec) # 0.9991
+b.Dec <- summary(Standards.model.Dec)$coefficients[1] # 0.03982677
+m.Dec <- summary(Standards.model.Dec)$coefficients[2] # 1.272379
+R2.Dec<-summary(Standards.model.Dec)$r.squared # 0.9991627
+legend('topleft', legend = bquote(R^2 == .(format(R2.Dec, digits = 3))), bty='n',)
 
 
 # 6. ------------------------------------------------------------------------------------------------------------------------------------------ #
 
+# Master Data Frame 
+zero.standards <- Standards.MASTER %>%  filter(mM.Uric.Acid == 0) # 0.0300 and 0.0335
+MASTER.TAC.DF.Oct <- MASTER.TAC.DF %>%  filter(Date == 20191030) # october samples 
+MASTER.TAC.DF.Oct$zero.stand <- 0.0300
+MASTER.TAC.DF.Dec <- MASTER.TAC.DF %>%  filter(Date %in% c('20191210', '20191212')) # december samples
+MASTER.TAC.DF.Dec$zero.stand <- 0.0335
+MASTER.TAC.DF.2 <- rbind(MASTER.TAC.DF.Oct, MASTER.TAC.DF.Dec)
+MASTER.TAC.DF.2$Absorbance.diff.add.zero.stand <- MASTER.TAC.DF.2$Absorbance.diff + MASTER.TAC.DF.2$zero.stand # new column add the ZERO absorbance of the standard at zero
+MASTER.TAC.DF.means <- MASTER.TAC.DF.2 %>% group_by(Date,ID,Type) %>% 
+  dplyr::summarise(Absorbance.mean = mean(Absorbance.diff.add.zero.stand))# summarize data table of the mean values for the absorbance corrected for the zero standard
 
 # remove standards from data, Calculate UAE and CRE
 MASTER.TAC.DF.SAMPLES <- MASTER.TAC.DF.means %>% dplyr::filter(!Type == "Standard") # remove standards
 SAMPLES.under.standards <- MASTER.TAC.DF.SAMPLES %>% dplyr::filter(Absorbance.mean < 0.0300)
-MASTER.TAC.DF.SAMPLES$mM.Uric.Acid.Equivalents <- (MASTER.TAC.DF.SAMPLES$Absorbance.mean - b)/m # Calculate URIC ACID EQUIVALENTS (UAE)
 
-plot(Absorbance.mean ~ mM.Uric.Acid.Equivalents, data=MASTER.TAC.DF.SAMPLES) # plot the data
-summary(lm(Absorbance.mean ~ mM.Uric.Acid.Equivalents, data=MASTER.TAC.DF.SAMPLES))
+MASTER.TAC.DF.SAMPLES.Oct <- MASTER.TAC.DF.SAMPLES %>%  filter(Date == 20191030) # october samples 
+#MASTER.TAC.DF.SAMPLES.Oct$mM.Uric.Acid.Equivalents <- (MASTER.TAC.DF.SAMPLES.Oct$Absorbance.mean - b.Oct)/m.Oct # Calculate URIC ACID EQUIVALENTS (UAE) - weighed low mass of Cu standard - may have confoundded our calib curve
+MASTER.TAC.DF.SAMPLES.Oct$mM.Uric.Acid.Equivalents <- (MASTER.TAC.DF.SAMPLES.Oct$Absorbance.mean - b.Dec)/m.Dec # based on calibration curve in december run Calculate URIC ACID EQUIVALENTS (UAE)
+MASTER.TAC.DF.SAMPLES.Dec  <- MASTER.TAC.DF.SAMPLES %>%  filter(Date %in% c('20191210', '20191212')) # december samples
+MASTER.TAC.DF.SAMPLES.Dec$mM.Uric.Acid.Equivalents <- (MASTER.TAC.DF.SAMPLES.Dec$Absorbance.mean - b.Dec)/m.Dec # Calculate URIC ACID EQUIVALENTS (UAE)
 
-MASTER.TAC.DF.SAMPLES$µM.Copper.Reducing.Equivalents <- MASTER.TAC.DF.SAMPLES$mM.Uric.Acid.Equivalents*2189 # Calculate µM Copper Reducing Equivlents (CRE)
+MASTER.TAC.DF.SAMPLES.2 <- rbind(MASTER.TAC.DF.SAMPLES.Oct, MASTER.TAC.DF.SAMPLES.Dec)
+
+plot(Absorbance.mean ~ mM.Uric.Acid.Equivalents, data=MASTER.TAC.DF.SAMPLES.2) # plot the data
+summary(lm(Absorbance.mean ~ mM.Uric.Acid.Equivalents, data=MASTER.TAC.DF.SAMPLES.2))
+
+MASTER.TAC.DF.SAMPLES.2$µM.Copper.Reducing.Equivalents <- MASTER.TAC.DF.SAMPLES.2$mM.Uric.Acid.Equivalents*2189 # Calculate µM Copper Reducing Equivlents (CRE)
 
 # Summarize by ID to obtain the median (assay completed in duplicates)
-MASTER.TAC.MEANS <- MASTER.TAC.DF.SAMPLES %>%  
+MASTER.TAC.MEANS <- MASTER.TAC.DF.SAMPLES.2 %>%  
   dplyr::group_by(Date, ID) %>% # call column to summarize 
   dplyr::summarise(mean.UAE = mean(mM.Uric.Acid.Equivalents), 
                    mean.CRE = mean(µM.Copper.Reducing.Equivalents)) 
 MASTER.TAC.MEANS # view the table of mean values (actually the median of duplicates - prints the single value for readings not duplicated)
-
+tail(MASTER.TAC.MEANS)
 
 
 ################################################################################################################################## #
@@ -283,37 +341,56 @@ MASTER.TAC.MEANS # view the table of mean values (actually the median of duplica
 ################################################################### OXISELECT ASSSAY     ######################################### #
 ################################################################################################################################## #
 MASTER.TAC.MEANS # calculated total antioxidant capacity
+sum(complete.cases(MASTER.TAC.MEANS)) # 144 - still have ~ 20 samples to run
 MASTER.TP.MEANS # calculated total antioxidant capacity
+sum(complete.cases(MASTER.TP.MEANS)) # 161 - three less than total master sheet due to bad spec measurements
 Master.Sample.Tracker # master sheet of all data (total homogenized volume, AFDW, volumes for each assay, dolution information, etc.)
+sum(complete.cases(Master.Sample.Tracker$ID))  # 164
 
 # Merge with the master sheet (containing Treatment IDs and Correction factors)
 TAC.TP.MERGE <- merge(MASTER.TP.MEANS, MASTER.TAC.MEANS, by = 'ID')
+Master.Sample.Tracker$ID <- Master.Sample.Tracker$NEW.Tube.ID
 MASTER.PHYS.ASSAY <- merge(TAC.TP.MERGE, Master.Sample.Tracker, by = 'ID')
-
 # correct for homogenate volume as "TOTAL"
 # TOTAL.total.protein mg/mL - (total homogenate vol / vol aliquot for protein assay) * (protein measured in aliquot*dilution factor)
 sapply(MASTER.PHYS.ASSAY, class) # check the class - occasionally variables that are numeric are characters
-MASTER.PHYS.ASSAY$µl.Total.Homog.Volume <- as.numeric(MASTER.PHYS.ASSAY$µl.Total.Homog.Volume)
-MASTER.PHYS.ASSAY$µl.Total.protein  <- as.numeric(MASTER.PHYS.ASSAY$µl.Total.protein)  
-MASTER.PHYS.ASSAY$TOTAL.total.protein.mg.mL <- (MASTER.PHYS.ASSAY$µl.Total.Homog.Volume/MASTER.PHYS.ASSAY$µl.Total.protein)*(MASTER.PHYS.ASSAY$mean.mg.mL_BCA *MASTER.PHYS.ASSAY$Dil.factor.Total.Protein)
+MASTER.PHYS.ASSAY$µl.Total.Homog.Volume <- as.numeric(MASTER.PHYS.ASSAY$µl.Total.Homog.Volume) # convert to numeric
+MASTER.PHYS.ASSAY$µl.Total.protein  <- as.numeric(MASTER.PHYS.ASSAY$µl.Total.protein)  # convert to numeric
+MASTER.PHYS.ASSAY$mean.mg.mL_BCA # = mg / ml raw signal from the calibration curve; 
+MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected <- (MASTER.PHYS.ASSAY$mean.mg.mL_BCA*MASTER.PHYS.ASSAY$Dil.factor.Total.Protein) # mg  protein ONLY IN THE 20ul sample (account for dilution from NaOH and HCl; 20 ul used for the Rapid Gold assay
+# NOTE: TOTAL_PROTEIN_per_SAMPLE is the mg of protein in the 20 µl sample for the rapid gold assay kit
 
-# TOTAL.mean.CRE - (total homogenate vol / vol aliquot for protein assay) * (TAC measured in aliquot*dilution factor)
-MASTER.PHYS.ASSAY$µl.TAC <- as.numeric(MASTER.PHYS.ASSAY$µl.TAC)
-MASTER.PHYS.ASSAY$mean.CRE <- as.numeric(MASTER.PHYS.ASSAY$mean.CRE)
-MASTER.PHYS.ASSAY$Dil.factor.TAC <- as.numeric(MASTER.PHYS.ASSAY$Dil.factor.TAC)
-MASTER.PHYS.ASSAY$TOTAL.mean.CRE <-  (MASTER.PHYS.ASSAY$µl.Total.Homog.Volume/MASTER.PHYS.ASSAY$µl.TAC)*(MASTER.PHYS.ASSAY$mean.CRE*MASTER.PHYS.ASSAY$Dil.factor.TAC)
+# TOTAL.mean.CRE - µm cOPPER reDUCING eQUIVALENTS MG PROTEIN -1 (IN THE 20 UL SAMPLE)
+#MASTER.PHYS.ASSAY$µl.TAC <- as.numeric(MASTER.PHYS.ASSAY$µl.TAC) # convert to numericvolume aliquot (~50 - 100 ul; in spreadsheet) from total homogenate volume (HV = PBS + whole geoduck)
+MASTER.PHYS.ASSAY$mean.CRE <- as.numeric(MASTER.PHYS.ASSAY$mean.CRE) # uM concentration NOT DILUTED convert to numeric
 
-# Total protein corrected for AFDW
-MASTER.PHYS.ASSAY$mgProtein.mgAFDW <- MASTER.PHYS.ASSAY$TOTAL.total.protein.mg.mL / MASTER.PHYS.ASSAY$mgTOTAL_AFDW
-# Total antioxidant capacity corrected for Total protein per gAFDW
-MASTER.PHYS.ASSAY$mMCuRedEqu.mgPro.mgAFDW <-  (MASTER.PHYS.ASSAY$TOTAL.mean.CRE / MASTER.PHYS.ASSAY$mgProtein.mgAFDW)/1000
+MASTER.PHYS.ASSAY$Dil.factor.TAC <- as.numeric(MASTER.PHYS.ASSAY$Dil.factor.TAC) # convert to numeric dilution factor for a few samples that were additionally diluted prior to NaOH and HCl
+MASTER.PHYS.ASSAY$µM.CRE.mg.protein<- (MASTER.PHYS.ASSAY$mean.CRE*MASTER.PHYS.ASSAY$Dil.factor.TAC) / (MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected) # µM CRE mg protein = concentration of CRE in the 20 µl sample / protein in 20 ul sample
 
+# Total protein WHOLE ANIMALS corrected for AFDW (AS mgProtein.mgAFDW)
+MASTER.PHYS.ASSAY$TOTAL.PROTEIN_whole.animal.mg <- (MASTER.PHYS.ASSAY$µl.Total.Homog.Volume/20)*MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected
+MASTER.PHYS.ASSAY$mgProtein.mgAFDW <- MASTER.PHYS.ASSAY$TOTAL.PROTEIN_whole.animal.mg /  MASTER.PHYS.ASSAY$mgTOTAL_AFDW
 
-PHYS.DATA <- MASTER.PHYS.ASSAY %>% dplyr::select(Date.fixed, ID, Treatment, Exprmt.Day, Tank.ID, mgTOTAL_AFDW, mgProtein.mgAFDW, mMCuRedEqu.mgPro.mgAFDW )
-PHYS.DATA <- na.omit(PHYS.DATA)
+PHYS.DATA <- MASTER.PHYS.ASSAY %>% dplyr::select(Date.fixed, ID, Treatment, Exprmt.Day, Tank.ID, 
+                                                 mgTOTAL_AFDW,
+                                                 mgProtein.mgAFDW,
+                                                 µM.CRE.mg.protein)
+
+#PHYS.DATA <- na.omit(PHYS.DATA)
 
 count.days <- PHYS.DATA %>%  dplyr::group_by(Exprmt.Day) %>% 
-  dplyr::summarise(count_replicated.by.day =n()) # day 1, 12; day 4, 12; day 7, 11; day 15, 15, day 18, 15; day 21, 15
+  dplyr::summarise(count_replicated.by.day =n()) # day 1, 12; day 4, 12; day 7, 35; day 15,  16, day 18, 15; day 21, 49
+
+count.treat.D7 <- PHYS.DATA %>%  dplyr::filter(Exprmt.Day %in% 'Day7') %>% 
+  dplyr::group_by(Treatment) %>% 
+  dplyr::summarise(count_replicated.by.day =n())
+count.treat.D7
+
+count.treat.D21 <- PHYS.DATA %>%  dplyr::filter(Exprmt.Day %in% 'DAY21') %>% 
+  dplyr::group_by(Treatment) %>% 
+  dplyr::summarise(count_replicated.by.day =n())
+count.treat.D21
+
 
 # write out tables
 write.table(PHYS.DATA, file="C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Phys.Assay.Table.csv", sep=",", row.names = FALSE) #save data to output file
