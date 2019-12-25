@@ -58,26 +58,39 @@ ID.reference.all <- read.csv(file="Data/Tank.ID.reference.subsequent.csv", heade
 # DATA CARPENTRY FOR FIGURES AND STATISTICAL ANALYSIS   ########################################################### #
 ################################################################################################################### #
 
+df <- data_frame(a = c(0, NA, 0, 4, NA, 0, 6), b = c(1, NA, 0, 4, NA, 0, NA), c = c(1, 0, 1, NA, NA, 0, NA))
+
+
+# columns b and c would be the columns you don't want all NAs
+
+df %>% 
+  filter_at(vars(b, c), any_vars(!is.na(.)))
+
+df %>% 
+  filter_at(vars(b, c), any_vars(complete.cases(.)))
+
 
 # Merge ID.ref with shell size; select desired columns; divide into treatment periods; rbind to one table
 # ID ref modifications - filter tank IDs for treatment periods
 # ID.reference.D.1.14 <- ID.reference.all %>%  dplyr::filter(Tank.ID == 1:36) %>%  dplyr::select(Tank.ID, INITIAL.TREATMENT.ID)
 # ID.reference.D.15.21 <- ID.reference.all  %>%  dplyr::select(Tank.ID, TREATMENT.ID.TOTAL)
 # filter and select dates of experiment and ommit NAs
-Size.data.EXPERIMENT <- Size.data.ALL %>% dplyr::filter(Date > 20190722) %>%  dplyr::select(Date, Tank.ID, Sw.Condition, Length, Notes) # select data since 20190723
-Size.data.EXPERIMENT <- na.omit(Size.data.EXPERIMENT) # ommit NAs from the dataset
+Size.data.EXPERIMENT <- Size.data.ALL %>% dplyr::filter(Date > 20190722) %>%  dplyr::select(Date, Tank.ID, Sw.Condition, Length, Notes, Tank.ID.SPLIT) # select data since 20190723
+Size.data.EXPERIMENT <- Size.data.EXPERIMENT %>% filter_at(vars(Tank.ID), any_vars(!is.na(.))) # only ommit NA of Tank.ID 
 Size.data.EXPERIMENT # view table
 # modify ID ref columns and merge with shell size table = shell_size_data
-ID.reference.short <- ID.reference.all %>% dplyr::select(Tank.ID,TREATMENT.ID.TOTAL) # select columns desired from ID.references to merge with shell size below
+ID.reference.short <- ID.reference.all %>% dplyr::select(Tank.ID,TREATMENT.ID.TOTAL, Tank.ID.SPLIT) # select columns desired from ID.references to merge with shell size below
 shell_size_data <- merge(Size.data.EXPERIMENT,ID.reference.short,by="Tank.ID") # merge shell size data and ID reference
+shell_size_data <- shell_size_data %>%  dplyr::select(-Tank.ID.SPLIT.x)
+colnames(shell_size_data)[7] <- "Tank.ID.SPLIT"
 # modify shell_size_data for targetted columns and create new columns for different treatments
-shell_size_data <- shell_size_data %>% dplyr::select(Date, Length, TREATMENT.ID.TOTAL,Tank.ID)
+shell_size_data <- shell_size_data %>% dplyr::select(Date, Length, TREATMENT.ID.TOTAL,Tank.ID, Tank.ID.SPLIT)
 shell_size_data$Treatment_history <- substr(shell_size_data$TREATMENT.ID.TOTAL, 1,1) # new column for treatment history
 shell_size_data$Treatment.EXP_1 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 3,3) # new column for d1-7 exposure
 shell_size_data$Treatment.EXP_2 <- substr(shell_size_data$TREATMENT.ID.TOTAL, 4,4) # new column for d 15-21 exposure
 # divide shell_size_data into the 4 different periods (pre, first 7 days, second 7 days, third 7 days of 21-day experiment)
 # (1) Pre-experiment data
-Size.pre <- shell_size_data %>% dplyr::filter(Date %in% 20190723) 
+Size.pre <- shell_size_data %>% dplyr::filter(Date %in% c(20190723,20190724))
 Size.pre$Treatment.EXP_1 <- "NA" # first exposure NA - not needed in figure or analysis
 Size.pre$Treatment.EXP_2 <- "NA" # second exposure NA - not needed in figure or analysis # IMPORTANT! PRE-EXPERIMENT DATA
 # (2 and 3) First 14 days of the expeiment - Same treatments for figure and analsis (hisotyr and Exp_1 NOT Exp_2 during last 7-day period)
@@ -90,6 +103,25 @@ Size.D.15.21 <- shell_size_data %>% dplyr::filter(Date > 20190807)  # IMPORTANT!
 # bind all data to one table 
 SizeTableFINAL <- rbind(Size.pre, Size.D.1.14, Size.D.15.21)
 
+# make a table of the mean and standard deviation of the pre experiment sizes by Tank.ID
+pre_experiment <- SizeTableFINAL %>% filter(Date %in% 20190724)
+tapply(pre_experiment$Length, pre_experiment$Treatment_history, mean) # mean value of Ambient and Elevated animals
+PRE.Table <- as.table(tapply(pre_experiment$Length, (paste(pre_experiment$Treatment_history, pre_experiment$Tank.ID.SPLIT, sep ="_")), mean)) # mean value of treatment and tray
+PRE.Table.melt <- melt(PRE.Table, id.vars=c("Tank.ID.SPLIT"))
+PRE.Table.melt$Tank.ID.SPLIT <- substr(PRE.Table.melt$indices, 3,6)
+
+x <- merge(SizeTableFINAL, PRE.Table.melt, by = "Tank.ID.SPLIT")
+x$length.DIFF <- x$value - x$Length 
+unique(x$Date)
+x$Date <- as.character(x$Date)
+p <- ggplot(x, aes(x=Date, y=length.DIFF, shape = Tank.ID)) + geom_point()
+p  + scale_x_discrete(name ="Date)", 
+                 limits=c("20190724", "20190725","20190728","20190731",
+                          "20190801","20190804","20190807",
+                          "20190808","20190811","20190814"))
+library(ggpubr)
+ggboxplot(x, x = "Date", y = "length.DIFF",  ylab = "length.difference (mm)",  fill = "Tank.ID",
+          palette = c( "rickandmorty"),add = "jitter", title = "Length_difference", xlab = "Shell length")
 
 # NOTE - THESE ARE THE TARGETTED DATA FRAMES FOR FIGURES
 # Size.pre
