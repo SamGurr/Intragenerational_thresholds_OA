@@ -58,18 +58,6 @@ ID.reference.all <- read.csv(file="Data/Tank.ID.reference.subsequent.csv", heade
 # DATA CARPENTRY FOR FIGURES AND STATISTICAL ANALYSIS   ########################################################### #
 ################################################################################################################### #
 
-df <- data_frame(a = c(0, NA, 0, 4, NA, 0, 6), b = c(1, NA, 0, 4, NA, 0, NA), c = c(1, 0, 1, NA, NA, 0, NA))
-
-
-# columns b and c would be the columns you don't want all NAs
-
-df %>% 
-  filter_at(vars(b, c), any_vars(!is.na(.)))
-
-df %>% 
-  filter_at(vars(b, c), any_vars(complete.cases(.)))
-
-
 # Merge ID.ref with shell size; select desired columns; divide into treatment periods; rbind to one table
 # ID ref modifications - filter tank IDs for treatment periods
 # ID.reference.D.1.14 <- ID.reference.all %>%  dplyr::filter(Tank.ID == 1:36) %>%  dplyr::select(Tank.ID, INITIAL.TREATMENT.ID)
@@ -108,26 +96,46 @@ pre_experiment <- SizeTableFINAL %>% filter(Date %in% 20190724)
 tapply(pre_experiment$Length, pre_experiment$Treatment_history, mean) # mean value of Ambient and Elevated animals
 PRE.Table <- as.table(tapply(pre_experiment$Length, (paste(pre_experiment$Treatment_history, pre_experiment$Tank.ID.SPLIT, sep ="_")), mean)) # mean value of treatment and tray
 PRE.Table.melt <- melt(PRE.Table, id.vars=c("Tank.ID.SPLIT"))
-PRE.Table.melt$Tank.ID.SPLIT <- substr(PRE.Table.melt$indices, 3,6)
+PRE.Table.melt$Tank.ID.SPLIT <- substr(PRE.Table.melt$indices, 3,7)
 
-x <- merge(SizeTableFINAL, PRE.Table.melt, by = "Tank.ID.SPLIT")
-x$length.DIFF <- x$value - x$Length 
-unique(x$Date)
-x$Date <- as.character(x$Date)
-p <- ggplot(x, aes(x=Date, y=length.DIFF, shape = Tank.ID)) + geom_point()
-p  + scale_x_discrete(name ="Date)", 
-                 limits=c("20190724", "20190725","20190728","20190731",
-                          "20190801","20190804","20190807",
-                          "20190808","20190811","20190814"))
-library(ggpubr)
-ggboxplot(x, x = "Date", y = "length.DIFF",  ylab = "length.difference (mm)",  fill = "Tank.ID",
+MERGE_averages <- merge(SizeTableFINAL, PRE.Table.melt, by = "Tank.ID.SPLIT")
+MERGE_averages$length.DIFF <- MERGE_averages$value - MERGE_averages$Length # calculate the length difference
+#unique(x$Date)
+#unique(x$Treatment.EXP_1)
+#unique(SizeTableFINAL$Treatment.EXP_1)
+#x$Date <- as.character(x$Date)
+x_after <- MERGE_averages %>%  filter(Date > 20190724)
+x_20190731$Treatment_hist_EXP1 <- paste(a=x_20190731$Treatment_history, x_20190731$Treatment.EXP_1, sep = "")
+ggboxplot(x_after, x = "Date", y = "length.DIFF",  ylab = "length.difference (mm)",  fill = "Treatment.EXP_1",
           palette = c( "rickandmorty"),add = "jitter", title = "Length_difference", xlab = "Shell length")
 
-# NOTE - THESE ARE THE TARGETTED DATA FRAMES FOR FIGURES
-# Size.pre
-# Size.D.1.7
-# Size.D.8.14
-# Size.D.15.21
+library(ggpubr)
+Day_21_length_diff <- MERGE_averages %>%  filter(Date %in% 20190814)
+model_day_21 <- aov(length.DIFF~Treatment_history*Treatment.EXP_1*Treatment.EXP_2, 
+             data = Day_21_length_diff)
+summary(model_day_21)
+shapiro.test(residuals(model_day_21)) # shaprio wilk test of model residuals p = 0.0297; non-normal distribution
+hist((residuals(model_day_21))) # histogram of model - looks normal - slight left skew
+boxplot(residuals(model_day_21)) #plot boxplot of residuals - some outliers present
+plot(fitted(model_day_21),residuals(model_day_21)) # plot residuals
+qqnorm(residuals(model_day_21)) # qqplot - looks normal
+#post hoc
+TukeyHSD(model_day_21, conf.level=0.95)
+#plot
+Day21_boxplot.lengthdiff <- ggboxplot(Day_21_length_diff, x = "Treatment_history", 
+                                      y = "length.DIFF", fill = "Treatment.EXP_1", 
+                                      palette = "jco", add = "jitter", title = "Day 21 Length Diff")
+Day21_boxplot.lengthdiff
+# transform 
+# model_day_21.TRANS <- aov((length.DIFF^1/3)~Treatment_history*Treatment.EXP_1*Treatment.EXP_2, 
+#                     data = Day_21_length_diff)
+# summary(model_day_21.TRANS)
+# shapiro.test(residuals(model_day_21.TRANS)) # shaprio wilk test of model residuals p = 0.0297; non-normal distribution
+# hist((residuals(model_day_21.TRANS))) # histogram of model - looks normal - slight left skew
+# boxplot(residuals(model_day_21)) #plot boxplot of residuals - some outliers present
+# plot(fitted(model_day_21),residuals(model_day_21)) # plot residuals
+# qqnorm(residuals(model_day_21)) # qqplot - looks normal
+
 
 ################################################################################################################### #
 # STATISTICAL ANALYSIS  ########################################################################################### #
