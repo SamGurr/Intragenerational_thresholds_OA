@@ -72,9 +72,20 @@ DATA_Days.1.14 <- DATA.experiment %>%  # divide dataset into first 14 days (same
 DATA_Days.15.21 <- DATA.experiment %>%  # and last 7 days (same treatment)
   dplyr::filter(Date > 20190807)
 
+###############################################################################  #
+###############################################################################  #
+################### T-test for resp rate prior to secondary exoposure       ###  #
+################# after 3 months of pCO2 conditioning #########################  #
+###############################################################################  #
 # t.test of "pre" data prior to the experiment
 ttest_summ <-t.test(resp.COUNT.µg.L.hr.indiv~Treatment.history, data=DATA.pre) # p-value = 0.5516; no difference between pCO2 treatment
 ttest_summ # view tet results
+
+###############################################################################  #
+###############################################################################  #
+################### Models for Resp rate treatment and time for exp periods ###  #
+###############################################################################  #
+###############################################################################  #
 
 # MODELS FOR DAYS 1 - 7 -------------------------------------------------------- #
 Days.1.7 <- DATA_Days.1.14 %>% 
@@ -155,6 +166,36 @@ RESP_Days.15.21.final <- DATA_Days.15.21 %>%
   dplyr::group_by(Treatment.EXP_1, Treatment.history) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))
 
+
+
+
+###############################################################################  #
+###############################################################################  #
+##### Models for Day 7 annd Day 21 - aligned with the TAOC and TP data      ###  #
+###############################################################################  #
+###############################################################################  #
+
+# PREPARE THE DATA FOR THESE MODELS (TWO WAY AND THREE WAY ANOVAS)
+# DAY 7  use the Days.1.7 created in previous script (above) and isolate 20190731
+Day7_RESP <- Days.1.7 %>%  dplyr::filter(Date %in% 20190731) # filter data on 20190731
+# DAY 21  use the DATA_Days.15.21 created in previous script (above) and isolate 20190814
+Day21_RESP <- DATA_Days.15.21 %>%  dplyr::filter(Date %in% 20190814) # filter data on 20190814
+
+# RUN THE MODELS ############### #
+# DAY 7 TWO WAY ANOVA FOR TREATMENT INITIAL (HISTORY) AND TREATMENT SECONDARY (DAYS 1 -7 PERIOD)
+RESP_DAY7_mod <- aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment.EXP_1, data = Day7_RESP)
+summary(RESP_DAY7_mod) # summary of model
+shapiro.test(residuals(RESP_DAY7_mod)) # p-value = 0.4121; normal via shapiro wilk test
+hist((residuals(RESP_DAY7_mod))) # histogram of residuals
+qqnorm(residuals(RESP_DAY7_mod)) # qqplot
+leveneTest(RESP_DAY7_mod) # p = 0.9121; homogenity of variance 
+# DAY 21 THREE WAY ANOVA FOR TREAMENT INITIAL (HISTORY) × TREATMENT SECONDARY (D 1-7) × TREATMENT TERTIARY (D 14 - 21)
+RESP_DAY21_mod <- aov(resp.COUNT.µg.L.hr.indiv ~ Treatment.history*Treatment.EXP_1*Treatment.EXP_2, data = Day21_RESP)
+summary(RESP_DAY21_mod) # summary of model
+shapiro.test(residuals(RESP_DAY21_mod)) # p-value = 0.2533; normal via shapiro wilk test
+hist((residuals(RESP_DAY21_mod))) # histogram of residuals
+qqnorm(residuals(RESP_DAY21_mod)) # qqplot
+leveneTest(RESP_DAY21_mod) # p = 0.5439; homogenity of variance 
 
 
 

@@ -43,7 +43,7 @@ library(multcompView)   # Version: 0.1-7, Date/Publication: 2015-07-31, Imports:
 library(Rmisc)
 library(lmtest)
 library(car)
-
+library(ggpubr)
 #Required Data files
 
 # Set Working Directory:
@@ -91,25 +91,101 @@ Size.D.15.21 <- shell_size_data %>% dplyr::filter(Date > 20190807)  # IMPORTANT!
 # bind all data to one table 
 SizeTableFINAL <- rbind(Size.pre, Size.D.1.14, Size.D.15.21)
 
+################################################################################################################### #
+# DATA CARPENTRY FOR AVERAGE SHELL LENTH TO INITIAL VALUES BY BIOLOGICAL REPLICATE (CUP)        ################### #
+################################################################################################################### #
+
 # make a table of the mean and standard deviation of the pre experiment sizes by Tank.ID
 pre_experiment <- SizeTableFINAL %>% filter(Date %in% 20190724)
 tapply(pre_experiment$Length, pre_experiment$Treatment_history, mean) # mean value of Ambient and Elevated animals
 PRE.Table <- as.table(tapply(pre_experiment$Length, (paste(pre_experiment$Treatment_history, pre_experiment$Tank.ID.SPLIT, sep ="_")), mean)) # mean value of treatment and tray
 PRE.Table.melt <- melt(PRE.Table, id.vars=c("Tank.ID.SPLIT"))
 PRE.Table.melt$Tank.ID.SPLIT <- substr(PRE.Table.melt$indices, 3,7)
-
 MERGE_averages <- merge(SizeTableFINAL, PRE.Table.melt, by = "Tank.ID.SPLIT")
 MERGE_averages$length.DIFF <- MERGE_averages$value - MERGE_averages$Length # calculate the length difference
-#unique(x$Date)
-#unique(x$Treatment.EXP_1)
-#unique(SizeTableFINAL$Treatment.EXP_1)
-#x$Date <- as.character(x$Date)
+# PLAY OF THE DATA A BIT AND PLOT
 x_after <- MERGE_averages %>%  filter(Date > 20190724)
 x_20190731$Treatment_hist_EXP1 <- paste(a=x_20190731$Treatment_history, x_20190731$Treatment.EXP_1, sep = "")
 ggboxplot(x_after, x = "Date", y = "length.DIFF",  ylab = "length.difference (mm)",  fill = "Treatment.EXP_1",
           palette = c( "rickandmorty"),add = "jitter", title = "Length_difference", xlab = "Shell length")
 
-library(ggpubr)
+
+###############################################################################  #
+###############################################################################  #
+##### Models for Day 7 and Day 21 - aligned with the TAOC and TP data       ###  #
+###############################################################################  #
+###############################################################################  #
+
+# PREPARE THE DATA FOR THESE MODELS (TWO WAY AND THREE WAY ANOVAS)
+# DAY 7  use the Days.1.7 created in previous script (above) and isolate 20190731
+Day_7_length<- MERGE_averages %>%  filter(Date %in% 20190731) # filter data on 20190731
+# DAY 21  use the DATA_Days.15.21 created in previous script (above) and isolate 20190814
+Day_21_length <- MERGE_averages %>%  filter(Date %in% 20190814) # filter data on 20190814
+
+# RUN THE MODELS ON RAW DATA (NOT CORRECTED FOR INITIAL AVERAGE ON 20190724) ############### #
+# DAY 7 TWO WAY ANOVA FOR TREATMENT INITIAL (HISTORY) AND TREATMENT SECONDARY (DAYS 1 -7 PERIOD)
+SIZE_DAY7_mod <- aov(Length ~ Treatment_history*Treatment.EXP_1, data = Day_7_length)
+summary(SIZE_DAY7_mod) # summary of model
+shapiro.test(residuals(SIZE_DAY7_mod)) # p-value = 0.1555; normal via shapiro wilk test
+hist((residuals(SIZE_DAY7_mod))) # histogram of residuals
+qqnorm(residuals(SIZE_DAY7_mod)) # qqplot
+leveneTest(SIZE_DAY7_mod) # p = 0.934; homogenity of variance 
+# DAY 21 THREE WAY ANOVA FOR TREAMENT INITIAL (HISTORY) × TREATMENT SECONDARY (D 1-7) × TREATMENT TERTIARY (D 14 - 21)
+SIZE_DAY21_mod <- aov(Length ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2, data = Day_21_length)
+summary(SIZE_DAY21_mod) # summary of model
+shapiro.test(residuals(SIZE_DAY21_mod)) # p-value = 0.005336; NOT normal via shapiro wilk test
+hist((residuals(SIZE_DAY21_mod))) # histogram of residuals RIGHT SKEW
+qqnorm(residuals(SIZE_DAY21_mod)) # qqplot LOOK NORMAL THOUGH!
+leveneTest(SIZE_DAY21_mod) # p = 0.3649; homogenity of variance!
+# TRANSFORM  DAY 21 MODEL TO RESOLVE NORMALITY VIA SHAPIRO WILK TEST
+Day_21_length$Length.log <- log(Day_21_length$Length)
+SIZE_DAY21_mod.TRANS <- aov(Length.log ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2, data = Day_21_length)
+summary(SIZE_DAY21_mod.TRANS) # summary of model
+shapiro.test(residuals(SIZE_DAY21_mod.TRANS)) # p-value = 0.1029; normal via shapiro wilk test
+hist((residuals(SIZE_DAY21_mod.TRANS))) # histogram of residuals RESOLVED SKEW
+qqnorm(residuals(SIZE_DAY21_mod.TRANS)) # qqplot appears MORE normal than before
+leveneTest(SIZE_DAY21_mod.TRANS) # p = 0.3123; homogenity of variance!
+
+# RUN THE MODELS ON LENGTH_DIFF CORRECTED FOR THE INTIAL AVERAGE ON 20190724 ############### #
+SIZE.DIFF_DAY7_mod <- aov(length.DIFF ~ Treatment_history*Treatment.EXP_1, data = Day_7_length)
+summary(SIZE.DIFF_DAY7_mod) # summary of model
+shapiro.test(residuals(SIZE.DIFF_DAY7_mod)) # p-value = 0.4901; normal via shapiro wilk test
+hist((residuals(SIZE.DIFF_DAY7_mod))) # histogram of residuals
+qqnorm(residuals(SIZE.DIFF_DAY7_mod)) # qqplot
+leveneTest(SIZE.DIFF_DAY7_mod) # p = 0.9437; homogenity of variance 
+# DAY 21 THREE WAY ANOVA FOR TREAMENT INITIAL (HISTORY) × TREATMENT SECONDARY (D 1-7) × TREATMENT TERTIARY (D 14 - 21)
+SIZE.DIFF_DAY21_mod <- aov(length.DIFF ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2, data = Day_21_length)
+summary(SIZE.DIFF_DAY21_mod) # summary of model
+shapiro.test(residuals(SIZE.DIFF_DAY21_mod)) # p-value = 0.01335; NOT normal via shapiro wilk test
+hist((residuals(SIZE.DIFF_DAY21_mod))) # histogram of residuals slight skew
+qqnorm(residuals(SIZE.DIFF_DAY21_mod)) # qqplot lookk pretty normal
+leveneTest(SIZE.DIFF_DAY21_mod) # p = 0.4578; homogenity of variance 
+TukeyHSD(SIZE.DIFF_DAY21_mod, conf.level=0.95) 
+# TRANSFORM  DAY 21 MODEL TO RESOLVE NORMALITY VIA SHAPIRO WILK TEST
+# minimum <- min(Day_21_length$length.DIFF) # minimum value is -2.629837 (corrected for avaerge in each biologicla replicate - many values here are negative)
+# Day_21_length$length.DIFF.sqrd <- log(Day_21_length$length.DIFF + ((abs(minimum))+1) ) # cuberoot to resolve normality
+# SIZE.DIFF_DAY21_mod.TRANS <- aov(length.DIFF.sqrd ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2, data = Day_21_length)
+# summary(SIZE.DIFF_DAY21_mod.TRANS) # summary of model - still same effect as the untransformed data
+# shapiro.test(residuals(SIZE.DIFF_DAY21_mod.TRANS)) # p-value = 0.527; normal via shapiro wilk test
+# hist((residuals(SIZE.DIFF_DAY21_mod.TRANS))) # histogram of residuals RESOLVED SKEW
+# qqnorm(residuals(SIZE.DIFF_DAY21_mod.TRANS)) # qqplot appears MORE normal than before
+# leveneTest(SIZE.DIFF_DAY21_mod.TRANS) # p = 0.8428; homogenity of variance!
+# TukeyHSD(SIZE.DIFF_DAY21_mod.TRANS, conf.level=0.95) 
+# Treatment_history:Treatment.EXP_1
+#plot
+Day_21_length$Treatment.EXP_1 <- factor(Day_21_length$Treatment.EXP_1 , levels = c("A", "M", "S")) # arrange levels allows ggpubr to plot correctly
+Day21_boxplot.lengthdiff <- ggboxplot(Day_21_length, x = "Treatment.EXP_1", y = "length.DIFF", 
+                                      fill = "Treatment_history", palette = c( "#00AFBB", "#FC4E07"), 
+                                      add = "jitter", title = "Day 21 Length Diff")
+Day21_boxplot.lengthdiff <- ggpar(Day21_boxplot.lengthdiff, ylim = c(-3,3))
+Day21_boxplot.lengthdiff
+# transformed plot
+Day21_boxplot.lengthcuberoot <- ggboxplot(Day_21_length, x = "Treatment.EXP_1", y = "length.DIFF.cuberoot", 
+                                      fill = "Treatment_history", palette = c( "#00AFBB", "#FC4E07"), 
+                                      add = "jitter", title = "Day 21 Length Diff")
+Day21_boxplot.lengthcuberoot <- ggpar(Day21_boxplot.lengthcuberoot, ylim = c(-5,1.25))
+Day21_boxplot.lengthcuberoot
+# DAY 21 MODEL
 Day_21_length_diff <- MERGE_averages %>%  filter(Date %in% 20190814)
 model_day_21 <- aov(length.DIFF~Treatment_history*Treatment.EXP_1*Treatment.EXP_2, 
              data = Day_21_length_diff)
@@ -120,11 +196,11 @@ boxplot(residuals(model_day_21)) #plot boxplot of residuals - some outliers pres
 plot(fitted(model_day_21),residuals(model_day_21)) # plot residuals
 qqnorm(residuals(model_day_21)) # qqplot - looks normal
 #post hoc
-TukeyHSD(model_day_21, conf.level=0.95)
+TukeyHSD(model_day_21, 'Treatment_history:Treatment.EXP_1', conf.level=0.95)
 #plot
-Day21_boxplot.lengthdiff <- ggboxplot(Day_21_length_diff, x = "Treatment_history", 
-                                      y = "length.DIFF", fill = "Treatment.EXP_1", 
-                                      palette = "jco", add = "jitter", title = "Day 21 Length Diff")
+Day21_boxplot.lengthdiff <- ggboxplot(Day_21_length_diff, x = "Treatment.EXP_1", 
+                                      y = "length.DIFF", fill = "Treatment_history", 
+                                      shape = "Treatment.EXP_2", palette = "jco", add = "jitter", title = "Day 21 Length Diff")
 Day21_boxplot.lengthdiff
 # transform 
 # model_day_21.TRANS <- aov((length.DIFF^1/3)~Treatment_history*Treatment.EXP_1*Treatment.EXP_2, 
