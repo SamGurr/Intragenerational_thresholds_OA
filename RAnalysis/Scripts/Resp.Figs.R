@@ -59,6 +59,67 @@ DATA <- read.csv(file="Data/SDR_data/Final_table_for_resp_analysis.csv", header=
 Final.resp.table.EXP <- Final.resp.table %>% # table for all data on and after 20190723 
   dplyr::filter(row.num > 22) 
 
+
+# EXPERIMENTAL DESIGN KEY/SCHEMATIC FOR SMR PLOT ------------------------------------- #
+
+
+
+schematic.data <- read.csv(file="Data/SDR_data/Experimental.design.data_2.csv", header=T) #read Size.info data
+schematic.data$x.val
+pd <- position_dodge(0)
+schematic.data$x.val <- as.numeric(schematic.data$x.val )
+FIG.schematic.data <- ggplot(schematic.data, aes(x=x.val, y=y.val, colour=treat, group=treat)) + 
+  geom_line() +
+  theme_bw() +
+  xlab("Experimental periods") +
+  ylab("") +
+  scale_colour_hue(name="treat",    # Legend label, use darker colors
+                   breaks=c("AHAA", "AHAM", "AHMA", "AHMM", 
+                            "AHSA","AHSM", "EHAA", "EHAM", 
+                            "EHMA", "EHMM", "EHSA", "EHSM"),
+                   labels=c("Amb-Amb-Amb", "Amb-Amb-Mod", "Amb-Mod-Amb", "Amb-Mod-Mod", 
+                            "Amb-Sev-Amb", "Amb-Sev-Mod", "Elev-Amb-Amb","Elev-Amb-Mod",
+                            "Elev-Mod-Amb", "Elev-Mod-Mod", "Elev-Sev-Amb", "Elev-Sev-Mod"), l=40) + # Use darker colors, lightness=40
+  ggtitle("Experimental design schematic") +
+  geom_point(data = subset(schematic.data, x.val %in% c(1.00,2.00, 3.00, 4.00)),
+             position = pd, shape=c(21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                    21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                    21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
+                                    21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24), 
+             size=c(5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4,
+                    5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4,
+                    5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4,
+                    5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4), 
+             fill=c("white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "white", "white", "white", "white", "white",
+                    "white", "firebrick4", "white", "red1", "white", "tomato1", 
+                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1")) +
+  geom_vline(xintercept = c(1.5, 2.5, 3.5), linetype="dotted", 
+             color = "black", size=0.5) # all the colors needed
+FIG.schematic.data  <- print(FIG.schematic.data +  
+                               scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3","blue", "blue", "tomato1", "tomato1",  "red1", "red1", "firebrick4", "firebrick4")) +
+                               scale_x_discrete(labels=c("1" = "Pre", "2" = "Days 1-7","3" = "Days 8-14","4" = "Days 15-21")) +
+                               theme(legend.position="none",panel.grid.major = element_blank(),
+                                     panel.grid.minor = element_blank(),panel.border = element_blank(),
+                                     axis.ticks = element_blank(),axis.text.y=element_blank()) +
+                               annotate(geom="text", x=c(1,1,1,1, # PRE
+                                                         2,2,2,2,2,2,2,2, # DAYS 1 -7
+                                                         3,3, # DAYS 8 - 14
+                                                         4,4,4,4,4,4,4,4,4,4,4,4,4,4), # DAYS 15 - 21
+                                        y=c(0.5, 0.2, 9.5,3.5,  # PRE
+                                            0.5, 0.2, 11.7,9.7,7.7,5.7,3.7,1.7, # DAYS 1 -7
+                                            0.5, 0.2, # DAYS 8 - 14
+                                            0.5, 0.2, 12.2,11.2,10.2,9.2,8.2,7.2,6.2,5.2,4.2,3.2,2.2,1.2), # DAYS 15 - 21
+                                        label=c("3-month Conditioning", "(postlarval-juvenile)","EH", "AH", # PRE
+                                                "Secondary Exposure Period", "(7 Days)", "EHA","EHM","EHS","AHA","AHM","AHS", # DAYS 1 -7
+                                                "Ambient Recovery Period","(7 Days)",  # DAYS 8 - 14
+                                                "Tertiary Exposure Period","(7 Days)","EHAM","EHAA","EHMM","EHMA","EHSM","EHSA","AHAM","AHAA","AHMM","AHMA","AHSM","AHSA"), # DAYS 15 - 21
+                                        size =3, color="black"))
+
 ############################################################################################# #
 ############################################################################################# #
 #########################  RESP RATE DATA ################################################### #
@@ -112,52 +173,67 @@ DATA.pre.PLOTbox<- ggboxplot(DATA.pre, x = "Treat", y = "resp.COUNT.µg.L.hr.indi
 DATA.pre.PLOTbox <- ggpar(DATA.pre.PLOTbox, ylim = c(-2,18))
 DATA.pre.PLOTbox
 
+DATA.pre.PLOTbox <- ggplot(DATA.pre, aes(x=Treat, y=resp.COUNT.µg.L.hr.indiv, fill =Treat, colour=Treat)) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  theme_classic() +
+  labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
+  geom_point((aes(shape = factor(Treat))), size = 2, position = position_jitterdodge(jitter.width = 0.5))+
+  scale_colour_manual(values=c("skyblue1","tomato1")) +
+  scale_shape_manual(values=c(24, 21)) + 
+  scale_fill_manual(values=c('white', 'white')) +
+  ylim(0,20) + 
+  scale_x_discrete(labels = c("Ambient","Elevated")) +
+  # theme(legend.title = element_blank()) just ommit the legend title
+  theme(legend.position = "none")
+DATA.pre.PLOTbox # view the plot
+
 # TREATMENT HISTORY (INITIAL EXPOSURE) - NO DIFFERENCE BTWN TREATMENT
 DATA.Days.1.7$Treat.initial <- substr(DATA.Days.1.7$Treatment.history, 1,1)
+DATA.Days.1.7$treat.hist.secondary <- paste(DATA.Days.1.7$Treatment.history, DATA.Days.1.7$Treatment.EXP_1, sep ="")
 
-Days.1.7.PLOTviolin <- ggviolin(DATA.Days.1.7, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
-                                palette = c("#00AFBB", "#FC4E07"),add = "jitter", title = "Secondary Respiration Day 7")
-Days.1.7.PLOTviolin <- Days.1.7.PLOT %>%  ggadd(c("boxplot") ,fill = "Treat.initial") # Add box plot
-Days.1.7.PLOTviolin
-
-Days.1.7.PLOTbox<- ggboxplot(DATA.Days.1.7, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
-                             palette = c("#00AFBB", "#FC4E07") ,add = "jitter", title = "Secondary Respiration Day 7", xlab = "Secondary pCO2 Treatment")
-Days.1.7.PLOTbox <- ggpar(Days.1.7.PLOTbox, ylim = c(-2,18))
-Days.1.7.PLOTbox
-
-ggplot(DATA.Days.1.7, aes(x=factor(Treatment.EXP_1), y=resp.COUNT.µg.L.hr.indiv, fill=Treat.initial)) + 
-  geom_boxplot(alpha = 0.5, # color hue
-               width=0.6, # boxplot width
-               outlier.size=0, # make outliers small
-               position = position_dodge(preserve = "single")) +
-  geom_jitter(position = position_jitterdodge(jitter.width = 0.05, dodge.width = 0.8), size = 1.2) +
-  scale_y_continuous(name = "µg.L.hr.indiv",breaks = seq(0, 20, 5),limits=c(-2, 20)) +
-  theme_bw() +
-  xlab("Treatment") +
-  ggtitle("B.Respiration_secondary_exposure") +
-  theme(legend.justification=c(1,1),legend.position=c(1,1)) # Position legend in bottom right
-
+Days.1.7.PLOTbox <- ggplot(DATA.Days.1.7, aes(x=Treatment.EXP_1, y=resp.COUNT.µg.L.hr.indiv, fill =Treatment.history, colour=treat.hist.secondary)) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  theme_classic() +
+  labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
+  geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.5))+
+  scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  scale_shape_manual(values=c(24, 21)) + 
+  scale_fill_manual(values=c('white', 'white')) +
+  ylim(0,20) + 
+  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  # theme(legend.title = element_blank()) just ommit the legend title
+  theme(legend.position = "none")
+Days.1.7.PLOTbox # view the plot
 
 # TREATMENT HISTORY (INITIAL EXPOSURE) - NO DIFFERENCE BTWN TREATMENT
 DATA_Days.15.21$Treat.initial <- substr(DATA_Days.15.21$Treatment.history, 1,1)
+DATA_Days.15.21$treat.TOTAL <- paste(DATA_Days.15.21$Treatment.history, DATA_Days.15.21$Treatment.EXP_1,DATA_Days.15.21$Treatment.EXP_2, sep ="")
 
-Days.15.21.PLOTviolin <- ggviolin(DATA_Days.15.21, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
-                                palette = c("#00AFBB", "#FC4E07"),add = "jitter", shape = "Treatment.EXP_2", title = "Tertiary Respiration Day 21",xlab = "Secondary pCO2 Treatment")
-Days.15.21.PLOTviolin <- Days.1.7.PLOT %>%  ggadd(c("boxplot") ,fill = "Treatment.EXP_2") # Add box plot
-Days.15.21.PLOTviolin
 
-Days.15.21.PLOTbox<- ggboxplot(DATA_Days.15.21, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
-                               palette = c("#00AFBB", "#FC4E07"),add = "jitter", shape = "Treatment.EXP_2", title = "Tertiary Respiration Day 21",xlab = "Secondary pCO2 Treatment")
-Days.15.21.PLOTbox <- ggpar(Days.15.21.PLOTbox, ylim = c(-2,18))
-Days.15.21.PLOTbox
+Days.15.21.PLOTbox <- ggplot(DATA_Days.15.21, aes(x=Treatment.EXP_1, y=resp.COUNT.µg.L.hr.indiv, fill = treat.TOTAL, shape=treat.TOTAL, colour=treat.TOTAL)) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  theme_classic() +
+  labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
+  geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.15)) +
+  scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
+                               "blue", "blue","tomato1","tomato1", 
+                               "red1", "red1", "firebrick4","firebrick4")) +
+  scale_shape_manual(values=c(24,1,2,21,
+                              24,1,2,21,
+                              24,1,2,21,24,2)) + 
+  scale_fill_manual(values=c("white", "skyblue1","white", "deepskyblue3",
+                             "white", "blue", "white", "tomato1", 
+                             "white", "red1", "white", "firebrick4","white", "firebrick4")) +
+  ylim(0,20) + 
+  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  # theme(legend.title = element_blank()) just ommit the legend title
+  theme(legend.position = "none")
+Days.15.21.PLOTbox # view the plot
 
-Days.15.21.PLOTbox.2<- ggboxplot(DATA_Days.15.21, x = "Treatment.EXP_2", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat.initial",
-                               add = "jitter", shape = "Treatment.EXP_1", palette = c("#00AFBB", "#FC4E07"),
-                                title = "C.Respiration_tertiary_exposure")
-Days.15.21.PLOTbox.2
+Resp.plots <- ggarrange(DATA.pre.PLOTbox, Days.1.7.PLOTbox, Days.15.21.PLOTbox, nrow = 1, widths = c(0.5, 1, 1), labels = c("A","B","C"))
 
-Resp.plots <- ggarrange(DATA.pre.PLOTbox, Days.1.7.PLOTbox,Days.15.21.PLOTbox,nrow = 1, widths = c(0.5, 1, 1), labels = c("A","B","C"))
-ggsave(file="Output/Resp.plots.pdf", Resp.plots, width = 12, height = 8, units = c("in")) # respiration rate plots
+RESP.days.plot.with.schematic <- ggarrange(FIG.schematic.data, Resp.plots,ncol = 1, nrow = 2, heights = c(1, 2.0), labels = "A") # combine plots
+ggsave(file="Output/Resp.plots.pdf", RESP.days.plot.with.schematic, width = 12, height = 8, units = c("in")) # respiration rate plots
 
 
 
@@ -195,7 +271,6 @@ FIGURE.resp.pre  <- print(FIGURE.resp.pre + scale_colour_manual(values = c("skyb
 
 # FIGURE 2
 # days 1 - 7 rel metabolic rate (per individual) ----------------------------------------------------------------------------------------------- #
-
 
 
 resp_Days.1.7.final$Date <- as.character(resp_Days.1.7.final$Date) # call date as a character
@@ -283,55 +358,6 @@ FIGURE.resp_Days.15.21  <- print(FIGURE.resp_Days.15.21 + scale_colour_manual(va
                                                                   "blue", "blue", "tomato1", "tomato1", 
                                                                   "red1", "red1", "firebrick4", "firebrick4")) + theme(legend.position = "none"))
 
-
-# EXPERIMENTAL DESIGN KEY/SCHEMATIC FOR SMR PLOT ------------------------------------- #
-
-
-
-schematic.data <- read.csv(file="Data/SDR_data/Experimental.design.data.csv", header=T) #read Size.info data
-schematic.data
-pd <- position_dodge(0)
-FIG.schematic.data <- ggplot(schematic.data, aes(x=factor(x.val), y=y.val, colour=treat, group=treat, shape = treat)) + 
-  geom_line() +
-  theme_bw() +
-  xlab("Experimental periods") +
-  ylab("") +
-  scale_colour_hue(name="treat",    # Legend label, use darker colors
-                   breaks=c("AHAA", "AHAM", "AHMA", "AHMM", 
-                            "AHSA","AHSM", "EHAA", "EHAM", 
-                            "EHMA", "EHMM", "EHSA", "EHSM"),
-                   labels=c("Amb-Amb-Amb", "Amb-Amb-Mod", "Amb-Mod-Amb", "Amb-Mod-Mod", 
-                            "Amb-Sev-Amb", "Amb-Sev-Mod", "Elev-Amb-Amb","Elev-Amb-Mod",
-                            "Elev-Mod-Amb", "Elev-Mod-Mod", "Elev-Sev-Amb", "Elev-Sev-Mod"), l=40) + # Use darker colors, lightness=40
-  ggtitle("Experimental design schematic") +
-  geom_point(position = pd, shape=c(21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
-                                  21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
-                                  21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24,
-                                  21, 21, 21, 21, 21, 21, 24, 24, 24, 24, 24, 24), size=3, 
-             fill=c("white", "white", "white", "white", "white", "white",
-                    "white", "white", "white", "white", "white", "white",
-                    "white", "white", "white", "white", "white", "white",
-                    "white", "white", "white", "white", "white", "white",
-                    "white", "white", "white", "white", "white", "white",
-                    "white", "white", "white", "white", "white", "white",
-                    "white", "firebrick4", "white", "red1", "white", "tomato1", 
-                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1")) +
-  geom_vline(xintercept = c(1.5, 2.5, 3.5), linetype="dotted", 
-                          color = "black", size=0.5) # all the colors needed
-FIG.schematic.data  <- print(FIG.schematic.data +  
-                               scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3","blue", "blue", "tomato1", "tomato1",  "red1", "red1", "firebrick4", "firebrick4")) +
-                               scale_x_discrete(labels=c("1" = "Pre", "2" = "Days 1-7","3" = "Days 8-14","4" = "Days 15-21")) +
-                               theme(legend.position="none",panel.grid.major = element_blank(),
-                                     panel.grid.minor = element_blank(),panel.border = element_blank(),
-                                     axis.ticks = element_blank(),axis.text.y=element_blank()) +
-                               annotate(geom="text", x=c(1,1,2,2,2,2,2,2,3,3,3,3,3,3,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1,4.1), y=c(9.5,3.5,
-                                                                                                                   11.5,9.5,7.5,5.5,3.5,1.5,
-                                                                                                                   11.5,9.5,7.5,5.5,3.5,1.5,
-                                                                                                                   12.5,11.5,10.5,9.5,8.5,7.5,6.5,5.5,4.5,3.5,2.5,1.5), 
-                                                                                                            label=c("EH", "AH", # PRE
-                                                                                                            "EHA","EHM","EHS","AHA","AHM","AHS", # DAYS 1 -7
-                                                                                                            "EHA","EHM","EHS","AHA","AHM","AHS", # DAYS 8 - 14
-                                                                                                            "EHAM","EHAA","EHMM","EHMA","EHSM","EHSA","AHAM","AHAA","AHMM","AHMA","AHSM","AHSA"), size =3, color="black"))
                                
 
 # Arrange plots

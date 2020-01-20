@@ -165,8 +165,9 @@ TukeyHSD(fourwayanova_D15.21, 'Treatment.history:Treatment.EXP_1', conf.level=0.
 RESP_Days.15.21.final <- DATA_Days.15.21 %>% 
   dplyr::group_by(Treatment.EXP_1, Treatment.history) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))
-
-
+# EHS  = 7.98
+# EHA = 6.35
+#20.426% greater resp rate in EHS than EHA
 
 
 ###############################################################################  #
