@@ -299,22 +299,22 @@ leveneTest(model_Day21_RESP) # p = 0.5439; homogenity of variance
 # D.21.PLOTboxRESP <- ggpar(D.21.PLOTboxRESP, ylim = c(0,12))
 # D.21.PLOTboxRESP
 
-D.21.PLOTboxRESP<-ggplot(Data.D.21.Resp, aes(x=Treatment.EXP_1, y=resp.COUNT.痢.L.hr.indiv, fill = TOTAL, shape=TOTAL, colour=TOTAL)) +
+D.21.PLOTboxRESP<-ggplot(Data.D.21.Resp, aes(x=Treatment.EXP_2, y=resp.COUNT.痢.L.hr.indiv, fill = TOTAL, shape=TOTAL, colour=TOTAL)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
   theme_classic() +
-  labs(y=expression("Respiration rate"~(~痢~O[2]*hr^{-1}*individual^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
-  geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.15)) +
+  labs(y=expression("Respiration rate"~(~痢~O[2]*hr^{-1}*individual^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
+  geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.1)) +
   scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
                                "blue", "blue","tomato1","tomato1", 
                                "red1", "red1", "firebrick4","firebrick4")) +
   scale_shape_manual(values=c(24,1,2,21,
                               24,1,2,21,
                               24,1,2,21,24,2)) + 
-  scale_fill_manual(values=c("white", "skyblue1","white", "deepskyblue3",
-                             "white", "blue", "white", "tomato1", 
-                             "white", "red1", "white", "firebrick4","white", "firebrick4")) +
+  scale_fill_manual(values=c("white", "red1","white", "red1",
+                             "white", "red1", "white", "red1", 
+                             "white", "red1", "white", "red1","white", "red1")) +
   ylim(0,14) + 
-  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 D.21.PLOTboxRESP
@@ -349,10 +349,10 @@ mean_TAC_D21.initial_effect # intital
 # PLOTS.TAC.D21 <- ggarrange(plot.DAY21.TAC,D.21.PLOTbox, nrow = 1, widths = c(0.5, 1))
 # PLOTS.TAC.D21 # view arranged plots
 
-plot.DAY21.TAC <- ggplot(Day.21.PHYS.2, aes(x=secondary, y=然.CRE.mg.protein, fill = Treatment, shape=Treatment, colour=Treatment)) +
+plot.DAY21.TAC <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=然.CRE.mg.protein, fill = Treatment, shape=Treatment, colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
   theme_classic() +
-  labs(y=expression("Total Antioxidant Capacity"~(~然~CRE~Reducing~Equivalents^{-1}*mg~total~protein^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
+  labs(y=expression("Total Antioxidant Capacity"~(~然~CRE~Reducing~Equivalents^{-1}*mg~total~protein^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 0.2)) +
   scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
                                "blue", "blue","tomato1","tomato1", 
@@ -360,11 +360,11 @@ plot.DAY21.TAC <- ggplot(Day.21.PHYS.2, aes(x=secondary, y=然.CRE.mg.protein, fi
   scale_shape_manual(values=c(24,1,2,21,
                               24,1,2,21,
                               24,1,2,21,24,2)) + 
-  scale_fill_manual(values=c("white", "skyblue1","white", "deepskyblue3",
-                             "white", "blue", "white", "tomato1", 
-                             "white", "red1", "white", "firebrick4","white", "firebrick4")) +
+  scale_fill_manual(values=c("white", "red1","white", "red1",
+                             "white", "red1", "white", "red1", 
+                             "white", "red1", "white", "red1","white", "red1")) +
   ylim(0,200) + 
-  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 plot.DAY21.TAC
@@ -404,10 +404,10 @@ leveneTest(model_Day21_Protein.LOG) # p = 0.09729; homogenity of variance
 # D.21.PLOTbox.Protein <- ggpar(D.21.PLOTbox.Protein, ylim = c(0,35))
 # D.21.PLOTbox.Protein
 
-D.21.PLOTbox.Protein <- ggplot(Day.21.PHYS.2, aes(x=secondary, y=mgProtein.mgAFDW, fill = Treatment, shape=Treatment, colour=Treatment)) +
+D.21.PLOTbox.Protein <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgProtein.mgAFDW, fill = Treatment, shape=Treatment, colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
   theme_classic() +
-  labs(y=expression("Total Protein"~(~痢~protein^{-1}*mg~AFDW^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
+  labs(y=expression("Total Protein"~(~痢~protein^{-1}*mg~AFDW^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 0.2)) +
   scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
                                "blue", "blue","tomato1","tomato1", 
@@ -415,9 +415,9 @@ D.21.PLOTbox.Protein <- ggplot(Day.21.PHYS.2, aes(x=secondary, y=mgProtein.mgAFD
   scale_shape_manual(values=c(24,1,2,21,
                               24,1,2,21,
                               24,1,2,21,24,2)) + 
-  scale_fill_manual(values=c("white", "skyblue1","white", "deepskyblue3",
-                             "white", "blue", "white", "tomato1", 
-                             "white", "red1", "white", "firebrick4","white", "firebrick4")) +
+  scale_fill_manual(values=c("white", "red1","white", "red1",
+                             "white", "red1", "white", "red1", 
+                             "white", "red1", "white", "red1","white", "red1")) +
   ylim(0,35) + 
   scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
   # theme(legend.title = element_blank()) just ommit the legend title
@@ -468,10 +468,10 @@ TukeyHSD(model_Day21_AFDW.sqrt, conf.level=0.95) # Treat_history E-A av diff = 3
 # D.21.PLOTbox.AFDW <- ggpar(D.21.PLOTbox.AFDW, ylim = c(0,25))
 # D.21.PLOTbox.AFDW
 
-D.21.PLOTbox.AFDW <- ggplot(Day.21.PHYS.2, aes(x=secondary, y=mgTOTAL_AFDW, fill = Treatment, shape=Treatment, colour=Treatment)) +
+D.21.PLOTbox.AFDW <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgTOTAL_AFDW, fill = Treatment, shape=Treatment, colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
   theme_classic() +
-  labs(y=expression("Ash Free Dry Weight"~(mg)), x=expression("Secondary pCO"[2]~"Exposure")) +
+  labs(y=expression("Ash Free Dry Weight"~(mg)), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 0.2)) +
   scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
                                "blue", "blue","tomato1","tomato1", 
@@ -479,9 +479,9 @@ D.21.PLOTbox.AFDW <- ggplot(Day.21.PHYS.2, aes(x=secondary, y=mgTOTAL_AFDW, fill
   scale_shape_manual(values=c(24,1,2,21,
                               24,1,2,21,
                               24,1,2,21,24,2)) + 
-  scale_fill_manual(values=c("white", "skyblue1","white", "deepskyblue3",
-                             "white", "blue", "white", "tomato1", 
-                             "white", "red1", "white", "firebrick4","white", "firebrick4")) +
+  scale_fill_manual(values=c("white", "red1","white", "red1",
+                             "white", "red1", "white", "red1", 
+                             "white", "red1", "white", "red1","white", "red1")) +
   ylim(0,20) + 
   scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
   # theme(legend.title = element_blank()) just ommit the legend title
@@ -529,8 +529,8 @@ FIG.schematic.data <- ggplot(schematic.data, aes(x=x.val, y=y.val, colour=treat,
                     "white", "white", "white", "white", "white", "white",
                     "white", "white", "white", "white", "white", "white",
                     "white", "white", "white", "white", "white", "white",
-                    "white", "firebrick4", "white", "red1", "white", "tomato1", 
-                    "white", "blue", "white", "deepskyblue3", "white", "skyblue1")) +
+                    "white", "red1", "white", "red1", "white", "red1", 
+                    "white", "red1", "white", "red1", "white", "red1")) +
   geom_vline(xintercept = c(1.5, 2.5, 3.5), linetype="dotted", 
              color = "black", size=0.5) # all the colors needed
 FIG.schematic.data  <- print(FIG.schematic.data +  

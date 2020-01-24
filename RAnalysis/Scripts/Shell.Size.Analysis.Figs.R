@@ -554,7 +554,7 @@ Days.8.14.PLOTbox.lengthDIFF
 
 
  
- Days.15.21.PLOTbox.length <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_1, y=Length, fill = TREATMENT.ID.TOTAL, shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
+ Days.15.21.PLOTbox.length <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_2, y=Length, fill = TREATMENT.ID.TOTAL, shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
    geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
    theme_classic() +
    labs(y=expression("Shell Growth"~(mm)), x=expression("Secondary pCO"[2]~"Exposure")) +
@@ -565,11 +565,11 @@ Days.8.14.PLOTbox.lengthDIFF
    scale_shape_manual(values=c(24,1,2,21,
                                24,1,2,21,
                                24,1,2,21,24,2)) + 
-   scale_fill_manual(values=c("white", "skyblue1","white", "deepskyblue3",
-                              "white", "blue", "white", "tomato1", 
-                              "white", "red1", "white", "firebrick4","white", "firebrick4")) +
+   scale_fill_manual(values=c("white", "red1","white", "red1",
+                              "white", "red1", "white", "red1", 
+                              "white", "red1", "white", "red1","white", "red1")) +
    ylim(5,11) + 
-   scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+   scale_x_discrete(labels = c("Ambient","Moderate")) +
    # theme(legend.title = element_blank()) just ommit the legend title
    theme(legend.position = "none")
  Days.15.21.PLOTbox.length
@@ -579,7 +579,7 @@ Days.8.14.PLOTbox.lengthDIFF
 #                                 palette = c("#00AFBB", "#FC4E07"), title = "C.Secondary exposure (av. corrected)")
 # Days.15.21.PLOTbox.lengthDIFF
 
-Days.15.21.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_1, y=length.DIFF, fill = TREATMENT.ID.TOTAL, shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
+Days.15.21.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_2, y=length.DIFF, fill = TREATMENT.ID.TOTAL, shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
   theme_classic() +
   labs(y=expression("Shell Growth"~(mm)), x=expression("Secondary pCO"[2]~"Exposure")) +
@@ -590,9 +590,9 @@ Days.15.21.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_1
   scale_shape_manual(values=c(24,1,2,21,
                               24,1,2,21,
                               24,1,2,21,24,2)) + 
-  scale_fill_manual(values=c("white", "skyblue1","white", "deepskyblue3",
-                             "white", "blue", "white", "tomato1", 
-                             "white", "red1", "white", "firebrick4","white", "firebrick4")) +
+  scale_fill_manual(values=c("white", "red1","white", "red1",
+                             "white", "red1", "white", "red1", 
+                             "white", "red1", "white", "red1","white", "red1")) +
   ylim(-2,5) + 
   scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
   # theme(legend.title = element_blank()) just ommit the legend title
