@@ -1,0 +1,498 @@
+PRIMER PICKING RESULTS FOR PGEN_.00g108770
+
+No mispriming library specified
+Using 0-based sequence positions
+OLIGO            start  len      tm     gc%  any_th  3'_th hairpin seq
+LEFT PRIMER        231   18   59.97   61.11    0.00   0.00    0.00 AACGAGACACACTGGCGG
+RIGHT PRIMER       308   18   60.05   61.11    0.00   0.00    0.00 GCAAACCCGAGCGTTGTG
+SEQUENCE SIZE: 9099
+INCLUDED REGION SIZE: 9099
+
+PRODUCT SIZE: 78, PAIR ANY_TH COMPL: 0.00, PAIR 3'_TH COMPL: 0.00
+
+    0 ATGACATCGGCCACTTTAGCAAAAACAATTATTCACGCCAGGACGTCATCGTTGAAGATA
+                                                                  
+
+   60 CCTGCCCACTTTCGGTTACTGGTATCTCAGTTTCAGCAACAAAATGGACATTTACAACTG
+                                                                  
+
+  120 CACCAGGTAAGACTGCATCTATCTTTATATAATTATTATCTTCCATTATTATCACGTCGC
+                                                                  
+
+  180 TATGGATCACTCGTCGTCTGGTAAGGTCGTTCGAAGTGTTTATAATAATATAACGAGACA
+                                                         >>>>>>>>>
+
+  240 CACTGGCGGATCAATGATGATGTTTGGGCAGTAGCGCAGCTGCCTTTACGCCACAACGCT
+      >>>>>>>>>                                          <<<<<<<<<
+
+  300 CGGGTTTGCATATTATCATGTGAATGCATAATTAGAGGGGTAAGGGGTAGATGTGGGAGA
+      <<<<<<<<<                                                   
+
+  360 AAAGAAACTTCTAGAACCTGGTGGGACAGCTTTGCCACTTTGGGCAAGCTCTGTATTGAT
+                                                                  
+
+  420 TAACAGCAAAAGACAGCGGTATCATCAAATTAAATGCTGCTCATCAATTTCTCACTCATC
+                                                                  
+
+  480 GTGTTACTGACCATTACGTAGGCTTAATTTCTAGTTACATGTAGATCTATTGTAAATTTG
+                                                                  
+
+  540 TTTTTTAAATTCAGGTGTAAAACAAGCATTGGTTAAAAGTATTGATAGTTGACCTATATA
+                                                                  
+
+  600 AATTGTCAATAGGCCTATCAACAAGCTCCTCGTCGGAATCTGAACCTGCAATTTCAATAT
+                                                                  
+
+  660 CGATAGCACTGAGGGCTGAGTTTATCATGCCTTGCATGGAACCGGTAGCCATCTTGTTTG
+                                                                  
+
+  720 ATTGCAGCCGACAGAAGAGGCCCCTCAGTTGCCAAAATAAATGGTCTTGTAAAATGATTA
+                                                                  
+
+  780 AAAAATAAGCCAATATATATTCTATATTCACAATAATATTTATTTTATAACACAATATTT
+                                                                  
+
+  840 TTTTACACAATATATTTGATATAAAATTTCCATTTTATTTTCATTATATATAGATGTACA
+                                                                  
+
+  900 TCTATATTTTATTAAATATATTAACATCCTTGGGAGAAATCATTGTCTAAATTCATTTCC
+                                                                  
+
+  960 ATTAGGTGATATGACTCATCCGAATAAGTGATATCACTCATTCGTAATGAATGAGTGATA
+                                                                  
+
+ 1020 TGACTCATTTGAATAAGTGATATCACCTATTCAAATTGAATGAGTGATATCACTTATTCG
+                                                                  
+
+ 1080 AATGAGTGATATCACCTATTCAAATGAGTGATACCACTTATTGAGGTTAAATAGTAAAAC
+                                                                  
+
+ 1140 GGCACCCCATACAAATCCCCATTCTAAAATAGACAGCACTTAAATACTTCTAAACAACCA
+                                                                  
+
+ 1200 TCACATAGTCATTTGCACTCGTTCTAAAATAAAATATCATTTTACGTGTAAACCTGTATA
+                                                                  
+
+ 1260 AAAGATCAAATTAAAACCAAGATGAAATCATGCGACTCATTTTAATAAGTATAATCGTAT
+                                                                  
+
+ 1320 TATAAGCATATGTAGATAAAGTGTCTTTCTCAAGGACTCCACACATCGTAGCAATGGCGG
+                                                                  
+
+ 1380 AGGATCAAACCCATGACCCTCCAATCCTATCAGTAGACAAAGCACATGGGGATTTCATTT
+                                                                  
+
+ 1440 CAATTTCAGCCTTTTGATTAAAATATCTTTTTTTTTTCACAGTATTGGCAGGTTTGAAAT
+                                                                  
+
+ 1500 TCCAGATCTTTCGTAGTTTATTTATAATTTAAATGATAATAAGATGCTTTGTATTCAATT
+                                                                  
+
+ 1560 ATAAATAATTTTACTTTAAACATACGGATTTCTATATTTTTTTATGTATTGCTTAAATGT
+                                                                  
+
+ 1620 ATTTATGTATTTGGTTTGGTATATCATCATTCATGTACTTCTCATCATATTTCAATATTA
+                                                                  
+
+ 1680 CTTTTATTTAAGCGACGTGCAGTGGCTTCTAAAACTGACATAGAGGACACAATAAAGAAA
+                                                                  
+
+ 1740 TATAAAGAAGGAAACTTTGAGAAGCTTCCGGACCCTGATCATTTGGACCACTTTAGGTAT
+                                                                  
+
+ 1800 GAAAAAAATGTAGAAGACATATATACATTTTTCATTTATTTAAATCTTTACTAATTTTGA
+                                                                  
+
+ 1860 TTTTTTTTAGCAAGTCATGTTTTGATAAATACACACATCTAGATTTTTAAAAAATGTAAA
+                                                                  
+
+ 1920 TTACCTTTGGTGCATTCTCAGGGGGTTGTGTGTATTTTTGTCAATAGATGTTGATTGATT
+                                                                  
+
+ 1980 TAATATTTAGCGTCATTTTTATGCCCCACTCGAATCAGTGGTGAGAGACGAATGATAATG
+                                                                  
+
+ 2040 AGACACAATGTCGTATATCAGTCATCACGGAGACTGTTGCCGGGCGGGGAATCAAACTCA
+                                                                  
+
+ 2100 CAATCTCTGGATTGATAGTCAGACACATAACGGACTGAGTTATTCGGGCCCAGCGTCTAT
+                                                                  
+
+ 2160 ATATGTTCACATACCAATTATTTACGCATTTTTATTTTTCTGGGATAAAGTGCGGATCAG
+                                                                  
+
+ 2220 GGCCTTCAGTGCAGATGAACTGGTGTAGATGCACTGGTAGATGCACTGGTGTCTATATCA
+                                                                  
+
+ 2280 AAATTCCTGTTCTTCTCACTCAATTCTCACTGAGATAGCACATTTTTGTTACGTTTATTT
+                                                                  
+
+ 2340 TGTTCTCTTTCATTTGCAGCAGAAGACATATTTCGAACTGAAACTAGTGACATTCATTTT
+                                                                  
+
+ 2400 CTATGTAACAGTCTCTGTGTGAATGCCAACAAATTTTTTTTCTGATTTTTGTCTGTTCAC
+                                                                  
+
+ 2460 ATAGAAATGTCAAATCATCAGATTGACATATATATAACTTTTCAGAAAACCTACTGTCAC
+                                                                  
+
+ 2520 ATTGCATAAAGATGTTGAACCTCTTCAAGACCCTCCCCCGATCGGAGAAAATGCACTGCC
+                                                                  
+
+ 2580 TCACCCCATCTGGTACGTTGACCTTATTCGCTATATATGTCATTCTTCTTAACCACTTCA
+                                                                  
+
+ 2640 ATTAAGTGGCATGTTTTAGAGTTAATACAATTTATTTTATGCTTTTTGATGAATTATAGC
+                                                                  
+
+ 2700 GATTTCTCAGTGAATTATTTTAGGTAATTTCACTGTTTAAGATAATGAAATTATAAATGG
+                                                                  
+
+ 2760 TAAATTCACTGTTTCAATCTTTTTTTGTTGGTTCCAGTGAAATATTAATTAAATAACACT
+                                                                  
+
+ 2820 GGCAGGCTCAGTCAAACTGTCGTGGCTTCACCACTCTGCCATACTACATCGTTGAAATAA
+                                                                  
+
+ 2880 AAATTATATTTCACTAATTTACAATTATTCCTCTACATGTAATCAGGTACGGTCCAATTA
+                                                                  
+
+ 2940 CAATTATGCCTTTTTGAGTCGACATTATCAGGCAGAAAATTGCTAGATCTAAAAAAATAT
+                                                                  
+
+ 3000 TTAATATAAAATAAAAGATGGTAAAAAGCAGAAATGTTGGATATATATGTATAGAATGTG
+                                                                  
+
+ 3060 CACTAATAAGCACTGAAAATGGTTCAACAGAGAATTGTGTTTAAACTCATGGGGCAGATG
+                                                                  
+
+ 3120 CTGACCTTAAGATTAGTGAAAGTGTCGTGTACCGTAACTTAGAGACTCCAGGGAATGTTG
+                                                                  
+
+ 3180 ACTTCTCTCCCTTTATTTGTCATTGAGTGGCACCATTTGTAAAATATGTAGTGAAGAAAC
+                                                                  
+
+ 3240 TTACAATCTGACAAGTGATCTTCTCTATATGTTAACATCAATTTATGTGCCTGTAAGTTG
+                                                                  
+
+ 3300 TGAAGGATATAATATATTCATACAGTCTTTGAATTTTACTTATTGAAATTCCATACTATT
+                                                                  
+
+ 3360 ATACTTTTATATACACTGGTTCTGTCAAATAAGACAGGAATTGACGGTATCATTTTTCAA
+                                                                  
+
+ 3420 AACTTGCCTTTTGAGTGATGATGGAATAGTCTAAAAACAATGACTAAGCAGATTTAATCG
+                                                                  
+
+ 3480 CAATATCTTGGAATTCTAATTTGAAGGAAGAAATCAAAGTAATTATCTGATAGAAAAATG
+                                                                  
+
+ 3540 ATTTTATTACCTGCCAAATAAATTTTAAGTCTACTACATCACCATTTTTATTATGTTGAA
+                                                                  
+
+ 3600 TAAATCATAATGGTGATAAACTAGTATAATGATTTATTCAATACAAATATATATTTGTAT
+                                                                  
+
+ 3660 ATATATTGTAATCTGCATTGTTTATTTTGCAGGTCTGAAGAAGAACTACAAAATGTGATT
+                                                                  
+
+ 3720 ATTACCCATAAGCCACCACAGGGCTTCGTAGACCATGTAATTATTTTATATTGTTTTATT
+                                                                  
+
+ 3780 TTTGTTTTAATTCACATCAATTGTGAAACAAATTATTACAACGTAGACTTCATGCTCGAA
+                                                                  
+
+ 3840 GACTTACTGGGTATAACCAGCACTTAGCATATGCTGATAAAGTGTCTTGCACAAGGGTAC
+                                                                  
+
+ 3900 AACATATAGCTTTGGCAGAGGACCAACCCCACGATTATCTGAATATCCAAGGTTCGATGC
+                                                                  
+
+ 3960 TCTACCACTGGAAATGGTGCTCCTCATTATTTTAGATATTACATGTATCTATTTCCATCA
+                                                                  
+
+ 4020 GTGATTATGAAAGATATACACATGTATGAATGAAACAACTTATTGATTTCCTGAAAAAAT
+                                                                  
+
+ 4080 AAGGGTGTCCCAAAACATAGGTAAATATGGTATATTTCATTGATATTTAGAAATATGTGA
+                                                                  
+
+ 4140 GTTATAGTCGTGCTTATGATACCAGTAATCAATTTGTAAATTAAATGTATGTTGTAGCAA
+                                                                  
+
+ 4200 AAAGGTTGATTGAATATTTGGCATCATTTTTATGTCATCGAGGGCTAGCAGAAGCAAGTT
+                                                                  
+
+ 4260 AACCTAACCACTGTTTTTTGGGATCCTTGAACAATACTCCAGCACACCCCATCTCCACAA
+                                                                  
+
+ 4320 GTAAATGATAGCTTTCCGACTTCCCAGCAATGAGAGACGAATGATAATGAGACAAAAATC
+                                                                  
+
+ 4380 ATCACGAAGACTGTTGCCGGGCAGGGATTCCAACTCACGACTTAGCTAATCGGGCTCGGC
+                                                                  
+
+ 4440 TGTAGTAGTAAAAAGGGAAATCAAATGTTATGTTGAAGACAGATTATGATTACAATCAAA
+                                                                  
+
+ 4500 TGAGGTGGTGGTATTGTGGATGGAATATAAATCACTCATGCGAGAGGTTGGTGGTTTGAT
+                                                                  
+
+ 4560 CTCAGACTTGGCCTCCTAGCTTCTCGAGAACAGCACCTAGTACTGGCACAACCCAGGTAA
+                                                                  
+
+ 4620 TGGACTGAGAGTGTTTCATAAAGATAAATGTCCTTAGTTTGCATGCATTTAATTTAAACA
+                                                                  
+
+ 4680 TGTTAAAAGAAATTGGCATAGGTTAATACAATTTCTATACCACCTTGATGTCTCGAATCT
+                                                                  
+
+ 4740 CTTAACTGACATTATGTATTTGTTTACAGGCAGCATTTTATTCAGTGCAAACTATGAGGA
+                                                                  
+
+ 4800 AATGTTTTGACATTGTGTCTGGTTTCAGCTGGGGACAGCGTAATGAGAAAAAATGGCTGA
+                                                                  
+
+ 4860 AGTACGTATTATGTTATACCTGCCTCTCCAAATTACTATACTAGTATTCATTACTTCTAT
+                                                                  
+
+ 4920 CCTGAACTCGTCCATCAATAACAAATGAGAATATGCTCATTACGGGTATACATAACCAAT
+                                                                  
+
+ 4980 GATGTGTTAAAAAGGATTTCTTGCATATCGGATGAGGATTTCTAAGAAATTTGGCATGCA
+                                                                  
+
+ 5040 AGATAAAATAATTTTACATAAACATTTTTTTTTTCTTCTTGAACATAAAAGTTATCCAAA
+                                                                  
+
+ 5100 GCTCACTCCCATAGATATACAAAAATGTTGACTTATTATGAGCCAAGAAACTAGTTTAAA
+                                                                  
+
+ 5160 ACTTTTTCCCTTTCTCTCGATTGTGAAACAGGTTTATACTAGTATTACAAAATAGACAAA
+                                                                  
+
+ 5220 TCATGTGCAAAGTGTTCTGATTTAGAAACAATACCAAGCATAATTATGTGGATAAAGTAC
+                                                                  
+
+ 5280 GTGGCTCAAGGATATGACACTTAGCCACAGCTGAAGATTGAATGTGTGACTTACTGATCC
+                                                                  
+
+ 5340 TGAGTTTGATGCTCTACCACTGAACCACGCACTCCACACAAACTGGTATGCCCAACATTC
+                                                                  
+
+ 5400 CTTCAAACAGCTTTGCCTAAAAGTGTAATTGAACTTCGAGTTGAATTGAAATGATTTTTT
+                                                                  
+
+ 5460 TTTAAAAAAAAGTTTTTGAATCTGTTTCAGGCGAATCATCTTCCTGGAAACAGTTGCTGG
+                                                                  
+
+ 5520 GGTACCTGGAATGGTGGCAGCCATGACACGTCATCTACACTCACTGAGACGTATGCAGCG
+                                                                  
+
+ 5580 AGACTATGGATGGATTCATACTTTATTAGGTATTATTTATCCACGGGATCATGTTTTTAA
+                                                                  
+
+ 5640 TAAGTCTTTAACTGTTATTACTTAGCATTTAATACCAGACTGACTGGAAGTTTGTCTGAC
+                                                                  
+
+ 5700 ATGTACTATTTATTCTTGCAAACCTTCAAGGGTTATATATTTCTGTCTTAACTTAGGGCC
+                                                                  
+
+ 5760 GATATAAAATTTTAGTACCTTGACGTTAAAAACATCTCTGATATGACATATAAAAGAATA
+                                                                  
+
+ 5820 TGATGTAACTTAATTAATTTGAGGTCTTAAAAGTGATTGTGGTAAAACTATTAATGAAAA
+                                                                  
+
+ 5880 TTTAAAATCAAAATAGTTATTCAATTGTTAGGTAAGGAAGAAAAAAAATATTCATGGCCT
+                                                                  
+
+ 5940 TTGTTTCGACTAGAAAATCCACGCTTGGGACGGCTCTTTTTTTTAAACTTGACAAAAACA
+                                                                  
+
+ 6000 GTTCTCCCTCGAAACTGAATTTTACATTTTATAATCTCGGACTTGTAGGCCTGTACAAGT
+                                                                  
+
+ 6060 CTAAAAATAAAACAGCTTTATTTCAGATATGAACTTGGTACCAGTAAAACTTTAATTATC
+                                                                  
+
+ 6120 TATATGCCAAGACAGGAATTTTGTATCAAATTGAATAAAGCTGAATGTCATCTATGACTT
+                                                                  
+
+ 6180 ATCTTGTACTACAACTGTCTGTTACAGAGGAAGCTGAGAACGAGCGAATGCATCTACTGA
+                                                                  
+
+ 6240 CAGCGCTACAGCTGAAAAAGCCCTCCTGGATGTTTAGGACAGGGGTCATCTTATCCCAAG
+                                                                  
+
+ 6300 GTAAAGGTCATATTTTTGTTAAACTTCCGGGCAGTCTTATAATTTGAAAATTTTAATATG
+                                                                  
+
+ 6360 AGTAATGTTCATCTTGTCAATGCTTCAGTAAAAGCTATTACATGGTTAGCATCATCTCTA
+                                                                  
+
+ 6420 GAACCTCAATGTAAAAATTTTACTCATGTTCGTGCATTAAATCAATCTTTGCACCCATGA
+                                                                  
+
+ 6480 ACATATAACCATTTGAAGATAGTTATTTTCAAGTATAACTGCCTTAAACTAAAAAAAATA
+                                                                  
+
+ 6540 TTAACAGTTTTTTGTCAAACTTCTTTGGGTCCTCCGCGGCTGAGTGGTCTAAGGCAACAT
+                                                                  
+
+ 6600 CTCAATATCACTTGCCTCTCACCGTTAAGGTTGTAGGTTCCAGTCCCACTTACTCCAACA
+                                                                  
+
+ 6660 TTTACTTGCGACAGGACGGTGATTCTACTCATAATCATTGTTAGGTCTTCATCCTCCAAT
+                                                                  
+
+ 6720 AAAACTTGGTGTGCCATATATAACCTGAAATGTGTTGAAAATGGCATTAAAACCCATTTA
+                                                                  
+
+ 6780 ATAACTTAAAAAAATTATCAAACTTTATCAACACACACTTTTTAAAAGTATGGGAATTTT
+                                                                  
+
+ 6840 TAAAAAAAAATACAAATTGATATTTCCTTGAAATAGTTGCCACCGTACTGATAAAAAATC
+                                                                  
+
+ 6900 TATCAAATCAAAATGTATTGTACATTTTCGTGTAGATAACCACAAATGTTGGGAAGTTGG
+                                                                  
+
+ 6960 ATGTCTTTCAGCCATTTATAGGAGTTTTGCCCCTTTTCAAGGATTTTGATATATATTATG
+                                                                  
+
+ 7020 ATGTATTTTAAAAAAAAAGAGTGTTTTGTTAATTTACTGGTCTCCATGGTAACATGCCAA
+                                                                  
+
+ 7080 CTTTATTTCAGGTACATTCGTGACCTTATTCAGTATATCATACCTTCTGTCACCCAAGTT
+                                                                  
+
+ 7140 CTGTCATCGGTTTGTCGGCTATCTGGAGGAAGAGGCAGTGAAAACATACACCAAATGTCT
+                                                                  
+
+ 7200 TCAAGTAAGTTTGTTAAAGCTTCTCGGCCACTCTCTCACCATTTCCTTTAACAGTTGTAT
+                                                                  
+
+ 7260 TTATTATGTCATTGAAAGAAATTAATTAACAATATACCTAAAGCTGAGCCCTTTGATGTT
+                                                                  
+
+ 7320 TGTATTTTTAAATATAACTCTGTCTGCATTATATGAGGAAGATTATGTGTTTGATTGTAT
+                                                                  
+
+ 7380 GTTTGAAAGGGTTATATCATAGACTTTGTTTTTGAATGTTATTTATTAAATATGGATATT
+                                                                  
+
+ 7440 TTCCATTATATTTCTGTCTTGGTAGACCTAAAACTCAAGCTTGTATGAAATTATATGCTA
+                                                                  
+
+ 7500 TATTCAGCGTATTTGTTAAGAAAATTCATATATGTGGCAGAGTGTGCATAAAGACACTAT
+                                                                  
+
+ 7560 TTTACATAAAGACACTATTTTACATAAAGACACTGTCTTAAGATCACTTGTGTCTTATCA
+                                                                  
+
+ 7620 CTAAAGTTATTGGCTTAATCAAGCAAAGGGCTGTGGATGTTTGTCAGTAATATTTGCGGA
+                                                                  
+
+ 7680 TGGACGTGGCTTTACTGAGATTGCTGTGGTCCAACAAAACTGCAATGTGATGAAAATAGT
+                                                                  
+
+ 7740 ATTAGACCCCATGAGAAGTCAGTTGCTAAGGAAGGAATTTCATGGTCAAATACTAGAGTA
+                                                                  
+
+ 7800 TTATACCCAGTATTGGACAGTAAAGGGTTTGATACGCGGCCATGGTGTCGTATCCTTGTG
+                                                                  
+
+ 7860 CAATAACTTTTTCCACATACACTTCACGCTGGTTCTAACCAGGAAGACTTCGAGCATGAT
+                                                                  
+
+ 7920 TTGGCTCAGTTGTAATAACTTGTTTTCACAATTGGTGTAATGTAAATTTTAAGATATTTT
+                                                                  
+
+ 7980 TTTTATAAATTGAATTTACTCATAATCGTATGCTATCAGACCATTCGGTGTTATTATTGT
+                                                                  
+
+ 8040 ATTATATGTACTCTGTATTTTAGGACATAGAGACTGGACCCATGCAACACTGGAAGACAC
+                                                                  
+
+ 8100 AATTAGGACCTGATGTGGCCATTAGATACTGGAAAATGCCTGTAAGTTTATAACAATACA
+                                                                  
+
+ 8160 ATAACTTTTTTTTATCAAATTTTACTTAAGCCTTTAAGTACTGTCATGACATAACATATA
+                                                                  
+
+ 8220 TTGTGTAGATGTGACTATGTGTAAACAAAATACATTTATGTCTTAGCTTTAATGTTCAAA
+                                                                  
+
+ 8280 AAATTAGGAGGGCTATTGTTTTCCTTTTGGCAATTGTTAAGTTTAATGGAAAACCAGTAT
+                                                                  
+
+ 8340 TTTCTAATTCCTTCGCTTTTTATCATGAAATGTTGCACTTAATGTCAAGTTGGCCCTTAG
+                                                                  
+
+ 8400 AAAATTCTAGGTCAGTCTGATATCCAAGTTGGCTATCACAGCTGAAAAACTGTGGTCCCA
+                                                                  
+
+ 8460 ACATTTGAATAAATAAGTCTCAAACTCAAAAGATTCTGGTAACACATTTATAATGGAAGG
+                                                                  
+
+ 8520 GAAATAACTTATTTTTTCCTTTGAAATAAATATAAAAACATTGATCTCCCTTTGTGATAT
+                                                                  
+
+ 8580 ACATTCATGTTTTTTTTTACATACATACATACATCGTTCTTCTTGAAATGATTTAGATAA
+                                                                  
+
+ 8640 AAATGTTTGCTTTAAGAACCTCAAGGTCAAGATCATTGTTATAAAAAATGGAAAATTTAA
+                                                                  
+
+ 8700 TTCCATTCAACAATTTAATTAAAACATTCTGGTAAAATCTTTTAAATTGTATGTTTGGCA
+                                                                  
+
+ 8760 ATAAGAAAACCAGTCAGATTCCACCAAGAAAGCACATTAAGGTTACTAATCAATTGTTTT
+                                                                  
+
+ 8820 TGAGATGCGATCAGCTTGAGGTTGGGATTGAAACTGTTAACCTCTGAAACGAGCAGCTAA
+                                                                  
+
+ 8880 CACGCTCTATCTGCTACACTATTGTCTCACTGTCTTTTGGAAATATATCTGTATAATGAC
+                                                                  
+
+ 8940 ATTGCACCCAAGATGTAAATTTTTTTTTCTCAGGAAGATGCGACGATGAAAGATGTTGTT
+                                                                  
+
+ 9000 CTTGCCATCCGGGCTGATGAGGCACATCACAGACTTGTGAACCACACGCTGGCTTCTATG
+                                                                  
+
+ 9060 AAAGATACAGACTATAATCCTTACAAGCCAGGCCAGTAA
+                                             
+
+KEYS (in order of precedence):
+>>>>>> left primer
+<<<<<< right primer
+
+ADDITIONAL OLIGOS
+                    start  len      tm     gc%  any_th  3'_th hairpin seq
+
+ 1 LEFT PRIMER       2080   18   60.05   61.11    0.00   0.00    0.00 CGGGCGGGGAATCAAACT
+   RIGHT PRIMER      2223   18   60.04   61.11    0.00   0.00    0.00 GGCCCTGATCCGCACTTT
+   PRODUCT SIZE: 144, PAIR ANY_TH COMPL: 4.08, PAIR 3'_TH COMPL: 0.00
+
+ 2 LEFT PRIMER       2138   18   60.12   61.11   24.92   6.91    0.00 GTTATTCGGGCCCAGCGT
+   RIGHT PRIMER      2223   18   60.04   61.11    0.00   0.00    0.00 GGCCCTGATCCGCACTTT
+   PRODUCT SIZE: 86, PAIR ANY_TH COMPL: 5.51, PAIR 3'_TH COMPL: 4.48
+
+ 3 LEFT PRIMER       2080   18   60.05   61.11    0.00   0.00    0.00 CGGGCGGGGAATCAAACT
+   RIGHT PRIMER      2155   18   60.12   61.11   19.37   1.02    0.00 ACGCTGGGCCCGAATAAC
+   PRODUCT SIZE: 76, PAIR ANY_TH COMPL: 16.22, PAIR 3'_TH COMPL: 8.57
+
+ 4 LEFT PRIMER       2139   18   59.81   61.11   24.92   0.00    0.00 TTATTCGGGCCCAGCGTC
+   RIGHT PRIMER      2223   18   60.04   61.11    0.00   0.00    0.00 GGCCCTGATCCGCACTTT
+   PRODUCT SIZE: 85, PAIR ANY_TH COMPL: 5.51, PAIR 3'_TH COMPL: 4.48
+
+Statistics
+         con   too    in    in   not          no    tm    tm   high  high  high        high      
+         sid  many   tar  excl    ok   bad    GC   too   too any_th 3'_th hair-  poly   end      
+        ered    Ns   get   reg   reg   GC% clamp   low  high  compl compl   pin     X  stab    ok
+libprimer3 release 2.3.7
+
+

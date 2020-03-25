@@ -1,0 +1,526 @@
+BLASTN 2.9.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= XM_011426478.2 PREDICTED: Crassostrea gigas NADH dehydrogenase
+[ubiquinone] flavoprotein 1, mitochondrial (LOC105326432), mRNA
+
+Length=1638
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g299160                                                       99.0       1e-18
+
+
+>PGEN_.00g299160 
+Length=18568
+
+ Score = 99.0 bits (53),  Expect = 1e-18
+ Identities = 134/173 (77%), Gaps = 5/173 (3%)
+ Strand=Plus/Plus
+
+Query  916    AGTTATTCAACATCTCTGGACAAGTCAACAACCCAGTG-ACAGTGGAGGAGGAGATGTCC  974
+              |||| |||||||| ||||| || || ||||||||| || |||||||| || |||||||||
+Sbjct  12643  AGTTGTTCAACATATCTGGTCACGTTAACAACCCA-TGTACAGTGGAAGAAGAGATGTCC  12701
+
+Query  975    ATCAGTCTGAAGGAGCTGATAGAGAGGCACGcgggcggggt-catcgggggctgggacaa  1033
+              ||   ||| |||||| |||||||  | ||  | || || || | | ||||||||||||||
+Sbjct  12702  ATACCTCTCAAGGAGTTGATAGAACGTCATTCTGGTGGTGTACGT-GGGGGCTGGGACAA  12760
+
+Query  1034   cctgctgggggtcatccccggggggTCATCCACACCCATCATACCCAAA-AGT  1085
+              ||||||||   | || || || || |||||||| ||  |||| || ||| |||
+Sbjct  12761  CCTGCTGGCCATTATACCAGGTGGCTCATCCACGCCTCTCATTCCTAAAGAGT  12813
+
+
+ Score = 97.1 bits (52),  Expect = 3e-18
+ Identities = 88/106 (83%), Gaps = 0/106 (0%)
+ Strand=Plus/Plus
+
+Query  619   AGGCATATGCTGCGGGTCTGATTGGTAAGAATGCCTGTGGGTCAGGCTATGACTTTGATG  678
+             ||||||||||    || |||||||||||||||||||| ||||| ||||| ||||||||||
+Sbjct  8045  AGGCATATGCAAATGGCCTGATTGGTAAGAATGCCTGCGGGTCTGGCTACGACTTTGATG  8104
+
+Query  679   TTTATGTTCATCGGGGAGCTGGAGCCTATATTTGCGGGGAGGAAAC  724
+             | ||||| ||  | || || ||||| |||||||| || ||||||||
+Sbjct  8105  TATATGTACACAGAGGCGCAGGAGCATATATTTGTGGTGAGGAAAC  8150
+
+
+ Score = 86.1 bits (46),  Expect = 7e-15
+ Identities = 60/67 (90%), Gaps = 0/67 (0%)
+ Strand=Plus/Plus
+
+Query  555   GCCTACATTTATATCAGAGGAGAGTTCTACAATGAAGCCTCTAATCTACAGGTTGCCATT  614
+             |||||||| || |||||||||||||||||||||||||| || ||||| |||||||| || 
+Sbjct  7203  GCCTACATCTACATCAGAGGAGAGTTCTACAATGAAGCTTCCAATCTCCAGGTTGCAATC  7262
+
+Query  615   AATGAGG  621
+             |||||||
+Sbjct  7263  AATGAGG  7269
+
+
+ Score = 62.1 bits (33),  Expect = 1e-07
+ Identities = 118/159 (74%), Gaps = 6/159 (4%)
+ Strand=Plus/Plus
+
+Query  1083   AGTGTCTGT-ACTGACGTACTGATGGACTTTGATGGACTGGTCCAGGCTCAGACCGCTCT  1141
+              ||||||||| || || || ||||||||||| ||||  || ||  | |||||||| |  ||
+Sbjct  14245  AGTGTCTGTGAC-GATGTGCTGATGGACTTCGATGCCCTCGTGGATGCTCAGACAGGACT  14303
+
+Query  1142   AGGTACAGCCGCTGTGATAGTCATGAATAAGG-A-CGCTGACGTCATCAGGTGTATCTCC  1199
+               || ||||| ||| | || |||||| ||||   | ||  ||  ||||  | |||||||| 
+Sbjct  14304  TGGCACAGCAGCTATCATCGTCATGGATAAATCATCG--GATATCATTCGCTGTATCTCT  14361
+
+Query  1200   CGACTGATTGAGTTCTATAAACATGAGAGCTGTGGACAG  1238
+              || || || || || ||||||||||| || || ||||||
+Sbjct  14362  CGTCTTATCGACTTTTATAAACATGAAAGTTGCGGACAG  14400
+
+
+ Score = 56.5 bits (30),  Expect = 6e-06
+ Identities = 84/111 (76%), Gaps = 0/111 (0%)
+ Strand=Plus/Plus
+
+Query  419   AAGGCCTAAGTACCTGGTGGTGAATGCTGACGAGGGAGAGCCAGGCACCTGTAAGGACCG  478
+             |||||| || || || || || ||||||||||| || || ||||| || ||||| ||| |
+Sbjct  6272  AAGGCCAAAATATCTTGTTGTAAATGCTGACGAAGGTGAACCAGGGACGTGTAAAGACAG  6331
+
+Query  479   CGAGATTATGAGACACGACCCCCACAAGCTGGTGGAGGGGTGTTTGGTGGC  529
+              || |||||| | || ||||| ||||  || || || || || || |||||
+Sbjct  6332  AGAAATTATGCGTCATGACCCACACACACTTGTAGAAGGCTGCTTAGTGGC  6382
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 606704446600
+
+
+Query= EU029064.1 Mytilus californianus isolate PB91M NADH dehydrogenase
+subunit 5 (nad5) gene, partial cds; mitochondrial
+
+Length=636
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 229513834263
+
+
+Query= XM_022487416.1 PREDICTED: Crassostrea virginica NADH dehydrogenase
+[ubiquinone] iron-sulfur protein 3, mitochondrial-like
+(LOC111136515), mRNA
+
+Length=932
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g189740                                                       60.2       3e-07
+
+
+>PGEN_.00g189740 
+Length=12031
+
+ Score = 60.2 bits (32),  Expect = 3e-07
+ Identities = 82/106 (77%), Gaps = 4/106 (4%)
+ Strand=Plus/Plus
+
+Query  568    AGATCTGGGACATGTATGGTGTTTATTT-TCATAATCACCCTGATTTGAGAAGAATTTTG  626
+              |||| |||||  ||| |||||| ||||| ||  || || || ||  | ||| ||||| ||
+Sbjct  10818  AGATATGGGATTTGTTTGGTGTGTATTTCTC-CAACCATCCCGACCTTAGACGAATTCTG  10876
+
+Query  627    ACAGATTATGGGTTCGAAGGTCACCCATTCAGGAAG-GACTTCCCA  671
+              ||||||||||| || || ||||| |||||||| ||| || || |||
+Sbjct  10877  ACAGATTATGGATTTGAGGGTCATCCATTCAG-AAGAGATTTTCCA  10921
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 340658894240
+
+
+Query= MF995387.1 Mytilus edulis clone Ber13FE cytochrome oxidase subunit 3
+gene, partial cds; tRNA-Ser and tRNA-Met genes, complete sequence;
+and NADH dehydrogenase subunit 2 gene, partial cds; mitochondrial
+
+Length=1183
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 435244494300
+
+
+Query= AB737285.1 Crassostrea sikamea mitochondrial gene for NADH
+dehydrogenase subunit 1, partial cds, isolate: CHH_S71
+
+Length=778
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 283029375257
+
+
+Query= KF465724.1 Arctica islandica isolate 108MRD10 NADH dehydrogenase
+subunit 6 (nad6) gene, partial cds; NADH dehydrogenase subunit 4L
+(nad4L) gene, complete cds; tRNA-Trp and tRNA-Arg genes, complete
+sequence; and cytochrome b-like gene, partial sequence;
+mitochondrial
+
+Length=1143
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g336950                                                       51.0       2e-04
+PGEN_.00g196330                                                       49.1       7e-04
+PGEN_.00g196290                                                       49.1       7e-04
+
+
+>PGEN_.00g336950 
+Length=11598
+
+ Score = 51.0 bits (27),  Expect = 2e-04
+ Identities = 38/43 (88%), Gaps = 2/43 (5%)
+ Strand=Plus/Plus
+
+Query  117   TAA-AATAATGATAATAAGATTATGttttattttttttatttt  158
+             ||| ||||||||||||||| |||| |  |||||||||||||||
+Sbjct  8353  TAATAATAATGATAATAAGTTTATATA-TATTTTTTTTATTTT  8394
+
+
+>PGEN_.00g196330 
+Length=12437
+
+ Score = 49.1 bits (26),  Expect = 7e-04
+ Identities = 44/52 (85%), Gaps = 3/52 (6%)
+ Strand=Plus/Minus
+
+Query  118   AAAATAATGATAATAAGATTATGttttattttttttattttttctttttttt  169
+             |||| ||||||||||| ||| | |||| |||||| || ||||| ||||||||
+Sbjct  1613  AAAA-AATGATAATAAAATTTTCTTTT-TTTTTTATAATTTTT-TTTTTTTT  1565
+
+
+>PGEN_.00g196290 
+Length=3960
+
+ Score = 49.1 bits (26),  Expect = 7e-04
+ Identities = 44/52 (85%), Gaps = 3/52 (6%)
+ Strand=Plus/Minus
+
+Query  118   AAAATAATGATAATAAGATTATGttttattttttttattttttctttttttt  169
+             |||| ||||||||||| ||| | |||| |||||| || ||||| ||||||||
+Sbjct  1225  AAAA-AATGATAATAAAATTTTCTTTT-TTTTTTATAATTTTT-TTTTTTTT  1177
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 420171091900
+
+
+Query= XM_022435197.1 PREDICTED: Crassostrea virginica NADH dehydrogenase
+[ubiquinone] flavoprotein 1, mitochondrial-like (LOC111102448), mRNA
+
+Length=1623
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g299160                                                       91.6       2e-16
+
+
+>PGEN_.00g299160 
+Length=18568
+
+ Score = 91.6 bits (49),  Expect = 2e-16
+ Identities = 87/106 (82%), Gaps = 0/106 (0%)
+ Strand=Plus/Plus
+
+Query  626   AGGCCTACGCTGATGGTCTGATTGGTAAGAACGCCTGTGGGTCAGGCTACGACTTTGATG  685
+             |||| || ||  |||| |||||||||||||| ||||| ||||| ||||||||||||||||
+Sbjct  8045  AGGCATATGCAAATGGCCTGATTGGTAAGAATGCCTGCGGGTCTGGCTACGACTTTGATG  8104
+
+Query  686   TCTTTGTTCATCGTGGCGCTGGGGCGTACATTTGTGGAGAGGAAAC  731
+             | | ||| ||  | ||||| || || || |||||||| ||||||||
+Sbjct  8105  TATATGTACACAGAGGCGCAGGAGCATATATTTGTGGTGAGGAAAC  8150
+
+
+ Score = 82.4 bits (44),  Expect = 1e-13
+ Identities = 131/173 (76%), Gaps = 5/173 (3%)
+ Strand=Plus/Plus
+
+Query  923    AGTTATTTAACATTTCTGGACAAGTCAACAACCCCGTG-ACGGTGGAGGAAGAGATGTCC  981
+              |||| || ||||| ||||| || || ||||||||  || || ||||| ||||||||||||
+Sbjct  12643  AGTTGTTCAACATATCTGGTCACGTTAACAACCC-ATGTACAGTGGAAGAAGAGATGTCC  12701
+
+Query  982    ATCAGC-CTGAAGGAGCTGATCGAGAGACACGCCGGGGGTGTCATTGGGGGCTGGGACAA  1040
+              || | | || |||||| |||| ||  | ||  | || |||||   |||||||||||||||
+Sbjct  12702  AT-ACCTCTCAAGGAGTTGATAGAACGTCATTCTGGTGGTGTACGTGGGGGCTGGGACAA  12760
+
+Query  1041   CCTGCTCGGGGTCATCCCCGGGGGCTCCTCCACCCCCATCATACCCAA-GAGT  1092
+              |||||| |   | || || || ||||| ||||| ||  |||| || || ||||
+Sbjct  12761  CCTGCTGGCCATTATACCAGGTGGCTCATCCACGCCTCTCATTCCTAAAGAGT  12813
+
+
+ Score = 76.8 bits (41),  Expect = 4e-12
+ Identities = 59/68 (87%), Gaps = 0/68 (0%)
+ Strand=Plus/Plus
+
+Query  561   AGCTTACATTTACATCAGAGGGGAGTTCTACAATGAAGCCTCTAACCTACAGGTGGCCAT  620
+             ||| ||||| ||||||||||| ||||||||||||||||| || || || ||||| || ||
+Sbjct  7202  AGCCTACATCTACATCAGAGGAGAGTTCTACAATGAAGCTTCCAATCTCCAGGTTGCAAT  7261
+
+Query  621   CAATGAGG  628
+             ||||||||
+Sbjct  7262  CAATGAGG  7269
+
+
+ Score = 71.3 bits (38),  Expect = 2e-10
+ Identities = 96/125 (77%), Gaps = 0/125 (0%)
+ Strand=Plus/Plus
+
+Query  734   CTCTGATTGAGTCACTGGAGGGTAAAGCTGGCAAGCCCCGCCTGAAGCCGCCCTTCCCAG  793
+             || |||| || || ||||| || |||   ||||| || ||||||||||| || || || |
+Sbjct  8898  CTTTGATAGAATCTCTGGAAGGGAAACAAGGCAAACCTCGCCTGAAGCCTCCGTTTCCTG  8957
+
+Query  794   CTGATGTGGGCGTGTTTGGATGTCCCACAACCGTCGCCAATGTCGAAACTGTGGCCGTGG  853
+             | ||||| || |||||||| || || || || || || ||||| |||||||| || ||||
+Sbjct  8958  CAGATGTTGGTGTGTTTGGCTGCCCGACCACAGTAGCAAATGTAGAAACTGTTGCAGTGG  9017
+
+Query  854   CTCCG  858
+             | |||
+Sbjct  9018  CCCCG  9022
+
+
+ Score = 67.6 bits (36),  Expect = 3e-09
+ Identities = 117/157 (75%), Gaps = 2/157 (1%)
+ Strand=Plus/Plus
+
+Query  1090   AGTGTGTGTACCGATGTCTTGATGGACTTTGATGGACTGGTACAGGCCCAGACCGCTCTG  1149
+              ||||| |||  ||||||  |||||||||| ||||  || ||  | || ||||| |  || 
+Sbjct  14245  AGTGTCTGTGACGATGTGCTGATGGACTTCGATGCCCTCGTGGATGCTCAGACAGGACTT  14304
+
+Query  1150   GGGACGGCTGCTGTCATTGTCATGAATAA-GGATGCTGATGTCATCAGGTGTATTTCTCG  1208
+              || || || ||| |||| |||||| ||||   || | ||| ||||  | ||||| |||||
+Sbjct  14305  GGCACAGCAGCTATCATCGTCATGGATAAATCAT-CGGATATCATTCGCTGTATCTCTCG  14363
+
+Query  1209   ACTGATTGAGTTCTATAAACACGAGAGTTGCGGACAG  1245
+               || || || || |||||||| || ||||||||||||
+Sbjct  14364  TCTTATCGACTTTTATAAACATGAAAGTTGCGGACAG  14400
+
+
+ Score = 54.7 bits (29),  Expect = 2e-05
+ Identities = 45/53 (85%), Gaps = 0/53 (0%)
+ Strand=Plus/Plus
+
+Query  1351   AAGCAGATTGAGGGACACACCATCTGTGCCCTGGGGGATGGAGCCGCCTGGCC  1403
+              ||||||||||| || ||||| |||||||| ||||| ||||| || || |||||
+Sbjct  17369  AAGCAGATTGAAGGTCACACTATCTGTGCGCTGGGTGATGGTGCAGCATGGCC  17421
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 601051920700
+
+
+Query= JN208352.1 Crassostrea virginica haplotype 112 NADH dehydrogenase
+subunit 4 (ND4) gene, partial cds; mitochondrial
+
+Length=1149
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 422432102260
+
+
+Query= GQ468287.1 Mytilus galloprovincialis haplotype M NADH dehydrogenase
+subunit 5 (ND5) gene, partial cds; mitochondrial
+
+Length=998
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 365530008200
+
+
+Query= EU288184.1 Bathymodiolus childressi isolate 7 NADH dehydrogenase
+subunit 4 (ND4) gene, partial cds; mitochondrial
+
+Length=456
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 161677233003
+
+
+Query= KC811526.1 Pinna nobilis isolate FER2 NADH dehydrogenase subunit 3
+(NAD3) gene, partial cds; mitochondrial
+
+Length=203
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 66712176858
+
+
+Query= XM_021488544.1 PREDICTED: Mizuhopecten yessoensis NADH dehydrogenase
+[ubiquinone] iron-sulfur protein 2, mitochondrial-like
+(LOC110444135), mRNA
+
+Length=378
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g119300                                                       73.1       1e-11
+
+
+>PGEN_.00g119300 
+Length=10152
+
+ Score = 73.1 bits (39),  Expect = 1e-11
+ Identities = 100/130 (77%), Gaps = 2/130 (2%)
+ Strand=Plus/Plus
+
+Query  236   CAGCGGTGTGATGTTGCGTGGCTCGGGTATCAAGTGGGATTTGAGGAAGACA-CAGCCGT  294
+             ||| || ||||||||| | || || ||||||||||||||| |||| || ||| ||||| |
+Sbjct  4128  CAGTGGCGTGATGTTGAGAGGTTCTGGTATCAAGTGGGATCTGAGAAA-ACAGCAGCCCT  4186
+
+Query  295   ACGATGCCTATCATCTGGTCGACTTTGACATTCCCATCGGTACGACTGGTGATTGTTATG  354
+             | ||||| ||| |    || || |||||  ||||||| || |||   || ||||| || |
+Sbjct  4187  ATGATGCATATGACAAAGTAGAGTTTGATGTTCCCATTGGAACGCAAGGCGATTGCTACG  4246
+
+Query  355   ACAGGTAGGT  364
+             ||||||||||
+Sbjct  4247  ACAGGTAGGT  4256
+
+
+ Score = 71.3 bits (38),  Expect = 5e-11
+ Identities = 58/68 (85%), Gaps = 0/68 (0%)
+ Strand=Plus/Plus
+
+Query  3    ATGGAGTTCTACGAGAGAGTGTCTGGAGCGAGAATGCATGCAGCCTATGTCAGACCAGGA  62
+            |||||||| || ||||||||||||||||| |||||||| ||||| |||||  | || |||
+Sbjct  390  ATGGAGTTTTATGAGAGAGTGTCTGGAGCCAGAATGCACGCAGCATATGTGCGCCCTGGA  449
+
+Query  63   GGCGTGTC  70
+            || |||||
+Sbjct  450  GGTGTGTC  457
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 132281372457
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

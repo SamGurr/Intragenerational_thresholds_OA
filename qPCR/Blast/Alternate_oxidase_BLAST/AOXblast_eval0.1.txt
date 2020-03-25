@@ -1,0 +1,790 @@
+BLASTN 2.9.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= FJ607013.1_Crassostrea virginica_alternative oxidase_mRNA
+
+Length=328
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 112663233787
+
+
+Query= XM_022459230.1_Crassostrea_virginica_alternative
+oxidase_mitochondrial-like_(LOC111119236)
+
+Length=2454
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g108770                                                       91.5       3e-16
+PGEN_.00g240540                                                       53.6       7e-05
+PGEN_.00g243550                                                       49.1       0.003
+PGEN_.00g273920                                                       45.5       0.035
+PGEN_.00g090520                                                       45.5       0.035
+PGEN_.00g323320                                                       44.6       0.035
+PGEN_.00g223270                                                       44.6       0.035
+PGEN_.00g174720                                                       44.6       0.035
+
+
+>PGEN_.00g108770 
+Length=9099
+
+ Score = 91.5 bits (100),  Expect = 3e-16
+ Identities = 86/110 (78%), Gaps = 0/110 (0%)
+ Strand=Plus/Plus
+
+Query  960   CGAATCTGTTTCTTGGAGACTGTTGCTGGGGTACCCGGAATGGTTGCAGCGATGACGCGA  1019
+             ||||||   ||| |||| || |||||||||||||| |||||||| ||||| ||||| || 
+Sbjct  5492  CGAATCATCTTCCTGGAAACAGTTGCTGGGGTACCTGGAATGGTGGCAGCCATGACACGT  5551
+
+Query  1020  CATTTACACTCACTGCGCAGGCTCAAACGAGACCACGGATGGATACACAC  1069
+             ||| ||||||||||| |  |  |  | |||||| | |||||||| || ||
+Sbjct  5552  CATCTACACTCACTGAGACGTATGCAGCGAGACTATGGATGGATTCATAC  5601
+
+
+ Score = 54.5 bits (59),  Expect = 7e-05
+ Identities = 49/62 (79%), Gaps = 0/62 (0%)
+ Strand=Plus/Plus
+
+Query  802   GGTCAGAAGAAGAACTCCATAATGTAAAAGTCACCCACAAGCCTCCAGAGGGCTTTGTTG  861
+             |||| ||||||||||| || ||||| |   | ||||| ||||| ||| ||||||| || |
+Sbjct  3692  GGTCTGAAGAAGAACTACAAAATGTGATTATTACCCATAAGCCACCACAGGGCTTCGTAG  3751
+
+Query  862   AC  863
+             ||
+Sbjct  3752  AC  3753
+
+
+ Score = 46.4 bits (50),  Expect = 0.010
+ Identities = 49/65 (75%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  654   ATTAAGAAATTCAAAGAAGGAAATTTCGAAAAAATCCCAGACCCAAATCACCTGGATCAT  713
+             || |||||||  ||||||||||| || || ||  | || |||||  ||||  |||| || 
+Sbjct  1732  ATAAAGAAATATAAAGAAGGAAACTTTGAGAAGCTTCCGGACCCTGATCATTTGGACCAC  1791
+
+Query  714   TTTAG  718
+             |||||
+Sbjct  1792  TTTAG  1796
+
+
+>PGEN_.00g240540 
+Length=20005
+
+ Score = 53.6 bits (58),  Expect = 7e-05
+ Identities = 48/58 (83%), Gaps = 2/58 (3%)
+ Strand=Plus/Plus
+
+Query  2393   TTTCAAT-TTTATTTTATACAATTTAGAATCTCATTTTGTTTATTTTAAAAATTAATA  2449
+              ||||||| ||||||||||||| ||   ||||| |||   |||||||| ||||||||||
+Sbjct  10936  TTTCAATATTTATTTTATACATTTATTAATCT-ATTAATTTTATTTTTAAAATTAATA  10992
+
+
+>PGEN_.00g243550 
+Length=2970
+
+ Score = 49.1 bits (53),  Expect = 0.003
+ Identities = 34/38 (89%), Gaps = 2/38 (5%)
+ Strand=Plus/Plus
+
+Query  239   GATTAAAATAGATTTCGTCCGATTAAAGATATTTTGTT  276
+             |||||||||||||||||  || ||||| ||||||||||
+Sbjct  1804  GATTAAAATAGATTTCG--CGCTTAAACATATTTTGTT  1839
+
+
+>PGEN_.00g273920 
+Length=20135
+
+ Score = 45.5 bits (49),  Expect = 0.035
+ Identities = 40/49 (82%), Gaps = 1/49 (2%)
+ Strand=Plus/Minus
+
+Query  2392  TTTTCAATTTTATTTTATACAATTTAGAATCTCATTTTGTTTATTTTAA  2440
+             ||||||||||| ||||||  |||||  ||||| |||||  |||||| ||
+Sbjct  8772  TTTTCAATTTTTTTTTATCTAATTTTAAATCTAATTTT-CTTATTTGAA  8725
+
+
+>PGEN_.00g090520 
+Length=41301
+
+ Score = 45.5 bits (49),  Expect = 0.035
+ Identities = 31/34 (91%), Gaps = 1/34 (3%)
+ Strand=Plus/Minus
+
+Query  1803  ATGACG-TAAAACACATCAAACAATCAATCAATC  1835
+             |||||| ||||| ||||||| |||||||||||||
+Sbjct  5974  ATGACGCTAAAATACATCAATCAATCAATCAATC  5941
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 912355948784
+
+
+Query= FJ177509.1_Crassostrea_gigas_alternative_oxidase_mRNA
+
+Length=1214
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g108770                                                       77.9       3e-12
+PGEN_.00g176100                                                       42.8       0.060
+PGEN_.00g176060                                                       42.8       0.060
+
+
+>PGEN_.00g108770 
+Length=9099
+
+ Score = 77.9 bits (85),  Expect = 3e-12
+ Identities = 83/110 (75%), Gaps = 0/110 (0%)
+ Strand=Plus/Plus
+
+Query  541   CTTCCTAGAGACTGTCGCTGGAGTTCCAGGAATGGTGGCAGCGATGACGCGACATTTACA  600
+             |||||| || || || ||||| || || |||||||||||||| ||||| || ||| ||||
+Sbjct  5500  CTTCCTGGAAACAGTTGCTGGGGTACCTGGAATGGTGGCAGCCATGACACGTCATCTACA  5559
+
+Query  601   CTCTTTGCGCCGACTCAAGCGGGATCACGGCTGGATTCATACCCTTTTAG  650
+             |||  || | ||  |  |||| ||  | || |||||||||||  | ||||
+Sbjct  5560  CTCACTGAGACGTATGCAGCGAGACTATGGATGGATTCATACTTTATTAG  5609
+
+
+ Score = 54.5 bits (59),  Expect = 3e-05
+ Identities = 49/62 (79%), Gaps = 0/62 (0%)
+ Strand=Plus/Plus
+
+Query  375   GGTCTGAAGAAGAACTTCATAGTGTGAAGGTCACACATAAACCGCCCGAGGGATTCGTAG  434
+             |||||||||||||||| || | |||||   | || ||||| || ||  |||| |||||||
+Sbjct  3692  GGTCTGAAGAAGAACTACAAAATGTGATTATTACCCATAAGCCACCACAGGGCTTCGTAG  3751
+
+Query  435   AC  436
+             ||
+Sbjct  3752  AC  3753
+
+
+>PGEN_.00g176100 
+Length=30867
+
+ Score = 42.8 bits (46),  Expect = 0.060
+ Identities = 26/28 (93%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  224    AATATAAAGAAATTTAAAGAGGAAAATT  251
+              |||| |||||||||||||||| ||||||
+Sbjct  22079  AATACAAAGAAATTTAAAGAGAAAAATT  22106
+
+
+>PGEN_.00g176060 
+Length=30608
+
+ Score = 42.8 bits (46),  Expect = 0.060
+ Identities = 26/28 (93%), Gaps = 0/28 (0%)
+ Strand=Plus/Plus
+
+Query  224    AATATAAAGAAATTTAAAGAGGAAAATT  251
+              |||| |||||||||||||||| ||||||
+Sbjct  22080  AATACAAAGAAATTTAAAGAGAAAAATT  22107
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 445671849077
+
+
+Query= XM_005099124.2_Aplysia_californica_mRNA_predicted
+
+Length=5032
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g108770                                                       79.7       4e-12
+PGEN_.00g104320                                                       52.7       5e-04
+PGEN_.00g109820                                                       51.8       5e-04
+PGEN_.00g054710                                                       51.8       5e-04
+PGEN_.00g048080                                                       51.8       5e-04
+PGEN_.00g017690                                                       51.8       5e-04
+PGEN_.00g305540                                                       50.9       0.002
+PGEN_.00g263110                                                       50.9       0.002
+PGEN_.00g164230                                                       50.9       0.002
+PGEN_.00g340310                                                       49.1       0.006
+PGEN_.00g306080                                                       49.1       0.006
+PGEN_.00g233700                                                       49.1       0.006
+PGEN_.00g158070                                                       49.1       0.006
+PGEN_.00g114380                                                       49.1       0.006
+PGEN_.00g082300                                                       49.1       0.006
+PGEN_.00g172190                                                       48.2       0.006
+PGEN_.00g143250                                                       48.2       0.006
+PGEN_.00g078310                                                       48.2       0.006
+PGEN_.00g067800                                                       48.2       0.006
+PGEN_.00g288850                                                       47.3       0.021
+PGEN_.00g244190                                                       47.3       0.021
+PGEN_.00g223600                                                       47.3       0.021
+PGEN_.00g158920                                                       47.3       0.021
+PGEN_.00g155630                                                       47.3       0.021
+PGEN_.00g137060                                                       47.3       0.021
+PGEN_.00g125820                                                       47.3       0.021
+PGEN_.00g121290                                                       47.3       0.021
+PGEN_.00g117100                                                       47.3       0.021
+PGEN_.00g098160                                                       47.3       0.021
+PGEN_.00g098100                                                       47.3       0.021
+PGEN_.00g097860                                                       47.3       0.021
+PGEN_.00g088610                                                       47.3       0.021
+PGEN_.00g076740                                                       47.3       0.021
+PGEN_.00g046970                                                       47.3       0.021
+PGEN_.00g013400                                                       47.3       0.021
+PGEN_.00g006160                                                       47.3       0.021
+PGEN_.00g275480                                                       46.4       0.021
+PGEN_.00g264980                                                       46.4       0.021
+PGEN_.00g263090                                                       46.4       0.021
+PGEN_.00g253580                                                       46.4       0.021
+PGEN_.00g203060                                                       46.4       0.021
+PGEN_.00g151960                                                       46.4       0.021
+PGEN_.00g144570                                                       46.4       0.021
+PGEN_.00g137400                                                       46.4       0.021
+PGEN_.00g135150                                                       46.4       0.021
+PGEN_.00g115120                                                       46.4       0.021
+PGEN_.00g113430                                                       46.4       0.021
+PGEN_.00g095920                                                       46.4       0.021
+PGEN_.00g093280                                                       46.4       0.021
+PGEN_.00g079240                                                       46.4       0.021
+PGEN_.00g066060                                                       46.4       0.021
+PGEN_.00g022190                                                       46.4       0.021
+PGEN_.00g001190                                                       46.4       0.021
+PGEN_.00g341450                                                       45.5       0.072
+PGEN_.00g337950                                                       45.5       0.072
+PGEN_.00g334170                                                       45.5       0.072
+PGEN_.00g333060                                                       45.5       0.072
+PGEN_.00g327680                                                       45.5       0.072
+PGEN_.00g312420                                                       45.5       0.072
+PGEN_.00g312170                                                       45.5       0.072
+PGEN_.00g305610                                                       45.5       0.072
+PGEN_.00g301740                                                       45.5       0.072
+PGEN_.00g289310                                                       45.5       0.072
+PGEN_.00g256300                                                       45.5       0.072
+PGEN_.00g234420                                                       45.5       0.072
+PGEN_.00g210210                                                       45.5       0.072
+PGEN_.00g164400                                                       45.5       0.072
+PGEN_.00g156130                                                       45.5       0.072
+PGEN_.00g152720                                                       45.5       0.072
+PGEN_.00g152680                                                       45.5       0.072
+PGEN_.00g113510                                                       45.5       0.072
+PGEN_.00g106480                                                       45.5       0.072
+PGEN_.00g094530                                                       45.5       0.072
+PGEN_.00g087550                                                       45.5       0.072
+PGEN_.00g077140                                                       45.5       0.072
+PGEN_.00g023190                                                       45.5       0.072
+PGEN_.00g344830                                                       44.6       0.072
+PGEN_.00g344810                                                       44.6       0.072
+PGEN_.00g313780                                                       44.6       0.072
+PGEN_.00g311130                                                       44.6       0.072
+PGEN_.00g306950                                                       44.6       0.072
+PGEN_.00g293390                                                       44.6       0.072
+PGEN_.00g270730                                                       44.6       0.072
+PGEN_.00g266290                                                       44.6       0.072
+PGEN_.00g254800                                                       44.6       0.072
+PGEN_.00g254160                                                       44.6       0.072
+PGEN_.00g221980                                                       44.6       0.072
+PGEN_.00g214770                                                       44.6       0.072
+PGEN_.00g181280                                                       44.6       0.072
+PGEN_.00g179280                                                       44.6       0.072
+PGEN_.00g177230                                                       44.6       0.072
+PGEN_.00g174910                                                       44.6       0.072
+PGEN_.00g167220                                                       44.6       0.072
+PGEN_.00g156910                                                       44.6       0.072
+PGEN_.00g156720                                                       44.6       0.072
+PGEN_.00g123900                                                       44.6       0.072
+PGEN_.00g120940                                                       44.6       0.072
+PGEN_.00g119120                                                       44.6       0.072
+PGEN_.00g112030                                                       44.6       0.072
+PGEN_.00g103730                                                       44.6       0.072
+PGEN_.00g102000                                                       44.6       0.072
+PGEN_.00g089770                                                       44.6       0.072
+PGEN_.00g073080                                                       44.6       0.072
+PGEN_.00g070960                                                       44.6       0.072
+PGEN_.00g055500                                                       44.6       0.072
+PGEN_.00g051300                                                       44.6       0.072
+PGEN_.00g043620                                                       44.6       0.072
+PGEN_.00g020200                                                       44.6       0.072
+PGEN_.00g018080                                                       44.6       0.072
+PGEN_.00g012750                                                       44.6       0.072
+
+
+>PGEN_.00g108770 
+Length=9099
+
+ Score = 79.7 bits (87),  Expect = 4e-12
+ Identities = 78/101 (77%), Gaps = 0/101 (0%)
+ Strand=Plus/Plus
+
+Query  1058  TTCCTGGAGACCGTGGCTGGCGTTCCTGGCATGGTGGCAGCCATGATGAGACATATGCGG  1117
+             |||||||| || || ||||| || ||||| ||||||||||||||||   | ||| | |  
+Sbjct  5501  TTCCTGGAAACAGTTGCTGGGGTACCTGGAATGGTGGCAGCCATGACACGTCATCTACAC  5560
+
+Query  1118  TCGCTGCGACGAATGCAGAGGGATCAAGGCTGGATTCATAC  1158
+             || ||| |||| |||||| | ||  | || |||||||||||
+Sbjct  5561  TCACTGAGACGTATGCAGCGAGACTATGGATGGATTCATAC  5601
+
+
+ Score = 73.4 bits (80),  Expect = 1e-10
+ Identities = 55/65 (85%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  1301  CCCAAGTTTTGCCACAGGTTCGTCGGGTACCTGGAGGAGGAGGCTGTGAAAACCTACACC  1360
+             |||||||| || ||  |||| ||||| || |||||||| ||||| |||||||| ||||||
+Sbjct  7133  CCCAAGTTCTGTCATCGGTTTGTCGGCTATCTGGAGGAAGAGGCAGTGAAAACATACACC  7192
+
+Query  1361  AAATG  1365
+             |||||
+Sbjct  7193  AAATG  7197
+
+
+ Score = 57.2 bits (62),  Expect = 1e-05
+ Identities = 59/75 (79%), Gaps = 2/75 (3%)
+ Strand=Plus/Plus
+
+Query  1371  AGGACATTAATGAC-GGTCCCATGCAGCACTGGAAGACCCAGCCTGCCCCAGACGTGGCC  1429
+             |||||||  | ||| || |||||||| ||||||||||| ||    |  || || ||||||
+Sbjct  8062  AGGACATAGA-GACTGGACCCATGCAACACTGGAAGACACAATTAGGACCTGATGTGGCC  8120
+
+Query  1430  ATCAGATACTGGAAA  1444
+             || ||||||||||||
+Sbjct  8121  ATTAGATACTGGAAA  8135
+
+
+ Score = 47.3 bits (51),  Expect = 0.021
+ Identities = 42/53 (79%), Gaps = 0/53 (0%)
+ Strand=Plus/Plus
+
+Query  1454  GAGGCGACGATGAAAGACGTCATCCTGGCAATCCGTGCTGACGAAGCTCATCA  1506
+             || |||||||||||||| ||  | || || ||||| ||||| || || |||||
+Sbjct  8977  GATGCGACGATGAAAGATGTTGTTCTTGCCATCCGGGCTGATGAGGCACATCA  9029
+
+
+>PGEN_.00g104320 
+Length=36819
+
+ Score = 52.7 bits (57),  Expect = 5e-04
+ Identities = 47/58 (81%), Gaps = 1/58 (2%)
+ Strand=Plus/Plus
+
+Query  3914   TGTG-GTGTGTGTATACATATGTGTGTGTGTGTGAGTGTGAGGTTTCAGAGGCAAAAT  3970
+              |||| |||||||| |   | |||||||||||||| ||||||| ||||| | | |||||
+Sbjct  31214  TGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGAGTTTTCAAAAGGAAAAT  31271
+
+
+ Score = 46.4 bits (50),  Expect = 0.021
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Plus
+
+Query  3918   GTGTGTGTATACATATGTGTGTGTGTGTGAGTGTG  3952
+              |||||||| || || |||||||||||||| |||||
+Sbjct  31195  GTGTGTGTGTATATGTGTGTGTGTGTGTGTGTGTG  31229
+
+
+ Score = 46.4 bits (50),  Expect = 0.021
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Plus
+
+Query  3918   GTGTGTGTATACATATGTGTGTGTGTGTGAGTGTG  3952
+              |||||||||||  | |||||||||||||| |||||
+Sbjct  31197  GTGTGTGTATATGTGTGTGTGTGTGTGTGTGTGTG  31231
+
+
+ Score = 44.6 bits (48),  Expect = 0.072
+ Identities = 38/46 (83%), Gaps = 1/46 (2%)
+ Strand=Plus/Minus
+
+Query  3908   TGTAACTGTG-GTGTGTGTATACATATGTGTGTGTGTGTGAGTGTG  3952
+              ||| | |||| |||||||| |   | ||||||||||||||||||||
+Sbjct  15169  TGTGAGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGAGTGTG  15124
+
+
+ Score = 44.6 bits (48),  Expect = 0.072
+ Identities = 30/34 (88%), Gaps = 0/34 (0%)
+ Strand=Plus/Plus
+
+Query  3919   TGTGTGTATACATATGTGTGTGTGTGTGAGTGTG  3952
+              ||||||| |  ||||||||||||||||| |||||
+Sbjct  31194  TGTGTGTGTGTATATGTGTGTGTGTGTGTGTGTG  31227
+
+
+>PGEN_.00g109820 
+Length=32446
+
+ Score = 51.8 bits (56),  Expect = 5e-04
+ Identities = 31/33 (94%), Gaps = 0/33 (0%)
+ Strand=Plus/Plus
+
+Query  3919   TGTGTGTATACATATGTGTGTGTGTGTGAGTGT  3951
+              |||||||||| ||||||||||||||||| ||||
+Sbjct  28174  TGTGTGTATATATATGTGTGTGTGTGTGTGTGT  28206
+
+
+>PGEN_.00g054710 
+Length=8380
+
+ Score = 51.8 bits (56),  Expect = 5e-04
+ Identities = 36/40 (90%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  3914  TGTG-GTGTGTGTATACATATGTGTGTGTGTGTGAGTGTG  3952
+             |||| ||||||||||| |||| |||||||||||| |||||
+Sbjct  5906  TGTGTGTGTGTGTATATATATATGTGTGTGTGTGTGTGTG  5867
+
+
+ Score = 50.0 bits (54),  Expect = 0.002
+ Identities = 35/39 (90%), Gaps = 1/39 (3%)
+ Strand=Plus/Minus
+
+Query  3914  TGTG-GTGTGTGTATACATATGTGTGTGTGTGTGAGTGT  3951
+             |||| |||||| |||| ||||||||||||||||| ||||
+Sbjct  5904  TGTGTGTGTGTATATATATATGTGTGTGTGTGTGTGTGT  5866
+
+
+ Score = 49.1 bits (53),  Expect = 0.006
+ Identities = 31/34 (91%), Gaps = 0/34 (0%)
+ Strand=Plus/Minus
+
+Query  3918  GTGTGTGTATACATATGTGTGTGTGTGTGAGTGT  3951
+             ||||||||||| |||| |||||||||||| ||||
+Sbjct  5983  GTGTGTGTATATATATATGTGTGTGTGTGTGTGT  5950
+
+
+ Score = 47.3 bits (51),  Expect = 0.021
+ Identities = 35/40 (88%), Gaps = 1/40 (3%)
+ Strand=Plus/Minus
+
+Query  3914  TGTG-GTGTGTGTATACATATGTGTGTGTGTGTGAGTGTG  3952
+             |||| || ||| |||| ||||||||||||||||| |||||
+Sbjct  5934  TGTGTGTTTGTATATATATATGTGTGTGTGTGTGTGTGTG  5895
+
+
+ Score = 45.5 bits (49),  Expect = 0.072
+ Identities = 34/39 (87%), Gaps = 1/39 (3%)
+ Strand=Plus/Minus
+
+Query  3914  TGTG-GTGTGTGTATACATATGTGTGTGTGTGTGAGTGT  3951
+             |||| ||||||||||| |||| | |||||||||| ||||
+Sbjct  5796  TGTGTGTGTGTGTATATATATATATGTGTGTGTGTGTGT  5758
+
+
+ Score = 45.5 bits (49),  Expect = 0.072
+ Identities = 31/34 (91%), Gaps = 1/34 (3%)
+ Strand=Plus/Minus
+
+Query  3914  TGTG-GTGTGTGTATACATATGTGTGTGTGTGTG  3946
+             |||| ||||||||||| |||| ||||||||||||
+Sbjct  5818  TGTGTGTGTGTGTATATATATATGTGTGTGTGTG  5785
+
+
+ Score = 44.6 bits (48),  Expect = 0.072
+ Identities = 27/29 (93%), Gaps = 0/29 (0%)
+ Strand=Plus/Minus
+
+Query  3918  GTGTGTGTATACATATGTGTGTGTGTGTG  3946
+             |||||||| || |||||||||||||||||
+Sbjct  6021  GTGTGTGTGTATATATGTGTGTGTGTGTG  5993
+
+
+>PGEN_.00g048080 
+Length=40996
+
+ Score = 51.8 bits (56),  Expect = 5e-04
+ Identities = 31/33 (94%), Gaps = 0/33 (0%)
+ Strand=Plus/Minus
+
+Query  3920   GTGTGTATACATATGTGTGTGTGTGTGAGTGTG  3952
+              |||||||||||| |||||||||||||| |||||
+Sbjct  12353  GTGTGTATACATTTGTGTGTGTGTGTGTGTGTG  12321
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 1882924964675
+
+
+Query= FJ607016.1 Mercenaria mercenaria alternative oxidase mRNA, partial
+cds
+
+Length=328
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g108770                                                       43.7       0.015
+
+
+>PGEN_.00g108770 
+Length=9099
+
+ Score = 43.7 bits (47),  Expect = 0.015
+ Identities = 31/36 (86%), Gaps = 0/36 (0%)
+ Strand=Plus/Plus
+
+Query  292   GAAGATGCAACAATGAAGGATGTGATTCTTGCCATC  327
+             |||||||| || ||||| |||||  |||||||||||
+Sbjct  8974  GAAGATGCGACGATGAAAGATGTTGTTCTTGCCATC  9009
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 112663233787
+
+
+Query= FJ607014.1 Anadara ovalis alternative oxidase mRNA, partial cds
+
+Length=328
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g108770                                                       78.8       2e-13
+
+
+>PGEN_.00g108770 
+Length=9099
+
+ Score = 78.8 bits (86),  Expect = 2e-13
+ Identities = 79/103 (77%), Gaps = 0/103 (0%)
+ Strand=Plus/Plus
+
+Query  105   ATTTGTGACCTCATTCAGCCTGTCCTACCTGGTCTCACCTAGATTCTGTCACAGATTTGT  164
+             ||| ||||||| ||||||  | || |||||  | ||||| |  ||||||||  | |||||
+Sbjct  7096  ATTCGTGACCTTATTCAGTATATCATACCTTCTGTCACCCAAGTTCTGTCATCGGTTTGT  7155
+
+Query  165   GGGATATCTAGAAGAGGAAGCTGTCAAAACATACACAAAATGT  207
+              || ||||| || || || || || ||||||||||| ||||||
+Sbjct  7156  CGGCTATCTGGAGGAAGAGGCAGTGAAAACATACACCAAATGT  7198
+
+
+ Score = 62.6 bits (68),  Expect = 2e-08
+ Identities = 52/64 (81%), Gaps = 0/64 (0%)
+ Strand=Plus/Plus
+
+Query  6     AGAGGAAGCAGAAAATGAGCGAATGCATCTGATGACAGCTCTGCAGTTGAAGCAACCTTC  65
+             ||||||||| || || ||||||||||||||  ||||||| || ||| ||||  | || ||
+Sbjct  6206  AGAGGAAGCTGAGAACGAGCGAATGCATCTACTGACAGCGCTACAGCTGAAAAAGCCCTC  6265
+
+Query  66    CTGG  69
+             ||||
+Sbjct  6266  CTGG  6269
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 112663233787
+
+
+Query= MF771094.1 Diplodon chilensis alternative oxidase mRNA, partial cds;
+mitochondrial
+
+Length=240
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g108770                                                       71.6       2e-11
+
+
+>PGEN_.00g108770 
+Length=9099
+
+ Score = 71.6 bits (78),  Expect = 2e-11
+ Identities = 85/113 (75%), Gaps = 2/113 (2%)
+ Strand=Plus/Plus
+
+Query  1     ATGAAGGATGTAATTCTTGCCATCAGAGCTGATGAGGCCCACCATCGTCTCGTCAATCAT  60
+             ||||| |||||  ||||||||||| | ||||||||||| || ||  | || || || || 
+Sbjct  8986  ATGAAAGATGTTGTTCTTGCCATCCGGGCTGATGAGGCACATCACAGACTTGTGAACCAC  9045
+
+Query  61    ACCCTGGCATC-CTTAAATCCAAAGACTTATAACCCATACAAGCCTGGACAGT  112
+             || ||||| ||  | |||   | |||| ||||| || |||||||| || ||||
+Sbjct  9046  ACGCTGGCTTCTATGAAAGATACAGAC-TATAATCCTTACAAGCCAGGCCAGT  9097
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 79889032720
+
+
+Query= XM_021513874.1 PREDICTED: Mizuhopecten yessoensis alternative
+oxidase, mitochondrial-like (LOC110460759), mRNA
+
+Length=5350
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g108770                                                       79.7       4e-12
+PGEN_.00g087210                                                       49.1       0.006
+PGEN_.00g249150                                                       48.2       0.006
+PGEN_.00g338220                                                       47.3       0.022
+PGEN_.00g254890                                                       46.4       0.022
+PGEN_.00g241210                                                       45.5       0.077
+PGEN_.00g111390                                                       45.5       0.077
+PGEN_.00g341360                                                       44.6       0.077
+PGEN_.00g340120                                                       44.6       0.077
+PGEN_.00g330310                                                       44.6       0.077
+PGEN_.00g253760                                                       44.6       0.077
+PGEN_.00g213570                                                       44.6       0.077
+PGEN_.00g166800                                                       44.6       0.077
+PGEN_.00g166160                                                       44.6       0.077
+PGEN_.00g043010                                                       44.6       0.077
+PGEN_.00g031190                                                       44.6       0.077
+
+
+>PGEN_.00g108770 
+Length=9099
+
+ Score = 79.7 bits (87),  Expect = 4e-12
+ Identities = 57/66 (86%), Gaps = 0/66 (0%)
+ Strand=Plus/Plus
+
+Query  918   GCGAATCTGTTTCCTGGAGACAGTTGCCGGGGTGCCAGGTATGGTGGCTGCCATGACACG  977
+             |||||||   |||||||| |||||||| ||||| || || |||||||| |||||||||||
+Sbjct  5491  GCGAATCATCTTCCTGGAAACAGTTGCTGGGGTACCTGGAATGGTGGCAGCCATGACACG  5550
+
+Query  978   TCATCT  983
+             ||||||
+Sbjct  5551  TCATCT  5556
+
+
+ Score = 67.1 bits (73),  Expect = 2e-08
+ Identities = 80/109 (73%), Gaps = 0/109 (0%)
+ Strand=Plus/Plus
+
+Query  1128  AGGTATATTTGTGACATTCTTTAGCTTTGCTTACATGCTAAGCCCCCGGTTCTGTCACAG  1187
+             ||||| ||| ||||| || || ||  |  | ||| | ||    |||  |||||||||  |
+Sbjct  7090  AGGTACATTCGTGACCTTATTCAGTATATCATACCTTCTGTCACCCAAGTTCTGTCATCG  7149
+
+Query  1188  ATTTGTCGGATACTTGGAAGAGGAAGCAGTGATAACATACACCAAGTGT  1236
+              |||||||| ||  |||| || || ||||||| |||||||||||| |||
+Sbjct  7150  GTTTGTCGGCTATCTGGAGGAAGAGGCAGTGAAAACATACACCAAATGT  7198
+
+
+>PGEN_.00g087210 
+Length=2655
+
+ Score = 49.1 bits (53),  Expect = 0.006
+ Identities = 30/31 (97%), Gaps = 1/31 (3%)
+ Strand=Plus/Minus
+
+Query  2614  ATAATTTTTTGTTGTATATATTGTTTGAGTT  2644
+             |||||||||||||||| ||||||||||||||
+Sbjct  1351  ATAATTTTTTGTTGTA-ATATTGTTTGAGTT  1322
+
+
+>PGEN_.00g249150 
+Length=45302
+
+ Score = 48.2 bits (52),  Expect = 0.006
+ Identities = 44/52 (85%), Gaps = 3/52 (6%)
+ Strand=Plus/Minus
+
+Query  3121  CAGACAATAATTTCTGTTAAAAAATAAATTATGTCATATATTATAAATAATT  3172
+             |||||||||||||||| ||  |||| || ||| |||| ||| ||||||||||
+Sbjct  2328  CAGACAATAATTTCTG-TAGGAAATGAA-TATATCAT-TATAATAAATAATT  2280
+
+
+>PGEN_.00g338220 
+Length=36131
+
+ Score = 47.3 bits (51),  Expect = 0.022
+ Identities = 51/65 (78%), Gaps = 6/65 (9%)
+ Strand=Plus/Plus
+
+Query  2647   TAATGCATGCTTTTCAGAATGATTTAATTTT---TGTTTGTTT-TATCTTTTTTGTACAT  2702
+              ||||| || ||||  |||||||||| || |    ||||| | | ||| ||||||||||||
+Sbjct  35208  TAATGTATACTTT--AGAATGATTTGATGTAAACTGTTTATATATATATTTTTTGTACAT  35265
+
+Query  2703   GTATA  2707
+              |||||
+Sbjct  35266  GTATA  35270
+
+
+>PGEN_.00g254890 
+Length=44078
+
+ Score = 46.4 bits (50),  Expect = 0.022
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Plus
+
+Query  3894   AAAAATATTTACATTCTTAAAAAAAAAAAAGTCTT  3928
+              ||||||| | | |||||||||||||||||||| ||
+Sbjct  35301  AAAAATACTAAAATTCTTAAAAAAAAAAAAGTTTT  35335
+
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 2002702948025
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: blastn matrix 2 -3
+Gap Penalties: Existence: 5, Extension: 2

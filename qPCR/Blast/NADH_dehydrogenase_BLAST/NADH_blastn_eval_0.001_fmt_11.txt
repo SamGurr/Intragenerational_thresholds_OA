@@ -1,0 +1,1983 @@
+Blast4-archive ::= {
+  request {
+    ident "2.9.0+",
+    body queue-search {
+      program "blastn",
+      service "megablast",
+      queries bioseq-set {
+        seq-set {
+          seq {
+            id {
+              local str "Query_1"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XM_011426478.2 PREDICTED: Crassostrea gigas
+ NADH dehydrogenase [ubiquinone] flavoprotein 1, mitochondrial (LOC105326432),
+ mRNA"
+                  }
+                }
+              },
+              title "XM_011426478.2 PREDICTED: Crassostrea gigas NADH
+ dehydrogenase [ubiquinone] flavoprotein 1, mitochondrial (LOC105326432), mRNA"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 1638,
+              seq-data ncbi2na 'ECFC47BBC4013FC085F323CC41FF60A12F9200C39833A7
+27E2583D47F7F76E7FD0B3C20F75A749C9CCB5200AEC02C4C6857E0238A320FF4607ECE92138FA
+01D0AA94ED4AAE1EB10040203CF780A1387A35C022307174A1E2AB2A8AA4ABD506A8E0BAA7D383
+0972E1A0A5C2C5EBAE0E7862A2252917B0A16623CE2118554427AE8AAEFEBA5A58DCEAA5EE7971
+3F3348A22F710E09770DC4AF94F0E29339E6ADE3EB08397BAB4A7387F8EFCEF4DAA27A25CCFE6A
+8A013778D8B6F22AC296B09565D01553D5E78EEAEFFE8ED5144BA70EF804BE7B255AC37B29BA28
+83AFE7A7FA8888A0DBA050BCF41377A10B41054B84BA28A23B534B78289E3222919A9AAD36AA7A
+84179EAAD355AAAD3511534C5402EDEC786C78E87F8E87AD4A74859DCAC4967B8CB4E0C286786D
+34AECDD5878F8BDCC04E227BA12E455FB6E0A2FA3A3A508D3806FF887A81F5282888D84E77188D
+2C048F8AB44537B95EAA1A2697A56D4A8F0F6D1C485E2FBE88A3E04BD0120104820A6167E38C68
+5FB4AEEEBDE2E86A84D8BBC1F3101D04801DD1EEFBE3BB030E31200103CE0303842017C0'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_2"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">EU029064.1 Mytilus californianus isolate PB91M
+ NADH dehydrogenase subunit 5 (nad5) gene, partial cds; mitochondrial"
+                  }
+                }
+              },
+              title "EU029064.1 Mytilus californianus isolate PB91M NADH
+ dehydrogenase subunit 5 (nad5) gene, partial cds; mitochondrial"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 636,
+              seq-data ncbi2na 'F0E00C0037CA31EF3CB3FB29C6B7CD3BCAC82448249FF7
+BE804B2EEA000BEEC23D2FD2AFF2E8E03083CFFCCA2CBDC10D22822C22CCF92FACCC0E082ECF38
+9AFFF01CF3A7FFBCFD0C33D30FF8F5C3F0F32EFBCAF88EBF2A747D3F7BCB27FF14030C0DFE9F49
+0C7469FC10366FAA31FCB3C9C83F7FCEF0388C07AB8FC43CF75CE34F22420DABDB9C37E9E83070
+08952BD7FFB97A7579253249541D6B77DFCB11'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_3"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XM_022487416.1 PREDICTED: Crassostrea virginica
+ NADH dehydrogenase [ubiquinone] iron-sulfur protein 3, mitochondrial-like
+ (LOC111136515), mRNA"
+                  }
+                }
+              },
+              title "XM_022487416.1 PREDICTED: Crassostrea virginica NADH
+ dehydrogenase [ubiquinone] iron-sulfur protein 3, mitochondrial-like
+ (LOC111136515), mRNA"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 932,
+              seq-data ncbi2na 'FE1600F018187E9023784F81800E9DE63E2583FF6543F6
+48F902AE4BBE092182D1E5CF9E5110EFE23F8351072508829951EE2124AF9D681B08241E8A2FEB
+4B3BAB4B9F340B3B121EE65E3B6AA381C89D78D4548AABAF545785F5C0A14D10F443F04134C84F
+97B3A3BD41888012BF88CB330FE7B7F00C4391B3D8BFE1711E389E1293212C5EE833D5E8D41EB3
+80A88DEA13B3AEFCFF4C34578FE2083FE123CEAF60AD153D28287D51D129C4389F6F18E08AE498
+BAE36255E88E9D28BD61AFE2C49157EA22FD541F585428E0360154955B1742E8B7A22082E18843
+C7F0F3E38EC4010F1EEF0C0BC5C07C'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_4"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">MF995387.1 Mytilus edulis clone Ber13FE
+ cytochrome oxidase subunit 3 gene, partial cds; tRNA-Ser and tRNA-Met genes,
+ complete sequence; and NADH dehydrogenase subunit 2 gene, partial cds;
+ mitochondrial"
+                  }
+                }
+              },
+              title "MF995387.1 Mytilus edulis clone Ber13FE cytochrome
+ oxidase subunit 3 gene, partial cds; tRNA-Ser and tRNA-Met genes, complete
+ sequence; and NADH dehydrogenase subunit 2 gene, partial cds; mitochondrial"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 1183,
+              seq-data ncbi2na '32AFCEB2AFFF1F3C1E8F51A8C4EFB6CA873FA70EB0AF2F
+61CE19AA2FF72D0611F6AFE29FB3FAC784FFB23BACE2E93EEB9F2ECEEEBFA28E3CCCEE3AFC233A
+86A8EFC44FC2C568E5017DFAC67CCF4208939D4DFAC42B578D37809F00CCAE3321C3C00BFE3F80
+D0B14098ED099F3CB7EB02CB70E0A12085CE3FD0BBCC3C17F1F80EB0BFEEB885CC03CB88F2AB0C
+F0FA0435D2AD20882272CAAEEBCAFE8BC0DFCEBF5FB8F301523A93CC95E2579B00C7FBEC4081AA
+D0FF8C72EABFB0DF0C8924E4B8AA1CB8E2449AB1AE702DEBBFF5DC476EAE5773CF001288EBC90A
+ABC31C17A400BA555FBFF73430DF17DC029FE2CB8FB36327A8FAA4BA8ADD050074B9AB0C225C77
+D3FB93137E0EFBCA9D138D0AB2FF6CAB1FE4B732BCDACA9EFFDC6AE76F0C04230832B25270B2A4
+'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_5"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">AB737285.1 Crassostrea sikamea mitochondrial
+ gene for NADH dehydrogenase subunit 1, partial cds, isolate: CHH_S71"
+                  }
+                }
+              },
+              title "AB737285.1 Crassostrea sikamea mitochondrial gene for
+ NADH dehydrogenase subunit 1, partial cds, isolate: CHH_S71"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 778,
+              seq-data ncbi2na '381239FBFFC73CFFC7CDCAAFF1C2EC9F1FC770C89B0B9F
+09DDFACF61CAD68C03C8FE4A0F9125EFD23A0C09FFC4022FEC9D6DC3D2401DABFFDF3D7EEF9CE7
+1CEFFFABE903FF5B90CA1F55C83880E33FCFFDF2CB482EF0E54EF9CF309AB81F42360B390AB68A
+EE62BF6442F3F7CE03F97483C6F2E9AD33FFC9AA8308FFFD1FDA3D6BE3793AE2BFF1EE752F9E67
+B8B2F3FBF248A70DA917FE376C8A78B689EBB7AFF0C78BFDE7A08FE5A9EF4F9E2C6B30FF3C339F
+2C1AEE88FFF403D39B3812EFAA2AFE00'H
+            }
+          }
+        }
+      },
+      subject database "Documents/Bioinformatics/genomes/Pgenerosa_genes_datab
+ase/Pgenerosa.GENES",
+      algorithm-options {
+        {
+          name "EvalueThreshold",
+          value cutoff e-value { 1, 10, -3 }
+        },
+        {
+          name "WordSize",
+          value integer 11
+        },
+        {
+          name "MaskAtHash",
+          value boolean TRUE
+        },
+        {
+          name "DustFilteringLevel",
+          value integer 20
+        },
+        {
+          name "DustFilteringWindow",
+          value integer 64
+        },
+        {
+          name "DustFilteringLinker",
+          value integer 1
+        },
+        {
+          name "UngappedMode",
+          value boolean FALSE
+        },
+        {
+          name "HitlistSize",
+          value integer 5
+        },
+        {
+          name "EffectiveSearchSpace",
+          value big-integer 606704446600
+        }
+      },
+      program-options {
+        {
+          name "LCaseMask",
+          value query-mask {
+            locations {
+              packed-int {
+                {
+                  from 1005,
+                  to 1057,
+                  id local str "Query_1"
+                },
+                {
+                  from 1005,
+                  to 1057,
+                  id local str "Query_1"
+                }
+              }
+            },
+            frame plus1
+          }
+        },
+        {
+          name "LCaseMask",
+          value query-mask {
+            locations {
+              packed-int {
+                {
+                  from 492,
+                  to 498,
+                  id local str "Query_5"
+                },
+                {
+                  from 492,
+                  to 498,
+                  id local str "Query_5"
+                }
+              }
+            },
+            frame plus1
+          }
+        }
+      }
+    }
+  },
+  results {
+    alignments {
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 53
+          },
+          {
+            id str "blast_score",
+            value int 53
+          },
+          {
+            id str "e_value",
+            value real { 962049365080379, 10, -33 }
+          },
+          {
+            id str "bit_score",
+            value real { 98992725807625, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 134
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 108785103785104, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 11,
+          ids {
+            local str "Query_1",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            915,
+            12642,
+            950,
+            -1,
+            951,
+            12677,
+            -1,
+            12679,
+            953,
+            12680,
+            -1,
+            12742,
+            1015,
+            12743,
+            1018,
+            -1,
+            1019,
+            12746,
+            -1,
+            12809,
+            1082,
+            12810
+          },
+          lens {
+            35,
+            1,
+            2,
+            1,
+            62,
+            1,
+            3,
+            1,
+            63,
+            1,
+            3
+          },
+          strands {
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 52
+          },
+          {
+            id str "blast_score",
+            value int 52
+          },
+          {
+            id str "e_value",
+            value real { 34601449644068, 10, -31 }
+          },
+          {
+            id str "bit_score",
+            value real { 971460761552871, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 88
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 697130647130647, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_1",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            618,
+            8044
+          },
+          lens {
+            106
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 46
+          },
+          {
+            id str "blast_score",
+            value int 46
+          },
+          {
+            id str "e_value",
+            value real { 748989820341345, 10, -29 }
+          },
+          {
+            id str "bit_score",
+            value real { 860661782412599, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 60
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 459035409035409, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_1",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            554,
+            7202
+          },
+          lens {
+            67
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 33
+          },
+          {
+            id str "blast_score",
+            value int 33
+          },
+          {
+            id str "e_value",
+            value real { 126222301304013, 10, -21 }
+          },
+          {
+            id str "bit_score",
+            value real { 620597327608675, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 118
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 100238095238095, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 11,
+          ids {
+            local str "Query_1",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            1082,
+            14244,
+            -1,
+            14253,
+            1091,
+            14254,
+            1093,
+            -1,
+            1094,
+            14256,
+            -1,
+            14335,
+            1173,
+            14336,
+            -1,
+            14337,
+            1174,
+            14338,
+            1176,
+            -1,
+            1178,
+            14340
+          },
+          lens {
+            9,
+            1,
+            2,
+            1,
+            79,
+            1,
+            1,
+            1,
+            2,
+            2,
+            60
+          },
+          strands {
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 30
+          },
+          {
+            id str "blast_score",
+            value int 30
+          },
+          {
+            id str "e_value",
+            value real { 587255245305127, 10, -20 }
+          },
+          {
+            id str "bit_score",
+            value real { 565197838038539, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 84
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 727655677655678, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_1",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            418,
+            6271
+          },
+          lens {
+            111
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 32
+          },
+          {
+            id str "blast_score",
+            value int 32
+          },
+          {
+            id str "e_value",
+            value real { 254903374772051, 10, -21 }
+          },
+          {
+            id str "bit_score",
+            value real { 602130831085297, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 82
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 116587982832618, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 9,
+          ids {
+            local str "Query_3",
+            local str "PGEN_.00g189740"
+          },
+          starts {
+            567,
+            10817,
+            -1,
+            10845,
+            595,
+            10846,
+            597,
+            -1,
+            598,
+            10848,
+            658,
+            -1,
+            659,
+            10908,
+            -1,
+            10911,
+            662,
+            10912
+          },
+          lens {
+            28,
+            1,
+            2,
+            1,
+            60,
+            1,
+            3,
+            1,
+            9
+          },
+          strands {
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus
+          }
+        }
+      }
+    },
+    masks {
+      {
+        locations {
+          packed-int {
+            {
+              from 1005,
+              to 1057,
+              id local str "Query_1"
+            }
+          }
+        },
+        frame plus1
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 492,
+              to 498,
+              id local str "Query_5"
+            }
+          }
+        },
+        frame plus1
+      }
+    },
+    ka-blocks {
+      {
+        lambda { 133270576282382, 10, -14 },
+        k { 620991117264207, 10, -15 },
+        h { 112409184650115, 10, -14 },
+        gapped FALSE
+      },
+      {
+        lambda { 128, 10, -2 },
+        k { 46, 10, -2 },
+        h { 85, 10, -2 },
+        gapped TRUE
+      }
+    },
+    search-stats {
+      "Effective search space: 606704446600",
+      "Effective search space used: 606704446600",
+      "Length adjustment: 28"
+    }
+  }
+}
+Blast4-archive ::= {
+  request {
+    ident "2.9.0+",
+    body queue-search {
+      program "blastn",
+      service "megablast",
+      queries bioseq-set {
+        seq-set {
+          seq {
+            id {
+              local str "Query_6"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">KF465724.1 Arctica islandica isolate 108MRD10
+ NADH dehydrogenase subunit 6 (nad6) gene, partial cds; NADH dehydrogenase
+ subunit 4L (nad4L) gene, complete cds; tRNA-Trp and tRNA-Arg genes, complete
+ sequence; and cytochrome b-like gene, partial sequence; mitochondrial"
+                  }
+                }
+              },
+              title "KF465724.1 Arctica islandica isolate 108MRD10 NADH
+ dehydrogenase subunit 6 (nad6) gene, partial cds; NADH dehydrogenase subunit
+ 4L (nad4L) gene, complete cds; tRNA-Trp and tRNA-Arg genes, complete
+ sequence; and cytochrome b-like gene, partial sequence; mitochondrial"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 1143,
+              seq-data ncbi2na 'A03BFCFF0CFAF8A2AAEEB3CF0890DF3F3FC32C3EFBC73E
+4A00CE2AA47EC030E30C23CEFF3FFFCFFF7FFFFEC2BF4E0093FDF27C73C3FF82CF073F4BBF3E82
+3EFFF3EBF37303F0CAFCCFFEECBFCF07F2BBFB826BBCA9FDFCFAC208BD8F47A02010B00DFF23FF
+2BFF2B28307F0A32FCBF129D403FC8239CEAEF0BCC21CCB3F40CF822A08205445C80FFC9806BB0
+A91282FFADF42A2FCF3327FDB00FFAAFEC2EDB0026EE63F69D902E0CFFD7C70397C64CD80180DA
+FFC00EB3432DBF18DD5A452F0FC2E73380FFA377FCA2EECC3CB48FBF7A1C7FE9E54F11D782C2D2
+9FF077BEF4C73188EF0EAAFA7CF60BFD39C1AA7D3FFFF3B7F1F13BAB62837FCD1D3FFCE9881F83
+2CAFB23CF1FFBC30C3E7F47AF3BFE5F8A90337FF8AE71EC3C70FEFCB9C'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_7"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XM_022435197.1 PREDICTED: Crassostrea virginica
+ NADH dehydrogenase [ubiquinone] flavoprotein 1, mitochondrial-like
+ (LOC111102448), mRNA"
+                  }
+                }
+              },
+              title "XM_022435197.1 PREDICTED: Crassostrea virginica NADH
+ dehydrogenase [ubiquinone] flavoprotein 1, mitochondrial-like (LOC111102448),
+ mRNA"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 1623,
+              seq-data ncbi2na 'EFEEBB33FCEF1006FFC2177033CC41F60A12FA22030E70
+0E9CBF0960C51DDFFDB9FF7A4D083DD79D27273EE48020B00B173A57F0086284837D1017B1A484
+E3E80782A983CF4AB87AC4010080D3DC0294E2E8D7C088C185D2874AADBA2892AF55169380EA9F
+4E0425CB8692150B17EEB839E38A8897A85EC085A80D3984615510BEBA2ABB7AE9E96753AA9BB9
+27C4FC4D22A8BDC43825DC1712BA53438A5C678EB78FAC2065EEAD29C61FE3B7FBD36E99EA9B13
+FBA22805DDE3E2D1E8AB027A42559782595F549E3BA9BBFA3B54416D943B601EE96E9D624DEDA6
+A8A20EBF9E9F682222012A8102F3F04FDE842D04156E1AE8A088ED4D25E0A278D888465AABB4FA
+A9EA105E76AB4D56AA75D4554D31508BBBB163B7E3A1FE3A1EB129521677AA1A79ED3ED3830A39
+E3B4D2BB3F761E3E2F7301188BE684B9154E5A828B6BE8E94034E01BF621E907D4A2A223E13BEC
+6234B0923E2A1114DEE57AA8E8965E97BD2A3C3DB47121783E7A028C812FC04824120B49879F8C
+4AB6D2326A287BBAF07CC085D07C040BBCE6EC0C1D38C0B004283030FBE0FC04'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_8"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">JN208352.1 Crassostrea virginica haplotype 112
+ NADH dehydrogenase subunit 4 (ND4) gene, partial cds; mitochondrial"
+                  }
+                }
+              },
+              title "JN208352.1 Crassostrea virginica haplotype 112 NADH
+ dehydrogenase subunit 4 (ND4) gene, partial cds; mitochondrial"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 1149,
+              seq-data ncbi2na '08A0FDFA8374499FFFFBBE33F12A728CBC7F07FB8BBBA0
+F24F7A72CB38C70B71AAB7F49DF1E2CFAD18F7F4F7E72D43BFCEBC1D0C90EF73BDFFE2207F2E5C
+EB8F3CF9CDEAA4925A26CD5263D2CCDD2ACC4BE9934FD571E7EE36F4CC82C8FFAB623FF7AF5C04
+E00B7A9118E3FE2D9FBFFDABF7AF01F5E7F55FD11B8F970A74EF4265EFAABDED3DF9EB3FE702F2
+8AF1A0F39838E32DFB7CF9722E3FA8FF2D3C47F7BFFA0BB3FAA73CCEE76D2221B4209E3E4C77DE
+CDD33A7F57BEFA9CF4AE47807ABCBEB9FF34E7EC213ABF3F6DE9FBFB5FEE73C3D20F2F4776C0F8
+23CC2AA9C763735639F078FBA7EA30F3240FCAEF5D4E57B4F3C880FFB676496EBA4BF157AFFFBE
+4FEDBB3FCEB09A6FCC9F773B1ED0F0D4CA2975C039782FF3F8E3B8270087C0'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_9"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">GQ468287.1 Mytilus galloprovincialis haplotype
+ M NADH dehydrogenase subunit 5 (ND5) gene, partial cds; mitochondrial"
+                  }
+                }
+              },
+              title "GQ468287.1 Mytilus galloprovincialis haplotype M NADH
+ dehydrogenase subunit 5 (ND5) gene, partial cds; mitochondrial"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 998,
+              seq-data ncbi2na '3EB049A8BF3FAE79BDBFC4F34AFE35BF90C4AE7CE7FC27
+CFC7F0C724AB42E6BFF93F87C002B0F91CDC7F8843C2BC30EFF737737FF94FEEDFFF53F2C1D192
+DFC09DEF3FF2B9AAA7C3533034083D08EF68870B25CE9003C52C2CCA64308BE43ECD5C22A9D7FC
+C2AAFFFDC08DF3CF89C20C3AB20B3C7C6AEF1FBC89C72AF0FF45DFDCCA9183EEFC0B0C72ADC1CC
+50C304BF9B9D3893E133109D5FDF29CACFAA7BDDF2AB2EF0B282320BBF2BDB2CBDF80BAA039F30
+FFFC3D7FEEA9C2FEE3809E7CB2FC977257E3EF2F0A4DE8FFFF083BAFCC80A787DD156C086DFFFC
+0AB4A24BFF407FA142AEBC8AEF295D2AEFC6CA3C9C034BCE40E23CF4000F1FC0'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_10"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">EU288184.1 Bathymodiolus childressi isolate 7
+ NADH dehydrogenase subunit 4 (ND4) gene, partial cds; mitochondrial"
+                  }
+                }
+              },
+              title "EU288184.1 Bathymodiolus childressi isolate 7 NADH
+ dehydrogenase subunit 4 (ND4) gene, partial cds; mitochondrial"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 456,
+              seq-data ncbi2na '33B31FFFCA7E72B07C8BCD0F9E9FB7F1CAE430EF37F3FF
+399D0C778BC3E8FFF0FE87F52A4A5F2CBDF20FCCF23FF0EBBEA4A966BF56FF2E4FC321F3C7ECDA
+EFFBCBFB9FF2EE2A51FDF7DF6FFFF8AABFEFD71FC3BE3ECA3AAF349789AF1092FBF332F3F31EF3
+2AD1D51FFB1ABFA82F31FC3C6A'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_11"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">KC811526.1 Pinna nobilis isolate FER2 NADH
+ dehydrogenase subunit 3 (NAD3) gene, partial cds; mitochondrial"
+                  }
+                }
+              },
+              title "KC811526.1 Pinna nobilis isolate FER2 NADH dehydrogenase
+ subunit 3 (NAD3) gene, partial cds; mitochondrial"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 203,
+              seq-data ncbi2na 'BA7FB8A5003D7A35FDDFC4FDFD1FE73FEF6CBBA86E8ACB
+7C78D5FC300B0E2FEA6FAA428FE097BAA3D72CBBCE2CA9CC7381F320'H
+            }
+          },
+          seq {
+            id {
+              local str "Query_12"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XM_021488544.1 PREDICTED: Mizuhopecten
+ yessoensis NADH dehydrogenase [ubiquinone] iron-sulfur protein 2,
+ mitochondrial-like (LOC110444135), mRNA"
+                  }
+                }
+              },
+              title "XM_021488544.1 PREDICTED: Mizuhopecten yessoensis NADH
+ dehydrogenase [ubiquinone] iron-sulfur protein 2, mitochondrial-like
+ (LOC110444135), mRNA"
+            },
+            inst {
+              repr raw,
+              mol na,
+              length 378,
+              seq-data ncbi2na 'E3A2F71888BB7A2620E4E4973B48528A6EDD28FC55FA1F
+FA18CCC61FCD802F414887A18AE8A075D1100483FA012286B23B6832FDF78A395C07FABD26BB8E
+F9BA76ACD0BA8FE2821125B18E5CD37AD87F84F54DAC61EB8FBCE12B2B762A0130'H
+            }
+          }
+        }
+      },
+      subject database "Documents/Bioinformatics/genomes/Pgenerosa_genes_datab
+ase/Pgenerosa.GENES",
+      algorithm-options {
+        {
+          name "EvalueThreshold",
+          value cutoff e-value { 1, 10, -3 }
+        },
+        {
+          name "WordSize",
+          value integer 11
+        },
+        {
+          name "MaskAtHash",
+          value boolean TRUE
+        },
+        {
+          name "DustFilteringLevel",
+          value integer 20
+        },
+        {
+          name "DustFilteringWindow",
+          value integer 64
+        },
+        {
+          name "DustFilteringLinker",
+          value integer 1
+        },
+        {
+          name "UngappedMode",
+          value boolean FALSE
+        },
+        {
+          name "HitlistSize",
+          value integer 5
+        },
+        {
+          name "EffectiveSearchSpace",
+          value big-integer 420171091900
+        }
+      },
+      program-options {
+        {
+          name "LCaseMask",
+          value query-mask {
+            locations {
+              packed-int {
+                {
+                  from 140,
+                  to 170,
+                  id local str "Query_6"
+                },
+                {
+                  from 140,
+                  to 170,
+                  id local str "Query_6"
+                },
+                {
+                  from 248,
+                  to 314,
+                  id local str "Query_6"
+                },
+                {
+                  from 248,
+                  to 314,
+                  id local str "Query_6"
+                },
+                {
+                  from 953,
+                  to 961,
+                  id local str "Query_6"
+                },
+                {
+                  from 953,
+                  to 961,
+                  id local str "Query_6"
+                }
+              }
+            },
+            frame plus1
+          }
+        },
+        {
+          name "LCaseMask",
+          value query-mask {
+            locations {
+              packed-int {
+                {
+                  from 30,
+                  to 37,
+                  id local str "Query_8"
+                },
+                {
+                  from 30,
+                  to 37,
+                  id local str "Query_8"
+                }
+              }
+            },
+            frame plus1
+          }
+        },
+        {
+          name "LCaseMask",
+          value query-mask {
+            locations {
+              packed-int {
+                {
+                  from 412,
+                  to 418,
+                  id local str "Query_9"
+                },
+                {
+                  from 412,
+                  to 418,
+                  id local str "Query_9"
+                },
+                {
+                  from 716,
+                  to 722,
+                  id local str "Query_9"
+                },
+                {
+                  from 716,
+                  to 722,
+                  id local str "Query_9"
+                },
+                {
+                  from 808,
+                  to 815,
+                  id local str "Query_9"
+                },
+                {
+                  from 808,
+                  to 815,
+                  id local str "Query_9"
+                },
+                {
+                  from 864,
+                  to 870,
+                  id local str "Query_9"
+                },
+                {
+                  from 864,
+                  to 870,
+                  id local str "Query_9"
+                },
+                {
+                  from 983,
+                  to 989,
+                  id local str "Query_9"
+                },
+                {
+                  from 983,
+                  to 989,
+                  id local str "Query_9"
+                }
+              }
+            },
+            frame plus1
+          }
+        },
+        {
+          name "LCaseMask",
+          value query-mask {
+            locations {
+              packed-int {
+                {
+                  from 10,
+                  to 16,
+                  id local str "Query_10"
+                },
+                {
+                  from 10,
+                  to 16,
+                  id local str "Query_10"
+                },
+                {
+                  from 298,
+                  to 305,
+                  id local str "Query_10"
+                },
+                {
+                  from 298,
+                  to 305,
+                  id local str "Query_10"
+                }
+              }
+            },
+            frame plus1
+          }
+        }
+      }
+    }
+  },
+  results {
+    alignments {
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 27
+          },
+          {
+            id str "blast_score",
+            value int 27
+          },
+          {
+            id str "e_value",
+            value real { 189219855460618, 10, -18 }
+          },
+          {
+            id str "bit_score",
+            value real { 509798348468403, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 38
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 41745406824147, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 5,
+          ids {
+            local str "Query_6",
+            local str "PGEN_.00g336950"
+          },
+          starts {
+            116,
+            8352,
+            -1,
+            8355,
+            119,
+            8356,
+            142,
+            -1,
+            143,
+            8379
+          },
+          lens {
+            3,
+            1,
+            23,
+            1,
+            15
+          },
+          strands {
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 26
+          },
+          {
+            id str "blast_score",
+            value int 26
+          },
+          {
+            id str "e_value",
+            value real { 680555649016135, 10, -18 }
+          },
+          {
+            id str "bit_score",
+            value real { 491331851945024, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 44
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 504943132108486, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 7,
+          ids {
+            local str "Query_6",
+            local str "PGEN_.00g196330"
+          },
+          starts {
+            161,
+            1564,
+            160,
+            -1,
+            145,
+            1572,
+            144,
+            -1,
+            122,
+            1587,
+            121,
+            -1,
+            117,
+            1609
+          },
+          lens {
+            8,
+            1,
+            15,
+            1,
+            22,
+            1,
+            4
+          },
+          strands {
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 26
+          },
+          {
+            id str "blast_score",
+            value int 26
+          },
+          {
+            id str "e_value",
+            value real { 680555649016135, 10, -18 }
+          },
+          {
+            id str "bit_score",
+            value real { 491331851945024, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 44
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 504943132108486, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 7,
+          ids {
+            local str "Query_6",
+            local str "PGEN_.00g196290"
+          },
+          starts {
+            161,
+            1176,
+            160,
+            -1,
+            145,
+            1184,
+            144,
+            -1,
+            122,
+            1199,
+            121,
+            -1,
+            117,
+            1221
+          },
+          lens {
+            8,
+            1,
+            15,
+            1,
+            22,
+            1,
+            4
+          },
+          strands {
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus,
+            minus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 49
+          },
+          {
+            id str "blast_score",
+            value int 49
+          },
+          {
+            id str "e_value",
+            value real { 159485026912212, 10, -30 }
+          },
+          {
+            id str "bit_score",
+            value real { 916061271982735, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 87
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 703111521873075, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_7",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            625,
+            8044
+          },
+          lens {
+            106
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 44
+          },
+          {
+            id str "blast_score",
+            value int 44
+          },
+          {
+            id str "e_value",
+            value real { 959852720620103, 10, -28 }
+          },
+          {
+            id str "bit_score",
+            value real { 823728789365841, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 131
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 109744300677757, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 11,
+          ids {
+            local str "Query_7",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            922,
+            12642,
+            956,
+            -1,
+            957,
+            12676,
+            -1,
+            12679,
+            960,
+            12680,
+            983,
+            -1,
+            984,
+            12703,
+            -1,
+            12706,
+            987,
+            12707,
+            -1,
+            12808,
+            1088,
+            12809
+          },
+          lens {
+            34,
+            1,
+            3,
+            1,
+            23,
+            1,
+            3,
+            1,
+            101,
+            1,
+            4
+          },
+          strands {
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 41
+          },
+          {
+            id str "blast_score",
+            value int 41
+          },
+          {
+            id str "e_value",
+            value real { 446576032191725, 10, -26 }
+          },
+          {
+            id str "bit_score",
+            value real { 768329299795705, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 59
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 468977202711029, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_7",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            560,
+            7201
+          },
+          lens {
+            68
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 38
+          },
+          {
+            id str "blast_score",
+            value int 38
+          },
+          {
+            id str "e_value",
+            value real { 207771617711587, 10, -24 }
+          },
+          {
+            id str "bit_score",
+            value real { 712929810225569, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 96
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 820178681454097, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_7",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            733,
+            8897
+          },
+          lens {
+            125
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 36
+          },
+          {
+            id str "blast_score",
+            value int 36
+          },
+          {
+            id str "e_value",
+            value real { 268769569007195, 10, -23 }
+          },
+          {
+            id str "bit_score",
+            value real { 675996817178811, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 117
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 101118299445471, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 5,
+          ids {
+            local str "Query_7",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            1089,
+            14244,
+            -1,
+            14333,
+            1178,
+            14334,
+            1182,
+            -1,
+            1183,
+            14338
+          },
+          lens {
+            89,
+            1,
+            4,
+            1,
+            62
+          },
+          strands {
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 29
+          },
+          {
+            id str "blast_score",
+            value int 29
+          },
+          {
+            id str "e_value",
+            value real { 209246716967689, 10, -19 }
+          },
+          {
+            id str "bit_score",
+            value real { 54673134151516, 10, -12 }
+          },
+          {
+            id str "num_ident",
+            value int 45
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 376555760936537, 10, -14 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_7",
+            local str "PGEN_.00g299160"
+          },
+          starts {
+            1350,
+            17368
+          },
+          lens {
+            53
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 39
+          },
+          {
+            id str "blast_score",
+            value int 39
+          },
+          {
+            id str "e_value",
+            value real { 127138179153959, 10, -25 }
+          },
+          {
+            id str "bit_score",
+            value real { 731396306748948, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 100
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 346269841269841, 10, -13 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 5,
+          ids {
+            local str "Query_12",
+            local str "PGEN_.00g119300"
+          },
+          starts {
+            235,
+            4127,
+            283,
+            -1,
+            284,
+            4175,
+            -1,
+            4178,
+            287,
+            4179
+          },
+          lens {
+            48,
+            1,
+            3,
+            1,
+            77
+          },
+          strands {
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus,
+            plus
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 38
+          },
+          {
+            id str "blast_score",
+            value int 38
+          },
+          {
+            id str "e_value",
+            value real { 457270225781675, 10, -25 }
+          },
+          {
+            id str "bit_score",
+            value real { 712929810225569, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 58
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 18489417989418, 10, -12 }
+          }
+        },
+        segs denseg {
+          dim 2,
+          numseg 1,
+          ids {
+            local str "Query_12",
+            local str "PGEN_.00g119300"
+          },
+          starts {
+            2,
+            389
+          },
+          lens {
+            68
+          },
+          strands {
+            plus,
+            plus
+          }
+        }
+      }
+    },
+    masks {
+      {
+        locations {
+          packed-int {
+            {
+              from 140,
+              to 170,
+              id local str "Query_6"
+            },
+            {
+              from 248,
+              to 314,
+              id local str "Query_6"
+            },
+            {
+              from 953,
+              to 961,
+              id local str "Query_6"
+            }
+          }
+        },
+        frame plus1
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 30,
+              to 37,
+              id local str "Query_8"
+            }
+          }
+        },
+        frame plus1
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 412,
+              to 418,
+              id local str "Query_9"
+            },
+            {
+              from 716,
+              to 722,
+              id local str "Query_9"
+            },
+            {
+              from 808,
+              to 815,
+              id local str "Query_9"
+            },
+            {
+              from 864,
+              to 870,
+              id local str "Query_9"
+            },
+            {
+              from 983,
+              to 989,
+              id local str "Query_9"
+            }
+          }
+        },
+        frame plus1
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 10,
+              to 16,
+              id local str "Query_10"
+            },
+            {
+              from 298,
+              to 305,
+              id local str "Query_10"
+            }
+          }
+        },
+        frame plus1
+      }
+    },
+    ka-blocks {
+      {
+        lambda { 133270576282382, 10, -14 },
+        k { 620991117264207, 10, -15 },
+        h { 112409184650115, 10, -14 },
+        gapped FALSE
+      },
+      {
+        lambda { 128, 10, -2 },
+        k { 46, 10, -2 },
+        h { 85, 10, -2 },
+        gapped TRUE
+      }
+    },
+    search-stats {
+      "Effective search space: 420171091900",
+      "Effective search space used: 420171091900",
+      "Length adjustment: 28"
+    }
+  }
+}

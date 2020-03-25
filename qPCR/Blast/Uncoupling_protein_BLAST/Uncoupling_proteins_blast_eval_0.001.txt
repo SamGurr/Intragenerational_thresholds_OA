@@ -1,0 +1,2238 @@
+BLASTN 2.9.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= NC_000011.10:c73982872-73974671 Homo sapiens chromosome 11,
+GRCh38.p13 Primary Assembly
+
+Length=8202
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 3078924936552
+
+
+Query= NC_000074.6:83290348-83298456 Mus musculus strain C57BL/6J
+chromosome 8, GRCm38.p6 C57BL/6J
+
+Length=8109
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g200450                                                       56.5       3e-05
+PGEN_.00g239910                                                       54.7       1e-04
+PGEN_.00g239380                                                       54.7       1e-04
+
+
+>PGEN_.00g200450 
+Length=43534
+
+ Score = 56.5 bits (30),  Expect = 3e-05
+ Identities = 30/30 (100%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  6134   TCaaaaaaaaaaaaaTAAATAAATAAACCA  6163
+              ||||||||||||||||||||||||||||||
+Sbjct  15569  TCAAAAAAAAAAAAATAAATAAATAAACCA  15598
+
+
+>PGEN_.00g239910 
+Length=10329
+
+ Score = 54.7 bits (29),  Expect = 1e-04
+ Identities = 34/36 (94%), Gaps = 2/36 (6%)
+ Strand=Plus/Minus
+
+Query  6128  CCTATCTCaaaaaaa-aaa-aaaTAAATAAATAAAC  6161
+             ||||||||||||||| ||| ||||||||||||||||
+Sbjct  8685  CCTATCTCAAAAAAACAAATAAATAAATAAATAAAC  8650
+
+
+>PGEN_.00g239380 
+Length=10321
+
+ Score = 54.7 bits (29),  Expect = 1e-04
+ Identities = 34/36 (94%), Gaps = 2/36 (6%)
+ Strand=Plus/Minus
+
+Query  6128  CCTATCTCaaaaaaa-aaa-aaaTAAATAAATAAAC  6161
+             ||||||||||||||| ||| ||||||||||||||||
+Sbjct  8687  CCTATCTCAAAAAAACAAATAAATAAATAAATAAAC  8652
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 3043885776114
+
+
+Query= NC_007112.7:53374488-53388911 Danio rerio strain Tuebingen
+chromosome 1, GRCz11 Primary Assembly
+
+Length=14424
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g222720                                                       139        5e-30
+PGEN_.00g109260                                                       78.7       1e-11
+PGEN_.00g127040                                                       76.8       4e-11
+PGEN_.00g283980                                                       63.9       3e-07
+PGEN_.00g063670                                                       62.1       1e-06
+PGEN_.00g230890                                                       56.5       5e-05
+PGEN_.00g293090                                                       54.7       2e-04
+PGEN_.00g212620                                                       54.7       2e-04
+PGEN_.00g111050                                                       54.7       2e-04
+PGEN_.00g237000                                                       52.8       7e-04
+
+
+>PGEN_.00g222720 
+Length=9065
+
+ Score = 139 bits (75),  Expect = 5e-30
+ Identities = 341/458 (74%), Gaps = 64/458 (14%)
+ Strand=Plus/Plus
+
+Query  7909  TAATATTATGAATTGTACatataaataaagtgaccaaaattataa-gtaaattattaat-  7966
+             ||||||||||||| ||| | ||||   || |||  || || | || |||| | | || | 
+Sbjct  3782  TAATATTATGAATAGTATA-ATAATGTAA-TGAATAATATAAAAATGTAA-TGACTAGTA  3838
+
+Query  7967  taaaaaagtga-gataataataataataataataataaataataataataatagtaatag  8025
+             ||| || || | || | || || |||||||  ||||||||| || ||| ||| ||||| |
+Sbjct  3839  TAATAATGTTATGA-A-TAGTA-TAATAATG-TAATAAATAGTA-TAA-AAT-GTAAT-G  3890
+
+Query  8026  taataataataataatagtaataatggtaataataataatagtaataa-tagtaataat-  8083
+              |||| || ||||||| || || ||  || || ||||||| ||||||| |||||| ||  
+Sbjct  3891  -AATAGTA-TAATAAT-GTTATGAT--TAGTA-TAATAAT-GTAATAAATAGTAAAAAAA  3943
+
+Query  8084  ggtaat-aataataataataatattaat-aataatgatagtaataatggtaat-aata--  8138
+             ||| || |||| || ||||||| | ||| |||| | |||  || |||| |||| ||||  
+Sbjct  3944  GGTTATGAATAGTA-TAATAATGT-AATGAATAGT-ATA--AA-AATG-TAATGAATAGT  3996
+
+Query  8139  ataataatagtaat-aatagtagtaataataataataataataatataaataa-t-atta  8195
+             |||||  | || || ||||||| ||| |||  |||||| | || ||||| ||| | || |
+Sbjct  3997  ATAATTTT-GTTATGAATAGTA-TAAAAATG-TAATAA-A-TAGTATAA-TAAGTTATGA  4050
+
+Query  8196  atagta-a-taatggtaat-aata-a-taataat--aat-aataataataataataataa  8247
+             |||||| | ||||| |||| |||| | |||  ||  ||| |||| || |||||||  || 
+Sbjct  4051  ATAGTATAATAATG-TAATGAATAGAATAAACATGTAATGAATAGTA-TAATAATGTTAT  4108
+
+Query  8248  taataataataataatagtaat-aattgtaataataataataataataataataataata  8306
+              |||| || ||||||| ||||| ||| ||| |||||||  |||||| ||  |||||||| 
+Sbjct  4109  GAATAGTA-TAATAAT-GTAATGAATAGTA-TAATAATG-TAATAAAAAGTATAATAAT-  4163
+
+Query  8307  gtaat-aatagtaataataataataat-aataatataa  8342
+             ||||| || |||| |||||||  || | |||| |||||
+Sbjct  4164  GTAATGAAAAGTA-TAATAATG-TATTGAATAGTATAA  4199
+
+
+>PGEN_.00g109260 
+Length=50356
+
+ Score = 78.7 bits (42),  Expect = 1e-11
+ Identities = 55/61 (90%), Gaps = 2/61 (3%)
+ Strand=Plus/Minus
+
+Query  5953  TTTTGTATTA-TTATAGAATATtgtgtgtgtgtgtgtgtgtgtgtgtgtgtgtgtgtgtg  6011
+             |||||||||| ||||  ||   ||||||||||||||||||||||||||||||||||||||
+Sbjct  6661  TTTTGTATTATTTAT-CAAAGGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTG  6603
+
+Query  6012  t  6012
+             |
+Sbjct  6602  T  6602
+
+
+>PGEN_.00g127040 
+Length=42973
+
+ Score = 76.8 bits (41),  Expect = 4e-11
+ Identities = 66/77 (86%), Gaps = 6/77 (8%)
+ Strand=Plus/Minus
+
+Query  2827   TAAGTGTAATGCAGTAGTGTGCTGTACTCACTGAAATtgtgtgtgtgtgtgtgtgtgtgt  2886
+              |||||||||||||  ||| |  || | | ||  ||| |||||||||||||||||||||||
+Sbjct  32108  TAAGTGTAATGCA--AGTTTAGTG-A-TGAC-CAAA-TGTGTGTGTGTGTGTGTGTGTGT  32055
+
+Query  2887   gtgtgtgtgtgtgtgtg  2903
+              |||||||||||||||||
+Sbjct  32054  GTGTGTGTGTGTGTGTG  32038
+
+
+>PGEN_.00g283980 
+Length=12810
+
+ Score = 63.9 bits (34),  Expect = 3e-07
+ Identities = 48/54 (89%), Gaps = 3/54 (6%)
+ Strand=Plus/Minus
+
+Query  6063   tatatatatatatatatatatatatatatatatatataGTTGAA-GTCACAATT  6115
+              ||| |||||||||||||||||||||||||||| | || | |||| |||||||||
+Sbjct  10354  TAT-TATATATATATATATATATATATATATACA-ATTGATGAAAGTCACAATT  10303
+
+
+>PGEN_.00g063670 
+Length=7160
+
+ Score = 62.1 bits (33),  Expect = 1e-06
+ Identities = 64/79 (81%), Gaps = 1/79 (1%)
+ Strand=Plus/Plus
+
+Query  10506  TGCGTTCGGCGCGGGCTTCATCACGACGGTGATCGCGTCTCCTGTGGATGTGGTAAAAAC  10565
+              || |||||| || |||||| |  | ||| ||||| | || |||||||||||||| |||||
+Sbjct  5418   TGGGTTCGGAGCTGGCTTCTTTGCCACGTTGATCTCTTCGCCTGTGGATGTGGTGAAAAC  5477
+
+Query  10566  ACGGTACATGAACTCTCCA  10584
+               || ||||||||||| |||
+Sbjct  5478   TCGTTACATGAACTC-CCA  5495
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 5422278042067
+
+
+Query= NC_035783.1:18158027-18163259 Crassostrea virginica isolate
+RU13XGHG1-28 chromosome 4, C_virginica-3.0, whole genome shotgun
+sequence
+
+Length=5233
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1960309158698
+
+
+Query= NW_014665074.1:346121-383045 Octopus bimaculoides isolate
+UCB-OBI-ISO-001 unplaced genomic scaffold, Octopus_bimaculoides_v2_0
+Scaffold27702, whole genome shotgun sequence
+
+Length=36925
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g180880                                                       91.6       4e-15
+PGEN_.00g145800                                                       84.2       6e-13
+PGEN_.00g322060                                                       82.4       2e-12
+PGEN_.00g116010                                                       80.5       8e-12
+PGEN_.00g147770                                                       78.7       3e-11
+PGEN_.00g109100                                                       78.7       3e-11
+PGEN_.00g164700                                                       76.8       1e-10
+PGEN_.00g324300                                                       75.0       4e-10
+PGEN_.00g212830                                                       75.0       4e-10
+PGEN_.00g111770                                                       75.0       4e-10
+PGEN_.00g328270                                                       73.1       1e-09
+PGEN_.00g019020                                                       73.1       1e-09
+PGEN_.00g346900                                                       71.3       5e-09
+PGEN_.00g297720                                                       71.3       5e-09
+PGEN_.00g265440                                                       71.3       5e-09
+PGEN_.00g250040                                                       71.3       5e-09
+PGEN_.00g184140                                                       71.3       5e-09
+PGEN_.00g339220                                                       69.4       2e-08
+PGEN_.00g310710                                                       69.4       2e-08
+PGEN_.00g297390                                                       69.4       2e-08
+PGEN_.00g265450                                                       69.4       2e-08
+PGEN_.00g223810                                                       69.4       2e-08
+PGEN_.00g205270                                                       69.4       2e-08
+PGEN_.00g178560                                                       69.4       2e-08
+PGEN_.00g177330                                                       69.4       2e-08
+PGEN_.00g176630                                                       69.4       2e-08
+PGEN_.00g172550                                                       69.4       2e-08
+PGEN_.00g160230                                                       69.4       2e-08
+PGEN_.00g111280                                                       69.4       2e-08
+PGEN_.00g097080                                                       69.4       2e-08
+PGEN_.00g086610                                                       69.4       2e-08
+PGEN_.00g018080                                                       69.4       2e-08
+PGEN_.00g285140                                                       67.6       6e-08
+PGEN_.00g231490                                                       67.6       6e-08
+PGEN_.00g183690                                                       67.6       6e-08
+PGEN_.00g144350                                                       67.6       6e-08
+PGEN_.00g097130                                                       67.6       6e-08
+PGEN_.00g093110                                                       67.6       6e-08
+PGEN_.00g013930                                                       67.6       6e-08
+PGEN_.00g275480                                                       65.8       2e-07
+PGEN_.00g185990                                                       65.8       2e-07
+PGEN_.00g156910                                                       65.8       2e-07
+PGEN_.00g115120                                                       65.8       2e-07
+PGEN_.00g028790                                                       65.8       2e-07
+PGEN_.00g344810                                                       63.9       8e-07
+PGEN_.00g344540                                                       63.9       8e-07
+PGEN_.00g341560                                                       63.9       8e-07
+PGEN_.00g333020                                                       63.9       8e-07
+PGEN_.00g282170                                                       63.9       8e-07
+PGEN_.00g223990                                                       63.9       8e-07
+PGEN_.00g186500                                                       63.9       8e-07
+PGEN_.00g124540                                                       63.9       8e-07
+PGEN_.00g123900                                                       63.9       8e-07
+PGEN_.00g113740                                                       63.9       8e-07
+PGEN_.00g110100                                                       63.9       8e-07
+PGEN_.00g083760                                                       63.9       8e-07
+PGEN_.00g063890                                                       63.9       8e-07
+PGEN_.00g051300                                                       63.9       8e-07
+PGEN_.00g017640                                                       63.9       8e-07
+PGEN_.00g012750                                                       63.9       8e-07
+PGEN_.00g291220                                                       62.1       3e-06
+PGEN_.00g254470                                                       62.1       3e-06
+PGEN_.00g251640                                                       62.1       3e-06
+PGEN_.00g183870                                                       62.1       3e-06
+PGEN_.00g114960                                                       62.1       3e-06
+PGEN_.00g029480                                                       62.1       3e-06
+PGEN_.00g228130                                                       60.2       1e-05
+PGEN_.00g216360                                                       60.2       1e-05
+PGEN_.00g178910                                                       60.2       1e-05
+PGEN_.00g148200                                                       60.2       1e-05
+PGEN_.00g125070                                                       60.2       1e-05
+PGEN_.00g123660                                                       60.2       1e-05
+PGEN_.00g049720                                                       60.2       1e-05
+PGEN_.00g043820                                                       60.2       1e-05
+PGEN_.00g261210                                                       58.4       4e-05
+PGEN_.00g186350                                                       58.4       4e-05
+PGEN_.00g173040                                                       58.4       4e-05
+PGEN_.00g161230                                                       58.4       4e-05
+PGEN_.00g156130                                                       58.4       4e-05
+PGEN_.00g124390                                                       58.4       4e-05
+PGEN_.00g124220                                                       58.4       4e-05
+PGEN_.00g054710                                                       58.4       4e-05
+PGEN_.00g051210                                                       58.4       4e-05
+PGEN_.00g264700                                                       56.5       1e-04
+PGEN_.00g226040                                                       56.5       1e-04
+PGEN_.00g225420                                                       56.5       1e-04
+PGEN_.00g194620                                                       56.5       1e-04
+PGEN_.00g189960                                                       56.5       1e-04
+PGEN_.00g166930                                                       56.5       1e-04
+PGEN_.00g079020                                                       56.5       1e-04
+PGEN_.00g022580                                                       56.5       1e-04
+PGEN_.00g018790                                                       56.5       1e-04
+PGEN_.00g348590                                                       54.7       5e-04
+PGEN_.00g284420                                                       54.7       5e-04
+PGEN_.00g265010                                                       54.7       5e-04
+PGEN_.00g122780                                                       54.7       5e-04
+PGEN_.00g071850                                                       54.7       5e-04
+PGEN_.00g060450                                                       54.7       5e-04
+PGEN_.00g052020                                                       54.7       5e-04
+PGEN_.00g024820                                                       54.7       5e-04
+PGEN_.00g021350                                                       54.7       5e-04
+
+
+>PGEN_.00g180880 
+Length=42931
+
+ Score = 91.6 bits (49),  Expect = 4e-15
+ Identities = 117/149 (79%), Gaps = 8/149 (5%)
+ Strand=Plus/Minus
+
+Query  18718  ACACACACAATACAAACTCTCTTTCatatatatatatatatatatagacatacatacata  18777
+              |||||||||| ||| || | |   |||||||||||||||||||||| |||||||||||||
+Sbjct  34522  ACACACACAA-ACACACACACACACATATATATATATATATATATAAACATACATACATA  34464
+
+Query  18778  ----c--acaagtatat-atatatgtatgtatgtataggtatgtctatatatatatatat  18830
+                  |  |||  ||||| |||||| ||| ||| ||||  ||| | |||||||||||||||
+Sbjct  34463  TATACATACATATATATAATATATATATATATATATATATATATATATATATATATATAT  34404
+
+Query  18831  atatacacatgtatgtatatatatatata  18859
+              ||| ||| || ||  |||| | ||| |||
+Sbjct  34403  ATAAACATATATACATATACACATAAATA  34375
+
+
+ Score = 58.4 bits (31),  Expect = 4e-05
+ Identities = 51/60 (85%), Gaps = 4/60 (7%)
+ Strand=Plus/Plus
+
+Query  20000  GTATATGTATGTATGTTTATGAAATTGTTTTtgtgtgtgtgtgtgtgtgtgtgtgtgtgt  20059
+              |||| ||||||||||| | ||    ||| | |||||||||||||||||||||||||||||
+Sbjct  34298  GTATGTGTATGTATGTGTGTG----TGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGT  34353
+
+
+ Score = 56.5 bits (30),  Expect = 1e-04
+ Identities = 55/66 (83%), Gaps = 6/66 (9%)
+ Strand=Plus/Plus
+
+Query  20001  TATATGTATGTATGTTTATGAA-AT-TGT-T-T-T-tgtgtgtgtgtgtgtgtgtgtgtg  20054
+              |||||||||||||||||||  | || | | | | | ||||||||||||||| ||||||||
+Sbjct  34462  TATATGTATGTATGTTTATATATATATATATATATATGTGTGTGTGTGTGTTTGTGTGTG  34521
+
+Query  20055  tgtgtg  20060
+              | ||||
+Sbjct  34522  TCTGTG  34527
+
+
+>PGEN_.00g145800 
+Length=9102
+
+ Score = 84.2 bits (45),  Expect = 6e-13
+ Identities = 75/88 (85%), Gaps = 7/88 (8%)
+ Strand=Plus/Minus
+
+Query  20004  ATGTATGTATGT-T-TATGAAATTGTTTTtgtgtgtgtgtgtgtgtgtgtgtgtgtgtgC  20061
+              |||||||||||| | ||||  | ||| | |||||||||||||||||||||||||||||| 
+Sbjct  4029   ATGTATGTATGTATGTATG-TA-TGTATGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGT  3972
+
+Query  20062  ATGCATGTATTGTATCTAGTAACA-CTA  20088
+              ||| |||||| |||| || ||||| |||
+Sbjct  3971   ATGTATGTAT-GTATGTA-TAACAACTA  3946
+
+
+ Score = 75.0 bits (40),  Expect = 4e-10
+ Identities = 65/76 (86%), Gaps = 5/76 (7%)
+ Strand=Plus/Minus
+
+Query  20003  TATGTATGTATGT-T-TATGAAATTGTTTTtgtgtgtgtgtgtgtgtgtgtgtgtgtgtg  20060
+              ||||||||||||| | ||||  | ||| | ||||||||||||||||||||||||||| ||
+Sbjct  4026   TATGTATGTATGTATGTATG-TA-TGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTATG  3969
+
+Query  20061  CATGCATGTATTGTAT  20076
+               ||| |||||| ||||
+Sbjct  3968   TATGTATGTAT-GTAT  3954
+
+
+>PGEN_.00g322060 
+Length=30254
+
+ Score = 82.4 bits (44),  Expect = 2e-12
+ Identities = 71/84 (85%), Gaps = 2/84 (2%)
+ Strand=Plus/Minus
+
+Query  20000  GTATATGTATGTATGTTTATGAAATTGTTTTtgtgtgtgtgtgtgtgtgtgtgtgtgtgt  20059
+              |||||||||||||||| ||||    ||| | |||||||||||||||||||||||||||||
+Sbjct  8738   GTATATGTATGTATGTGTATGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGTGT  8679
+
+Query  20060  gCATGCATGTATTGTATCTA-GTA  20082
+              |  || |||||| |||| || |||
+Sbjct  8678   GTGTGTATGTAT-GTATGTATGTA  8656
+
+
+>PGEN_.00g116010 
+Length=9594
+
+ Score = 80.5 bits (43),  Expect = 8e-12
+ Identities = 115/154 (75%), Gaps = 5/154 (3%)
+ Strand=Plus/Minus
+
+Query  18712  ACATACACACACACA-ATACAAACTCTCTTTCatata-tatatatatatatatagacata  18769
+              ||| ||||||||||| | ||| || | |   || | | |||||||||||||||| | |||
+Sbjct  356    ACACACACACACACACACACACACACACACACACACACTATATATATATATATATATATA  297
+
+Query  18770  catacatacacaagtatatatatatgtatgtatgta-taggtatgtctatatatatatat  18828
+               ||| ||| |  | ||||||||||| ||| ||| ||           |||||||||||||
+Sbjct  296    TATATATATA-TA-TATATATATATATATATATATANNNNNNNNNNATATATATATATAT  239
+
+Query  18829  atatatacacatgtatgtatatatatatatacac  18862
+              ||||||| | || ||| |||||||||||||| ||
+Sbjct  238    ATATATATATATATATATATATATATATATATAC  205
+
+
+>PGEN_.00g147770 
+Length=16136
+
+ Score = 78.7 bits (42),  Expect = 3e-11
+ Identities = 54/59 (92%), Gaps = 4/59 (7%)
+ Strand=Plus/Minus
+
+Query  11187  TTTTAAATTTAAAACTTTGtatatatatatatatatatatatatatatatatatatatG  11245
+              |||||||||| |||  || ||||||| ||||||||||||||||||||||||||||||||
+Sbjct  14070  TTTTAAATTT-AAA--TTCTATATAT-TATATATATATATATATATATATATATATATG  14016
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 13897418669896
+
+
+Query= NC_037590.1:c23657673-23651520 Pomacea canaliculata isolate SZHN2017
+linkage group LG1, ASM307304v1, whole genome shotgun sequence
+
+Length=6154
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g063890                                                       54.7       8e-05
+PGEN_.00g051210                                                       52.8       3e-04
+
+
+>PGEN_.00g063890 
+Length=8801
+
+ Score = 54.7 bits (29),  Expect = 8e-05
+ Identities = 40/45 (89%), Gaps = 2/45 (4%)
+ Strand=Plus/Plus
+
+Query  3164  CCTCT-ACCA-CAACTTCATTGACTTTAAAAAGGCATTTGAGAGT  3206
+             ||||| | || |||||||||||| ||||| |||||||||||||||
+Sbjct  2810  CCTCTGAGCATCAACTTCATTGATTTTAAGAAGGCATTTGAGAGT  2854
+
+
+>PGEN_.00g051210 
+Length=28160
+
+ Score = 52.8 bits (28),  Expect = 3e-04
+ Identities = 72/92 (78%), Gaps = 7/92 (8%)
+ Strand=Plus/Plus
+
+Query  1809   GCCAGCCCAACTGATCTTGTGAAGGTGCAGATGCAGATGGAAGGGAGAAGACG--G-TTA  1865
+              ||||| || || |||||||| ||||| |  ||||||||||| |||| | ||||  | |||
+Sbjct  19037  GCCAGTCCCACAGATCTTGTCAAGGTTCGCATGCAGATGGA-GGGA-A-GACGCAGATTA  19093
+
+Query  1866   GAGGGAAAGCCACCCAGGTAGATGA-ttttta  1896
+              |||||||| || ||  ||||  ||| ||||||
+Sbjct  19094  GAGGGAAAACCTCCACGGTATTTGAGTTTTTA  19125
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 2307309876584
+
+
+Query= NW_011937527.1:453722-458220 Crassostrea gigas strain
+05x7-T-G4-1.051#20 unplaced genomic scaffold, oyster_v9 scaffold48,
+whole genome shotgun sequence
+
+Length=4499
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1683763526854
+
+
+Query= NC_043018.1:c3676439-3655018 Octopus vulgaris isolate Ov201803
+linkage group LG22, ASM634580v1, whole genome shotgun sequence
+
+Length=21422
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g008300                                                       100        4e-18
+PGEN_.00g184350                                                       95.3       2e-16
+PGEN_.00g116050                                                       89.8       8e-15
+PGEN_.00g348570                                                       87.9       3e-14
+PGEN_.00g179850                                                       87.9       3e-14
+PGEN_.00g146760                                                       87.9       3e-14
+PGEN_.00g151140                                                       86.1       1e-13
+PGEN_.00g260780                                                       84.2       4e-13
+PGEN_.00g006320                                                       82.4       1e-12
+PGEN_.00g303970                                                       80.5       5e-12
+PGEN_.00g072710                                                       80.5       5e-12
+PGEN_.00g348220                                                       78.7       2e-11
+PGEN_.00g331090                                                       78.7       2e-11
+PGEN_.00g213300                                                       78.7       2e-11
+PGEN_.00g291750                                                       76.8       6e-11
+PGEN_.00g090490                                                       76.8       6e-11
+PGEN_.00g003540                                                       76.8       6e-11
+PGEN_.00g334790                                                       75.0       2e-10
+PGEN_.00g167410                                                       75.0       2e-10
+PGEN_.00g109910                                                       75.0       2e-10
+PGEN_.00g339750                                                       73.1       8e-10
+PGEN_.00g227450                                                       73.1       8e-10
+PGEN_.00g221290                                                       73.1       8e-10
+PGEN_.00g214900                                                       73.1       8e-10
+PGEN_.00g133100                                                       73.1       8e-10
+PGEN_.00g023050                                                       73.1       8e-10
+PGEN_.00g322920                                                       71.3       3e-09
+PGEN_.00g303590                                                       71.3       3e-09
+PGEN_.00g269010                                                       71.3       3e-09
+PGEN_.00g231610                                                       71.3       3e-09
+PGEN_.00g193260                                                       71.3       3e-09
+PGEN_.00g180880                                                       71.3       3e-09
+PGEN_.00g146440                                                       71.3       3e-09
+PGEN_.00g135260                                                       71.3       3e-09
+PGEN_.00g124680                                                       71.3       3e-09
+PGEN_.00g092590                                                       71.3       3e-09
+PGEN_.00g086250                                                       71.3       3e-09
+PGEN_.00g061900                                                       71.3       3e-09
+PGEN_.00g033410                                                       71.3       3e-09
+PGEN_.00g332570                                                       69.4       1e-08
+PGEN_.00g304730                                                       69.4       1e-08
+PGEN_.00g260830                                                       69.4       1e-08
+PGEN_.00g100030                                                       69.4       1e-08
+PGEN_.00g038350                                                       69.4       1e-08
+PGEN_.00g313000                                                       67.6       4e-08
+PGEN_.00g224790                                                       67.6       4e-08
+PGEN_.00g124540                                                       67.6       4e-08
+PGEN_.00g108560                                                       67.6       4e-08
+PGEN_.00g033990                                                       67.6       4e-08
+PGEN_.00g006250                                                       67.6       4e-08
+PGEN_.00g003930                                                       67.6       4e-08
+PGEN_.00g338910                                                       65.8       1e-07
+PGEN_.00g083330                                                       65.8       1e-07
+PGEN_.00g060200                                                       65.8       1e-07
+PGEN_.00g029480                                                       65.8       1e-07
+PGEN_.00g325970                                                       63.9       5e-07
+PGEN_.00g302270                                                       63.9       5e-07
+PGEN_.00g255570                                                       63.9       5e-07
+PGEN_.00g202150                                                       63.9       5e-07
+PGEN_.00g156130                                                       63.9       5e-07
+PGEN_.00g075350                                                       63.9       5e-07
+PGEN_.00g054710                                                       63.9       5e-07
+PGEN_.00g054250                                                       63.9       5e-07
+PGEN_.00g029760                                                       63.9       5e-07
+PGEN_.00g019820                                                       63.9       5e-07
+PGEN_.00g344570                                                       62.1       2e-06
+PGEN_.00g297720                                                       62.1       2e-06
+PGEN_.00g297390                                                       62.1       2e-06
+PGEN_.00g265450                                                       62.1       2e-06
+PGEN_.00g257540                                                       62.1       2e-06
+PGEN_.00g250040                                                       62.1       2e-06
+PGEN_.00g245160                                                       62.1       2e-06
+PGEN_.00g216360                                                       62.1       2e-06
+PGEN_.00g193490                                                       62.1       2e-06
+PGEN_.00g191870                                                       62.1       2e-06
+PGEN_.00g177740                                                       62.1       2e-06
+PGEN_.00g175110                                                       62.1       2e-06
+PGEN_.00g172550                                                       62.1       2e-06
+PGEN_.00g139140                                                       62.1       2e-06
+PGEN_.00g109340                                                       62.1       2e-06
+PGEN_.00g089610                                                       62.1       2e-06
+PGEN_.00g063670                                                       62.1       2e-06
+PGEN_.00g059600                                                       62.1       2e-06
+PGEN_.00g052020                                                       62.1       2e-06
+PGEN_.00g023040                                                       62.1       2e-06
+PGEN_.00g021790                                                       62.1       2e-06
+PGEN_.00g019020                                                       62.1       2e-06
+PGEN_.00g349060                                                       60.2       6e-06
+PGEN_.00g345550                                                       60.2       6e-06
+PGEN_.00g278680                                                       60.2       6e-06
+PGEN_.00g221660                                                       60.2       6e-06
+PGEN_.00g216560                                                       60.2       6e-06
+PGEN_.00g153670                                                       60.2       6e-06
+PGEN_.00g146880                                                       60.2       6e-06
+PGEN_.00g143760                                                       60.2       6e-06
+PGEN_.00g127270                                                       60.2       6e-06
+PGEN_.00g124280                                                       60.2       6e-06
+PGEN_.00g114260                                                       60.2       6e-06
+PGEN_.00g113160                                                       60.2       6e-06
+PGEN_.00g109330                                                       60.2       6e-06
+PGEN_.00g106480                                                       60.2       6e-06
+PGEN_.00g063150                                                       60.2       6e-06
+PGEN_.00g059520                                                       60.2       6e-06
+PGEN_.00g054850                                                       60.2       6e-06
+PGEN_.00g047150                                                       60.2       6e-06
+PGEN_.00g047120                                                       60.2       6e-06
+PGEN_.00g035690                                                       60.2       6e-06
+PGEN_.00g031310                                                       60.2       6e-06
+PGEN_.00g029400                                                       60.2       6e-06
+PGEN_.00g026920                                                       60.2       6e-06
+PGEN_.00g024390                                                       60.2       6e-06
+PGEN_.00g011500                                                       60.2       6e-06
+PGEN_.00g008360                                                       60.2       6e-06
+PGEN_.00g004050                                                       60.2       6e-06
+PGEN_.00g331740                                                       58.4       2e-05
+PGEN_.00g303270                                                       58.4       2e-05
+PGEN_.00g291110                                                       58.4       2e-05
+PGEN_.00g229800                                                       58.4       2e-05
+PGEN_.00g212830                                                       58.4       2e-05
+PGEN_.00g205490                                                       58.4       2e-05
+PGEN_.00g169330                                                       58.4       2e-05
+PGEN_.00g169110                                                       58.4       2e-05
+PGEN_.00g168490                                                       58.4       2e-05
+PGEN_.00g164700                                                       58.4       2e-05
+PGEN_.00g151230                                                       58.4       2e-05
+PGEN_.00g147700                                                       58.4       2e-05
+PGEN_.00g116620                                                       58.4       2e-05
+PGEN_.00g083480                                                       58.4       2e-05
+PGEN_.00g034630                                                       58.4       2e-05
+PGEN_.00g030100                                                       58.4       2e-05
+PGEN_.00g025730                                                       58.4       2e-05
+PGEN_.00g007080                                                       58.4       2e-05
+PGEN_.00g341030                                                       56.5       8e-05
+PGEN_.00g336350                                                       56.5       8e-05
+PGEN_.00g329980                                                       56.5       8e-05
+PGEN_.00g311350                                                       56.5       8e-05
+PGEN_.00g279360                                                       56.5       8e-05
+PGEN_.00g275120                                                       56.5       8e-05
+PGEN_.00g272840                                                       56.5       8e-05
+PGEN_.00g262050                                                       56.5       8e-05
+PGEN_.00g243750                                                       56.5       8e-05
+PGEN_.00g242090                                                       56.5       8e-05
+PGEN_.00g237950                                                       56.5       8e-05
+PGEN_.00g234850                                                       56.5       8e-05
+PGEN_.00g201870                                                       56.5       8e-05
+PGEN_.00g191750                                                       56.5       8e-05
+PGEN_.00g182320                                                       56.5       8e-05
+PGEN_.00g177330                                                       56.5       8e-05
+PGEN_.00g169500                                                       56.5       8e-05
+PGEN_.00g160810                                                       56.5       8e-05
+PGEN_.00g160760                                                       56.5       8e-05
+PGEN_.00g157320                                                       56.5       8e-05
+PGEN_.00g114000                                                       56.5       8e-05
+PGEN_.00g113090                                                       56.5       8e-05
+PGEN_.00g111280                                                       56.5       8e-05
+PGEN_.00g110100                                                       56.5       8e-05
+PGEN_.00g108830                                                       56.5       8e-05
+PGEN_.00g098510                                                       56.5       8e-05
+PGEN_.00g087930                                                       56.5       8e-05
+PGEN_.00g086570                                                       56.5       8e-05
+PGEN_.00g078110                                                       56.5       8e-05
+PGEN_.00g072820                                                       56.5       8e-05
+PGEN_.00g068860                                                       56.5       8e-05
+PGEN_.00g064910                                                       56.5       8e-05
+PGEN_.00g055030                                                       56.5       8e-05
+PGEN_.00g035210                                                       56.5       8e-05
+PGEN_.00g026060                                                       56.5       8e-05
+PGEN_.00g023090                                                       56.5       8e-05
+PGEN_.00g014750                                                       56.5       8e-05
+PGEN_.00g341260                                                       54.7       3e-04
+PGEN_.00g328350                                                       54.7       3e-04
+PGEN_.00g322310                                                       54.7       3e-04
+PGEN_.00g313800                                                       54.7       3e-04
+PGEN_.00g311690                                                       54.7       3e-04
+PGEN_.00g301640                                                       54.7       3e-04
+PGEN_.00g297570                                                       54.7       3e-04
+PGEN_.00g290220                                                       54.7       3e-04
+PGEN_.00g289400                                                       54.7       3e-04
+PGEN_.00g253100                                                       54.7       3e-04
+PGEN_.00g251310                                                       54.7       3e-04
+PGEN_.00g242490                                                       54.7       3e-04
+PGEN_.00g241450                                                       54.7       3e-04
+PGEN_.00g231490                                                       54.7       3e-04
+PGEN_.00g229500                                                       54.7       3e-04
+PGEN_.00g209090                                                       54.7       3e-04
+PGEN_.00g205650                                                       54.7       3e-04
+PGEN_.00g190440                                                       54.7       3e-04
+PGEN_.00g173170                                                       54.7       3e-04
+PGEN_.00g169370                                                       54.7       3e-04
+PGEN_.00g150900                                                       54.7       3e-04
+PGEN_.00g145360                                                       54.7       3e-04
+PGEN_.00g126610                                                       54.7       3e-04
+PGEN_.00g123490                                                       54.7       3e-04
+PGEN_.00g122750                                                       54.7       3e-04
+PGEN_.00g110280                                                       54.7       3e-04
+PGEN_.00g071950                                                       54.7       3e-04
+PGEN_.00g067890                                                       54.7       3e-04
+PGEN_.00g047940                                                       54.7       3e-04
+PGEN_.00g045200                                                       54.7       3e-04
+PGEN_.00g033920                                                       54.7       3e-04
+PGEN_.00g003230                                                       54.7       3e-04
+PGEN_.00g002230                                                       54.7       3e-04
+
+
+>PGEN_.00g008300 
+Length=32707
+
+ Score = 100 bits (54),  Expect = 4e-18
+ Identities = 73/82 (89%), Gaps = 2/82 (2%)
+ Strand=Plus/Plus
+
+Query  16276  caccaccaccacaaccacaaccatcttcatcatcatcttct-ccaccaccaccaccacca  16334
+              || ||||||||| ||||| |||||| |||||||||||  || ||||||||||||||||||
+Sbjct  23552  CATCACCACCACCACCACCACCATCATCATCATCATC-ACTGCCACCACCACCACCACCA  23610
+
+Query  16335  ccaccaccGTCATCATCATCAT  16356
+              |||||| | |||||||||||||
+Sbjct  23611  CCACCATCATCATCATCATCAT  23632
+
+
+ Score = 67.6 bits (36),  Expect = 4e-08
+ Identities = 53/61 (87%), Gaps = 2/61 (3%)
+ Strand=Plus/Plus
+
+Query  16296  ccatcttcatcatcatc-ttctccaccaccaccaccaccaccaccaccGTCATCATCATC  16354
+              ||||| ||||||| ||| || | || |||||||||||||||||||| | |||||||||||
+Sbjct  23530  CCATCATCATCATTATCATTAT-CATCACCACCACCACCACCACCATCATCATCATCATC  23588
+
+Query  16355  A  16355
+              |
+Sbjct  23589  A  23589
+
+
+>PGEN_.00g184350 
+Length=4559
+
+ Score = 95.3 bits (51),  Expect = 2e-16
+ Identities = 75/86 (87%), Gaps = 3/86 (3%)
+ Strand=Plus/Minus
+
+Query  16274  accaccaccaccacaacca-ca--accatcttcatcatcatcttctccaccaccaccacc  16330
+              |||||||||||||| | || ||  | |||| ||||||||||| || ||||||||||||||
+Sbjct  2365   ACCACCACCACCACCATCATCATCATCATCATCATCATCATCATCACCACCACCACCACC  2306
+
+Query  16331  accaccaccaccGTCATCATCATCAT  16356
+              |||||||||| |||| ||||||||||
+Sbjct  2305   ACCACCACCATCGTCGTCATCATCAT  2280
+
+
+ Score = 89.8 bits (48),  Expect = 8e-15
+ Identities = 74/87 (85%), Gaps = 0/87 (0%)
+ Strand=Plus/Minus
+
+Query  16274  accaccaccaccacaaccacaaccatcttcatcatcatcttctccaccaccaccaccacc  16333
+              |||||||||||||| ||||| |||||| || |||||||| ||  || || || |||||||
+Sbjct  2320   ACCACCACCACCACCACCACCACCATCGTCGTCATCATCATCATCATCATCATCACCACC  2261
+
+Query  16334  accaccaccGTCATCATCATCATTACC  16360
+              ||||||| | ||||||||||||| |||
+Sbjct  2260   ACCACCATCATCATCATCATCATCACC  2234
+
+
+ Score = 86.1 bits (46),  Expect = 1e-13
+ Identities = 52/55 (95%), Gaps = 0/55 (0%)
+ Strand=Plus/Minus
+
+Query  16302  tcatcatcatcttctccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              ||||||||||| || |||||||||||||||||||||||||| |||||||||||||
+Sbjct  2391   TCATCATCATCATCACCACCACCACCACCACCACCACCACCATCATCATCATCAT  2337
+
+
+ Score = 76.8 bits (41),  Expect = 6e-11
+ Identities = 53/59 (90%), Gaps = 0/59 (0%)
+ Strand=Plus/Minus
+
+Query  16298  atcttcatcatcatcttctccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              ||| |||||||||||  | |||||||||||||||||||||||| | |||||||||||||
+Sbjct  2392   ATCATCATCATCATCACCACCACCACCACCACCACCACCACCATCATCATCATCATCAT  2334
+
+
+ Score = 71.3 bits (38),  Expect = 3e-09
+ Identities = 48/53 (91%), Gaps = 0/53 (0%)
+ Strand=Plus/Minus
+
+Query  16304  atcatcatcttctccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              ||||||||| ||  |||||||||||||||||||||||||  ||||||||||||
+Sbjct  2392   ATCATCATCATCATCACCACCACCACCACCACCACCACCACCATCATCATCAT  2340
+
+
+ Score = 58.4 bits (31),  Expect = 2e-05
+ Identities = 53/63 (84%), Gaps = 3/63 (5%)
+ Strand=Plus/Minus
+
+Query  16297  catcttcatcatcatcttctccaccaccaccaccaccacca-c--caccGTCATCATCAT  16353
+              |||| ||||||||| |  | ||||||||||||||||||||| |  || | ||||||||||
+Sbjct  2390   CATCATCATCATCACCACCACCACCACCACCACCACCACCATCATCATCATCATCATCAT  2331
+
+Query  16354  CAT  16356
+              |||
+Sbjct  2330   CAT  2328
+
+
+>PGEN_.00g116050 
+Length=17644
+
+ Score = 89.8 bits (48),  Expect = 8e-15
+ Identities = 97/121 (80%), Gaps = 2/121 (2%)
+ Strand=Plus/Plus
+
+Query  11524  TCATCATTCTCATCACCAATC-TCTTCCCCCTCATCACTGTCATCACCACTATTTCCATT  11582
+              |||||||  |||||| | ||| || ||  | ||||||   ||||||||||||   |||  
+Sbjct  12860  TCATCATCATCATCATC-ATCATCATCATCATCATCATCCTCATCACCACTACCACCACC  12918
+
+Query  11583  ACTGccaccaccaccaccaccaccatcaccaccacTATTAGcatcatcatcatcatcatc  11642
+              ||  ||||||||||||| ||||||| ||||||||| || | |||||||||||||||||||
+Sbjct  12919  ACCACCACCACCACCACTACCACCACCACCACCACCATCATCATCATCATCATCATCATC  12978
+
+Query  11643  a  11643
+              |
+Sbjct  12979  A  12979
+
+
+ Score = 63.9 bits (34),  Expect = 5e-07
+ Identities = 38/40 (95%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  16317  ccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              ||||||| |||||||||||||||||| |||||||||||||
+Sbjct  12929  CCACCACTACCACCACCACCACCACCATCATCATCATCAT  12968
+
+
+ Score = 58.4 bits (31),  Expect = 2e-05
+ Identities = 37/40 (93%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  16317  ccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              |||||||||| |||||||||||||||  ||||||||||||
+Sbjct  12926  CCACCACCACTACCACCACCACCACCACCATCATCATCAT  12965
+
+
+ Score = 58.4 bits (31),  Expect = 2e-05
+ Identities = 37/40 (93%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  16317  ccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              |||| ||||||||||||||||||| | |||||||||||||
+Sbjct  12932  CCACTACCACCACCACCACCACCATCATCATCATCATCAT  12971
+
+
+ Score = 56.5 bits (30),  Expect = 8e-05
+ Identities = 63/79 (80%), Gaps = 2/79 (3%)
+ Strand=Plus/Plus
+
+Query  16279  caccaccacaaccacaaccatcttcatcatcatcttct-ccaccaccaccaccaccacca  16337
+              || |||||| ||||| |||| |  || || || |  || |||||||||||||||||| ||
+Sbjct  12900  CATCACCACTACCACCACCACCACCACCACCA-CCACTACCACCACCACCACCACCATCA  12958
+
+Query  16338  ccaccGTCATCATCATCAT  16356
+               || | |||||||||||||
+Sbjct  12959  TCATCATCATCATCATCAT  12977
+
+
+>PGEN_.00g348570 
+Length=29228
+
+ Score = 87.9 bits (47),  Expect = 3e-14
+ Identities = 73/86 (85%), Gaps = 0/86 (0%)
+ Strand=Plus/Plus
+
+Query  16271  ACGaccaccaccaccacaaccacaaccatcttcatcatcatcttctccaccaccaccacc  16330
+              || |||||||||||||| ||||| |||| |  || || || | | |||||||||||||| 
+Sbjct  2732   ACCACCACCACCACCACCACCACCACCACCACCACCACCACCATATCCACCACCACCACA  2791
+
+Query  16331  accaccaccaccGTCATCATCATCAT  16356
+              |||||||||||| |||||||||||||
+Sbjct  2792   ACCACCACCACCATCATCATCATCAT  2817
+
+
+ Score = 78.7 bits (42),  Expect = 2e-11
+ Identities = 74/89 (83%), Gaps = 3/89 (3%)
+ Strand=Plus/Plus
+
+Query  16268  ACGACGaccaccaccaccacaaccacaaccatcttcatcatcatcttctccaccaccacc  16327
+              || || |||||||||||||| ||||| |||| |  || ||| |||  | |||||||||| 
+Sbjct  2735   ACCACCACCACCACCACCACCACCACCACCACCACCACCAT-ATC--CACCACCACCACA  2791
+
+Query  16328  accaccaccaccaccGTCATCATCATCAT  16356
+              ||||||||||||| | |||||||||||||
+Sbjct  2792   ACCACCACCACCATCATCATCATCATCAT  2820
+
+
+ Score = 75.0 bits (40),  Expect = 2e-10
+ Identities = 68/82 (83%), Gaps = 0/82 (0%)
+ Strand=Plus/Plus
+
+Query  16275  ccaccaccaccacaaccacaaccatcttcatcatcatcttctccaccaccaccaccacca  16334
+              ||||||||||||||||||| |||| | ||||||||||| ||  || || || || || ||
+Sbjct  2778   CCACCACCACCACAACCACCACCACCATCATCATCATCATCATCATCATCATCATCATCA  2837
+
+Query  16335  ccaccaccGTCATCATCATCAT  16356
+              ||| || | |||||||||||||
+Sbjct  2838   CCATCATCATCATCATCATCAT  2859
+
+
+ Score = 69.4 bits (37),  Expect = 1e-08
+ Identities = 39/40 (98%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  16317  ccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              |||||||||||||||||||||||||| |||||||||||||
+Sbjct  2673   CCACCACCACCACCACCACCACCACCATCATCATCATCAT  2712
+
+
+ Score = 67.6 bits (36),  Expect = 4e-08
+ Identities = 52/60 (87%), Gaps = 0/60 (0%)
+ Strand=Plus/Plus
+
+Query  16297  catcttcatcatcatcttctccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              |||| |||| |||| |  | ||||||||||||||||||||||||||  ||||||||||||
+Sbjct  2650   CATCATCATAATCACCACCACCACCACCACCACCACCACCACCACCACCATCATCATCAT  2709
+
+
+ Score = 63.9 bits (34),  Expect = 5e-07
+ Identities = 38/40 (95%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  16317  ccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              |||||||||||||||||||||||| | |||||||||||||
+Sbjct  2676   CCACCACCACCACCACCACCACCATCATCATCATCATCAT  2715
+
+
+ Score = 62.1 bits (33),  Expect = 2e-06
+ Identities = 71/89 (80%), Gaps = 3/89 (3%)
+ Strand=Plus/Plus
+
+Query  16268  ACGACGaccaccaccaccacaaccacaaccatcttcatcatcatcttctccaccaccacc  16327
+              || || |||||||||||||| ||||| ||||| | || || || |  | | |||||||||
+Sbjct  2744   ACCACCACCACCACCACCACCACCACCACCATATCCACCACCA-C--CACAACCACCACC  2800
+
+Query  16328  accaccaccaccaccGTCATCATCATCAT  16356
+              |||| || || || | |||||||||||||
+Sbjct  2801   ACCATCATCATCATCATCATCATCATCAT  2829
+
+
+ Score = 58.4 bits (31),  Expect = 2e-05
+ Identities = 37/40 (93%), Gaps = 0/40 (0%)
+ Strand=Plus/Plus
+
+Query  16317  ccaccaccaccaccaccaccaccaccGTCATCATCATCAT  16356
+              ||||||||||||||||||||| || | |||||||||||||
+Sbjct  2679   CCACCACCACCACCACCACCATCATCATCATCATCATCAT  2718
+
+
+>PGEN_.00g179850 
+Length=32428
+
+ Score = 87.9 bits (47),  Expect = 3e-14
+ Identities = 77/91 (85%), Gaps = 3/91 (3%)
+ Strand=Plus/Plus
+
+Query  16268  ACGACGaccaccaccaccacaaccacaaccatcttcatcatcatcttctccaccaccacc  16327
+              || || ||| |||||||||||||||| |||| |  || ||||||| ||  || |||||||
+Sbjct  11885  ACCACCACCGCCACCACCACAACCACCACCA-C--CACCATCATCATCATCATCACCACC  11941
+
+Query  16328  accaccaccaccaccGTCATCATCATCATTA  16358
+              ||||||||||||| | |||||||||||||||
+Sbjct  11942  ACCACCACCACCATCATCATCATCATCATTA  11972
+
+
+ Score = 67.6 bits (36),  Expect = 4e-08
+ Identities = 63/76 (83%), Gaps = 1/76 (1%)
+ Strand=Plus/Minus
+
+Query  16282  caccacaaccacaaccatcttcatcatcatcttctccaccacca-ccaccaccaccacca  16340
+              |||||| | || ||||||| ||||||||||||   |||||||||  | | |||| |||||
+Sbjct  20367  CACCACTAACAGAACCATCATCATCATCATCTAGACCACCACCATTCTCAACCATCACCA  20308
+
+Query  16341  ccGTCATCATCATCAT  16356
+              || |||||||||||||
+Sbjct  20307  CCATCATCATCATCAT  20292
+
+
+ Score = 65.8 bits (35),  Expect = 1e-07
+ Identities = 41/44 (93%), Gaps = 0/44 (0%)
+ Strand=Plus/Plus
+
+Query  16317  ccaccaccaccaccaccaccaccaccGTCATCATCATCATTACC  16360
+              |||||||||| ||||||||||||||| ||||||||||||| |||
+Sbjct  11895  CCACCACCACAACCACCACCACCACCATCATCATCATCATCACC  11938
+
+
+ Score = 60.2 bits (32),  Expect = 6e-06
+ Identities = 51/60 (85%), Gaps = 2/60 (3%)
+ Strand=Plus/Minus
+
+Query  16297  catcttcatcatcatcttc-tccaccaccaccaccaccaccaccaccGTCATCATCATCA  16355
+              |||| |||||||||||||| |||   || || ||||||||||||||  ||||||||||||
+Sbjct  20049  CATCATCATCATCATCTTCATCC-TTACAACAACCACCACCACCACAATCATCATCATCA  19991
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 8058636114629
+
+
+Query= NW_018406439.1:258109-270234 Mizuhopecten yessoensis strain PY_sf001
+unplaced genomic scaffold, ASM211388v2 scaffold6217, whole genome
+shotgun sequence
+
+Length=12126
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g051210                                                       71.3       2e-09
+PGEN_.00g289320                                                       58.4       1e-05
+PGEN_.00g193030                                                       54.7       2e-04
+PGEN_.00g068750                                                       54.7       2e-04
+PGEN_.00g275670                                                       52.8       6e-04
+PGEN_.00g023320                                                       52.8       6e-04
+
+
+>PGEN_.00g051210 
+Length=28160
+
+ Score = 71.3 bits (38),  Expect = 2e-09
+ Identities = 46/50 (92%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  5603   GGCTGTGTTCCAAATGTACAAAGGGCAGCTCTAGTAAACATGGGAGGTAA  5652
+              ||||| || |||||||||||||| ||||| ||||||||||||||||||||
+Sbjct  28101  GGCTGGGTACCAAATGTACAAAGAGCAGCACTAGTAAACATGGGAGGTAA  28150
+
+
+>PGEN_.00g289320 
+Length=8422
+
+ Score = 58.4 bits (31),  Expect = 1e-05
+ Identities = 45/52 (87%), Gaps = 0/52 (0%)
+ Strand=Plus/Minus
+
+Query  8166  TATCCGCATTTTTACCGGTGTGAGATTTCCTTGTCTCACCCTAGGGTTGAGA  8217
+             |||| ||||||||||||| ||||||| |  || ||||||||||||| |||||
+Sbjct  3212  TATCTGCATTTTTACCGGGGTGAGATATTTTTATCTCACCCTAGGGCTGAGA  3161
+
+
+>PGEN_.00g193030 
+Length=20932
+
+ Score = 54.7 bits (29),  Expect = 2e-04
+ Identities = 33/35 (94%), Gaps = 0/35 (0%)
+ Strand=Plus/Plus
+
+Query  6482   AGAATTATGAACCAGCCTACAGAAAATGGCAGGTA  6516
+              ||||||||||| ||||| |||||||||||||||||
+Sbjct  18521  AGAATTATGAATCAGCCGACAGAAAATGGCAGGTA  18555
+
+
+>PGEN_.00g068750 
+Length=24209
+
+ Score = 54.7 bits (29),  Expect = 2e-04
+ Identities = 47/55 (85%), Gaps = 3/55 (5%)
+ Strand=Plus/Plus
+
+Query  8166   TATCCGCATTTTTACCGG-TGTGAG--ATTTCCTTGTCTCACCCTAGGGTTGAGA  8217
+              |||| |||||||||||||  |||||  ||||| || ||||||||||||| |||||
+Sbjct  22300  TATCTGCATTTTTACCGGGGGTGAGATATTTCTTTATCTCACCCTAGGGCTGAGA  22354
+
+
+>PGEN_.00g275670 
+Length=6132
+
+ Score = 52.8 bits (28),  Expect = 6e-04
+ Identities = 45/53 (85%), Gaps = 2/53 (4%)
+ Strand=Plus/Minus
+
+Query  8166  TATCCGCATTTTTACCGGTGTGAGAT-TTCCTTGTCTCACCCTAGGGTTGAGA  8217
+             |||| ||||||||||||| || |||| || | | |||||||||||||| ||||
+Sbjct  524   TATCTGCATTTTTACCGGGGTTAGATATTTC-TATCTCACCCTAGGGTCGAGA  473
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 4556551998805
+
+
+Query= NW_018406060.1:150383-162099 Mizuhopecten yessoensis strain PY_sf001
+unplaced genomic scaffold, ASM211388v2 scaffold5459, whole genome
+shotgun sequence
+
+Length=11717
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g021670                                                       63.9       3e-07
+PGEN_.00g282810                                                       62.1       9e-07
+PGEN_.00g223380                                                       62.1       9e-07
+PGEN_.00g039230                                                       62.1       9e-07
+PGEN_.00g142510                                                       60.2       3e-06
+PGEN_.00g218470                                                       58.4       1e-05
+PGEN_.00g207350                                                       58.4       1e-05
+PGEN_.00g189110                                                       58.4       1e-05
+PGEN_.00g170350                                                       58.4       1e-05
+PGEN_.00g133760                                                       58.4       1e-05
+PGEN_.00g317240                                                       56.5       4e-05
+PGEN_.00g274830                                                       56.5       4e-05
+PGEN_.00g164520                                                       56.5       4e-05
+PGEN_.00g339060                                                       54.7       2e-04
+PGEN_.00g331940                                                       54.7       2e-04
+PGEN_.00g329880                                                       54.7       2e-04
+PGEN_.00g326580                                                       54.7       2e-04
+PGEN_.00g243570                                                       54.7       2e-04
+PGEN_.00g219400                                                       54.7       2e-04
+PGEN_.00g212520                                                       54.7       2e-04
+PGEN_.00g204900                                                       54.7       2e-04
+PGEN_.00g175030                                                       54.7       2e-04
+PGEN_.00g155390                                                       54.7       2e-04
+PGEN_.00g128360                                                       54.7       2e-04
+PGEN_.00g002380                                                       54.7       2e-04
+PGEN_.00g343280                                                       52.8       6e-04
+PGEN_.00g338720                                                       52.8       6e-04
+PGEN_.00g289110                                                       52.8       6e-04
+PGEN_.00g282850                                                       52.8       6e-04
+PGEN_.00g261330                                                       52.8       6e-04
+PGEN_.00g209330                                                       52.8       6e-04
+PGEN_.00g165390                                                       52.8       6e-04
+PGEN_.00g161320                                                       52.8       6e-04
+PGEN_.00g158670                                                       52.8       6e-04
+PGEN_.00g127090                                                       52.8       6e-04
+PGEN_.00g123620                                                       52.8       6e-04
+PGEN_.00g110820                                                       52.8       6e-04
+PGEN_.00g106620                                                       52.8       6e-04
+PGEN_.00g083790                                                       52.8       6e-04
+PGEN_.00g082330                                                       52.8       6e-04
+PGEN_.00g072570                                                       52.8       6e-04
+PGEN_.00g058280                                                       52.8       6e-04
+PGEN_.00g051880                                                       52.8       6e-04
+PGEN_.00g045380                                                       52.8       6e-04
+PGEN_.00g043110                                                       52.8       6e-04
+PGEN_.00g035060                                                       52.8       6e-04
+PGEN_.00g033300                                                       52.8       6e-04
+PGEN_.00g017500                                                       52.8       6e-04
+PGEN_.00g011280                                                       52.8       6e-04
+PGEN_.00g010150                                                       52.8       6e-04
+PGEN_.00g007080                                                       52.8       6e-04
+
+
+>PGEN_.00g021670 
+Length=11476
+
+ Score = 63.9 bits (34),  Expect = 3e-07
+ Identities = 58/69 (84%), Gaps = 3/69 (4%)
+ Strand=Plus/Plus
+
+Query  1132  GATTGTTTGTAAGTTGAAATAACCTGTTTCATAATTGTTGTAAAATAAATAAAGCTTATA  1191
+             |||| ||| ||||||| |||||  ||||||| ||||| |||||||||||||| | |||||
+Sbjct  6845  GATT-TTTCTAAGTTGTAATAAATTGTTTCACAATTGATGTAAAATAAATAA-GTTTATA  6902
+
+Query  1192  TTCTATATT  1200
+              | ||||||
+Sbjct  6903  AT-TATATT  6910
+
+
+>PGEN_.00g282810 
+Length=10948
+
+ Score = 62.1 bits (33),  Expect = 9e-07
+ Identities = 50/58 (86%), Gaps = 1/58 (2%)
+ Strand=Plus/Minus
+
+Query  1127  AGAGGGATTGTTTGTAAGTTGAAATAACCTGTTTCATAATTGTTGTAAAATAAATAAA  1184
+             |||| |||| ||| |||||||||| ||| ||||||| ||| | |||||||||||||||
+Sbjct  8339  AGAGTGATT-TTTCTAAGTTGAAACAACTTGTTTCACAATCGATGTAAAATAAATAAA  8283
+
+
+>PGEN_.00g223380 
+Length=34142
+
+ Score = 62.1 bits (33),  Expect = 9e-07
+ Identities = 46/52 (88%), Gaps = 1/52 (2%)
+ Strand=Plus/Plus
+
+Query  1132   GATTGTTTGTAAGTTGAAATAACCTGTTTCATAATTGTTGTAAAATAAATAA  1183
+              |||| | ||||||||| |||||| ||||||| ||||| ||||||||||||||
+Sbjct  20927  GATT-TGTGTAAGTTGTAATAACTTGTTTCACAATTGATGTAAAATAAATAA  20977
+
+
+>PGEN_.00g039230 
+Length=25841
+
+ Score = 62.1 bits (33),  Expect = 9e-07
+ Identities = 51/59 (86%), Gaps = 3/59 (5%)
+ Strand=Plus/Plus
+
+Query  1134  TTGTTTGTAAGTTGAAATAACCTGTTTCATAATTGTTGTAAAATAAATAAAGCTTATAT  1192
+             ||| || |||||||||||||| ||||||| |||||  ||||||||||||||  ||||||
+Sbjct  2134  TTG-TT-TAAGTTGAAATAACTTGTTTCACAATTGAAGTAAAATAAATAAAT-TTATAT  2189
+
+
+>PGEN_.00g142510 
+Length=20719
+
+ Score = 60.2 bits (32),  Expect = 3e-06
+ Identities = 40/44 (91%), Gaps = 0/44 (0%)
+ Strand=Plus/Plus
+
+Query  1141  TAAGTTGAAATAACCTGTTTCATAATTGTTGTAAAATAAATAAA  1184
+             ||||||| |||||| ||||||| ||| |||||||||||||||||
+Sbjct  5410  TAAGTTGTAATAACTTGTTTCACAATCGTTGTAAAATAAATAAA  5453
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 4402469339234
+
+
+Query= NW_014674064.1:c106833-88310 Octopus bimaculoides isolate
+UCB-OBI-ISO-001 unplaced genomic scaffold, Octopus_bimaculoides_v2_0
+Scaffold49100, whole genome shotgun sequence
+
+Length=18524
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g283920                                                       104        2e-19
+PGEN_.00g271470                                                       84.2       3e-13
+PGEN_.00g154350                                                       82.4       1e-12
+PGEN_.00g116050                                                       82.4       1e-12
+PGEN_.00g024390                                                       73.1       7e-10
+PGEN_.00g168160                                                       69.4       9e-09
+PGEN_.00g315970                                                       67.6       3e-08
+PGEN_.00g308910                                                       67.6       3e-08
+PGEN_.00g303970                                                       67.6       3e-08
+PGEN_.00g185620                                                       67.6       3e-08
+PGEN_.00g167410                                                       67.6       3e-08
+PGEN_.00g145150                                                       67.6       3e-08
+PGEN_.00g088760                                                       67.6       3e-08
+PGEN_.00g348570                                                       65.8       1e-07
+PGEN_.00g271010                                                       65.8       1e-07
+PGEN_.00g227600                                                       65.8       1e-07
+PGEN_.00g214090                                                       65.8       1e-07
+PGEN_.00g348440                                                       63.9       4e-07
+PGEN_.00g348220                                                       63.9       4e-07
+PGEN_.00g257800                                                       63.9       4e-07
+PGEN_.00g116450                                                       63.9       4e-07
+PGEN_.00g043590                                                       63.9       4e-07
+PGEN_.00g348370                                                       62.1       1e-06
+PGEN_.00g335860                                                       62.1       1e-06
+PGEN_.00g334800                                                       62.1       1e-06
+PGEN_.00g332800                                                       62.1       1e-06
+PGEN_.00g329370                                                       62.1       1e-06
+PGEN_.00g325370                                                       62.1       1e-06
+PGEN_.00g325160                                                       62.1       1e-06
+PGEN_.00g306290                                                       62.1       1e-06
+PGEN_.00g305350                                                       62.1       1e-06
+PGEN_.00g304360                                                       62.1       1e-06
+PGEN_.00g302310                                                       62.1       1e-06
+PGEN_.00g284380                                                       62.1       1e-06
+PGEN_.00g284290                                                       62.1       1e-06
+PGEN_.00g283380                                                       62.1       1e-06
+PGEN_.00g280170                                                       62.1       1e-06
+PGEN_.00g275540                                                       62.1       1e-06
+PGEN_.00g275280                                                       62.1       1e-06
+PGEN_.00g271800                                                       62.1       1e-06
+PGEN_.00g271450                                                       62.1       1e-06
+PGEN_.00g271260                                                       62.1       1e-06
+PGEN_.00g270760                                                       62.1       1e-06
+PGEN_.00g267240                                                       62.1       1e-06
+PGEN_.00g262930                                                       62.1       1e-06
+PGEN_.00g258550                                                       62.1       1e-06
+PGEN_.00g257690                                                       62.1       1e-06
+PGEN_.00g244190                                                       62.1       1e-06
+PGEN_.00g229710                                                       62.1       1e-06
+PGEN_.00g228640                                                       62.1       1e-06
+PGEN_.00g224690                                                       62.1       1e-06
+PGEN_.00g206270                                                       62.1       1e-06
+PGEN_.00g206240                                                       62.1       1e-06
+PGEN_.00g204160                                                       62.1       1e-06
+PGEN_.00g203080                                                       62.1       1e-06
+PGEN_.00g199500                                                       62.1       1e-06
+PGEN_.00g197850                                                       62.1       1e-06
+PGEN_.00g195840                                                       62.1       1e-06
+PGEN_.00g195450                                                       62.1       1e-06
+PGEN_.00g194950                                                       62.1       1e-06
+PGEN_.00g187220                                                       62.1       1e-06
+PGEN_.00g176450                                                       62.1       1e-06
+PGEN_.00g172570                                                       62.1       1e-06
+PGEN_.00g170570                                                       62.1       1e-06
+PGEN_.00g165870                                                       62.1       1e-06
+PGEN_.00g164130                                                       62.1       1e-06
+PGEN_.00g162660                                                       62.1       1e-06
+PGEN_.00g159410                                                       62.1       1e-06
+PGEN_.00g156040                                                       62.1       1e-06
+PGEN_.00g149100                                                       62.1       1e-06
+PGEN_.00g143520                                                       62.1       1e-06
+PGEN_.00g143090                                                       62.1       1e-06
+PGEN_.00g135750                                                       62.1       1e-06
+PGEN_.00g134180                                                       62.1       1e-06
+PGEN_.00g133230                                                       62.1       1e-06
+PGEN_.00g131500                                                       62.1       1e-06
+PGEN_.00g129500                                                       62.1       1e-06
+PGEN_.00g127670                                                       62.1       1e-06
+PGEN_.00g121290                                                       62.1       1e-06
+PGEN_.00g114810                                                       62.1       1e-06
+PGEN_.00g109230                                                       62.1       1e-06
+PGEN_.00g095820                                                       62.1       1e-06
+PGEN_.00g091420                                                       62.1       1e-06
+PGEN_.00g089610                                                       62.1       1e-06
+PGEN_.00g084170                                                       62.1       1e-06
+PGEN_.00g081640                                                       62.1       1e-06
+PGEN_.00g073890                                                       62.1       1e-06
+PGEN_.00g067170                                                       62.1       1e-06
+PGEN_.00g063410                                                       62.1       1e-06
+PGEN_.00g055540                                                       62.1       1e-06
+PGEN_.00g053240                                                       62.1       1e-06
+PGEN_.00g033410                                                       62.1       1e-06
+PGEN_.00g028480                                                       62.1       1e-06
+PGEN_.00g016810                                                       62.1       1e-06
+PGEN_.00g013550                                                       62.1       1e-06
+PGEN_.00g012210                                                       62.1       1e-06
+PGEN_.00g011160                                                       62.1       1e-06
+PGEN_.00g010890                                                       62.1       1e-06
+PGEN_.00g007840                                                       62.1       1e-06
+PGEN_.00g311130                                                       60.2       5e-06
+PGEN_.00g276930                                                       60.2       5e-06
+PGEN_.00g267640                                                       60.2       5e-06
+PGEN_.00g263480                                                       60.2       5e-06
+PGEN_.00g195870                                                       60.2       5e-06
+PGEN_.00g195420                                                       60.2       5e-06
+PGEN_.00g163560                                                       60.2       5e-06
+PGEN_.00g160220                                                       60.2       5e-06
+PGEN_.00g132980                                                       60.2       5e-06
+PGEN_.00g089060                                                       60.2       5e-06
+PGEN_.00g024660                                                       60.2       5e-06
+PGEN_.00g020310                                                       60.2       5e-06
+PGEN_.00g012840                                                       60.2       5e-06
+PGEN_.00g345230                                                       58.4       2e-05
+PGEN_.00g328480                                                       58.4       2e-05
+PGEN_.00g317980                                                       58.4       2e-05
+PGEN_.00g186310                                                       58.4       2e-05
+PGEN_.00g178500                                                       58.4       2e-05
+PGEN_.00g110100                                                       58.4       2e-05
+PGEN_.00g093690                                                       58.4       2e-05
+PGEN_.00g074400                                                       58.4       2e-05
+PGEN_.00g062550                                                       58.4       2e-05
+PGEN_.00g328090                                                       56.5       7e-05
+PGEN_.00g325930                                                       56.5       7e-05
+PGEN_.00g297540                                                       56.5       7e-05
+PGEN_.00g295510                                                       56.5       7e-05
+PGEN_.00g294190                                                       56.5       7e-05
+PGEN_.00g279590                                                       56.5       7e-05
+PGEN_.00g273380                                                       56.5       7e-05
+PGEN_.00g247620                                                       56.5       7e-05
+PGEN_.00g215990                                                       56.5       7e-05
+PGEN_.00g213930                                                       56.5       7e-05
+PGEN_.00g200020                                                       56.5       7e-05
+PGEN_.00g195820                                                       56.5       7e-05
+PGEN_.00g190430                                                       56.5       7e-05
+PGEN_.00g157190                                                       56.5       7e-05
+PGEN_.00g155410                                                       56.5       7e-05
+PGEN_.00g153650                                                       56.5       7e-05
+PGEN_.00g151030                                                       56.5       7e-05
+PGEN_.00g150060                                                       56.5       7e-05
+PGEN_.00g134110                                                       56.5       7e-05
+PGEN_.00g133550                                                       56.5       7e-05
+PGEN_.00g102580                                                       56.5       7e-05
+PGEN_.00g078610                                                       56.5       7e-05
+PGEN_.00g066620                                                       56.5       7e-05
+PGEN_.00g037840                                                       56.5       7e-05
+PGEN_.00g031890                                                       56.5       7e-05
+PGEN_.00g023910                                                       56.5       7e-05
+PGEN_.00g013120                                                       56.5       7e-05
+PGEN_.00g348860                                                       54.7       2e-04
+PGEN_.00g328360                                                       54.7       2e-04
+PGEN_.00g318550                                                       54.7       2e-04
+PGEN_.00g316060                                                       54.7       2e-04
+PGEN_.00g284350                                                       54.7       2e-04
+PGEN_.00g262060                                                       54.7       2e-04
+PGEN_.00g196070                                                       54.7       2e-04
+PGEN_.00g195210                                                       54.7       2e-04
+PGEN_.00g153670                                                       54.7       2e-04
+PGEN_.00g113160                                                       54.7       2e-04
+PGEN_.00g113090                                                       54.7       2e-04
+PGEN_.00g109220                                                       54.7       2e-04
+PGEN_.00g090050                                                       54.7       2e-04
+PGEN_.00g041230                                                       54.7       2e-04
+PGEN_.00g348430                                                       52.8       9e-04
+PGEN_.00g348380                                                       52.8       9e-04
+PGEN_.00g319480                                                       52.8       9e-04
+PGEN_.00g318960                                                       52.8       9e-04
+PGEN_.00g263230                                                       52.8       9e-04
+PGEN_.00g260780                                                       52.8       9e-04
+PGEN_.00g255130                                                       52.8       9e-04
+PGEN_.00g252450                                                       52.8       9e-04
+PGEN_.00g227250                                                       52.8       9e-04
+PGEN_.00g219460                                                       52.8       9e-04
+PGEN_.00g173410                                                       52.8       9e-04
+PGEN_.00g156460                                                       52.8       9e-04
+PGEN_.00g133960                                                       52.8       9e-04
+PGEN_.00g121330                                                       52.8       9e-04
+PGEN_.00g095930                                                       52.8       9e-04
+PGEN_.00g013580                                                       52.8       9e-04
+PGEN_.00g005400                                                       52.8       9e-04
+
+
+>PGEN_.00g283920 
+Length=16252
+
+ Score = 104 bits (56),  Expect = 2e-19
+ Identities = 60/62 (97%), Gaps = 0/62 (0%)
+ Strand=Plus/Plus
+
+Query  15371  CCTGCATACATGCatatatatatatatatatatatatatatatatatatatatatatata  15430
+              |||||||||||  |||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  2414   CCTGCATACATATATATATATATATATATATATATATATATATATATATATATATATATA  2473
+
+Query  15431  ta  15432
+              ||
+Sbjct  2474   TA  2475
+
+
+>PGEN_.00g271470 
+Length=4586
+
+ Score = 84.2 bits (45),  Expect = 3e-13
+ Identities = 63/71 (89%), Gaps = 4/71 (6%)
+ Strand=Plus/Plus
+
+Query  12378  ATATCTATATTAGAAAGtattattatc--attattattattattattattattattatta  12435
+              ||||||||||||   | | | ||||||  |||||||||||||||||||||||||||||||
+Sbjct  180    ATATCTATATTA-TTA-TCTAATTATCTAATTATTATTATTATTATTATTATTATTATTA  237
+
+Query  12436  ttattattatt  12446
+              |||||||||||
+Sbjct  238    TTATTATTATT  248
+
+
+>PGEN_.00g154350 
+Length=10497
+
+ Score = 82.4 bits (44),  Expect = 1e-12
+ Identities = 72/86 (84%), Gaps = 0/86 (0%)
+ Strand=Plus/Minus
+
+Query  10940  acaacaacaacaacagcaacaacaacaacaacaacaacagcaacaacacttgcaacaata  10999
+              ||||||||||||||| | ||||||||||||||||||||| ||||||||    |||||| |
+Sbjct  2231   ACAACAACAACAACAACGACAACAACAACAACAACAACAACAACAACAACAACAACAACA  2172
+
+Query  11000  gtaacaacaaATATTACAATTATAAA  11025
+                ||||||||  |  |||||||||||
+Sbjct  2171   ACAACAACAACAACAACAATTATAAA  2146
+
+
+>PGEN_.00g116050 
+Length=17644
+
+ Score = 82.4 bits (44),  Expect = 1e-12
+ Identities = 82/101 (81%), Gaps = 0/101 (0%)
+ Strand=Plus/Plus
+
+Query  11905  TCGTCATCATTCTCATCACCGTCATCACCACTATTTCCATTACCGCCGCTGccaccgcca  11964
+              || |||||||  |||||| | ||||||||||||   |||  ||| || |  ||||| | |
+Sbjct  12878  TCATCATCATCATCATCATCCTCATCACCACTACCACCACCACCACCACCACCACCACTA  12937
+
+Query  11965  ccaccaccaccaccactaccatcaccatcatcatcatcatc  12005
+              |||||||||||||||| | ||||| ||||||||||||||||
+Sbjct  12938  CCACCACCACCACCACCATCATCATCATCATCATCATCATC  12978
+
+
+>PGEN_.00g024390 
+Length=12880
+
+ Score = 73.1 bits (39),  Expect = 7e-10
+ Identities = 130/174 (75%), Gaps = 6/174 (3%)
+ Strand=Plus/Plus
+
+Query  11833  CACCACCACCTCCACCACCGTCACTATCACAACTACCGCTACCACCATCATCGTTATACA  11892
+              || || |||| |||||||  | |||||||| || ||| | ||||||||||||   || ||
+Sbjct  5800   CAACATCACCACCACCACACT-ACTATCACCACCACCACCACCACCATCATC---AT-CA  5854
+
+Query  11893  CTACCATCAATGTCGTCATCATTC-TCATCACCGTCATCACCACTATTTCCATTACCGCC  11951
+                | |||||   || |||||| || |||||| | |||||| ||  ||  |||  ||| ||
+Sbjct  5855   TGATCATCATCATCATCATCAATCATCATCATCATCATCATCATCATCACCACCACCACC  5914
+
+Query  11952  GCTGccaccgccaccaccaccaccaccactaccatcaccatcatcatcatcatc  12005
+               |  ||||| | | ||||||||||||||  | ||||| |||||| |||||||||
+Sbjct  5915   ACCACCACCACAAGCACCACCACCACCATCATCATCATCATCATTATCATCATC  5968
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 6966871939967
+
+
+Query= NW_011936191.1:c53846-47090 Crassostrea gigas strain
+05x7-T-G4-1.051#20 unplaced genomic scaffold, oyster_v9
+scaffold1794, whole genome shotgun sequence
+
+Length=6757
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g336950                                                       62.1       5e-07
+PGEN_.00g155430                                                       60.2       2e-06
+PGEN_.00g216290                                                       58.4       7e-06
+PGEN_.00g063670                                                       56.5       2e-05
+PGEN_.00g092060                                                       54.7       9e-05
+PGEN_.00g073910                                                       54.7       9e-05
+PGEN_.00g071360                                                       54.7       9e-05
+PGEN_.00g023640                                                       52.8       3e-04
+
+
+>PGEN_.00g336950 
+Length=11598
+
+ Score = 62.1 bits (33),  Expect = 5e-07
+ Identities = 63/77 (82%), Gaps = 4/77 (5%)
+ Strand=Plus/Minus
+
+Query  5254  TATCTCGAATATTCGGATATCTTGAAGTTTTAAAACAGTCCCATCTAGT-TCGAGATAAC  5312
+             ||| ||| |||||||||||||| || |||||  | ||||||| || | | ||||||||||
+Sbjct  4341  TATGTCG-ATATTCGGATATCTCGA-GTTTTTTAGCAGTCCC-TCCAATATCGAGATAAC  4285
+
+Query  5313  GAAGTTTGACGGTATAG  5329
+             ||| || ||| ||||||
+Sbjct  4284  GAATTTCGACTGTATAG  4268
+
+
+>PGEN_.00g155430 
+Length=18662
+
+ Score = 60.2 bits (32),  Expect = 2e-06
+ Identities = 63/77 (82%), Gaps = 5/77 (6%)
+ Strand=Plus/Plus
+
+Query  5253  ATATCTCGAATATTCGGATATCTTGAAGTTTTAAAACAGTCCCATCTAGT-TCGAGATAA  5311
+             |||| || |||||||||||||||||| |||||    |||| |||| || | |||||||||
+Sbjct  7083  ATATGTC-AATATTCGGATATCTTGAGGTTTTTTGGCAGTACCAT-TAATATCGAGATAA  7140
+
+Query  5312  CGAAGTTT-GACGGTAT  5327
+             | |||||| ||| ||||
+Sbjct  7141  C-AAGTTTCGACTGTAT  7156
+
+
+>PGEN_.00g216290 
+Length=25135
+
+ Score = 58.4 bits (31),  Expect = 7e-06
+ Identities = 63/77 (82%), Gaps = 7/77 (9%)
+ Strand=Plus/Minus
+
+Query  5254  TATCTCGAATATTCGGATATCTTGAAGTTTTAAAA-CAGTCCCATCTAGT-TCGAGATAA  5311
+             ||| ||| ||||||||||||||||| ||||||    ||||||| || | | |||||||||
+Sbjct  6517  TATGTCG-ATATTCGGATATCTTGA-GTTTTATTGGCAGTCCC-TCCAATATCGAGATAA  6461
+
+Query  5312  CGAAGTTT-GACGGTAT  5327
+             ||| |||| ||| ||||
+Sbjct  6460  CGA-GTTTCGACTGTAT  6445
+
+
+>PGEN_.00g063670 
+Length=7160
+
+ Score = 56.5 bits (30),  Expect = 2e-05
+ Identities = 43/49 (88%), Gaps = 1/49 (2%)
+ Strand=Plus/Plus
+
+Query  4789  GTTG-TATCATCGCCTGTGGATGTGGTTAAAACTCGCTACATGAATTCC  4836
+             |||| | || ||||||||||||||||| |||||||| |||||||| |||
+Sbjct  5445  GTTGATCTCTTCGCCTGTGGATGTGGTGAAAACTCGTTACATGAACTCC  5493
+
+
+>PGEN_.00g092060 
+Length=12440
+
+ Score = 54.7 bits (29),  Expect = 9e-05
+ Identities = 61/76 (80%), Gaps = 3/76 (4%)
+ Strand=Plus/Minus
+
+Query  5254  TATCTCGAATATTCGGATATCTTGAAGTTTTAAAACAGTCCCATCTAGT-TCGAGATAAC  5312
+             ||| ||| |||||||||||| ||||  ||||    ||||||| |||| | ||||||||||
+Sbjct  887   TATGTCG-ATATTCGGATATATTGAGTTTTTTTGGCAGTCCC-TCTAATATCGAGATAAC  830
+
+Query  5313  GAAGTTTGACGGTATA  5328
+             ||  |||||| |||||
+Sbjct  829   GAGTTTTGACTGTATA  814
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 2534499271682
+
+
+Query= NC_043000.1:64342382-64380472 Octopus vulgaris isolate Ov201803
+linkage group LG4, ASM634580v1, whole genome shotgun sequence
+
+Length=38091
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g236310                                                       104        5e-19
+PGEN_.00g054710                                                       95.3       3e-16
+PGEN_.00g261180                                                       82.4       2e-12
+PGEN_.00g235980                                                       82.4       2e-12
+PGEN_.00g235970                                                       82.4       2e-12
+PGEN_.00g231460                                                       82.4       2e-12
+PGEN_.00g006260                                                       82.4       2e-12
+PGEN_.00g279620                                                       80.5       8e-12
+PGEN_.00g072390                                                       80.5       8e-12
+PGEN_.00g176920                                                       78.7       3e-11
+PGEN_.00g070490                                                       78.7       3e-11
+PGEN_.00g070070                                                       78.7       3e-11
+PGEN_.00g074500                                                       76.8       1e-10
+PGEN_.00g341450                                                       75.0       4e-10
+PGEN_.00g293880                                                       73.1       1e-09
+PGEN_.00g287160                                                       73.1       1e-09
+PGEN_.00g264160                                                       73.1       1e-09
+PGEN_.00g127730                                                       73.1       1e-09
+PGEN_.00g110870                                                       73.1       1e-09
+PGEN_.00g108080                                                       73.1       1e-09
+PGEN_.00g041090                                                       73.1       1e-09
+PGEN_.00g004050                                                       73.1       1e-09
+PGEN_.00g123900                                                       71.3       5e-09
+PGEN_.00g117370                                                       71.3       5e-09
+PGEN_.00g001140                                                       71.3       5e-09
+PGEN_.00g211970                                                       69.4       2e-08
+PGEN_.00g273200                                                       67.6       6e-08
+PGEN_.00g222400                                                       67.6       6e-08
+PGEN_.00g102230                                                       67.6       6e-08
+PGEN_.00g344720                                                       65.8       2e-07
+PGEN_.00g336350                                                       65.8       2e-07
+PGEN_.00g253190                                                       65.8       2e-07
+PGEN_.00g143350                                                       65.8       2e-07
+PGEN_.00g117940                                                       65.8       2e-07
+PGEN_.00g100180                                                       65.8       2e-07
+PGEN_.00g221980                                                       63.9       8e-07
+PGEN_.00g197240                                                       63.9       8e-07
+PGEN_.00g057630                                                       63.9       8e-07
+PGEN_.00g044930                                                       63.9       8e-07
+PGEN_.00g024900                                                       63.9       8e-07
+PGEN_.00g014240                                                       63.9       8e-07
+PGEN_.00g198090                                                       62.1       3e-06
+PGEN_.00g181770                                                       62.1       3e-06
+PGEN_.00g158410                                                       62.1       3e-06
+PGEN_.00g116620                                                       62.1       3e-06
+PGEN_.00g190220                                                       60.2       1e-05
+PGEN_.00g167700                                                       60.2       1e-05
+PGEN_.00g162840                                                       60.2       1e-05
+PGEN_.00g086200                                                       60.2       1e-05
+PGEN_.00g103340                                                       58.4       4e-05
+PGEN_.00g095820                                                       58.4       4e-05
+PGEN_.00g051210                                                       58.4       4e-05
+PGEN_.00g322020                                                       56.5       1e-04
+PGEN_.00g265370                                                       56.5       1e-04
+PGEN_.00g263080                                                       56.5       1e-04
+PGEN_.00g237150                                                       56.5       1e-04
+PGEN_.00g195670                                                       56.5       1e-04
+PGEN_.00g195620                                                       56.5       1e-04
+PGEN_.00g183770                                                       56.5       1e-04
+PGEN_.00g147170                                                       56.5       1e-04
+PGEN_.00g143760                                                       56.5       1e-04
+PGEN_.00g201600                                                       54.7       5e-04
+PGEN_.00g179280                                                       54.7       5e-04
+PGEN_.00g155550                                                       54.7       5e-04
+PGEN_.00g104980                                                       54.7       5e-04
+PGEN_.00g041460                                                       54.7       5e-04
+PGEN_.00g035820                                                       54.7       5e-04
+PGEN_.00g024320                                                       54.7       5e-04
+
+
+>PGEN_.00g236310 
+Length=23830
+
+ Score = 104 bits (56),  Expect = 5e-19
+ Identities = 68/73 (93%), Gaps = 3/73 (4%)
+ Strand=Plus/Minus
+
+Query  3763   acacacacacacaca-atatatatatatatatatatatatatatatatGTACACACACAC  3821
+              ||||||||||||||| |||||||||||||||||||||||||||||||| |||||||||||
+Sbjct  13870  ACACACACACACACACATATATATATATATATATATATATATATATATATACACACACAC  13811
+
+Query  3822   ATACAC-catcat  3833
+              | |||| || |||
+Sbjct  13810  ACACACACA-CAT  13799
+
+
+ Score = 75.0 bits (40),  Expect = 4e-10
+ Identities = 57/65 (88%), Gaps = 1/65 (2%)
+ Strand=Plus/Minus
+
+Query  3763   acacacacacacaca-atatatatatatatatatatatatatatatatGTACACACACAC  3821
+              ||||||||||| | | ||||||||||||||||||||||||||||| |   ||||||||||
+Sbjct  13864  ACACACACACATATATATATATATATATATATATATATATATATACACACACACACACAC  13805
+
+Query  3822   ATACA  3826
+              | |||
+Sbjct  13804  ACACA  13800
+
+
+>PGEN_.00g054710 
+Length=8380
+
+ Score = 95.3 bits (51),  Expect = 3e-16
+ Identities = 61/65 (94%), Gaps = 3/65 (5%)
+ Strand=Plus/Plus
+
+Query  3631  acacacacacaca-atatatatatatatatatatatatatatat-tatatatatatat-C  3687
+             ||||||||||||| |||||||||||||||||||||||||||||| ||||||||||||| |
+Sbjct  5808  ACACACACACACACATATATATATATATATATATATATATATATATATATATATATATAC  5867
+
+Query  3688  AGACa  3692
+             | |||
+Sbjct  5868  ACACA  5872
+
+
+ Score = 86.1 bits (46),  Expect = 2e-13
+ Identities = 77/92 (84%), Gaps = 2/92 (2%)
+ Strand=Plus/Plus
+
+Query  3741  ACATATATGTCTACATATAAGTacacacacacacaca-atatatatatatatatatatat  3799
+             |||||||| | |||| | |   ||||||| | | | | ||||||||||||||||||||||
+Sbjct  5794  ACATATATATATACACACACACACACACATATATATATATATATATATATATATATATAT  5853
+
+Query  3800  atatatatatGTACACACACACATACAC-cat  3830
+             |||||||||| |||||||||||| |||| |||
+Sbjct  5854  ATATATATATATACACACACACACACACACAT  5885
+
+
+ Score = 71.3 bits (38),  Expect = 5e-09
+ Identities = 57/66 (86%), Gaps = 1/66 (2%)
+ Strand=Plus/Plus
+
+Query  3763  acacacacacacaca-atatatatatatatatatatatatatatatatGTACACACACAC  3821
+             ||||||||||||||| ||||||||| | | | | | |||||||||||| |||||||||||
+Sbjct  5900  ACACACACACACACATATATATATACAAACACACACATATATATATATATACACACACAC  5959
+
+Query  3822  ATACAC  3827
+             | ||||
+Sbjct  5960  ACACAC  5965
+
+
+ Score = 69.4 bits (37),  Expect = 2e-08
+ Identities = 56/65 (86%), Gaps = 1/65 (2%)
+ Strand=Plus/Plus
+
+Query  3763  acacacacacacacaatatatatatatatatatatatatatatatatGTACACACACACA  3822
+             |||||||||||||| ||||||||||||| | | | | | |||||||| ||||||||||||
+Sbjct  5758  ACACACACACACAC-ATATATATATATACACACACACACATATATATATACACACACACA  5816
+
+Query  3823  TACAC  3827
+              ||||
+Sbjct  5817  CACAC  5821
+
+
+ Score = 60.2 bits (32),  Expect = 1e-05
+ Identities = 42/47 (89%), Gaps = 0/47 (0%)
+ Strand=Plus/Plus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATA  3824
+             ||||||||||||||||||||||||||| | |   |||||||||||||
+Sbjct  5840  ATATATATATATATATATATATATATACACACACACACACACACATA  5886
+
+
+>PGEN_.00g261180 
+Length=24283
+
+ Score = 82.4 bits (44),  Expect = 2e-12
+ Identities = 48/50 (96%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778   atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+              |||||||||||||||||||||||||||||||| |||||||||||| ||||
+Sbjct  10115  ATATATATATATATATATATATATATATATATATACACACACACACACAC  10164
+
+
+ Score = 76.8 bits (41),  Expect = 1e-10
+ Identities = 47/50 (94%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778   atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+              ||||||||||||||||||||||||||||||||  ||||||||||| ||||
+Sbjct  10117  ATATATATATATATATATATATATATATATATACACACACACACACACAC  10166
+
+
+ Score = 71.3 bits (38),  Expect = 5e-09
+ Identities = 46/50 (92%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778   atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+              |||||||||||||||||||||||||||||||   ||||||||||| ||||
+Sbjct  10119  ATATATATATATATATATATATATATATATACACACACACACACACACAC  10168
+
+
+ Score = 65.8 bits (35),  Expect = 2e-07
+ Identities = 45/50 (90%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778   atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+              ||||||||||||||||||||||||||||| |   ||||||||||| ||||
+Sbjct  10121  ATATATATATATATATATATATATATATACACACACACACACACACACAC  10170
+
+
+ Score = 60.2 bits (32),  Expect = 1e-05
+ Identities = 44/50 (88%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778   atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+              ||||||||||||||||||||||||||| | |   ||||||||||| ||||
+Sbjct  10123  ATATATATATATATATATATATATATACACACACACACACACACACACAC  10172
+
+
+ Score = 54.7 bits (29),  Expect = 5e-04
+ Identities = 43/50 (86%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778   atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+              ||||||||||||||||||||||||| | | |   ||||||||||| ||||
+Sbjct  10125  ATATATATATATATATATATATATACACACACACACACACACACACACAC  10174
+
+
+>PGEN_.00g235980 
+Length=2034
+
+ Score = 82.4 bits (44),  Expect = 2e-12
+ Identities = 48/50 (96%), Gaps = 0/50 (0%)
+ Strand=Plus/Minus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             |||||||||||||||||||||||||||||||| |||||||||||| ||||
+Sbjct  683   ATATATATATATATATATATATATATATATATATACACACACACACACAC  634
+
+
+ Score = 76.8 bits (41),  Expect = 1e-10
+ Identities = 47/50 (94%), Gaps = 0/50 (0%)
+ Strand=Plus/Minus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||||||||||  ||||||||||| ||||
+Sbjct  681   ATATATATATATATATATATATATATATATATACACACACACACACACAC  632
+
+
+ Score = 71.3 bits (38),  Expect = 5e-09
+ Identities = 46/50 (92%), Gaps = 0/50 (0%)
+ Strand=Plus/Minus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             |||||||||||||||||||||||||||||||   ||||||||||| ||||
+Sbjct  679   ATATATATATATATATATATATATATATATACACACACACACACACACAC  630
+
+
+ Score = 65.8 bits (35),  Expect = 2e-07
+ Identities = 45/50 (90%), Gaps = 0/50 (0%)
+ Strand=Plus/Minus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||||||| |   ||||||||||| ||||
+Sbjct  677   ATATATATATATATATATATATATATATACACACACACACACACACACAC  628
+
+
+ Score = 60.2 bits (32),  Expect = 1e-05
+ Identities = 44/50 (88%), Gaps = 0/50 (0%)
+ Strand=Plus/Minus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||||| | |   ||||||||||| ||||
+Sbjct  675   ATATATATATATATATATATATATATACACACACACACACACACACACAC  626
+
+
+ Score = 54.7 bits (29),  Expect = 5e-04
+ Identities = 43/50 (86%), Gaps = 0/50 (0%)
+ Strand=Plus/Minus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||| | | |   ||||||||||| ||||
+Sbjct  673   ATATATATATATATATATATATATACACACACACACACACACACACACAC  624
+
+
+>PGEN_.00g235970 
+Length=17389
+
+ Score = 82.4 bits (44),  Expect = 2e-12
+ Identities = 48/50 (96%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             |||||||||||||||||||||||||||||||| |||||||||||| ||||
+Sbjct  6986  ATATATATATATATATATATATATATATATATATACACACACACACACAC  7035
+
+
+ Score = 76.8 bits (41),  Expect = 1e-10
+ Identities = 47/50 (94%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||||||||||  ||||||||||| ||||
+Sbjct  6988  ATATATATATATATATATATATATATATATATACACACACACACACACAC  7037
+
+
+ Score = 71.3 bits (38),  Expect = 5e-09
+ Identities = 46/50 (92%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             |||||||||||||||||||||||||||||||   ||||||||||| ||||
+Sbjct  6990  ATATATATATATATATATATATATATATATACACACACACACACACACAC  7039
+
+
+ Score = 65.8 bits (35),  Expect = 2e-07
+ Identities = 45/50 (90%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||||||| |   ||||||||||| ||||
+Sbjct  6992  ATATATATATATATATATATATATATATACACACACACACACACACACAC  7041
+
+
+ Score = 60.2 bits (32),  Expect = 1e-05
+ Identities = 44/50 (88%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||||| | |   ||||||||||| ||||
+Sbjct  6994  ATATATATATATATATATATATATATACACACACACACACACACACACAC  7043
+
+
+ Score = 54.7 bits (29),  Expect = 5e-04
+ Identities = 43/50 (86%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  3778  atatatatatatatatatatatatatatatatGTACACACACACATACAC  3827
+             ||||||||||||||||||||||||| | | |   ||||||||||| ||||
+Sbjct  6996  ATATATATATATATATATATATATACACACACACACACACACACACACAC  7045
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 14336645357048
+
+
+Query= NC_035783.1:44241791-44247271 Crassostrea virginica isolate
+RU13XGHG1-28 chromosome 4, C_virginica-3.0, whole genome shotgun
+sequence
+
+Length=5481
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 2053746919866
+
+
+Query= NC_035781.1:5143088-5153204 Crassostrea virginica isolate
+RU13XGHG1-28 chromosome 2, C_virginica-3.0, whole genome shotgun
+sequence
+
+Length=10117
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g216210                                                       52.8       5e-04
+PGEN_.00g144010                                                       52.8       5e-04
+PGEN_.00g067070                                                       52.8       5e-04
+
+
+>PGEN_.00g216210 
+Length=15951
+
+ Score = 52.8 bits (28),  Expect = 5e-04
+ Identities = 39/44 (89%), Gaps = 2/44 (5%)
+ Strand=Plus/Plus
+
+Query  8604  ATGT-ATACAatatatatatatatataCATTTGTATATAATAGT  8646
+             |||| |||| ||||||||||||||||| || | |||||||||||
+Sbjct  3977  ATGTGATAC-ATATATATATATATATATATATATATATAATAGT  4019
+
+
+>PGEN_.00g144010 
+Length=3070
+
+ Score = 52.8 bits (28),  Expect = 5e-04
+ Identities = 90/121 (74%), Gaps = 0/121 (0%)
+ Strand=Plus/Minus
+
+Query  1078  AAATTTTTACCTTGCTAATCACTTTTGAACAGTGATAGCTAGAGCTTTGATATTTTACTT  1137
+             ||| ||| |||||| | || ||| |||||| || | ||  |  ||||| ||||||| | |
+Sbjct  234   AAACTTTAACCTTGATCATTACTCTTGAACCGTAAGAGGAAAGGCTTTCATATTTTGCAT  175
+
+Query  1138  AAGTATTCCTAGTGGCAAGACCTTTCCAAGGGTACCAACAATTTTGACTTTGTGATCTTG  1197
+               |||||||| ||| ||||||||||||    ||||||  | |||| || ||| || ||||
+Sbjct  174   GTGTATTCCTTGTGACAAGACCTTTCCGTCAGTACCATTATTTTTTACCTTGCGACCTTG  115
+
+Query  1198  A  1198
+             |
+Sbjct  114   A  114
+
+
+>PGEN_.00g067070 
+Length=109810
+
+ Score = 52.8 bits (28),  Expect = 5e-04
+ Identities = 41/47 (87%), Gaps = 2/47 (4%)
+ Strand=Plus/Plus
+
+Query  8604   ATGTATACA-atatatatatatatataCATTTGTATATAATAGTAGG  8649
+              || |||| | ||||||||||||||||| || ||||||||||| ||||
+Sbjct  38943  ATATATATATATATATATATATATATATATATGTATATAATA-TAGG  38988
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 3799700988834
+
+
+Query= NW_013193264.1:79679-93242 Biomphalaria glabrata isolate BB02
+linkage group LG2 unlocalized genomic scaffold, ASM45736v1
+LG2_random_Scaffold66, whole genome shotgun sequence
+
+Length=13564
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 5098290053727
+
+
+Query= NW_011935328.1:577151-585901 Crassostrea gigas strain
+05x7-T-G4-1.051#20 unplaced genomic scaffold, oyster_v9 scaffold522,
+whole genome shotgun sequence
+
+Length=8751
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g051210                                                       58.4       9e-06
+PGEN_.00g016290                                                       52.8       4e-04
+PGEN_.00g000320                                                       52.8       4e-04
+
+
+>PGEN_.00g051210 
+Length=28160
+
+ Score = 58.4 bits (31),  Expect = 9e-06
+ Identities = 43/49 (88%), Gaps = 0/49 (0%)
+ Strand=Plus/Plus
+
+Query  5531   CCAAATGTGCAGAGGGCAGCACTAGTCAACATGGGAGGTAAACACATTT  5579
+              |||||||| || || ||||||||||| |||||||||||||| || ||||
+Sbjct  28110  CCAAATGTACAAAGAGCAGCACTAGTAAACATGGGAGGTAATCAAATTT  28158
+
+
+>PGEN_.00g016290 
+Length=71449
+
+ Score = 52.8 bits (28),  Expect = 4e-04
+ Identities = 33/35 (94%), Gaps = 2/35 (6%)
+ Strand=Plus/Minus
+
+Query  4647   AATTTTTATTTCTTAAAGAAAAATCATaaaaaaaT  4681
+              ||||||||||| |||||||||||||| ||||||||
+Sbjct  50219  AATTTTTATTT-TTAAAGAAAAATCA-AAAAAAAT  50187
+
+
+>PGEN_.00g000320 
+Length=27817
+
+ Score = 52.8 bits (28),  Expect = 4e-04
+ Identities = 41/47 (87%), Gaps = 2/47 (4%)
+ Strand=Plus/Minus
+
+Query  8479  AATATTAAATTAGCATTAGTTATTTATGATATTAATGATGATATTCA  8525
+             |||| |||||||| | || ||||||||||||||||| || |||||||
+Sbjct  7418  AATACTAAATTAGAAGTA-TTATTTATGATATTAATAAT-ATATTCA  7374
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 3285769012686
+
+
+Query= NW_004797402.1:c1163081-1146009 Aplysia californica isolate F4 #8
+unplaced genomic scaffold, AplCal3.0 scaffold00132, whole genome
+shotgun sequence
+
+Length=17073
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 6420236392198
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5
