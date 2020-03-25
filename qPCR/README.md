@@ -2,14 +2,14 @@
 
 ## Blast
 --------
-* Identify Pacific geoduck genes for the following mitochondrial proteins invovled in differnt 'modes' of free radical production and mechanisms of free radiacal mitigation and/or alterntive mithcondrial pathways:
+* Identify Pacific geoduck genes for the following mitochondrial proteins involved in differnt 'modes' of free radical production and mechanisms of free radical mitigation and/or alternative mithcondrial pathways:
 1. Alternate oxidase
 2. NADH dehydrogenase (complex I)
 3. Cytocdrome *c* oxidoreductase (complex III)
 4. Uncoupling protein (i.e. Mitochondrial carrier protein)
 
 * fasta files assembled for target mitochondrial proteins - prioritized mollusc taxa on NCBI
-* used Muscle, Augustus, Pfam, and NCBI blast to identify the putative gene in Pacifice geoduck
+* identify the putative gene in Pacifice geoduck with Muscle, Augustus, Pfam, and NCBI blast
 
 ## Primer3 and EMBOSS
 --------
