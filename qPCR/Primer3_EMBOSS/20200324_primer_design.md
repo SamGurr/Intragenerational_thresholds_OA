@@ -2721,10 +2721,16 @@ tr '\r' '\n' <Documents/Bioinformatics/qPCR_primer_design/Uncoupling_protein/202
 %%bash
 cd ../
 
-EMBOSS-6.6.0/emboss/primersearch -auto Documents/Bioinformatics/genomes/Alternate_oxidase_putative_PGEN_.00g108770 Documents/Bioinformatics/qPCR_primer_design/Alternate_oxidase/20200323_AOX_emboss.txt
+EMBOSS-6.6.0/emboss/primersearch.c -auto Documents/Bioinformatics/genomes/Panopea-generosa-genes.cds Documents/Bioinformatics/qPCR_primer_design/Alternate_oxidase/20200323_AOX_emboss.txt
 ```
 
-    -bash: line 3: EMBOSS-6.6.0/emboss/primersearch: No such file or directory
+    EMBOSS-6.6.0/emboss/primersearch.c: line 1: /bin: Is a directory
+    EMBOSS-6.6.0/emboss/primersearch.c: line 2: ~: command not found
+    EMBOSS-6.6.0/emboss/primersearch.c: line 3: ~: command not found
+    EMBOSS-6.6.0/emboss/primersearch.c: line 4: ~: command not found
+    EMBOSS-6.6.0/emboss/primersearch.c: line 5: ~: command not found
+    EMBOSS-6.6.0/emboss/primersearch.c: line 6: syntax error near unexpected token `('
+    EMBOSS-6.6.0/emboss/primersearch.c: line 6: `** @author Copyright (C) Val Curwen (vac@sanger.ac.uk)'
     
 
 
@@ -2732,8 +2738,8 @@ EMBOSS-6.6.0/emboss/primersearch -auto Documents/Bioinformatics/genomes/Alternat
 
     CalledProcessError                        Traceback (most recent call last)
 
-    <ipython-input-3-32fe82ec2ad9> in <module>
-    ----> 1 get_ipython().run_cell_magic('bash', '', 'cd ../\n\nEMBOSS-6.6.0/emboss/primersearch -auto Documents/Bioinformatics/genomes/Alternate_oxidase_putative_PGEN_.00g108770 Documents/Bioinformatics/qPCR_primer_design/Alternate_oxidase/20200323_AOX_emboss.txt\n')
+    <ipython-input-7-812294186e15> in <module>
+    ----> 1 get_ipython().run_cell_magic('bash', '', 'cd ../\n\nEMBOSS-6.6.0/emboss/primersearch.c -auto Documents/Bioinformatics/genomes/Panopea-generosa-genes.cds Documents/Bioinformatics/qPCR_primer_design/Alternate_oxidase/20200323_AOX_emboss.txt\n')
     
 
     C:\ProgramData\Anaconda3\lib\site-packages\IPython\core\interactiveshell.py in run_cell_magic(self, magic_name, line, cell)
@@ -2771,7 +2777,7 @@ EMBOSS-6.6.0/emboss/primersearch -auto Documents/Bioinformatics/genomes/Alternat
         247     def _run_script(self, p, cell, to_close):
     
 
-    CalledProcessError: Command 'b'cd ../\n\nEMBOSS-6.6.0/emboss/primersearch -auto Documents/Bioinformatics/genomes/Alternate_oxidase_putative_PGEN_.00g108770 Documents/Bioinformatics/qPCR_primer_design/Alternate_oxidase/20200323_AOX_emboss.txt\n'' returned non-zero exit status 127.
+    CalledProcessError: Command 'b'cd ../\n\nEMBOSS-6.6.0/emboss/primersearch.c -auto Documents/Bioinformatics/genomes/Panopea-generosa-genes.cds Documents/Bioinformatics/qPCR_primer_design/Alternate_oxidase/20200323_AOX_emboss.txt\n'' returned non-zero exit status 2.
 
 
 
