@@ -153,7 +153,8 @@ D.7.PLOTboxRESP<-ggplot(Data.D.7.Resp, aes(x=Treatment.EXP_1, y=resp.COUNT.µg.L.
   theme_classic() +
   labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.5))+
-  scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  #scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  scale_colour_manual(values=c("#56B4E9", "#009E73", "#0072B2", "#F0E441",  "#E69F00", "#D55E00")) +
   scale_shape_manual(values=c(24, 21)) + 
   scale_fill_manual(values=c('white', 'white')) +
   ylim(0,14) + 
@@ -190,7 +191,8 @@ D.7.PLOTbox <- ggplot(Data.D.7, aes(x=secondary, y=µM.CRE.mg.protein, fill = Tre
   theme_classic() +
   labs(y=expression("Total Antioxidant Capacity"~(~µM~CRE~Reducing~Equivalents^{-1}*mg~total~protein^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 1))+
-  scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  #scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  scale_colour_manual(values=c("#56B4E9", "#009E73", "#0072B2", "#F0E441",  "#E69F00", "#D55E00")) +
   scale_shape_manual(values=c(24, 21)) + 
   scale_fill_manual(values=c("white", "white")) +
   ylim(0,200) + 
@@ -218,7 +220,8 @@ D.7.PLOTbox.Protein<- ggplot(Data.D.7, aes(x=secondary, y=mgProtein.mgAFDW, fill
   theme_classic() +
   labs(y=expression("Total Protein"~(~µg~protein^{-1}*mg~AFDW^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 1))+
-  scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  #scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  scale_colour_manual(values=c("#56B4E9", "#009E73", "#0072B2", "#F0E441",  "#E69F00", "#D55E00")) +
   scale_shape_manual(values=c(24, 21)) + 
   scale_fill_manual(values=c("white", "white")) +
   ylim(0,35) + 
@@ -237,18 +240,22 @@ qqnorm(residuals(model_Day7_AFDW)) # qqplot
 leveneTest(model_Day7_AFDW) # p = 0.6027; homogenity of variance 
 # POST HOC
 TukeyHSD(model_Day7_AFDW, conf.level=0.95) # Treat_history E-A av diff = 2.608801 (E > A); p = 0.0047298 # S < A -2.349025 p = 0.0800328
-# PLOTS
-# D.7.PLOTbox.AFDW<- ggboxplot(Data.D.7, x = "secondary", y = "mgTOTAL_AFDW",  ylab = "mg AFDW",  fill = "Treat_history",
-#                                 palette = c( "#00AFBB", "#FC4E07"),add = "jitter", title = "AFDW Day 7",xlab = "Secondary pCO2 Treatment")
-# D.7.PLOTbox.AFDW <- ggpar(D.7.PLOTbox.AFDW, ylim = c(0,15))
-# D.7.PLOTbox.AFDW
+# percent diff
+Data.D.7_AFDW_grouped <- Data.D.7 %>% 
+  dplyr::select(Treat_history, mgTOTAL_AFDW) %>% # select target columns
+  dplyr::group_by(Treat_history) %>% # call column to summarize 
+  dplyr::summarise_each(funs(mean,sd))
+Data.D.7_AFDW_grouped # view the mean and sd error data
+(((Data.D.7_AFDW_grouped[2,2])-(Data.D.7_AFDW_grouped[1,2]))/Data.D.7_AFDW_grouped[2,2])*100 # calculate % difference
+
 
 D.7.PLOTbox.AFDW<- ggplot(Data.D.7, aes(x=secondary, y=mgTOTAL_AFDW, fill = Treat_history, colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
   theme_classic() +
   labs(y=expression("Ash Free Dry Weight"~(mg)), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 1))+
-  scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  #scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  scale_colour_manual(values=c("#56B4E9", "#009E73", "#0072B2", "#F0E441",  "#E69F00", "#D55E00")) +
   scale_shape_manual(values=c(24, 21)) + 
   scale_fill_manual(values=c("white", "white")) +
   ylim(0,20) + 
@@ -304,15 +311,21 @@ D.21.PLOTboxRESP<-ggplot(Data.D.21.Resp, aes(x=Treatment.EXP_2, y=resp.COUNT.µg.
   theme_classic() +
   labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.1)) +
-  scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
-                               "blue", "blue","tomato1","tomato1", 
-                               "red1", "red1", "firebrick4","firebrick4")) +
+  #scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
+  #                             "blue", "blue","tomato1","tomato1", 
+  #                             "red1", "red1", "firebrick4","firebrick4")) +
+  scale_colour_manual(values=c("#56B4E9", "#56B4E9", "#009E73", "#009E73",
+                               "#0072B2", "#0072B2","#F0E441",  "#F0E441",
+                               "#E69F00","#E69F00", "#D55E00", "#D55E00")) +
   scale_shape_manual(values=c(24,1,2,21,
                               24,1,2,21,
                               24,1,2,21,24,2)) + 
-  scale_fill_manual(values=c("white", "red1","white", "red1",
-                             "white", "red1", "white", "red1", 
-                             "white", "red1", "white", "red1","white", "red1")) +
+  #scale_fill_manual(values=c("white", "red1","white", "red1",
+  #                           "white", "red1", "white", "red1", 
+  #                           "white", "red1", "white", "red1","white", "red1")) +
+  scale_fill_manual(values=c("white", "#E69F00","white", "#E69F00",
+                             "white", "#E69F00", "white", "#E69F00", 
+                             "white", "#E69F00", "white", "#E69F00","white", "#E69F00")) +
   ylim(0,14) + 
   scale_x_discrete(labels = c("Ambient","Moderate")) +
   # theme(legend.title = element_blank()) just ommit the legend title
@@ -534,7 +547,8 @@ FIG.schematic.data <- ggplot(schematic.data, aes(x=x.val, y=y.val, colour=treat,
   geom_vline(xintercept = c(1.5, 2.5, 3.5), linetype="dotted", 
              color = "black", size=0.5) # all the colors needed
 FIG.schematic.data  <- print(FIG.schematic.data +  
-                               scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3","blue", "blue", "tomato1", "tomato1",  "red1", "red1", "firebrick4", "firebrick4")) +
+                               #scale_colour_manual(values = c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3","blue", "blue", "tomato1", "tomato1",  "red1", "red1", "firebrick4", "firebrick4")) +
+                               scale_colour_manual(values=c("#56B4E9", "#56B4E9", "#009E73", "#009E73", "#0072B2", "#0072B2","#F0E441",  "#F0E441", "#E69F00","#E69F00", "#D55E00", "#D55E00")) +
                                scale_x_discrete(labels=c("1" = "Pre", "2" = "Days 1-7","3" = "Days 8-14","4" = "Days 15-21")) +
                                theme(legend.position="none",panel.grid.major = element_blank(),
                                      panel.grid.minor = element_blank(),panel.border = element_blank(),

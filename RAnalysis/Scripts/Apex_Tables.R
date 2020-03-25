@@ -1,4 +1,4 @@
-#Title: Juvenile Repeat Exposure Experiment 2018
+#Title: Apex Tables - 2019 Point Whitney experiment
 #Project: FFAR
 #Author: HM Putnam & Sam Gurr
 #Edit by: Sam Gurr
