@@ -258,7 +258,32 @@ plot(fitted(fourwayanova_D15.21),residuals(fourwayanova_D15.21)) # plot residual
 qqnorm(residuals(fourwayanova_D15.21)) # qqplot - looks normal
 # summary of transformed data
 summary(fourwayanova_D15.21) # significant effect of time and treatment history
-TukeyHSD(fourwayanova_D15.21, conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+TukeyHSD(fourwayanova_D15.21, which ="Treatment_history:Treatment.EXP_1:Treatment.EXP_2", conf.level=0.95) # tukey test on the effect of treatment with 95% confidence
+#                diff          lwr        upr     p adj
+# E:S:M-A:S:M  0.651800946  0.168628035 1.13497386 0.0006942
+# E:S:M-A:M:M  0.734889995  0.251717085 1.21806291 0.0000504
+# E:S:M-E:S:A  0.719825176  0.229598273 1.21005208 0.0001162
+# E:S:M-A:M:A  0.478924309 -0.004248601 0.96209722 0.0545451 # MARGINAL!
+
+# Percent differnce in mean shell size Day 15 - 21
+# E:S:M Vs. A:S:M == EHSM is 8.65% larger
+{((Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean) -
+  (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "AHSM") %>% pull(Length) %>% mean))/
+  (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean)}*100
+# E:S:M Vs. A:M:M == EHSM is 9.70% larger
+{((Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean) -
+    (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "AHMM") %>% pull(Length) %>% mean))/
+    (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean)}*100
+# E:S:M Vs. E:S:A == EHSM is 9.436% larger
+{((Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean) -
+    (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSA") %>% pull(Length) %>% mean))/
+    (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean)}*100
+# E:S:M Vs. A:M:A  == EHSM is 6.345% larger - NOTE THI IS A MARGINAL POST-HOC TEST!
+{((Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean) -
+    (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "AHMA") %>% pull(Length) %>% mean))/
+    (Size.D.15.21 %>% filter(TREATMENT.ID.TOTAL == "EHSM") %>% pull(Length) %>% mean)}*100
+(9.70+9.436+8.65)/3 # 9.262% greater shell size by mod conditioned animals exposure to secondary severe and tertiary moderate pCO2
+
 
 # model on transformed data
 Size.D.15.21$Length.log <- log(Size.D.15.21$Length)
