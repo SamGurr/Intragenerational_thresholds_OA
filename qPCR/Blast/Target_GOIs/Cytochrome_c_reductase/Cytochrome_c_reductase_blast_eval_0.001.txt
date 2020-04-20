@@ -1,0 +1,765 @@
+TBLASTN 2.9.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= XP_022303487.1 coenzyme Q-binding protein COQ10 homolog B,
+mitochondrial-like [Crassostrea virginica]
+
+Length=235
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g263040                                                       85.5       5e-18
+
+
+>PGEN_.00g263040 
+Length=7714
+
+ Score = 85.5 bits (210),  Expect = 5e-18, Method: Compositional matrix adjust.
+ Identities = 35/67 (52%), Positives = 46/67 (69%), Gaps = 0/67 (0%)
+ Frame = +3
+
+Query  82    LLGYSMEQMYTVVSEVQHYKEFVPWCKESTRFGERPGHCKCILEVGFHPLSERYTSHVTL  141
+             +  Y+MEQMY +V+EV  Y +FVPWC +ST     P HC C L +GF P+ ERY+S VTL
+Sbjct  3840  IYSYTMEQMYDIVAEVDKYNKFVPWCTQSTITNSSPSHCDCKLAIGFPPIQERYSSKVTL  4019
+
+Query  142   AKPNLVR  148
+              KP +V+
+Sbjct  4020  TKPTVVK  4040
+
+
+ Score = 75.5 bits (184),  Expect = 2e-14, Method: Compositional matrix adjust.
+ Identities = 29/41 (71%), Positives = 37/41 (90%), Gaps = 0/41 (0%)
+ Frame = +1
+
+Query  148   RSECTDGKLFNHMLTVWRFRPGLPDNPNTCILDFSVSFEFR  188
+             +S CTDG+LFNH+LT+W+F PGLPDNPNTC LDFSVS+ ++
+Sbjct  5044  QSVCTDGRLFNHLLTIWKFSPGLPDNPNTCTLDFSVSYNYK  5166
+
+
+ Score = 68.6 bits (166),  Expect = 3e-12, Method: Compositional matrix adjust.
+ Identities = 30/48 (63%), Positives = 39/48 (81%), Gaps = 0/48 (0%)
+ Frame = +2
+
+Query  181   FSVSFEFRYAIHSQMTQLFFDEVTKTMVNAFLKRAKQLYGPEAIKSQQ  228
+             F V+FEFR  +HS ++ LFFDEV + MVNAFLKRAK L+GP +IK+Q+
+Sbjct  7544  FQVAFEFRSQLHSNLSHLFFDEVVRQMVNAFLKRAKVLHGPASIKAQK  7687
+
+
+
+Lambda      K        H        a         alpha
+   0.323    0.134    0.415    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 14882639334
+
+
+Query= XP_021367501.1 coenzyme Q-binding protein COQ10 homolog B,
+mitochondrial-like [Mizuhopecten yessoensis]
+
+Length=264
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g263040                                                       80.9       5e-16
+
+
+>PGEN_.00g263040 
+Length=7714
+
+ Score = 80.9 bits (198),  Expect = 5e-16, Method: Compositional matrix adjust.
+ Identities = 34/67 (51%), Positives = 48/67 (72%), Gaps = 0/67 (0%)
+ Frame = +3
+
+Query  110   VLGYSMEQMFQIVSEVEHYPEFVPWCKKSSVTGRRRSQLKCNLEIGFPPLVEKYNSIVTL  169
+             +  Y+MEQM+ IV+EV+ Y +FVPWC +S++T    S   C L IGFPP+ E+Y+S VTL
+Sbjct  3840  IYSYTMEQMYDIVAEVDKYNKFVPWCTQSTITNSSPSHCDCKLAIGFPPIQERYSSKVTL  4019
+
+Query  170   AKPRLVR  176
+              KP +V+
+Sbjct  4020  TKPTVVK  4040
+
+
+ Score = 79.0 bits (193),  Expect = 2e-15, Method: Compositional matrix adjust.
+ Identities = 35/52 (67%), Positives = 46/52 (88%), Gaps = 0/52 (0%)
+ Frame = +2
+
+Query  209   FSVSFEFRSVLYSNMSHMFFDQVVKQMVMSFLKQARKLHGPASIRDQKPQIL  260
+             F V+FEFRS L+SN+SH+FFD+VV+QMV +FLK+A+ LHGPASI+ QKP +L
+Sbjct  7544  FQVAFEFRSQLHSNLSHLFFDEVVRQMVNAFLKRAKVLHGPASIKAQKPTVL  7699
+
+
+ Score = 72.4 bits (176),  Expect = 3e-13, Method: Compositional matrix adjust.
+ Identities = 29/41 (71%), Positives = 36/41 (88%), Gaps = 0/41 (0%)
+ Frame = +1
+
+Query  176   RSECTDGILFNHLLTVWKFGPGIPGNPNSCTLDFSVSFEFR  216
+             +S CTDG LFNHLLT+WKF PG+P NPN+CTLDFSVS+ ++
+Sbjct  5044  QSVCTDGRLFNHLLTIWKFSPGLPDNPNTCTLDFSVSYNYK  5166
+
+
+
+Lambda      K        H        a         alpha
+   0.322    0.135    0.408    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 18165923997
+
+
+Query= OWF55475.1 Coenzyme Q-binding protein COQ10-like B [Mizuhopecten
+yessoensis]
+
+Length=264
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g263040                                                       80.9       5e-16
+
+
+>PGEN_.00g263040 
+Length=7714
+
+ Score = 80.9 bits (198),  Expect = 5e-16, Method: Compositional matrix adjust.
+ Identities = 34/67 (51%), Positives = 48/67 (72%), Gaps = 0/67 (0%)
+ Frame = +3
+
+Query  110   VLGYSMEQMFQIVSEVEHYPEFVPWCKKSSVTGRRRSQLKCNLEIGFPPLVEKYNSIVTL  169
+             +  Y+MEQM+ IV+EV+ Y +FVPWC +S++T    S   C L IGFPP+ E+Y+S VTL
+Sbjct  3840  IYSYTMEQMYDIVAEVDKYNKFVPWCTQSTITNSSPSHCDCKLAIGFPPIQERYSSKVTL  4019
+
+Query  170   AKPRLVR  176
+              KP +V+
+Sbjct  4020  TKPTVVK  4040
+
+
+ Score = 79.0 bits (193),  Expect = 2e-15, Method: Compositional matrix adjust.
+ Identities = 35/52 (67%), Positives = 46/52 (88%), Gaps = 0/52 (0%)
+ Frame = +2
+
+Query  209   FSVSFEFRSVLYSNMSHMFFDQVVKQMVMSFLKQARKLHGPASIRDQKPQIL  260
+             F V+FEFRS L+SN+SH+FFD+VV+QMV +FLK+A+ LHGPASI+ QKP +L
+Sbjct  7544  FQVAFEFRSQLHSNLSHLFFDEVVRQMVNAFLKRAKVLHGPASIKAQKPTVL  7699
+
+
+ Score = 72.4 bits (176),  Expect = 3e-13, Method: Compositional matrix adjust.
+ Identities = 29/41 (71%), Positives = 36/41 (88%), Gaps = 0/41 (0%)
+ Frame = +1
+
+Query  176   RSECTDGILFNHLLTVWKFGPGIPGNPNSCTLDFSVSFEFR  216
+             +S CTDG LFNHLLT+WKF PG+P NPN+CTLDFSVS+ ++
+Sbjct  5044  QSVCTDGRLFNHLLTIWKFSPGLPDNPNTCTLDFSVSYNYK  5166
+
+
+
+Lambda      K        H        a         alpha
+   0.322    0.135    0.408    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 18165923997
+
+
+Query= XP_011412043.1 PREDICTED: coenzyme Q-binding protein COQ10 homolog
+B, mitochondrial-like [Crassostrea gigas]
+
+Length=235
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g263040                                                       89.7       2e-19
+
+
+>PGEN_.00g263040 
+Length=7714
+
+ Score = 89.7 bits (221),  Expect = 2e-19, Method: Compositional matrix adjust.
+ Identities = 36/67 (54%), Positives = 48/67 (72%), Gaps = 0/67 (0%)
+ Frame = +3
+
+Query  82    LLGYSMEQMYTVVSEVEHYKEFVPWCKESTKFGERPGHCQCILEVGFPPLSERYTSLVTL  141
+             +  Y+MEQMY +V+EV+ Y +FVPWC +ST     P HC C L +GFPP+ ERY+S VTL
+Sbjct  3840  IYSYTMEQMYDIVAEVDKYNKFVPWCTQSTITNSSPSHCDCKLAIGFPPIQERYSSKVTL  4019
+
+Query  142   AKPNLVR  148
+              KP +V+
+Sbjct  4020  TKPTVVK  4040
+
+
+ Score = 74.7 bits (182),  Expect = 3e-14, Method: Compositional matrix adjust.
+ Identities = 29/41 (71%), Positives = 37/41 (90%), Gaps = 0/41 (0%)
+ Frame = +1
+
+Query  148   RSECTDGKLFNHMLTIWRFRPGLPDNPNTCILDFSVAFEFR  188
+             +S CTDG+LFNH+LTIW+F PGLPDNPNTC LDFSV++ ++
+Sbjct  5044  QSVCTDGRLFNHLLTIWKFSPGLPDNPNTCTLDFSVSYNYK  5166
+
+
+ Score = 66.6 bits (161),  Expect = 1e-11, Method: Compositional matrix adjust.
+ Identities = 30/53 (57%), Positives = 42/53 (79%), Gaps = 0/53 (0%)
+ Frame = +2
+
+Query  181   FSVAFEFRYAIHSHMTQMFFDEVTKTMVNAFLKRARQLYGPETIKSRQLKVSV  233
+             F VAFEFR  +HS+++ +FFDEV + MVNAFLKRA+ L+GP +IK+++  V V
+Sbjct  7544  FQVAFEFRSQLHSNLSHLFFDEVVRQMVNAFLKRAKVLHGPASIKAQKPTVLV  7702
+
+
+
+Lambda      K        H        a         alpha
+   0.324    0.137    0.431    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 14882639334
+
+
+Query= XP_021341325.1 ubiquinone biosynthesis protein COQ4 homolog,
+mitochondrial-like isoform X2 [Mizuhopecten yessoensis]
+
+Length=203
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g283860                                                       145        3e-39
+
+
+>PGEN_.00g283860 
+Length=12000
+
+ Score = 145 bits (366),  Expect = 3e-39, Method: Compositional matrix adjust.
+ Identities = 66/86 (77%), Positives = 76/86 (88%), Gaps = 0/86 (0%)
+ Frame = +3
+
+Query  76    NGFSPDSRLPIQFVDDPDLKYVMLRYRQTHDLYHAVLGMKPNMLGEVAVKWVEAFQTGLP  135
+              GFSPD+RLP+ +VDDPDL YVMLRYRQ HDL+HA+LGMKPNMLGEVAVKWVEA Q GLP
+Sbjct  8985  QGFSPDARLPVHYVDDPDLVYVMLRYRQCHDLFHAILGMKPNMLGEVAVKWVEAIQNGLP  9164
+
+Query  136   MCALGAVFGPLRLGPVHQKKYLEMYL  161
+             MCALGAVFGPLRLGP   KK++ +++
+Sbjct  9165  MCALGAVFGPLRLGPK*VKKHMYIFV  9242
+
+
+ Score = 76.3 bits (186),  Expect = 4e-15, Method: Compositional matrix adjust.
+ Identities = 31/49 (63%), Positives = 42/49 (86%), Gaps = 0/49 (0%)
+ Frame = +1
+
+Query  152    HQKKYLEMYLSWAIRTGRDAKFLMAVYWEKEWEKDLDQLRTELNIEPPP  200
+              H++KY+  YL WA++ GR++KFLMA+Y+EK WE+DL +LR ELNIEPPP
+Sbjct  11830  HRQKYMSTYLPWALKNGRNSKFLMAIYFEKHWERDLQELRDELNIEPPP  11976
+
+
+ Score = 61.6 bits (148),  Expect = 5e-10, Method: Compositional matrix adjust.
+ Identities = 24/39 (62%), Positives = 34/39 (87%), Gaps = 0/39 (0%)
+ Frame = +3
+
+Query  38    SLILKEQPVINTNTVSIEYLGSLPEGTFGKEYWKFLCKN  76
+             ++  +EQPVI+TN++S+EYLG LP+ TFGKEYW+FL K+
+Sbjct  7080  TICFREQPVISTNSISVEYLGGLPDNTFGKEYWRFLSKH  7196
+
+
+ Score = 45.8 bits (107),  Expect = 8e-05, Method: Compositional matrix adjust.
+ Identities = 21/33 (64%), Positives = 28/33 (85%), Gaps = 0/33 (0%)
+ Frame = +2
+
+Query  10    DMVATLGEVSGAWAIRKMKEKMEEDPVGSLILK  42
+             DM+ATLG+V+G  A++ MK+KMEEDPVG  IL+
+Sbjct  5306  DMIATLGDVTGYPALKYMKKKMEEDPVGRQILE  5404
+
+
+
+Lambda      K        H        a         alpha
+   0.320    0.139    0.438    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 11229404172
+
+
+Query= XP_021341317.1 ubiquinone biosynthesis protein COQ4 homolog,
+mitochondrial-like isoform X2 [Mizuhopecten yessoensis]
+
+Length=203
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g283860                                                       145        3e-39
+
+
+>PGEN_.00g283860 
+Length=12000
+
+ Score = 145 bits (366),  Expect = 3e-39, Method: Compositional matrix adjust.
+ Identities = 66/86 (77%), Positives = 76/86 (88%), Gaps = 0/86 (0%)
+ Frame = +3
+
+Query  76    NGFSPDSRLPIQFVDDPDLKYVMLRYRQTHDLYHAVLGMKPNMLGEVAVKWVEAFQTGLP  135
+              GFSPD+RLP+ +VDDPDL YVMLRYRQ HDL+HA+LGMKPNMLGEVAVKWVEA Q GLP
+Sbjct  8985  QGFSPDARLPVHYVDDPDLVYVMLRYRQCHDLFHAILGMKPNMLGEVAVKWVEAIQNGLP  9164
+
+Query  136   MCALGAVFGPLRLGPVHQKKYLEMYL  161
+             MCALGAVFGPLRLGP   KK++ +++
+Sbjct  9165  MCALGAVFGPLRLGPK*VKKHMYIFV  9242
+
+
+ Score = 76.3 bits (186),  Expect = 4e-15, Method: Compositional matrix adjust.
+ Identities = 31/49 (63%), Positives = 42/49 (86%), Gaps = 0/49 (0%)
+ Frame = +1
+
+Query  152    HQKKYLEMYLSWAIRTGRDAKFLMAVYWEKEWEKDLDQLRTELNIEPPP  200
+              H++KY+  YL WA++ GR++KFLMA+Y+EK WE+DL +LR ELNIEPPP
+Sbjct  11830  HRQKYMSTYLPWALKNGRNSKFLMAIYFEKHWERDLQELRDELNIEPPP  11976
+
+
+ Score = 61.6 bits (148),  Expect = 5e-10, Method: Compositional matrix adjust.
+ Identities = 24/39 (62%), Positives = 34/39 (87%), Gaps = 0/39 (0%)
+ Frame = +3
+
+Query  38    SLILKEQPVINTNTVSIEYLGSLPEGTFGKEYWKFLCKN  76
+             ++  +EQPVI+TN++S+EYLG LP+ TFGKEYW+FL K+
+Sbjct  7080  TICFREQPVISTNSISVEYLGGLPDNTFGKEYWRFLSKH  7196
+
+
+ Score = 45.8 bits (107),  Expect = 8e-05, Method: Compositional matrix adjust.
+ Identities = 21/33 (64%), Positives = 28/33 (85%), Gaps = 0/33 (0%)
+ Frame = +2
+
+Query  10    DMVATLGEVSGAWAIRKMKEKMEEDPVGSLILK  42
+             DM+ATLG+V+G  A++ MK+KMEEDPVG  IL+
+Sbjct  5306  DMIATLGDVTGYPALKYMKKKMEEDPVGRQILE  5404
+
+
+
+Lambda      K        H        a         alpha
+   0.320    0.139    0.438    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 11229404172
+
+
+Query= XP_021341308.1 ubiquinone biosynthesis protein COQ4 homolog,
+mitochondrial-like isoform X1 [Mizuhopecten yessoensis]
+
+Length=289
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g283860                                                       146        2e-38
+
+
+>PGEN_.00g283860 
+Length=12000
+
+ Score = 146 bits (369),  Expect = 2e-38, Method: Compositional matrix adjust.
+ Identities = 66/86 (77%), Positives = 76/86 (88%), Gaps = 0/86 (0%)
+ Frame = +3
+
+Query  162   NGFSPDSRLPIQFVDDPDLKYVMLRYRQTHDLYHAVLGMKPNMLGEVAVKWVEAFQTGLP  221
+              GFSPD+RLP+ +VDDPDL YVMLRYRQ HDL+HA+LGMKPNMLGEVAVKWVEA Q GLP
+Sbjct  8985  QGFSPDARLPVHYVDDPDLVYVMLRYRQCHDLFHAILGMKPNMLGEVAVKWVEAIQNGLP  9164
+
+Query  222   MCALGAVFGPLRLGPVHQKKYLEMYL  247
+             MCALGAVFGPLRLGP   KK++ +++
+Sbjct  9165  MCALGAVFGPLRLGPK*VKKHMYIFV  9242
+
+
+ Score = 76.3 bits (186),  Expect = 3e-14, Method: Compositional matrix adjust.
+ Identities = 31/49 (63%), Positives = 42/49 (86%), Gaps = 0/49 (0%)
+ Frame = +1
+
+Query  238    HQKKYLEMYLSWAIRTGRDAKFLMAVYWEKEWEKDLDQLRTELNIEPPP  286
+              H++KY+  YL WA++ GR++KFLMA+Y+EK WE+DL +LR ELNIEPPP
+Sbjct  11830  HRQKYMSTYLPWALKNGRNSKFLMAIYFEKHWERDLQELRDELNIEPPP  11976
+
+
+ Score = 61.6 bits (148),  Expect = 2e-09, Method: Compositional matrix adjust.
+ Identities = 24/39 (62%), Positives = 34/39 (87%), Gaps = 0/39 (0%)
+ Frame = +3
+
+Query  124   SLILKEQPVINTNTVSIEYLGSLPEGTFGKEYWKFLCKN  162
+             ++  +EQPVI+TN++S+EYLG LP+ TFGKEYW+FL K+
+Sbjct  7080  TICFREQPVISTNSISVEYLGGLPDNTFGKEYWRFLSKH  7196
+
+
+ Score = 47.8 bits (112),  Expect = 6e-05, Method: Compositional matrix adjust.
+ Identities = 27/49 (55%), Positives = 31/49 (63%), Gaps = 3/49 (6%)
+ Frame = +3
+
+Query  49    LEESDGLHPEDVESE---QLYPEHIQTTSFQKVLLTVGSAAMCLYNPAR  94
+             L E D +  E+ E++    LY  H  T  FQKVLLT GSAAM LYNPAR
+Sbjct  2490  LHEDDNVINEEEEADVHGALYQGHRPTNMFQKVLLTAGSAAMSLYNPAR  2636
+
+
+ Score = 46.2 bits (108),  Expect = 2e-04, Method: Compositional matrix adjust.
+ Identities = 21/33 (64%), Positives = 28/33 (85%), Gaps = 0/33 (0%)
+ Frame = +2
+
+Query  96    DMVATLGEVSGAWAIRKMKEKMEEDPVGSLILK  128
+             DM+ATLG+V+G  A++ MK+KMEEDPVG  IL+
+Sbjct  5306  DMIATLGDVTGYPALKYMKKKMEEDPVGRQILE  5404
+
+
+
+Lambda      K        H        a         alpha
+   0.320    0.136    0.419    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 21085933038
+
+
+Query= OWF54661.1 Ubiquinone biosynthesis protein COQ4-like [Mizuhopecten
+yessoensis]
+
+Length=289
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g283860                                                       146        2e-38
+
+
+>PGEN_.00g283860 
+Length=12000
+
+ Score = 146 bits (369),  Expect = 2e-38, Method: Compositional matrix adjust.
+ Identities = 66/86 (77%), Positives = 76/86 (88%), Gaps = 0/86 (0%)
+ Frame = +3
+
+Query  162   NGFSPDSRLPIQFVDDPDLKYVMLRYRQTHDLYHAVLGMKPNMLGEVAVKWVEAFQTGLP  221
+              GFSPD+RLP+ +VDDPDL YVMLRYRQ HDL+HA+LGMKPNMLGEVAVKWVEA Q GLP
+Sbjct  8985  QGFSPDARLPVHYVDDPDLVYVMLRYRQCHDLFHAILGMKPNMLGEVAVKWVEAIQNGLP  9164
+
+Query  222   MCALGAVFGPLRLGPVHQKKYLEMYL  247
+             MCALGAVFGPLRLGP   KK++ +++
+Sbjct  9165  MCALGAVFGPLRLGPK*VKKHMYIFV  9242
+
+
+ Score = 76.3 bits (186),  Expect = 3e-14, Method: Compositional matrix adjust.
+ Identities = 31/49 (63%), Positives = 42/49 (86%), Gaps = 0/49 (0%)
+ Frame = +1
+
+Query  238    HQKKYLEMYLSWAIRTGRDAKFLMAVYWEKEWEKDLDQLRTELNIEPPP  286
+              H++KY+  YL WA++ GR++KFLMA+Y+EK WE+DL +LR ELNIEPPP
+Sbjct  11830  HRQKYMSTYLPWALKNGRNSKFLMAIYFEKHWERDLQELRDELNIEPPP  11976
+
+
+ Score = 61.6 bits (148),  Expect = 2e-09, Method: Compositional matrix adjust.
+ Identities = 24/39 (62%), Positives = 34/39 (87%), Gaps = 0/39 (0%)
+ Frame = +3
+
+Query  124   SLILKEQPVINTNTVSIEYLGSLPEGTFGKEYWKFLCKN  162
+             ++  +EQPVI+TN++S+EYLG LP+ TFGKEYW+FL K+
+Sbjct  7080  TICFREQPVISTNSISVEYLGGLPDNTFGKEYWRFLSKH  7196
+
+
+ Score = 47.8 bits (112),  Expect = 6e-05, Method: Compositional matrix adjust.
+ Identities = 27/49 (55%), Positives = 31/49 (63%), Gaps = 3/49 (6%)
+ Frame = +3
+
+Query  49    LEESDGLHPEDVESE---QLYPEHIQTTSFQKVLLTVGSAAMCLYNPAR  94
+             L E D +  E+ E++    LY  H  T  FQKVLLT GSAAM LYNPAR
+Sbjct  2490  LHEDDNVINEEEEADVHGALYQGHRPTNMFQKVLLTAGSAAMSLYNPAR  2636
+
+
+ Score = 46.2 bits (108),  Expect = 2e-04, Method: Compositional matrix adjust.
+ Identities = 21/33 (64%), Positives = 28/33 (85%), Gaps = 0/33 (0%)
+ Frame = +2
+
+Query  96    DMVATLGEVSGAWAIRKMKEKMEEDPVGSLILK  128
+             DM+ATLG+V+G  A++ MK+KMEEDPVG  IL+
+Sbjct  5306  DMIATLGDVTGYPALKYMKKKMEEDPVGRQILE  5404
+
+
+
+Lambda      K        H        a         alpha
+   0.320    0.136    0.419    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 21085933038
+
+
+Query= XP_019926144.1 PREDICTED: ubiquinone biosynthesis protein COQ4
+homolog, mitochondrial-like [Crassostrea gigas]
+
+Length=138
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g283860                                                       45.1       4e-05
+
+
+>PGEN_.00g283860 
+Length=12000
+
+ Score = 45.1 bits (105),  Expect = 4e-05, Method: Composition-based stats.
+ Identities = 20/32 (63%), Positives = 26/32 (81%), Gaps = 0/32 (0%)
+ Frame = +2
+
+Query  106   DMIATLGETTGTWALRSIKEKMEADPTGQRIL  137
+             DMIATLG+ TG  AL+ +K+KME DP G++IL
+Sbjct  5306  DMIATLGDVTGYPALKYMKKKMEEDPVGRQIL  5401
+
+
+ Score = 42.4 bits (98),  Expect = 3e-04, Method: Composition-based stats.
+ Identities = 18/30 (60%), Positives = 22/30 (73%), Gaps = 0/30 (0%)
+ Frame = +3
+
+Query  75    LYPGHIPTSTLQKVFLSIGSAGMSLLDPSR  104
+             LY GH PT+  QKV L+ GSA MSL +P+R
+Sbjct  2547  LYQGHRPTNMFQKVLLTAGSAAMSLYNPAR  2636
+
+
+
+Lambda      K        H        a         alpha
+   0.316    0.132    0.389    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 4158314580
+
+
+Query= XP_011431080.1 PREDICTED: ubiquinone biosynthesis protein COQ4
+homolog, mitochondrial [Crassostrea gigas]
+
+Length=288
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g283860                                                       146        3e-38
+
+
+>PGEN_.00g283860 
+Length=12000
+
+ Score = 146 bits (368),  Expect = 3e-38, Method: Compositional matrix adjust.
+ Identities = 65/86 (76%), Positives = 77/86 (90%), Gaps = 0/86 (0%)
+ Frame = +3
+
+Query  158   NGFSPDARLPIHFVDDPELKYVMLRYRQVHDLFHSVLGMPPHMLGEVAVKWVEALQTGLP  217
+              GFSPDARLP+H+VDDP+L YVMLRYRQ HDLFH++LGM P+MLGEVAVKWVEA+Q GLP
+Sbjct  8985  QGFSPDARLPVHYVDDPDLVYVMLRYRQCHDLFHAILGMKPNMLGEVAVKWVEAIQNGLP  9164
+
+Query  218   MCALGALFGPLRLGPKHTKKYLETYL  243
+             MCALGA+FGPLRLGPK  KK++  ++
+Sbjct  9165  MCALGAVFGPLRLGPK*VKKHMYIFV  9242
+
+
+ Score = 84.0 bits (206),  Expect = 7e-17, Method: Compositional matrix adjust.
+ Identities = 34/52 (65%), Positives = 46/52 (88%), Gaps = 0/52 (0%)
+ Frame = +1
+
+Query  233    KHTKKYLETYLPWAIRNGQNAKFLMAVYWEEHWEDDLETLRQELNIEPPPII  284
+              +H +KY+ TYLPWA++NG+N+KFLMA+Y+E+HWE DL+ LR ELNIEPPP +
+Sbjct  11827  RHRQKYMSTYLPWALKNGRNSKFLMAIYFEKHWERDLQELRDELNIEPPPEV  11982
+
+
+ Score = 57.0 bits (136),  Expect = 6e-08, Method: Compositional matrix adjust.
+ Identities = 23/34 (68%), Positives = 31/34 (91%), Gaps = 0/34 (0%)
+ Frame = +3
+
+Query  125   EQPVINTNTVSIDYLGSLPEGTFGKKYWHFLSKN  158
+             EQPVI+TN++S++YLG LP+ TFGK+YW FLSK+
+Sbjct  7095  EQPVISTNSISVEYLGGLPDNTFGKEYWRFLSKH  7196
+
+
+ Score = 44.7 bits (104),  Expect = 5e-04, Method: Compositional matrix adjust.
+ Identities = 20/32 (63%), Positives = 26/32 (81%), Gaps = 0/32 (0%)
+ Frame = +2
+
+Query  92    DMIATLGETTGTWALRSIKEKMEADPTGQRIL  123
+             DMIATLG+ TG  AL+ +K+KME DP G++IL
+Sbjct  5306  DMIATLGDVTGYPALKYMKKKMEEDPVGRQIL  5401
+
+
+
+Lambda      K        H        a         alpha
+   0.320    0.137    0.427    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 20964049032
+
+
+Query= KAF1322830.1 ubiquinol--cytochrome C reductase [Schistosoma
+haematobium]
+
+Length=270
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.321    0.137    0.434    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 18897437715
+
+
+Query= KAA0198515.1 Ubiquinol cytochrome c reductase Rieske [Fasciolopsis
+buski]
+
+Length=199
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.318    0.134    0.412    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 10741169208
+
+
+Query= AOG20944.1 Ubiquinol cytochrome c reductase, Rieske iron sulfur
+polypeptide 1, partial [Ctenopharyngodon idella]
+
+Length=181
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.317    0.134    0.408    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 8668651848
+
+
+Query= TPP39614.1 Ubiquinol cytochrome c reductase Rieske [Fasciola
+gigantica]
+
+Length=278
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.135    0.412    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 19872789339
+
+
+Query= CAA75079.1 cytochrome C reductase subunit b, partial (mitochondrion)
+[Perca fluviatilis]
+
+Length=117
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.329    0.142    0.474    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 3191699706
+
+
+Query= XP_018654773.1 ubiquinol--cytochrome C reductase [Schistosoma
+mansoni]
+
+Length=270
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.320    0.136    0.421    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 18897437715
+
+
+Query= ACD01102.1 ubiquinol cytochrome c reductase, partial [Adineta vaga]
+
+Length=208
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.320    0.137    0.410    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 11714284224
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 13
+Window for multiple hits: 40

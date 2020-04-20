@@ -1,0 +1,3 @@
+﻿qsequid,ssequid,pident,length,mismatch,gapopen,qstart,qend,sstart,send,evalue,bitscore,AUGUSTUS/PFAM IDENTIFICATION
+XP_021339557.1,PGEN_.00g287530,25.131,191,130,7,14,194,3560,4123,2.20E-06,51.6,
+OWF36970.1,PGEN_.00g287530,25.131,191,130,7,14,194,3560,4123,2.20E-06,51.6,

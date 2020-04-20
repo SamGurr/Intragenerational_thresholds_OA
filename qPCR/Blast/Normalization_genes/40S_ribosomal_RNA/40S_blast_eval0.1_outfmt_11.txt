@@ -1,0 +1,1117 @@
+Blast4-archive ::= {
+  request {
+    ident "2.9.0+",
+    body queue-search {
+      program "tblastn",
+      service "plain",
+      queries bioseq-set {
+        seq-set {
+          seq {
+            id {
+              local str "Query_1"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XP_011438171.1 PREDICTED: 40S ribosomal protein
+ SA [Crassostrea gigas]"
+                  }
+                }
+              },
+              title "XP_011438171.1 PREDICTED: 40S ribosomal protein SA
+ [Crassostrea gigas]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 304,
+              seq-data ncbieaa "MSGGLDVLALGEDDITKFLACNTHLGATNVDYQMEQYVFKRKPDGV
+YILNLRKTWEKLLLAARAIAAIENPADVCVISARPYGQRAVLKFASATGATPIAGRFTPGTFTNQIQAAFREPRLLVV
+TDPRTDHQPVTEASYVNIPVIALCNTDSPLRYVDIGIPCNNKGLHSVGLMWWLLAREVLRLRGTISRDHPWDVMVDLY
+FYRDPEEAEKEEQGAIEKAPVKDESQDQWAPPEIPLQPAPTQEVTDWASEAMPVAPAPQPFMPAGTAKDWSATTDDWS
+AAASGPAPTTGAPEWGGTAAENWS"
+            }
+          },
+          seq {
+            id {
+              local str "Query_2"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">AVN67032.1 40S ribosomal protein SA [Diplodon
+ chilensis]"
+                  }
+                }
+              },
+              title "AVN67032.1 40S ribosomal protein SA [Diplodon chilensis]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 300,
+              seq-data ncbieaa "MSGVVDVLALKEEDVTKFLACSTHLGATNVDHQMEQYVFKRKPDGV
+YIINLKKTWEKLLLAARAIAAIENPADVCVISARPYGQRAVLKFASATGATPIAGRFTPGTFTNQIQAAFREPRLLVV
+TDPRTDHQPLTEASYVNIPVIALCNTDSPLRYVDIAIPCNNKGTQSIGLMWWLLAREVLRLRGTISREHPWDVMVDLY
+FYRDPEEAEKEEQGAITEKAPMKEETQDWMNETIPVPAPAPEVSDWAAETIPVPPTMGSGFAISQPPATEDWSATTDD
+WSAQTTQKTNDWGGSSENWG"
+            }
+          },
+          seq {
+            id {
+              local str "Query_3"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">CCC42233.1 40S ribosomal protein SA, partial
+ [Pecten maximus]"
+                  }
+                }
+              },
+              title "CCC42233.1 40S ribosomal protein SA, partial [Pecten
+ maximus]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 192,
+              seq-data ncbieaa "KDGLDHQPVTEASYVNIPVIALCSTDSPLRHVDIAIPCNNKGPQSI
+GLMWWLLAREVLRLRGTISREHPWEVMVDLYFYRDPEEADKEEQAVEKAPAAKDEQEQWIESQVPMPTQPESINDWAA
+EAIPVTTPAAAPGFGTTDDWSASATQDWSAAAPGGPTTSTAAGVVTQAPTPAATTMDEWGGTAADNWG"
+            }
+          },
+          seq {
+            id {
+              local str "Query_4"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">OWF53735.1 40S ribosomal protein SA
+ [Mizuhopecten yessoensis]"
+                  }
+                }
+              },
+              title "OWF53735.1 40S ribosomal protein SA [Mizuhopecten
+ yessoensis]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 319,
+              seq-data ncbieaa "MSGGLDVLTLKEEDVTKFLACSTHLGANNTDFQMEQYVFKRKADGV
+HIVNLRRTWEKLLLAARAIAAIENPADVCVISARPYGQRAVLKFASATGATPIAGRFTPGTFTNQIQAAFREPRLLVV
+TDPRTDHQPVTEASYVNIPVIALCNTDSPLRHVDIAIPCNNKGPQSIGLMWWLLAREVLRLRGTISREHPWEVMVDLY
+FYRDPEEAEKEEQAVEKAPAAKDEQEQWIETQVPMPAQPESINDWAAEAIPVTAPASAPAFGTTEDWSAATTQDWSAA
+APGGPAAAAATTTGAAVVASAKPPGTMDEWGGTAADNWG"
+            }
+          },
+          seq {
+            id {
+              local str "Query_5"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XP_021339557.1 40S ribosomal protein S0-like
+ [Mizuhopecten yessoensis]"
+                  }
+                }
+              },
+              title "XP_021339557.1 40S ribosomal protein S0-like
+ [Mizuhopecten yessoensis]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 264,
+              seq-data ncbieaa "MSKLPAILNPTEKDIHDLLAAQAHIGSKNVNFQMKPYIWKRRNDGV
+HIINIQKTYEKMVLAARIIATIENPSDVVIISARSYGQRAALKYAKYTGAQAIAGRFTPGTFTNYITRSFKEPRLVIV
+TDPRTDHQAIIEASYVNIPVIALCDADSPLRYVDCAIPTNNKSKHAIGYLVWLLAREVLRLRGTISRDEEWDVMPDMF
+FYRDPEEAEKEAQVEEAAPVEEVEDEEDEFFSGQSTNPAEAAYKQSESSWNSEKPTWGDDAE"
+            }
+          },
+          seq {
+            id {
+              local str "Query_6"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">OWF36970.1 40S ribosomal protein S0
+ [Mizuhopecten yessoensis]"
+                  }
+                }
+              },
+              title "OWF36970.1 40S ribosomal protein S0 [Mizuhopecten
+ yessoensis]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 264,
+              seq-data ncbieaa "MSKLPAILNPTEKDIHDLLAAQAHIGSKNVNFQMKPYIWKRRNDGV
+HIINIQKTYEKMVLAARIIATIENPSDVVIISARSYGQRAALKYAKYTGAQAIAGRFTPGTFTNYITRSFKEPRLVIV
+TDPRTDHQAIIEASYVNIPVIALCDADSPLRYVDCAIPTNNKSKHAIGYLVWLLAREVLRLRGTISRDEEWDVMPDMF
+FYRDPEEAEKEAQVEEAAPVEEVEDEEDEFFSGQSTNPAEAAYKQSESSWNSEKPTWGDDAE"
+            }
+          },
+          seq {
+            id {
+              local str "Query_7"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XP_022313762.1 40S ribosomal protein SA-like
+ [Crassostrea virginica]"
+                  }
+                }
+              },
+              title "XP_022313762.1 40S ribosomal protein SA-like [Crassostrea
+ virginica]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 335,
+              seq-data ncbieaa "MHRRTLYFLFCPTPLASHAFLVIAVTQIIAKMSGGLDVLALSEEDI
+TKFLACNTHLGATNVDYQMEQYVFKRKPDGVYILNLRKTWEKLLLAARAIAAIENPADVCVISARPYGQRAVLKFAGA
+TGATPIAGRFTPGTFTNQIQAAFREPRLLVVTDPRTDHQPVTEASYVNIPVIALCNTDSPLRYVDIGIPCNNKGLHSV
+GLMWWMLAREVLRLRGTISREHAWDVMVDLYFYRDPEEAEKEEQGAIEKAPVKDESQDQWVPSDIPIQPPPTQEVTDW
+ASEAMPVAPAPQPFMPSGTAKDWSATTDDWSAAASGPAPTAGAPEWGGTAAENWN"
+            }
+          },
+          seq {
+            id {
+              local str "Query_8"
+            },
+            descr {
+              user {
+                type str "CFastaReader",
+                data {
+                  {
+                    label str "DefLine",
+                    data str ">XP_021346605.1 40S ribosomal protein SA-like
+ [Mizuhopecten yessoensis]"
+                  }
+                }
+              },
+              title "XP_021346605.1 40S ribosomal protein SA-like
+ [Mizuhopecten yessoensis]"
+            },
+            inst {
+              repr raw,
+              mol aa,
+              length 319,
+              seq-data ncbieaa "MSGGLDVLTLKEEDVTKFLACSTHLGANNTDFQMEQYVFKRKADGV
+HIVNLRRTWEKLLLAARAIAAIENPADVCVISARPYGQRAVLKFASATGATPIAGRFTPGTFTNQIQAAFREPRLLVV
+TDPRTDHQPVTEASYVNIPVIALCNTDSPLRHVDIAIPCNNKGPQSIGLMWWLLAREVLRLRGTISREHPWEVMVDLY
+FYRDPEEAEKEEQAVEKAPAAKDEQEQWIETQVPMPAQPESINDWAAEAIPVTAPASAPAFGTTEDWSAATTQDWSAA
+APGGPAAAAATTTGAAVVASAKPPGTMDEWGGTAADNWG"
+            }
+          }
+        }
+      },
+      subject database "Documents/Bioinformatics/genomes/Pgenerosa_genes_datab
+ase/Pgenerosa.GENES",
+      algorithm-options {
+        {
+          name "EvalueThreshold",
+          value cutoff e-value { 1, 10, -1 }
+        },
+        {
+          name "WordSize",
+          value integer 5
+        },
+        {
+          name "DbGeneticCode",
+          value integer 1
+        },
+        {
+          name "UngappedMode",
+          value boolean FALSE
+        },
+        {
+          name "LongestIntronLength",
+          value integer 0
+        },
+        {
+          name "MaskAtHash",
+          value boolean FALSE
+        },
+        {
+          name "SegFilteringWindow",
+          value integer 12
+        },
+        {
+          name "SegFilteringLocut",
+          value real { 22, 10, -1 }
+        },
+        {
+          name "SegFilteringHicut",
+          value real { 25, 10, -1 }
+        },
+        {
+          name "WordThreshold",
+          value integer 13
+        },
+        {
+          name "WindowSize",
+          value integer 40
+        },
+        {
+          name "HitlistSize",
+          value integer 5
+        },
+        {
+          name "CompositionBasedStats",
+          value integer 2
+        },
+        {
+          name "SmithWatermanMode",
+          value boolean FALSE
+        },
+        {
+          name "EffectiveSearchSpace",
+          value big-integer 22914193128
+        }
+      }
+    }
+  },
+  results {
+    alignments {
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 122
+          },
+          {
+            id str "blast_score",
+            value int 122
+          },
+          {
+            id str "e_value",
+            value real { 21981113828182, 10, -19 }
+          },
+          {
+            id str "bit_score",
+            value real { 516025805419611, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 48
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 97
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 690606060606061, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 13,
+                to 29,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 3559,
+                to 3609,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_5",
+              int {
+                from 3610,
+                to 3615,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 30,
+                to 42,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 3616,
+                to 3654,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 43,
+                to 43,
+                strand unknown,
+                id local str "Query_5"
+              },
+              empty local str "PGEN_.00g287530"
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 44,
+                to 75,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 3655,
+                to 3750,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_5",
+              int {
+                from 3751,
+                to 3753,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 76,
+                to 108,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 3754,
+                to 3852,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_5",
+              int {
+                from 3853,
+                to 3861,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 109,
+                to 129,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 3862,
+                to 3924,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_5",
+              int {
+                from 3925,
+                to 3936,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 130,
+                to 177,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 3937,
+                to 4080,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 178,
+                to 178,
+                strand unknown,
+                id local str "Query_5"
+              },
+              empty local str "PGEN_.00g287530"
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 179,
+                to 183,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 4081,
+                to 4095,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 184,
+                to 184,
+                strand unknown,
+                id local str "Query_5"
+              },
+              empty local str "PGEN_.00g287530"
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_5",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 185,
+                to 193,
+                strand unknown,
+                id local str "Query_5"
+              },
+              int {
+                from 4096,
+                to 4122,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          }
+        }
+      },
+      {
+        type partial,
+        dim 2,
+        score {
+          {
+            id str "score",
+            value int 122
+          },
+          {
+            id str "blast_score",
+            value int 122
+          },
+          {
+            id str "e_value",
+            value real { 21981113828182, 10, -19 }
+          },
+          {
+            id str "bit_score",
+            value real { 516025805419611, 10, -13 }
+          },
+          {
+            id str "num_ident",
+            value int 48
+          },
+          {
+            id str "comp_adjustment_method",
+            value int 2
+          },
+          {
+            id str "num_positives",
+            value int 97
+          },
+          {
+            id str "hsp_percent_coverage",
+            value real { 690606060606061, 10, -13 }
+          }
+        },
+        segs std {
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 13,
+                to 29,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 3559,
+                to 3609,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_6",
+              int {
+                from 3610,
+                to 3615,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 30,
+                to 42,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 3616,
+                to 3654,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 43,
+                to 43,
+                strand unknown,
+                id local str "Query_6"
+              },
+              empty local str "PGEN_.00g287530"
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 44,
+                to 75,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 3655,
+                to 3750,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_6",
+              int {
+                from 3751,
+                to 3753,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 76,
+                to 108,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 3754,
+                to 3852,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_6",
+              int {
+                from 3853,
+                to 3861,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 109,
+                to 129,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 3862,
+                to 3924,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              empty local str "Query_6",
+              int {
+                from 3925,
+                to 3936,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 130,
+                to 177,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 3937,
+                to 4080,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 178,
+                to 178,
+                strand unknown,
+                id local str "Query_6"
+              },
+              empty local str "PGEN_.00g287530"
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 179,
+                to 183,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 4081,
+                to 4095,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 184,
+                to 184,
+                strand unknown,
+                id local str "Query_6"
+              },
+              empty local str "PGEN_.00g287530"
+            }
+          },
+          {
+            dim 2,
+            ids {
+              local str "Query_6",
+              local str "PGEN_.00g287530"
+            },
+            loc {
+              int {
+                from 185,
+                to 193,
+                strand unknown,
+                id local str "Query_6"
+              },
+              int {
+                from 4096,
+                to 4122,
+                strand plus,
+                id local str "PGEN_.00g287530"
+              }
+            }
+          }
+        }
+      }
+    },
+    masks {
+      {
+        locations {
+          packed-int {
+            {
+              from 57,
+              to 67,
+              id local str "Query_1"
+            },
+            {
+              from 207,
+              to 220,
+              id local str "Query_1"
+            },
+            {
+              from 270,
+              to 292,
+              id local str "Query_1"
+            }
+          }
+        },
+        frame notset
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 57,
+              to 67,
+              id local str "Query_2"
+            }
+          }
+        },
+        frame notset
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 129,
+              to 140,
+              id local str "Query_3"
+            },
+            {
+              from 152,
+              to 178,
+              id local str "Query_3"
+            }
+          }
+        },
+        frame notset
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 57,
+              to 67,
+              id local str "Query_4"
+            },
+            {
+              from 207,
+              to 223,
+              id local str "Query_4"
+            },
+            {
+              from 277,
+              to 300,
+              id local str "Query_4"
+            }
+          }
+        },
+        frame notset
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 205,
+              to 230,
+              id local str "Query_5"
+            }
+          }
+        },
+        frame notset
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 205,
+              to 230,
+              id local str "Query_6"
+            }
+          }
+        },
+        frame notset
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 88,
+              to 98,
+              id local str "Query_7"
+            },
+            {
+              from 238,
+              to 251,
+              id local str "Query_7"
+            },
+            {
+              from 301,
+              to 323,
+              id local str "Query_7"
+            }
+          }
+        },
+        frame notset
+      },
+      {
+        locations {
+          packed-int {
+            {
+              from 57,
+              to 67,
+              id local str "Query_8"
+            },
+            {
+              from 207,
+              to 223,
+              id local str "Query_8"
+            },
+            {
+              from 277,
+              to 300,
+              id local str "Query_8"
+            }
+          }
+        },
+        frame notset
+      }
+    },
+    ka-blocks {
+      {
+        lambda { 318607749725028, 10, -15 },
+        k { 135353033317474, 10, -15 },
+        h { 43495656336816, 10, -14 },
+        gapped FALSE
+      },
+      {
+        lambda { 267, 10, -3 },
+        k { 41, 10, -3 },
+        h { 14, 10, -2 },
+        gapped TRUE
+      }
+    },
+    search-stats {
+      "Effective search space: 22914193128",
+      "Effective search space used: 22914193128",
+      "Length adjustment: 116"
+    }
+  },
+  messages {
+    {
+      code 1,
+      message "Warning: [tblastn] The parameter -num_descriptions is ignored
+ for output formats > 4 . Use -max_target_seqs to control output"
+    }
+  }
+}

@@ -1,0 +1,1231 @@
+BLASTN 2.9.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= AJ544886.1 Crassostrea gigas partial mRNA for glyceraldehyde
+3-phosphate dehydrogenase (GAPDH gene)
+
+Length=928
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       158        9e-37
+PGEN_.00g319240                                                       41.7       0.092
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 158 bits (85),  Expect = 9e-37
+ Identities = 188/239 (79%), Gaps = 2/239 (1%)
+ Strand=Plus/Plus
+
+Query  412    TCAGCAACGCATCCTGCACCACAAATTGTCTTGCCCCTCTTGCAAAAGTGATTC-ATGAG  470
+              ||||||| || || || || || || ||||| |||||  | || || || | || |||| 
+Sbjct  16248  TCAGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGT-AGTCAATGAC  16306
+
+Query  471    AAATTTGGAATTGTTGAAGGTTTGATGACAACAGTCCATGCGTACACAGCCACCCAGAAG  530
+              || ||||| |||||||| ||||| ||||| ||| ||||||| ||||| ||||||||||||
+Sbjct  16307  AATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCTTACACGGCCACCCAGAAG  16366
+
+Query  531    GTTGTGGATGGCCCAAGCAACAAGGATTGGCGTGGTGGTAGAGGTGCAGCCCAAAACATC  590
+                 || ||||| |||||||  ||||| ||||| || || ||    |||||||| ||||| 
+Sbjct  16367  ACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCAGAACATA  16426
+
+Query  591    ATCCCCTCCTCAACTGGAGCTGCCAAAGCTGTCGGAAAGGTTATCCCAGATTTGAACGG  649
+              ||||| || || ||||| |||||||| ||||| |||||||| || ||||| ||||||||
+Sbjct  16427  ATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAACGG  16485
+
+
+ Score = 65.8 bits (35),  Expect = 5e-09
+ Identities = 126/171 (74%), Gaps = 2/171 (1%)
+ Strand=Plus/Plus
+
+Query  744    ATTAAGGCAGCCATCAAGGCAGCCTCTGAGAATGAATTGAAAGGCATTTTGGGATACACA  803
+              |||||||| ||||| || |  || ||||||     ||||||||| ||  | || ||||||
+Sbjct  18146  ATTAAGGCTGCCATAAAAGTGGCGTCTGAGGGACCATTGAAAGGTATCCTTGGTTACACA  18205
+
+Query  804    GAAGATGATGTTGTTTCCCAGGATTTCCGTGGAGACAAGCGAAGCAGCATTTTTGATGCA  863
+              |||||| | ||||| |||   || |||  | | ||  | |  || ||||| |||||||||
+Sbjct  18206  GAAGATCAGGTTGTATCCTCTGACTTCGTTAGCGATGAACACAGTAGCATCTTTGATGCA  18265
+
+Query  864    AAGGCTGGAAT-TGCCTTGAATGACAATTTTGTGAAGCTTGTGTCTTGGTA  913
+                |||||| || | |||| ||||| || ||||  ||||||||||| |||||
+Sbjct  18266  TTGGCTGGCATCTCCCTT-AATGATAACTTTGCCAAGCTTGTGTCATGGTA  18315
+
+
+ Score = 60.2 bits (32),  Expect = 3e-07
+ Identities = 78/100 (78%), Gaps = 4/100 (4%)
+ Strand=Plus/Plus
+
+Query  312    GGAGGTGCAAAGAAAGTCATCATCTCTGCCCCCTCAGCTGACGCACCCATGTTTGTT-TG  370
+              || ||||||||||||||  | || || ||||| ||||| || ||||| ||||||||| ||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  371    TGGTGTCAATGCAGAAAAGTACTCCAAA-GACCAGAACAT  409
+               || || ||   ||||||||| | |||| |||  ||||||
+Sbjct  12817  -GGAGTGAACCAAGAAAAGTA-TACAAATGACATGAACAT  12854
+
+
+ Score = 54.7 bits (29),  Expect = 1e-05
+ Identities = 46/54 (85%), Gaps = 1/54 (2%)
+ Strand=Plus/Plus
+
+Query  655    TGACCGGAATGGCTTTCCGCGTACCAGTTCCAGATGTTTCCGTTGTTGAT-TTA  707
+              |||| |||||||| ||||| || |||||||||||||| || ||||| ||| |||
+Sbjct  17339  TGACTGGAATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATCTTA  17392
+
+
+ Score = 43.6 bits (23),  Expect = 0.026
+ Identities = 37/44 (84%), Gaps = 0/44 (0%)
+ Strand=Plus/Plus
+
+Query  60    GTTGTTGCAGTCAATGATCCTTTCATTGACCTTGACTATATGGT  103
+             || |||||| ||||||| || |||||||  |||||||| |||||
+Sbjct  4564  GTGGTTGCAATCAATGACCCCTTCATTGCTCTTGACTACATGGT  4607
+
+
+>PGEN_.00g319240 
+Length=34296
+
+ Score = 41.7 bits (22),  Expect = 0.092
+ Identities = 26/28 (93%), Gaps = 0/28 (0%)
+ Strand=Plus/Minus
+
+Query  38     AGCCTTGGACAAAGGAGTTGATGTTGTT  65
+              ||| ||||||||||||||||| ||||||
+Sbjct  25927  AGCATTGGACAAAGGAGTTGAAGTTGTT  25900
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 339151554000
+
+
+Query= XM_011446602.2 PREDICTED: Crassostrea gigas
+glyceraldehyde-3-phosphate dehydrogenase (LOC105340512), mRNA
+
+Length=1373
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       158        1e-36
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 158 bits (85),  Expect = 1e-36
+ Identities = 188/239 (79%), Gaps = 2/239 (1%)
+ Strand=Plus/Plus
+
+Query  553    TCAGCAACGCATCCTGCACCACAAATTGTCTTGCCCCTCTTGCAAAAGTGATTC-ATGAG  611
+              ||||||| || || || || || || ||||| |||||  | || || || | || |||| 
+Sbjct  16248  TCAGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGT-AGTCAATGAC  16306
+
+Query  612    AAATTTGGAATTGTTGAAGGCTTGATGACAACAGTCCATGCGTACACAGCCACCCAGAAG  671
+              || ||||| |||||||| || || ||||| ||| ||||||| ||||| ||||||||||||
+Sbjct  16307  AATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCTTACACGGCCACCCAGAAG  16366
+
+Query  672    GTTGTGGATGGCCCAAGCAACAAGGATTGGCGTGGTGGTAGAGGTGCAGCCCAAAACATC  731
+                 || ||||| |||||||  ||||| ||||| || || ||    |||||||| ||||| 
+Sbjct  16367  ACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCAGAACATA  16426
+
+Query  732    ATCCCCTCCTCAACTGGAGCTGCCAAAGCTGTCGGAAAGGTCATCCCAGATTTGAACGG  790
+              ||||| || || ||||| |||||||| ||||| ||||||||||| ||||| ||||||||
+Sbjct  16427  ATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAACGG  16485
+
+
+ Score = 65.8 bits (35),  Expect = 8e-09
+ Identities = 126/171 (74%), Gaps = 2/171 (1%)
+ Strand=Plus/Plus
+
+Query  885    ATTAAGGCAGCCATCAAGGCAGCCTCTGAGAATGAATTGAAAGGCATTTTGGGATACACA  944
+              |||||||| ||||| || |  || ||||||     ||||||||| ||  | || ||||||
+Sbjct  18146  ATTAAGGCTGCCATAAAAGTGGCGTCTGAGGGACCATTGAAAGGTATCCTTGGTTACACA  18205
+
+Query  945    GAAGATGATGTTGTTTCCCAGGATTTCCGTGGAGACAAGCGAAGCAGCATTTTTGATGCA  1004
+              |||||| | ||||| |||   || |||  | | ||  | |  || ||||| |||||||||
+Sbjct  18206  GAAGATCAGGTTGTATCCTCTGACTTCGTTAGCGATGAACACAGTAGCATCTTTGATGCA  18265
+
+Query  1005   AAGGCTGGAAT-TGCCTTGAATGACAATTTTGTGAAGCTTGTGTCTTGGTA  1054
+                |||||| || | |||| ||||| || ||||  ||||||||||| |||||
+Sbjct  18266  TTGGCTGGCATCTCCCTT-AATGATAACTTTGCCAAGCTTGTGTCATGGTA  18315
+
+
+ Score = 60.2 bits (32),  Expect = 4e-07
+ Identities = 78/100 (78%), Gaps = 4/100 (4%)
+ Strand=Plus/Plus
+
+Query  453    GGAGGTGCAAAGAAAGTCATCATCTCTGCCCCCTCAGCTGACGCACCCATGTTTGTT-TG  511
+              || ||||||||||||||  | || || ||||| ||||| || ||||| ||||||||| ||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  512    TGGTGTCAATGCAGAAAAGTACTCCAAA-GACCAGAACAT  550
+               || || ||   ||||||||| | |||| |||  ||||||
+Sbjct  12817  -GGAGTGAACCAAGAAAAGTA-TACAAATGACATGAACAT  12854
+
+
+ Score = 54.7 bits (29),  Expect = 2e-05
+ Identities = 46/54 (85%), Gaps = 1/54 (2%)
+ Strand=Plus/Plus
+
+Query  796    TGACCGGAATGGCTTTCCGCGTACCAGTTCCAGATGTTTCCGTTGTTGAT-TTA  848
+              |||| |||||||| ||||| || |||||||||||||| || ||||| ||| |||
+Sbjct  17339  TGACTGGAATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATCTTA  17392
+
+
+ Score = 49.1 bits (26),  Expect = 8e-04
+ Identities = 38/44 (86%), Gaps = 0/44 (0%)
+ Strand=Plus/Plus
+
+Query  201   GTTGTTGCAGTCAATGATCCCTTCATTGACCTTGACTATATGGT  244
+             || |||||| ||||||| ||||||||||  |||||||| |||||
+Sbjct  4564  GTGGTTGCAATCAATGACCCCTTCATTGCTCTTGACTACATGGT  4607
+
+
+ Score = 43.6 bits (23),  Expect = 0.038
+ Identities = 45/56 (80%), Gaps = 0/56 (0%)
+ Strand=Plus/Plus
+
+Query  1051   GGTACGACAATGAGTTTGGATACAGCTTCCGAGTGGTGGATCTTATCGAGCACATG  1106
+              |||| |||||||||||||| ||||| | ||| || ||||| || || |  ||||||
+Sbjct  21890  GGTATGACAATGAGTTTGGTTACAGTTGCCGTGTAGTGGACCTCATAGTCCACATG  21945
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 506843155700
+
+
+Query= KM816643.1 Pinctada fucata glyceraldehyde 3-phosphate dehydrogenase
+(GAPDH) mRNA, partial cds
+
+Length=1001
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       145        7e-33
+PGEN_.00g243810                                                       43.6       0.028
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 145 bits (78),  Expect = 7e-33
+ Identities = 187/240 (78%), Gaps = 6/240 (3%)
+ Strand=Plus/Plus
+
+Query  307    AGCAATGCCTCTTGCACCACAAACTGTTTAGCTCCACTCGCCAAGATAATCAACGACAAT  366
+              |||||||| || || || || |||||| | || ||| | |||||| || |||| ||||||
+Sbjct  16250  AGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGTAGTCAATGACAAT  16309
+
+Query  367    TTTGGCATTGAGGAAGGTTTGATGACCACTGTCCACGCCATTACA--GCTACCCAGAAAA  424
+              ||||||||||  || ||||| ||||||||  |||| ||  |||||  || |||||||| |
+Sbjct  16310  TTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGC--TTACACGGCCACCCAGAAGA  16367
+
+Query  425    CAGTGGACGGCCCAAGCCAG-AAGGACTGGCGCGGTGGACGCACTGCGGCCTCTAACATC  483
+              | || || || |||||| || |||||||||||||| ||  | || || |||   ||||| 
+Sbjct  16368  CGGTCGATGGTCCAAGC-AGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCAGAACATA  16426
+
+Query  484    ATACCATCCTCCACTGGAGCTGCCAAAGCCGTAGGCAAAGTTATACCAGAGTTAAATGGG  543
+              || ||||| |||||||| |||||||| || ||||| || || || |||||||| || |||
+Sbjct  16427  ATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAACGGG  16486
+
+
+ Score = 65.8 bits (35),  Expect = 6e-09
+ Identities = 47/53 (89%), Gaps = 0/53 (0%)
+ Strand=Plus/Plus
+
+Query  796    GTTTCCTGGTATGACAATGAGTTTGGGTACAGTAACCGAGTAGTGGACCTCAT  848
+              |||| | ||||||||||||||||||| ||||||  ||| ||||||||||||||
+Sbjct  21883  GTTTTCAGGTATGACAATGAGTTTGGTTACAGTTGCCGTGTAGTGGACCTCAT  21935
+
+
+ Score = 60.2 bits (32),  Expect = 3e-07
+ Identities = 56/68 (82%), Gaps = 0/68 (0%)
+ Strand=Plus/Plus
+
+Query  205    GGGGGAGCAAAGAAAGTGGTTATTTCTGCACCGTCTGCTGATGCTCCTATGTTTGTAATG  264
+              || || ||||||||||| ||||| || || || || || ||||| ||||||||||| |||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  265    GGGGTGAA  272
+              || |||||
+Sbjct  12817  GGAGTGAA  12824
+
+
+>PGEN_.00g243810 
+Length=40901
+
+ Score = 43.6 bits (23),  Expect = 0.028
+ Identities = 23/23 (100%), Gaps = 0/23 (0%)
+ Strand=Plus/Minus
+
+Query  977    ACGATAACaaaaaaaaaaaaaaa  999
+              |||||||||||||||||||||||
+Sbjct  18409  ACGATAACAAAAAAAAAAAAAAA  18387
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 366660513380
+
+
+Query= GQ150762.1 Ostrea edulis glyceraldehyde 3-phosphate dehydrogenase
+(GAPDH) mRNA, complete cds
+
+Length=1309
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       135        6e-30
+PGEN_.00g171520                                                       43.6       0.036
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 135 bits (73),  Expect = 6e-30
+ Identities = 185/240 (77%), Gaps = 4/240 (2%)
+ Strand=Plus/Plus
+
+Query  503    TCAGCAATGCTTCGTGCACCACTAACTGTCTTGCACCTCTTGCTAAAGTTA-TCCATGAG  561
+              ||||||||||||| || || ||||||||||| || ||  |||   ||| || || |||| 
+Sbjct  16248  TCAGCAATGCTTCATGTACAACTAACTGTCTGGC-CCCATTGGCCAAGGTAGTCAATGAC  16306
+
+Query  562    AAGTACGGAATTGTGGAGGGTTTAATGACAACGGTTCATGCATACACCGCCACTCAGAAG  621
+              || |  || ||||| |||||||||||||| ||  | ||||| ||||| ||||| ||||||
+Sbjct  16307  AATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCTTACACGGCCACCCAGAAG  16366
+
+Query  622    GTAGTAGATGGACCCAGCAACAAAGACTGGCGAGGTGGTCGTGGT-GCTGCCCAGAATAT  680
+                 || ||||| || ||||  || |||||||| || || |  |   || |||||||| ||
+Sbjct  16367  ACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGG-CAGGACAGCAGCCCAGAACAT  16425
+
+Query  681    CATCCCATCCTCCACTGGAGCAGCGAAGGCCGTCGGAAAGGTCATACCGGATTTGAACGG  740
+               |||||||| |||||||| || || ||||| || ||||||||||| || || ||||||||
+Sbjct  16426  AATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAACGG  16485
+
+
+ Score = 56.5 bits (30),  Expect = 5e-06
+ Identities = 61/76 (80%), Gaps = 2/76 (3%)
+ Strand=Plus/Plus
+
+Query  742    AAGTTAACTGGAATGGCCTTCCGTGTACCAGTTCCTGACGTATCTGTGGTGGATTTGACC  801
+              ||| | ||||||||||| ||||| || |||||||| || |||||||| || ||| | || 
+Sbjct  17335  AAGCTGACTGGAATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATCTTAC-  17393
+
+Query  802    TGCA-GACTCGACAAA  816
+              || | ||||||| |||
+Sbjct  17394  TGTACGACTCGAGAAA  17409
+
+
+ Score = 54.7 bits (29),  Expect = 2e-05
+ Identities = 40/45 (89%), Gaps = 2/45 (4%)
+ Strand=Plus/Plus
+
+Query  151   GTGGTTGCAATCAATGATCCCTTCATTGA-CTTGAATTACATGGT  194
+             ||||||||||||||||| ||||||||||  ||||| | |||||||
+Sbjct  4564  GTGGTTGCAATCAATGACCCCTTCATTGCTCTTGACT-ACATGGT  4607
+
+
+ Score = 47.3 bits (25),  Expect = 0.003
+ Identities = 47/57 (82%), Gaps = 3/57 (5%)
+ Strand=Plus/Plus
+
+Query  328    AAAGATGGTGCTGAATATATTGTCGATTCTACTGG-GTGCTTCACAACCTTGGACAA  383
+              |||| ||| || |||||| |||| || |||||||| ||| ||||| || ||||||||
+Sbjct  11146  AAAG-TGGCGCAGAATATGTTGTGGAGTCTACTGGCGTG-TTCACCACTTTGGACAA  11200
+
+
+ Score = 47.3 bits (25),  Expect = 0.003
+ Identities = 80/106 (75%), Gaps = 6/106 (6%)
+ Strand=Plus/Plus
+
+Query  390    GGCTCATATGAAAGGAGGCGCCAAGAAGGTCATAATTTCAGCACCGTCAGCAGATGCTCC  449
+              |||||||||    || || || ||||| ||  | || ||||| || ||||||||||| ||
+Sbjct  12744  GGCTCATATCGCTGGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACC  12803
+
+Query  450    CATGTTTGTT-TGTGGCGTAAACGCAGAGAAA--TATACCAAAGAC  492
+               ||||||||| || || || ||| || |||||  ||||| || |||
+Sbjct  12804  TATGTTTGTTATG-GGAGTGAAC-CA-AGAAAAGTATACAAATGAC  12846
+
+
+>PGEN_.00g171520 
+Length=10192
+
+ Score = 43.6 bits (23),  Expect = 0.036
+ Identities = 29/32 (91%), Gaps = 0/32 (0%)
+ Strand=Plus/Minus
+
+Query  1278  GAGCATAATGACaaaaaaaaaaaaaaaaaaaa  1309
+             ||||||||  | ||||||||||||||||||||
+Sbjct  8113  GAGCATAAGAAGAAAAAAAAAAAAAAAAAAAA  8082
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 482725711860
+
+
+Query= EF583608.1 Crassostrea virginica glyceraldehyde 3-phosphate
+dehydrogenase mRNA, partial cds
+
+Length=633
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       113        1e-23
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 113 bits (61),  Expect = 1e-23
+ Identities = 182/242 (75%), Gaps = 2/242 (1%)
+ Strand=Plus/Plus
+
+Query  202    TTGTCAGCAACGCATCCTGCACCACAAATTGTCTTGCCCCTCTTGCTAAAGTGATCCACG  261
+              || ||||||| || || || || || || ||||| |||||  | || || ||  || | |
+Sbjct  16245  TTTTCAGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGTAGTCAATG  16304
+
+Query  262    AGAAATTTGGAATCGTTGAAGGCTTGATGACAACAGTCCACGCCTACACAGCAACCCAGA  321
+              | || ||||| || ||||| || || ||||| ||| |||| || ||||| || |||||||
+Sbjct  16305  ACAATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCTTACACGGCCACCCAGA  16364
+
+Query  322    AGGTGGTAGATGGTCCAAGTAACAAGGATTGGCGTGGTGGTCGTGGT-GCTGCCCAGAAT  380
+              ||  ||| ||||||||||| |  ||||| ||||| || || |  |   || |||||||| 
+Sbjct  16365  AGACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGG-CAGGACAGCAGCCCAGAAC  16423
+
+Query  381    ATCATCCCCTCCTCCACAGGAGCAGCCAAGGCAGTGGGTAAGGTCATCCCAGACCTGAAC  440
+              || ||||| || ||||| || || |||||||| || || |||||||| |||||  |||||
+Sbjct  16424  ATAATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAAC  16483
+
+Query  441    GG  442
+              ||
+Sbjct  16484  GG  16485
+
+
+ Score = 54.7 bits (29),  Expect = 8e-06
+ Identities = 64/81 (79%), Gaps = 2/81 (2%)
+ Strand=Plus/Plus
+
+Query  439    ACGGCAAACTCACAGGAATGGCCTTCCGCGTGCCAGTTCCAGACGTCTCTGTGGTTGATC  498
+              || |||| || || |||||||| ||||| || ||||||||||| || ||||| || ||||
+Sbjct  17330  ACAGCAAGCTGACTGGAATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATC  17389
+
+Query  499    TAACCTGCA-GAATCCAGAAA  518
+              | || || | || || |||||
+Sbjct  17390  TTAC-TGTACGACTCGAGAAA  17409
+
+
+ Score = 49.1 bits (26),  Expect = 4e-04
+ Identities = 77/102 (75%), Gaps = 2/102 (2%)
+ Strand=Plus/Plus
+
+Query  105    GGAGGAGCAAAGAAAGTCATCATCTCGGCACCCTCAGCTGATGCACCCATGTTTGTT-TG  163
+              || || |||||||||||  | || || || || ||||| |||||||| ||||||||| ||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  164    TGGTGTCAACGAAGGCAAATACACTAAAGACCTAACCATTGT  205
+               || || ||| |||  || || || || ||| | | ||||||
+Sbjct  12817  -GGAGTGAACCAAGAAAAGTATACAAATGACATGAACATTGT  12857
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 228383224242
+
+
+Query= KJ875954.1 Mytilus galloprovincialis glyceraldehyde-3-phosphate
+dehydrogenase mRNA, partial cds
+
+Length=851
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       93.5       2e-17
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 93.5 bits (50),  Expect = 2e-17
+ Identities = 180/244 (74%), Gaps = 4/244 (2%)
+ Strand=Plus/Plus
+
+Query  264    TTGTCAGCAACGCATCCTGCACCACCAACTGCTTAGCCCCCCTGGCCAAGGTCATCCACG  323
+              || ||||||| || || || || || |||||  | |||||  ||||||||||  || | |
+Sbjct  16245  TTTTCAGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGTAGTCAATG  16304
+
+Query  324    ACCACTTCGGCATTGTGGAGGGGCTCATGACCACGGTGCACGCCATCACTGCCACCCAGA  383
+              || | || |||||||| |||||  | ||||||||  | || ||   ||| ||||||||||
+Sbjct  16305  ACAATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCTTACACGGCCACCCAGA  16364
+
+Query  384    AGACCGTGGACGGGCCCTCTGGGAA-G-CTGTGGCGTGACGGCCGCGGGGCCGCCCAGAA  441
+              |||| || || || ||     | || | |||  ||| || ||| |    || ||||||||
+Sbjct  16365  AGACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCG-GA-GGCAGGACAGCAGCCCAGAA  16422
+
+Query  442    CATCATCCCTGCCTCCACTGGCGCTGCCAAGGCCGTGGGCAAGGTCATCCCCGAGCTGAA  501
+              ||| |||||  | |||||||| ||||||||||| || || |||||||| || ||| ||||
+Sbjct  16423  CATAATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAA  16482
+
+Query  502    CGGG  505
+              ||||
+Sbjct  16483  CGGG  16486
+
+
+ Score = 58.4 bits (31),  Expect = 8e-07
+ Identities = 54/65 (83%), Gaps = 1/65 (2%)
+ Strand=Plus/Plus
+
+Query  188    ATCTCAGCCCCCTCCGCCGATGCCCCCATGTTTGTGATGGGCGTGAACCACGAGAAGTAT  247
+              || |||||||| || || ||||| || |||||||| ||||| |||||||| || ||||||
+Sbjct  12778  ATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATGGGAGTGAACCAAGAAAAGTAT  12837
+
+Query  248    GACAA  252
+               ||||
+Sbjct  12838  -ACAA  12841
+
+
+ Score = 49.1 bits (26),  Expect = 5e-04
+ Identities = 50/62 (81%), Gaps = 0/62 (0%)
+ Strand=Plus/Plus
+
+Query  759    TTTCCTGGTATGACAACGAATTTGGCTACAGCAACAGGGTGGTGGACCTCATGGTCCACA  818
+              ||| | |||||||||| || ||||| |||||   | | || ||||||||||| |||||||
+Sbjct  21884  TTTTCAGGTATGACAATGAGTTTGGTTACAGTTGCCGTGTAGTGGACCTCATAGTCCACA  21943
+
+Query  819    TG  820
+              ||
+Sbjct  21944  TG  21945
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 310135254380
+
+
+Query= KJ808668.1 Mytilus galloprovincialis clone MGE013_C21
+glyceraldehyde-3-phosphate dehydrogenase (GAPDH) mRNA, partial cds
+
+Length=856
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       97.1       2e-18
+PGEN_.00g114890                                                       43.6       0.024
+PGEN_.00g218680                                                       41.7       0.085
+PGEN_.00g202760                                                       41.7       0.085
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 97.1 bits (52),  Expect = 2e-18
+ Identities = 177/237 (75%), Gaps = 10/237 (4%)
+ Strand=Plus/Plus
+
+Query  432    TTGTCAGCAACGCTTCCTGCACAACCAACTGCTTGGCTCCTCTAGT-G-AAAATTA-TCA  488
+              || ||||||| ||||| || ||||| |||||  |||| || | | | |  ||  || |||
+Sbjct  16245  TTTTCAGCAATGCTTCATGTACAACTAACTGTCTGGC-CC-C-ATTGGCCAAGGTAGTCA  16301
+
+Query  489    ATGATAAATTTGGTATCGTAGAAGGATTAATGACCACAGTTCATGCAATGAC-C-GCTAC  546
+              |||| || ||||| || || || || |||||||||||| | |||||  | || | || ||
+Sbjct  16302  ATGACAATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCT-T-ACACGGCCAC  16359
+
+Query  547    ACAAAAGACCGTTGATGGTCCAAGCATGAAGGACTGGAGGGGAGGCAGAGGTGCATCACA  606
+               || ||||| || |||||||||||||  ||||||||| | ||||||||    ||| | ||
+Sbjct  16360  CCAGAAGACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCA  16419
+
+Query  607    AAATATCATCCCATCCTCAACAGGAGCAGCTAAAGCCGTCGGTAAAGTCATTCCAGA  663
+               || || |||||||| || || || || || || || || || || |||||||||||
+Sbjct  16420  GAACATAATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGA  16476
+
+
+ Score = 62.1 bits (33),  Expect = 6e-08
+ Identities = 75/96 (78%), Gaps = 0/96 (0%)
+ Strand=Plus/Plus
+
+Query  124   GGTGTATATGTTTAAATATGATTCCACACATGGTCGCTTTAAAGGAACAGTTGAAGCAAA  183
+             ||| || ||||| || |||||||| ||||||||  | ||||||||   |||    |||||
+Sbjct  6159  GGTATACATGTTCAAGTATGATTCTACACATGGAAGATTTAAAGGTGAAGTCAGTGCAAA  6218
+
+Query  184   GGATGGAAAACTTGTCATAAATGGAAATGCTATCAC  219
+             |||| | |||||||| ||||| ||||| || |||||
+Sbjct  6219  GGATAGTAAACTTGTGATAAACGGAAAAGCCATCAC  6254
+
+
+ Score = 54.7 bits (29),  Expect = 1e-05
+ Identities = 49/59 (83%), Gaps = 0/59 (0%)
+ Strand=Plus/Plus
+
+Query  245    GCTATCAAATGGGGAGACGCTGGAGCAGAATATGTTGTTGAGTCTACTGGTGTCTTCAC  303
+              || || |||||||| ||   ||| |||||||||||||| ||||||||||| || |||||
+Sbjct  11130  GCAATTAAATGGGGTGAAAGTGGCGCAGAATATGTTGTGGAGTCTACTGGCGTGTTCAC  11188
+
+
+ Score = 49.1 bits (26),  Expect = 5e-04
+ Identities = 69/89 (78%), Gaps = 6/89 (7%)
+ Strand=Plus/Plus
+
+Query  335    GGAGGTGCCAAGAAAGTGGTTATCTCAGCACCATCA--AG-TGACAGTCCAATGTTTGTA  391
+              || ||||| |||||||| ||||| ||||| ||||||  || || ||  || |||||||| 
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATG-CA--CCTATGTTTGTT  12813
+
+Query  392    ATGAGTGTCAATGAGGAAAAGTACACAAA  420
+              ||| | || ||  | |||||||| |||||
+Sbjct  12814  ATGGGAGTGAACCAAGAAAAGTATACAAA  12842
+
+
+ Score = 49.1 bits (26),  Expect = 5e-04
+ Identities = 42/50 (84%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  680    ACAGGAATGGCCTTCAGGGTACCAGTTCCAGATGTGTCAGTAGTAGATCT  729
+              || |||||||| ||| | || |||||||||||||| || || ||||||||
+Sbjct  17341  ACTGGAATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATCT  17390
+
+
+ Score = 49.1 bits (26),  Expect = 5e-04
+ Identities = 62/80 (78%), Gaps = 0/80 (0%)
+ Strand=Plus/Plus
+
+Query  752    GCATCTTATGATAACATTAAAGCAGCCATTAAAGCAGCATCTGAGGGTCCAATGAAGGGT  811
+              || || ||||| || ||||| || ||||| ||||  || |||||||| ||| |||| |||
+Sbjct  18131  GCTTCATATGAAAAAATTAAGGCTGCCATAAAAGTGGCGTCTGAGGGACCATTGAAAGGT  18190
+
+Query  812    GTTATGGGATACACAGAAGA  831
+               |  | || |||||||||||
+Sbjct  18191  ATCCTTGGTTACACAGAAGA  18210
+
+
+>PGEN_.00g114890 
+Length=24225
+
+ Score = 43.6 bits (23),  Expect = 0.024
+ Identities = 28/30 (93%), Gaps = 1/30 (3%)
+ Strand=Plus/Minus
+
+Query  118  ATACATGGTGTATATGTTTA-AATATGATT  146
+            ||||||| |||||||||||| |||||||||
+Sbjct  524  ATACATGATGTATATGTTTAGAATATGATT  495
+
+
+>PGEN_.00g218680 
+Length=33821
+
+ Score = 41.7 bits (22),  Expect = 0.085
+ Identities = 36/42 (86%), Gaps = 3/42 (7%)
+ Strand=Plus/Plus
+
+Query  472    TCTAG-TGAAAATTATCAATGATAAATTTGGTA-TCGTAGAA  511
+              ||||| |||||| |||||||  ||||||||| | ||||||||
+Sbjct  11337  TCTAGTTGAAAA-TATCAATTTTAAATTTGGGAGTCGTAGAA  11377
+
+
+>PGEN_.00g202760 
+Length=25212
+
+ Score = 41.7 bits (22),  Expect = 0.085
+ Identities = 27/29 (93%), Gaps = 1/29 (3%)
+ Strand=Plus/Plus
+
+Query  119   TACATGGTGTATATGTTTA-AATATGATT  146
+             ||||||||||||||||||| ||||| |||
+Sbjct  1106  TACATGGTGTATATGTTTAGAATATCATT  1134
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 312019429680
+
+
+Query= AB205404.1 Pinctada fucata GAPDH mRNA for glyceraldehyde 3-phosphate
+dehydrogenase, partial cds
+
+Length=603
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       145        4e-33
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 145 bits (78),  Expect = 4e-33
+ Identities = 187/240 (78%), Gaps = 6/240 (3%)
+ Strand=Plus/Plus
+
+Query  298    AGCAATGCCTCTTGCACCACAAACTGTTTAGCTCCACTCGCCAAGATAATCAACGACAAT  357
+              |||||||| || || || || |||||| | || ||| | |||||| || |||| ||||||
+Sbjct  16250  AGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGTAGTCAATGACAAT  16309
+
+Query  358    TTTGGCATTGAGGAAGGTTTGATGACCACTGTCCACGCCATTACA--GCTACCCAGAAAA  415
+              ||||||||||  || ||||| ||||||||  |||| ||  |||||  || |||||||| |
+Sbjct  16310  TTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGC--TTACACGGCCACCCAGAAGA  16367
+
+Query  416    CAGTGGACGGCCCAAGCCAG-AAGGACTGGCGCGGTGGACGCACTGCGGCCTCTAACATC  474
+              | || || || |||||| || |||||||||||||| ||  | || || |||   ||||| 
+Sbjct  16368  CGGTCGATGGTCCAAGC-AGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCAGAACATA  16426
+
+Query  475    ATACCATCCTCCACTGGAGCTGCCAAAGCCGTAGGCAAAGTTATACCAGAGTTAAATGGG  534
+              || ||||| |||||||| |||||||| || ||||| || || || |||||||| || |||
+Sbjct  16427  ATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAACGGG  16486
+
+
+ Score = 60.2 bits (32),  Expect = 2e-07
+ Identities = 56/68 (82%), Gaps = 0/68 (0%)
+ Strand=Plus/Plus
+
+Query  196    GGGGGAGCAAAGAAAGTGGTTATTTCTGCACCGTCTGCTGATGCTCCTATGTTTGTAATG  255
+              || || ||||||||||| ||||| || || || || || ||||| ||||||||||| |||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  256    GGGGTGAA  263
+              || |||||
+Sbjct  12817  GGAGTGAA  12824
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 217077124032
+
+
+Query= KY978473.1 Lampsilis siliquoidea glyceraldehyde 3-phosphate
+dehydrogenase mRNA, partial cds
+
+Length=487
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       80.5       1e-13
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 80.5 bits (43),  Expect = 1e-13
+ Identities = 77/94 (82%), Gaps = 0/94 (0%)
+ Strand=Plus/Plus
+
+Query  392    TTGTCAGCAATGCTTCCTGCACTACCAACTGTTTGGCCCCATTGGCTAAAGTGGTTCACG  451
+              || ||||||||||||| || || || |||||| ||||||||||||| || || ||  | |
+Sbjct  16245  TTTTCAGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGTAGTCAATG  16304
+
+Query  452    ATAAATTTGGCATTGTAGAGGCTTTGATGACCAC  485
+              | || ||||||||||| |||| ||| ||||||||
+Sbjct  16305  ACAATTTTGGCATTGTTGAGGGTTTAATGACCAC  16338
+
+
+ Score = 54.7 bits (29),  Expect = 6e-06
+ Identities = 75/98 (77%), Gaps = 0/98 (0%)
+ Strand=Plus/Plus
+
+Query  283    GCCCATTTTGCAGGTGGTGCTAAGAAAGTAATCATCTCTGCCCCTTCTGCTGATGCACCC  342
+              || ||| | || |||||||| ||||||||  | || || ||||| || || |||||||| 
+Sbjct  12745  GCTCATATCGCTGGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCT  12804
+
+Query  343    ATGTTTGTTGTTGGGGTTAATGAACAGAAGTACACAAA  380
+              ||||||||| | || || ||  || | ||||| |||||
+Sbjct  12805  ATGTTTGTTATGGGAGTGAACCAAGAAAAGTATACAAA  12842
+
+
+ Score = 51.0 bits (27),  Expect = 8e-05
+ Identities = 63/81 (78%), Gaps = 0/81 (0%)
+ Strand=Plus/Plus
+
+Query  84    GGTGTACATGTTCAAATATGATACAACCCATGGCAGATTCAAGGGTGATATTGGTGTAAA  143
+             ||| ||||||||||| |||||| | || ||||| ||||| || |||||  |  ||| |||
+Sbjct  6159  GGTATACATGTTCAAGTATGATTCTACACATGGAAGATTTAAAGGTGAAGTCAGTGCAAA  6218
+
+Query  144   GGATGGAAAGCTGGTCATAAA  164
+             |||| | || || || |||||
+Sbjct  6219  GGATAGTAAACTTGTGATAAA  6239
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 173360203220
+
+
+Query= KY707328.1 Crassostrea brasiliana glyceraldehyde-3-phosphate
+dehydrogenase mRNA, complete cds
+
+Length=1008
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       113        2e-23
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 113 bits (61),  Expect = 2e-23
+ Identities = 183/243 (75%), Gaps = 4/243 (2%)
+ Strand=Plus/Plus
+
+Query  431    TTGTCAGCAATGCATCTTGCACTACAAATTGTCTAGCTCCTCTTGCGAAAGTTATTC-AC  489
+              || |||||||||| || || || || || ||||| || ||  |||   ||| || || | 
+Sbjct  16245  TTTTCAGCAATGCTTCATGTACAACTAACTGTCTGGC-CCCATTGGCCAAGGTAGTCAAT  16303
+
+Query  490    GAGAAATTTGGAATCGTTGAAGGCTTGATGACCACAGTGCATGCCTACACAGCCACCCAG  549
+              || || ||||| || ||||| || || ||||||||| | ||||| ||||| |||||||||
+Sbjct  16304  GACAATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCTTACACGGCCACCCAG  16363
+
+Query  550    AAGGTTGTAGATGGACCCAGTAACAAGGACTGGCGTGGTGGTCGTGGT-GCTGCACAGAA  608
+              |||   || ||||| || || |  ||||||||||| || || |  |   || || |||||
+Sbjct  16364  AAGACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGG-CAGGACAGCAGCCCAGAA  16422
+
+Query  609    CATCATCCCCTCCTCTACCGGAGCTGCCAAGGCCGTCGGAAAGGTTATCCCAGACCTGAA  668
+              ||| ||||| || || || || ||||||||||| || |||||||| || |||||  ||||
+Sbjct  16423  CATAATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAA  16482
+
+Query  669    CGG  671
+              |||
+Sbjct  16483  CGG  16485
+
+
+ Score = 71.3 bits (38),  Expect = 1e-10
+ Identities = 81/102 (79%), Gaps = 2/102 (2%)
+ Strand=Plus/Plus
+
+Query  334    GGAGGTGCCAAGAAAGTCATAATTTCAGCCCCCTCAGCTGATGCACCTATGTTTGTT-TG  392
+              || ||||| ||||||||  | || |||||||| ||||| |||||||||||||||||| ||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  393    CGGTGTCAACGAAGGAAAATACACCAAGGACCTCACCATTGT  434
+               || || ||| ||| ||| || || || ||| | | ||||||
+Sbjct  12817  -GGAGTGAACCAAGAAAAGTATACAAATGACATGAACATTGT  12857
+
+
+ Score = 45.4 bits (24),  Expect = 0.008
+ Identities = 47/58 (81%), Gaps = 1/58 (2%)
+ Strand=Plus/Plus
+
+Query  673    AAACTCACAGGAATGGCCTTCCGAGTTCCAGTCCCAGACGTCTCTGTAGTTGA-CTTA  729
+              || || || |||||||| |||||||| ||||| ||||| || ||||| || || ||||
+Sbjct  17335  AAGCTGACTGGAATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATCTTA  17392
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 369298358800
+
+
+Query= KJ808669.1 Mytilus edulis clone MEE018_C21_N13
+glyceraldehyde-3-phosphate dehydrogenase (GAPDH) mRNA, partial cds
+
+Length=324
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       87.9       4e-16
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 87.9 bits (47),  Expect = 4e-16
+ Identities = 140/186 (75%), Gaps = 2/186 (1%)
+ Strand=Plus/Plus
+
+Query  68     GCATCTTATGATAACATTAAGGCCGCCATTAAAGCAGCCTCTGAGGGTCCAATGAAGGGT  127
+              || || ||||| || |||||||| ||||| ||||  || |||||||| ||| |||| |||
+Sbjct  18131  GCTTCATATGAAAAAATTAAGGCTGCCATAAAAGTGGCGTCTGAGGGACCATTGAAAGGT  18190
+
+Query  128    GTTATGGGATACACAGAAGACGATGTTGTCTCTGAAGATTTCCGTGGAGA-CAACAGGAG  186
+               |  | || |||||||||||  | ||||| ||    || |||  | | ||  ||||  ||
+Sbjct  18191  ATCCTTGGTTACACAGAAGATCAGGTTGTATCCTCTGACTTCGTTAGCGATGAACA-CAG  18249
+
+Query  187    TAGCATTTTTGATGCCAAAGCTGGAATCGCTCTTAATGATAACTTTGTAAAACTTGTTTC  246
+              |||||| ||||||||    ||||| ||| | ||||||||||||||||  || ||||| ||
+Sbjct  18250  TAGCATCTTTGATGCATTGGCTGGCATCTCCCTTAATGATAACTTTGCCAAGCTTGTGTC  18309
+
+Query  247    ATGGTA  252
+              ||||||
+Sbjct  18310  ATGGTA  18315
+
+
+ Score = 45.4 bits (24),  Expect = 0.002
+ Identities = 38/45 (84%), Gaps = 0/45 (0%)
+ Strand=Plus/Plus
+
+Query  1      AATGGCCTTCAGGGTACCAGTTCCAGATGTGTCAGTAGTAGATCT  45
+              |||||| ||| | || |||||||||||||| || || ||||||||
+Sbjct  17346  AATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATCT  17390
+
+
+ Score = 45.4 bits (24),  Expect = 0.002
+ Identities = 57/73 (78%), Gaps = 2/73 (3%)
+ Strand=Plus/Plus
+
+Query  240    TTG-TTTCATGGTATGACAATGAGTATGGATACAGCTGTAGAGTAATTGATCTATTACTA  298
+              ||| ||||| ||||||||||||||| ||| ||||| ||  | ||| | || ||  || | 
+Sbjct  21881  TTGTTTTCA-GGTATGACAATGAGTTTGGTTACAGTTGCCGTGTAGTGGACCTCATAGTC  21939
+
+Query  299    CACATGAATAAAG  311
+              ||||||| |||||
+Sbjct  21940  CACATGAGTAAAG  21952
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 112317676292
+
+
+Query= EU050637.1 Modiolus modiolus glyceraldehyde-3-phosphate
+dehydrogenase (GAPDH) mRNA, partial cds
+
+Length=160
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       67.6       2e-10
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 67.6 bits (36),  Expect = 2e-10
+ Identities = 107/142 (75%), Gaps = 2/142 (1%)
+ Strand=Plus/Plus
+
+Query  1      CACAGTCCATGC-CACTACAGCTACTCAAAAGACAGTTGATGGTCCTAGTAACAAAGACT  59
+              |||| |||||||  || || || || || ||||| || |||||||| || |  || ||||
+Sbjct  16336  CACAATCCATGCTTAC-ACGGCCACCCAGAAGACGGTCGATGGTCCAAGCAGTAAGGACT  16394
+
+Query  60     GGAGAGGTGGTAGAGGGGCTGCCCAGAATATCATCCCATCATCTACAGGAGCAGCTAAGG  119
+              || | || || ||    || |||||||| || |||||||| || || || || || ||||
+Sbjct  16395  GGCGCGGAGGCAGGACAGCAGCCCAGAACATAATCCCATCTTCCACTGGTGCTGCCAAGG  16454
+
+Query  120    CTGTTGGCAAAGTCATTCCAGA  141
+              |||| || || |||||||||||
+Sbjct  16455  CTGTAGGAAAGGTCATTCCAGA  16476
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 50886886635
+
+
+Query= LT627666.1 Crenomytilus grayanus partial mRNA for glyceraldehyde
+3-phosphate dehydrogenase (CgGAPDH gene)
+
+Length=380
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       111        3e-23
+PGEN_.00g318640                                                       41.7       0.036
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 111 bits (60),  Expect = 3e-23
+ Identities = 173/229 (76%), Gaps = 2/229 (1%)
+ Strand=Plus/Plus
+
+Query  153    TTGTCAGCAATGCTTCTTGCACCACCAACTGCTTGGCTCCTTTAGCCAAAATTGTCAATG  212
+              || ||||||||||||| || || || |||||  |||| || || |||||  | |||||||
+Sbjct  16245  TTTTCAGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGTAGTCAATG  16304
+
+Query  213    ACAAATTTGGCATCGTTGAAGGACTTATGACCACAGTCCACGCTATA-ACAGCTACGCAA  271
+              |||| |||||||| ||||| ||  | ||||||||| |||| ||| || || || || || 
+Sbjct  16305  ACAATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCT-TACACGGCCACCCAG  16363
+
+Query  272    AAGACTGTTGATGGCCCAAGTATGAAAGACTGGAGAGGAGGCAGAGGTGCATCACAAAAT  331
+              ||||| || ||||| ||||| |  || |||||| | ||||||||    ||| | || || 
+Sbjct  16364  AAGACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCAGAAC  16423
+
+Query  332    ATCATCCCATCCTCAACAGGAGCAGCTAAAGCCGTCGGTAAAGTCATTC  380
+              || |||||||| || || || || || || || || || || |||||||
+Sbjct  16424  ATAATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTC  16472
+
+
+ Score = 49.1 bits (26),  Expect = 2e-04
+ Identities = 50/62 (81%), Gaps = 0/62 (0%)
+ Strand=Plus/Plus
+
+Query  56     GGAGGTGCCAAGAAAGTGGTTATCTCAGCACCATCAAGTGATTGTCCTATGTTTGTAATG  115
+              || ||||| |||||||| ||||| ||||| ||||||   |||   ||||||||||| |||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  116    GG  117
+              ||
+Sbjct  12817  GG  12818
+
+
+>PGEN_.00g318640 
+Length=30066
+
+ Score = 41.7 bits (22),  Expect = 0.036
+ Identities = 33/38 (87%), Gaps = 1/38 (3%)
+ Strand=Plus/Minus
+
+Query  104    ATGTTTGTAATGGGTGTTAATGAAGGGCAGTACACCAA  141
+              |||||| |||| | |||||||||| || ||||||||||
+Sbjct  26567  ATGTTTTTAATTGATGTTAATGAAAGG-AGTACACCAA  26531
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 133035112471
+
+
+Query= KX129947.1 Pinctada fucata glyceraldehyde 3-phosphate dehydrogenase
+mRNA, complete cds
+
+Length=1174
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       145        9e-33
+PGEN_.00g243810                                                       43.6       0.033
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 145 bits (78),  Expect = 9e-33
+ Identities = 187/240 (78%), Gaps = 6/240 (3%)
+ Strand=Plus/Plus
+
+Query  480    AGCAATGCCTCTTGCACCACAAACTGTTTAGCTCCACTCGCCAAGATAATCAACGACAAT  539
+              |||||||| || || || || |||||| | || ||| | |||||| || |||| ||||||
+Sbjct  16250  AGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGTAGTCAATGACAAT  16309
+
+Query  540    TTTGGCATTGAGGAAGGTTTGATGACCACTGTCCACGCCATTACA--GCTACCCAGAAAA  597
+              ||||||||||  || ||||| ||||||||  |||| ||  |||||  || |||||||| |
+Sbjct  16310  TTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGC--TTACACGGCCACCCAGAAGA  16367
+
+Query  598    CAGTGGACGGCCCAAGCCAG-AAGGACTGGCGCGGTGGACGCACTGCGGCCTCTAACATC  656
+              | || || || |||||| || |||||||||||||| ||  | || || |||   ||||| 
+Sbjct  16368  CGGTCGATGGTCCAAGC-AGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCAGAACATA  16426
+
+Query  657    ATACCATCCTCCACTGGAGCTGCCAAAGCCGTAGGCAAAGTTATACCAGAGTTAAATGGG  716
+              || ||||| |||||||| |||||||| || ||||| || || || |||||||| || |||
+Sbjct  16427  ATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAACGGG  16486
+
+
+ Score = 65.8 bits (35),  Expect = 7e-09
+ Identities = 47/53 (89%), Gaps = 0/53 (0%)
+ Strand=Plus/Plus
+
+Query  969    GTTTCCTGGTATGACAATGAGTTTGGGTACAGTAACCGAGTAGTGGACCTCAT  1021
+              |||| | ||||||||||||||||||| ||||||  ||| ||||||||||||||
+Sbjct  21883  GTTTTCAGGTATGACAATGAGTTTGGTTACAGTTGCCGTGTAGTGGACCTCAT  21935
+
+
+ Score = 60.2 bits (32),  Expect = 3e-07
+ Identities = 56/68 (82%), Gaps = 0/68 (0%)
+ Strand=Plus/Plus
+
+Query  378    GGGGGAGCAAAGAAAGTGGTTATTTCTGCACCGTCTGCTGATGCTCCTATGTTTGTAATG  437
+              || || ||||||||||| ||||| || || || || || ||||| ||||||||||| |||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  438    GGGGTGAA  445
+              || |||||
+Sbjct  12817  GGAGTGAA  12824
+
+
+ Score = 45.4 bits (24),  Expect = 0.009
+ Identities = 42/51 (82%), Gaps = 0/51 (0%)
+ Strand=Plus/Plus
+
+Query  167   GGTGTACATGCTGAAGTACGACTCTACACATGGTAGATATAAGGGAGAAGT  217
+             ||| |||||| | ||||| || ||||||||||| |||| ||| || |||||
+Sbjct  6159  GGTATACATGTTCAAGTATGATTCTACACATGGAAGATTTAAAGGTGAAGT  6209
+
+
+>PGEN_.00g243810 
+Length=40901
+
+ Score = 43.6 bits (23),  Expect = 0.033
+ Identities = 23/23 (100%), Gaps = 0/23 (0%)
+ Strand=Plus/Minus
+
+Query  1150   ACGATAACaaaaaaaaaaaaaaa  1172
+              |||||||||||||||||||||||
+Sbjct  18409  ACGATAACAAAAAAAAAAAAAAA  18387
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 431852978760
+
+
+Query= JF919335.1 Crassostrea ariakensis clone Ca40 glyceraldehyde
+3-phosphate dehydrogenase protein mRNA, complete cds
+
+Length=1162
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g321780                                                       163        2e-38
+
+
+>PGEN_.00g321780 
+Length=21957
+
+ Score = 163 bits (88),  Expect = 2e-38
+ Identities = 189/239 (79%), Gaps = 2/239 (1%)
+ Strand=Plus/Plus
+
+Query  348    TCAGCAACGCATCCTGCACCACAAATTGTCTTGCCCCTCTTGCAAAAGTGATTC-ACGAG  406
+              ||||||| || || || || || || ||||| |||||  | || || || | || | || 
+Sbjct  16248  TCAGCAATGCTTCATGTACAACTAACTGTCTGGCCCCATTGGCCAAGGT-AGTCAATGAC  16306
+
+Query  407    AAATTTGGAATTGTTGAAGGTTTGATGACAACAGTCCATGCGTACACAGCCACCCAGAAG  466
+              || ||||| |||||||| ||||| ||||| ||| ||||||| ||||| ||||||||||||
+Sbjct  16307  AATTTTGGCATTGTTGAGGGTTTAATGACCACAATCCATGCTTACACGGCCACCCAGAAG  16366
+
+Query  467    GTTGTGGATGGCCCAAGCAACAAGGATTGGCGTGGTGGTAGAGGTGCAGCCCAAAACATC  526
+                 || ||||| |||||||  ||||| ||||| || || ||    |||||||| ||||| 
+Sbjct  16367  ACGGTCGATGGTCCAAGCAGTAAGGACTGGCGCGGAGGCAGGACAGCAGCCCAGAACATA  16426
+
+Query  527    ATCCCCTCCTCAACTGGAGCTGCCAAGGCTGTCGGAAAGGTCATCCCAGATTTGAACGG  585
+              ||||| || || ||||| |||||||||||||| ||||||||||| ||||| ||||||||
+Sbjct  16427  ATCCCATCTTCCACTGGTGCTGCCAAGGCTGTAGGAAAGGTCATTCCAGAGTTGAACGG  16485
+
+
+ Score = 60.2 bits (32),  Expect = 3e-07
+ Identities = 78/100 (78%), Gaps = 4/100 (4%)
+ Strand=Plus/Plus
+
+Query  248    GGAGGTGCAAAGAAAGTCATCATCTCTGCCCCCTCAGCTGACGCACCCATGTTTGTT-TG  306
+              || ||||||||||||||  | || || ||||| ||||| || ||||| ||||||||| ||
+Sbjct  12757  GGTGGTGCAAAGAAAGTTGTTATATCAGCCCCATCAGCAGATGCACCTATGTTTGTTATG  12816
+
+Query  307    TGGTGTCAATGAAGGAAAGTACTCCAAA-GACCAGAACAT  345
+               || || ||  ||| |||||| | |||| |||  ||||||
+Sbjct  12817  -GGAGTGAACCAAGAAAAGTA-TACAAATGACATGAACAT  12854
+
+
+ Score = 43.6 bits (23),  Expect = 0.032
+ Identities = 44/54 (81%), Gaps = 1/54 (2%)
+ Strand=Plus/Plus
+
+Query  591    TGACGGGAATGGCTTTCCGCGTACCAGTTCCAGACGTTTCCGTAGTTGAT-TTA  643
+              |||| |||||||| ||||| || ||||||||||| || || || || ||| |||
+Sbjct  17339  TGACTGGAATGGCATTCCGAGTCCCAGTTCCAGATGTATCTGTTGTAGATCTTA  17392
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 427330958040
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

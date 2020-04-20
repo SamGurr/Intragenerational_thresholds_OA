@@ -1,0 +1,764 @@
+BLASTN 2.9.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= JQ071880.1 Panopea generosa isolate Wash101 28S ribosomal RNA gene,
+partial sequence
+
+Length=565
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g057850                                                       113        1e-23
+PGEN_.00g218620                                                       52.8       3e-05
+PGEN_.00g218330                                                       52.8       3e-05
+
+
+>PGEN_.00g057850 
+Length=19642
+
+ Score = 113 bits (61),  Expect = 1e-23
+ Identities = 93/109 (85%), Gaps = 0/109 (0%)
+ Strand=Plus/Plus
+
+Query  457   CGGTTGGCCCAGGCAGGATCCCGTCGCTTGCGGCGGGCGCACTGCCGGCCCGTCCCGACA  516
+             |||||||||||||||||||||  | |||||||||||| ||| ||||||| ||||  ||||
+Sbjct  1309  CGGTTGGCCCAGGCAGGATCCAATAGCTTGCGGCGGGTGCATTGCCGGCTCGTCTTGACA  1368
+
+Query  517   GCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAAGA  565
+             |||| | ||||||  || ||||| |||||| ||||| ||||||||||||
+Sbjct  1369  GCATTGGCTGCGGAACGAAGCAAAAGCGCATACGTTAGGACCCGAAAGA  1417
+
+
+>PGEN_.00g218620 
+Length=38185
+
+ Score = 52.8 bits (28),  Expect = 3e-05
+ Identities = 44/52 (85%), Gaps = 0/52 (0%)
+ Strand=Plus/Minus
+
+Query  512   CGACAGCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAA  563
+             |||||| ||| || |||| | ||||||| |||||||||||||||| | ||||
+Sbjct  5250  CGACAGTATCCTCGGCGGCGAGGAGCAATAGCGCACACGTTGGGATCTGAAA  5199
+
+
+>PGEN_.00g218330 
+Length=40860
+
+ Score = 52.8 bits (28),  Expect = 3e-05
+ Identities = 44/52 (85%), Gaps = 0/52 (0%)
+ Strand=Plus/Minus
+
+Query  512   CGACAGCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAA  563
+             |||||| ||| || |||| | ||||||| |||||||||||||||| | ||||
+Sbjct  5216  CGACAGTATCCTCGGCGGCGAGGAGCAATAGCGCACACGTTGGGATCTGAAA  5165
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 202756063766
+
+
+Query= JQ071879.1 Panopea generosa isolate Cal2 28S ribosomal RNA gene,
+partial sequence
+
+Length=565
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g057850                                                       113        1e-23
+PGEN_.00g218620                                                       52.8       3e-05
+PGEN_.00g218330                                                       52.8       3e-05
+
+
+>PGEN_.00g057850 
+Length=19642
+
+ Score = 113 bits (61),  Expect = 1e-23
+ Identities = 93/109 (85%), Gaps = 0/109 (0%)
+ Strand=Plus/Plus
+
+Query  457   CGGTTGGCCCAGGCAGGATCCCGTCGCTTGCGGCGGGCGCACTGCCGGCCCGTCCCGACA  516
+             |||||||||||||||||||||  | |||||||||||| ||| ||||||| ||||  ||||
+Sbjct  1309  CGGTTGGCCCAGGCAGGATCCAATAGCTTGCGGCGGGTGCATTGCCGGCTCGTCTTGACA  1368
+
+Query  517   GCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAAGA  565
+             |||| | ||||||  || ||||| |||||| ||||| ||||||||||||
+Sbjct  1369  GCATTGGCTGCGGAACGAAGCAAAAGCGCATACGTTAGGACCCGAAAGA  1417
+
+
+>PGEN_.00g218620 
+Length=38185
+
+ Score = 52.8 bits (28),  Expect = 3e-05
+ Identities = 44/52 (85%), Gaps = 0/52 (0%)
+ Strand=Plus/Minus
+
+Query  512   CGACAGCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAA  563
+             |||||| ||| || |||| | ||||||| |||||||||||||||| | ||||
+Sbjct  5250  CGACAGTATCCTCGGCGGCGAGGAGCAATAGCGCACACGTTGGGATCTGAAA  5199
+
+
+>PGEN_.00g218330 
+Length=40860
+
+ Score = 52.8 bits (28),  Expect = 3e-05
+ Identities = 44/52 (85%), Gaps = 0/52 (0%)
+ Strand=Plus/Minus
+
+Query  512   CGACAGCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAA  563
+             |||||| ||| || |||| | ||||||| |||||||||||||||| | ||||
+Sbjct  5216  CGACAGTATCCTCGGCGGCGAGGAGCAATAGCGCACACGTTGGGATCTGAAA  5165
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 202756063766
+
+
+Query= KC429479.1 Panopea generosa voucher BivAToL-431 28S ribosomal RNA
+gene, partial sequence
+
+Length=774
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g142400                                                       206        3e-51
+
+
+>PGEN_.00g142400 
+Length=14576
+
+ Score = 206 bits (111),  Expect = 3e-51
+ Identities = 142/157 (90%), Gaps = 1/157 (1%)
+ Strand=Plus/Minus
+
+Query  226    AGTCGGGTTGTTTGGGAATGCAGCCCAAAGCGGGTGGTAAACTCCATCTAAGGCTAAATA  285
+              |||| |||||||||| |||||||||  || ||||||||||||||||||||||||||||||
+Sbjct  13409  AGTCAGGTTGTTTGGAAATGCAGCC-GAATCGGGTGGTAAACTCCATCTAAGGCTAAATA  13351
+
+Query  286    CAGGCACGAGTCCGATAGCGGACAAGTACCGTGAGGGAAAGTTGAAAAGAACTTTGAAGA  345
+              ||||||| |||||||||||||| ||||||||||| ||||||||||||| |||| ||||||
+Sbjct  13350  CAGGCACAAGTCCGATAGCGGATAAGTACCGTGAAGGAAAGTTGAAAATAACTGTGAAGA  13291
+
+Query  346    GAGAGTTCAAGAGTACGTGAAACCGCATAGAGGCAAA  382
+              || |||||||||  || |||||||| |||||||||||
+Sbjct  13290  GATAGTTCAAGAACACATGAAACCGTATAGAGGCAAA  13254
+
+
+ Score = 124 bits (67),  Expect = 7e-27
+ Identities = 88/98 (90%), Gaps = 2/98 (2%)
+ Strand=Plus/Minus
+
+Query  318    GAGGGAAAGTTGAAAAGAACTTTGAAG--AGAGAGTTCAAGAGTACGTGAAACCGCATAG  375
+              |||| ||| ||||||||||||  ||||  |||||||||||||||||||||||||||||||
+Sbjct  13261  GAGGCAAATTTGAAAAGAACTGCGAAGGGAGAGAGTTCAAGAGTACGTGAAACCGCATAG  13202
+
+Query  376    AGGCAAACGGGTGGATCCGCAGTGTCGACCCGGGGAAT  413
+              || ||||||| ||||||||||||||||||| ||| |||
+Sbjct  13201  AGTCAAACGGTTGGATCCGCAGTGTCGACCTGGGTAAT  13164
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 281521895229
+
+
+Query= JF899190.1 Panopea generosa 28S ribosomal RNA gene, partial sequence
+
+Length=1332
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g142400                                                       206        4e-51
+PGEN_.00g057850                                                       115        8e-24
+PGEN_.00g218620                                                       54.7       2e-05
+PGEN_.00g218330                                                       54.7       2e-05
+
+
+>PGEN_.00g142400 
+Length=14576
+
+ Score = 206 bits (111),  Expect = 4e-51
+ Identities = 142/157 (90%), Gaps = 1/157 (1%)
+ Strand=Plus/Minus
+
+Query  195    AGTCGGGTTGTTTGGGAATGCAGCCCAAAGCGGGTGGTAAACTCCATCTAAGGCTAAATA  254
+              |||| |||||||||| |||||||||  || ||||||||||||||||||||||||||||||
+Sbjct  13409  AGTCAGGTTGTTTGGAAATGCAGCC-GAATCGGGTGGTAAACTCCATCTAAGGCTAAATA  13351
+
+Query  255    CAGGCACGAGTCCGATAGCGGACAAGTACCGTGAGGGAAAGTTGAAAAGAACTTTGAAGA  314
+              ||||||| |||||||||||||| ||||||||||| ||||||||||||| |||| ||||||
+Sbjct  13350  CAGGCACAAGTCCGATAGCGGATAAGTACCGTGAAGGAAAGTTGAAAATAACTGTGAAGA  13291
+
+Query  315    GAGAGTTCAAGAGTACGTGAAACCGCATAGAGGCAAA  351
+              || |||||||||  || |||||||| |||||||||||
+Sbjct  13290  GATAGTTCAAGAACACATGAAACCGTATAGAGGCAAA  13254
+
+
+ Score = 124 bits (67),  Expect = 1e-26
+ Identities = 88/98 (90%), Gaps = 2/98 (2%)
+ Strand=Plus/Minus
+
+Query  287    GAGGGAAAGTTGAAAAGAACTTTGAAG--AGAGAGTTCAAGAGTACGTGAAACCGCATAG  344
+              |||| ||| ||||||||||||  ||||  |||||||||||||||||||||||||||||||
+Sbjct  13261  GAGGCAAATTTGAAAAGAACTGCGAAGGGAGAGAGTTCAAGAGTACGTGAAACCGCATAG  13202
+
+Query  345    AGGCAAACGGGTGGATCCGCAGTGTCGACCCGGGGAAT  382
+              || ||||||| ||||||||||||||||||| ||| |||
+Sbjct  13201  AGTCAAACGGTTGGATCCGCAGTGTCGACCTGGGTAAT  13164
+
+
+>PGEN_.00g057850 
+Length=19642
+
+ Score = 115 bits (62),  Expect = 8e-24
+ Identities = 94/110 (85%), Gaps = 0/110 (0%)
+ Strand=Plus/Plus
+
+Query  833   CGGTTGGCCCAGGCAGGATCCCGTCGCTTGCGGCGGGCGCACTGCCGGCCCGTCCCGACA  892
+             |||||||||||||||||||||  | |||||||||||| ||| ||||||| ||||  ||||
+Sbjct  1309  CGGTTGGCCCAGGCAGGATCCAATAGCTTGCGGCGGGTGCATTGCCGGCTCGTCTTGACA  1368
+
+Query  893   GCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAAGAT  942
+             |||| | ||||||  || ||||| |||||| ||||| |||||||||||||
+Sbjct  1369  GCATTGGCTGCGGAACGAAGCAAAAGCGCATACGTTAGGACCCGAAAGAT  1418
+
+
+>PGEN_.00g218620 
+Length=38185
+
+ Score = 54.7 bits (29),  Expect = 2e-05
+ Identities = 47/56 (84%), Gaps = 0/56 (0%)
+ Strand=Plus/Minus
+
+Query  888   CGACAGCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAAGATG  943
+             |||||| ||| || |||| | ||||||| |||||||||||||||| | |||| |||
+Sbjct  5250  CGACAGTATCCTCGGCGGCGAGGAGCAATAGCGCACACGTTGGGATCTGAAATATG  5195
+
+
+>PGEN_.00g218330 
+Length=40860
+
+ Score = 54.7 bits (29),  Expect = 2e-05
+ Identities = 47/56 (84%), Gaps = 0/56 (0%)
+ Strand=Plus/Minus
+
+Query  888   CGACAGCATCGTCTGCGGGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAAGATG  943
+             |||||| ||| || |||| | ||||||| |||||||||||||||| | |||| |||
+Sbjct  5216  CGACAGTATCCTCGGCGGCGAGGAGCAATAGCGCACACGTTGGGATCTGAAATATG  5161
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 491392918240
+
+
+Query= AH006003.2 Trichomya hirsuta 28S ribosomal RNA genes, partial
+sequence
+
+Length=585
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g254950                                                       124        6e-27
+PGEN_.00g262300                                                       104        7e-21
+PGEN_.00g314810                                                       82.4       3e-14
+PGEN_.00g155530                                                       71.3       7e-11
+PGEN_.00g030340                                                       69.4       3e-10
+
+
+>PGEN_.00g254950 
+Length=18204
+
+ Score = 124 bits (67),  Expect = 6e-27
+ Identities = 85/94 (90%), Gaps = 0/94 (0%)
+ Strand=Plus/Plus
+
+Query  432    TACAGACCGTGAAAGCGTGGCCTATCGATCCTTTTGACTTTAAGAGTTTTAAGCAAGAGG  491
+              |||||||||| ||||||| ||||||||||| ||||||| ||||  ||||||| |||||||
+Sbjct  14718  TACAGACCGTCAAAGCGTTGCCTATCGATCATTTTGACGTTAAATGTTTTAAACAAGAGG  14777
+
+Query  492    TGTCAGAAAAGTTACCACAGGGATAACTGGCTTG  525
+              ||||||||||||||| |||||||||| |||||||
+Sbjct  14778  TGTCAGAAAAGTTACTACAGGGATAAATGGCTTG  14811
+
+
+>PGEN_.00g262300 
+Length=64682
+
+ Score = 104 bits (56),  Expect = 7e-21
+ Identities = 72/80 (90%), Gaps = 0/80 (0%)
+ Strand=Plus/Plus
+
+Query  336    GGTAACGCAGGTGTCCTAAGGTGAGCTCAGTGAGGACGGAAACCTCACGTAGAGTAAAAG  395
+              |||||||||||||||||||||||||||||| || |||||||||||   ||| | ||||||
+Sbjct  49707  GGTAACGCAGGTGTCCTAAGGTGAGCTCAGCGAAGACGGAAACCTTGAGTAAAATAAAAG  49766
+
+Query  396    GGCAAAAGCTCACTTGATTT  415
+              | ||||||||||||||||||
+Sbjct  49767  GACAAAAGCTCACTTGATTT  49786
+
+
+>PGEN_.00g314810 
+Length=1589
+
+ Score = 82.4 bits (44),  Expect = 3e-14
+ Identities = 49/51 (96%), Gaps = 1/51 (2%)
+ Strand=Plus/Plus
+
+Query  408  CTTGATTTTGATTTTCAGTACGAATACAGACCGTGAAAGCGTGGCCTATCG  458
+            |||| |||| |||||||||||||||||||||||||||||||||||||||||
+Sbjct  909  CTTG-TTTTAATTTTCAGTACGAATACAGACCGTGAAAGCGTGGCCTATCG  958
+
+
+>PGEN_.00g155530 
+Length=180039
+
+ Score = 71.3 bits (38),  Expect = 7e-11
+ Identities = 56/65 (86%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  338    TAACGCAGGTGTCCTAAGGTGAGCTCAGTGAGGACGGAAACCTCACGTAGAGTAAAAGGG  397
+              |||| ||| || ||||||||||||||||  || ||||||||||| || |||| |||||||
+Sbjct  18053  TAACACAGCTGCCCTAAGGTGAGCTCAGCAAGTACGGAAACCTCGCGCAGAGCAAAAGGG  18112
+
+Query  398    CAAAA  402
+              |||||
+Sbjct  18113  CAAAA  18117
+
+
+ Score = 45.4 bits (24),  Expect = 0.004
+ Identities = 26/27 (96%), Gaps = 0/27 (0%)
+ Strand=Plus/Plus
+
+Query  450    GGCCTATCGATCCTTTTGACTTTAAGA  476
+              || ||||||||||||||||||||||||
+Sbjct  18120  GGTCTATCGATCCTTTTGACTTTAAGA  18146
+
+
+>PGEN_.00g030340 
+Length=6961
+
+ Score = 69.4 bits (37),  Expect = 3e-10
+ Identities = 69/84 (82%), Gaps = 4/84 (5%)
+ Strand=Plus/Plus
+
+Query  336  GGTAACGCAGGTGTCCTAAGGTGAGCTCAGTGAGGACGGAAACCTCACGTAGAGTAAAAG  395
+            ||||||| ||||||| || | ||||||| | |  | |||||||||| |||| || |||||
+Sbjct  433  GGTAACGTAGGTGTCGTACGATGAGCTC-G-G-CG-CGGAAACCTCGCGTACAGCAAAAG  488
+
+Query  396  GGCAAAAGCTCACTTGATTTTGAT  419
+            | ||||||||  ||||||||||||
+Sbjct  489  GACAAAAGCTGTCTTGATTTTGAT  512
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 210293463906
+
+
+Query= MF668492.1 Donax variegatus isolate Dvar 28S Hap4 28S ribosomal RNA
+gene, partial sequence
+
+Length=719
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 260794044844
+
+
+Query= AH005969.2 Anadara trapezia 28S ribosomal RNA genes, partial
+sequence
+
+Length=582
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g254950                                                       119        3e-25
+PGEN_.00g262300                                                       115        3e-24
+PGEN_.00g155530                                                       82.4       3e-14
+PGEN_.00g314810                                                       76.8       2e-12
+PGEN_.00g186790                                                       76.8       2e-12
+
+
+>PGEN_.00g254950 
+Length=18204
+
+ Score = 119 bits (64),  Expect = 3e-25
+ Identities = 84/94 (89%), Gaps = 0/94 (0%)
+ Strand=Plus/Plus
+
+Query  429    TACAGACCGTGAAAGCGTGGCCTATCGATCCTTTTGACTTTAGGAGTTTTAAGCAAGAGG  488
+              |||||||||| ||||||| ||||||||||| ||||||| |||   ||||||| |||||||
+Sbjct  14718  TACAGACCGTCAAAGCGTTGCCTATCGATCATTTTGACGTTAAATGTTTTAAACAAGAGG  14777
+
+Query  489    TGTCAGAAAAGTTACCACAGGGATAACTGGCTTG  522
+              ||||||||||||||| |||||||||| |||||||
+Sbjct  14778  TGTCAGAAAAGTTACTACAGGGATAAATGGCTTG  14811
+
+
+>PGEN_.00g262300 
+Length=64682
+
+ Score = 115 bits (62),  Expect = 3e-24
+ Identities = 83/93 (89%), Gaps = 1/93 (1%)
+ Strand=Plus/Plus
+
+Query  333    GGTAACGCAGGTGTCCTAAGGTGAGCTCAGCGAGGACGGAAACCTCGCGTAGAGTAAAAG  392
+              ||||||||||||||||||||||||||||||||| ||||||||||| | ||| | ||||||
+Sbjct  49707  GGTAACGCAGGTGTCCTAAGGTGAGCTCAGCGAAGACGGAAACCTTGAGTAAAATAAAAG  49766
+
+Query  393    GGCAAAAGCTCACTTGATTTTGATTTTCAGTAT  425
+              | ||||||||||||||||||  |||  ||||||
+Sbjct  49767  GACAAAAGCTCACTTGATTTA-ATTAACAGTAT  49798
+
+
+>PGEN_.00g155530 
+Length=180039
+
+ Score = 82.4 bits (44),  Expect = 3e-14
+ Identities = 58/65 (89%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  335    TAACGCAGGTGTCCTAAGGTGAGCTCAGCGAGGACGGAAACCTCGCGTAGAGTAAAAGGG  394
+              |||| ||| || ||||||||||||||||| || |||||||||||||| |||| |||||||
+Sbjct  18053  TAACACAGCTGCCCTAAGGTGAGCTCAGCAAGTACGGAAACCTCGCGCAGAGCAAAAGGG  18112
+
+Query  395    CAAAA  399
+              |||||
+Sbjct  18113  CAAAA  18117
+
+
+>PGEN_.00g314810 
+Length=1589
+
+ Score = 76.8 bits (41),  Expect = 2e-12
+ Identities = 48/51 (94%), Gaps = 1/51 (2%)
+ Strand=Plus/Plus
+
+Query  405  CTTGATTTTGATTTTCAGTATGAATACAGACCGTGAAAGCGTGGCCTATCG  455
+            |||| |||| |||||||||| ||||||||||||||||||||||||||||||
+Sbjct  909  CTTG-TTTTAATTTTCAGTACGAATACAGACCGTGAAAGCGTGGCCTATCG  958
+
+
+>PGEN_.00g186790 
+Length=111622
+
+ Score = 76.8 bits (41),  Expect = 2e-12
+ Identities = 70/84 (83%), Gaps = 1/84 (1%)
+ Strand=Plus/Plus
+
+Query  341    AGGTGTCCTAAGGTGAGCTCAGCGAGGACGGAAACCTCGCG-TAGAGTAAAAGGGCAAAA  399
+              ||||||||| |||||| |||||| ||  ||||| | | |||  | || ||||||||||||
+Sbjct  83712  AGGTGTCCTGAGGTGATCTCAGCAAGAGCGGAATCGTTGCGAAAAAGCAAAAGGGCAAAA  83771
+
+Query  400    GCTCACTTGATTTTGATTTTCAGT  423
+              | ||| ||||||||||||||||||
+Sbjct  83772  GTTCAATTGATTTTGATTTTCAGT  83795
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 209162853885
+
+
+Query= KP761085.1 Hiatella sp. A HML-2015 28S ribosomal RNA gene, partial
+sequence
+
+Length=678
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g057850                                                       71.3       8e-11
+PGEN_.00g218620                                                       43.6       0.018
+PGEN_.00g218330                                                       43.6       0.018
+
+
+>PGEN_.00g057850 
+Length=19642
+
+ Score = 71.3 bits (38),  Expect = 8e-11
+ Identities = 83/104 (80%), Gaps = 6/104 (6%)
+ Strand=Plus/Plus
+
+Query  99    AGGCAGGATCCCGTCGCTTGCGGCGGGCGCACTGCCGGCCCGTCTCGTCGCGGCATT-GC  157
+             |||||||||||  | |||||||||||| ||| ||||||| |||||  |  | ||||| ||
+Sbjct  1319  AGGCAGGATCCAATAGCTTGCGGCGGGTGCATTGCCGGCTCGTCT--TGACAGCATTGGC  1376
+
+Query  158   -CCGTGAGGCGGAGCAAGAGCGCACACGTTGGGACCCGAAAGAT  200
+               || ||  || ||||| |||||| ||||| |||||||||||||
+Sbjct  1377  TGCG-GA-ACGAAGCAAAAGCGCATACGTTAGGACCCGAAAGAT  1418
+
+
+>PGEN_.00g218620 
+Length=38185
+
+ Score = 43.6 bits (23),  Expect = 0.018
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Minus
+
+Query  167   GGAGCAAGAGCGCACACGTTGGGACCCGAAAGATG  201
+             ||||||| |||||||||||||||| | |||| |||
+Sbjct  5229  GGAGCAATAGCGCACACGTTGGGATCTGAAATATG  5195
+
+
+>PGEN_.00g218330 
+Length=40860
+
+ Score = 43.6 bits (23),  Expect = 0.018
+ Identities = 31/35 (89%), Gaps = 0/35 (0%)
+ Strand=Plus/Minus
+
+Query  167   GGAGCAAGAGCGCACACGTTGGGACCCGAAAGATG  201
+             ||||||| |||||||||||||||| | |||| |||
+Sbjct  5195  GGAGCAATAGCGCACACGTTGGGATCTGAAATATG  5161
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 245342374557
+
+
+Query= MN889038.1 Botula silicula isolate 28S rDNA large subunit ribosomal
+RNA gene, partial sequence
+
+Length=1111
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g142400                                                       178        8e-43
+
+
+>PGEN_.00g142400 
+Length=14576
+
+ Score = 178 bits (96),  Expect = 8e-43
+ Identities = 137/157 (87%), Gaps = 1/157 (1%)
+ Strand=Plus/Minus
+
+Query  225    AGTCGGGTTGTTTGAGAATGCAGCCCAAAGCGGGTGGTAAACTCCATCTAAGGCTAAATA  284
+              |||| |||||||||  ||||||| || || ||||||||||||||||||||||||||||||
+Sbjct  13409  AGTCAGGTTGTTTGGAAATGCAG-CCGAATCGGGTGGTAAACTCCATCTAAGGCTAAATA  13351
+
+Query  285    CCGACACGAGTCCGATAGCGGACAAGTACCGTGAGGGAAAGTTGAAAAGAACTTTGAAGA  344
+              | | ||| |||||||||||||| ||||||||||| ||||||||||||| |||| ||||||
+Sbjct  13350  CAGGCACAAGTCCGATAGCGGATAAGTACCGTGAAGGAAAGTTGAAAATAACTGTGAAGA  13291
+
+Query  345    GAGAGTTCAAGAGTACGTGAAACCGCTTAGAGGTAAA  381
+              || |||||||||  || ||||||||  |||||| |||
+Sbjct  13290  GATAGTTCAAGAACACATGAAACCGTATAGAGGCAAA  13254
+
+
+ Score = 97.1 bits (52),  Expect = 2e-18
+ Identities = 83/98 (85%), Gaps = 2/98 (2%)
+ Strand=Plus/Minus
+
+Query  317    GAGGGAAAGTTGAAAAGAACTTTGAAG--AGAGAGTTCAAGAGTACGTGAAACCGCTTAG  374
+              |||| ||| ||||||||||||  ||||  ||||||||||||||||||||||||||| |||
+Sbjct  13261  GAGGCAAATTTGAAAAGAACTGCGAAGGGAGAGAGTTCAAGAGTACGTGAAACCGCATAG  13202
+
+Query  375    AGGTAAACGGGTGGATCCGCAAAGTCGGCCCGGGGAAT  412
+              ||  |||||| ||||||||||  |||| || ||| |||
+Sbjct  13201  AGTCAAACGGTTGGATCCGCAGTGTCGACCTGGGTAAT  13164
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 408112369980
+
+
+Query= MK142650.1 Xylophaga oregona isolate Bv346_11E-28S 28S ribosomal RNA
+gene, partial sequence
+
+Length=974
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g142400                                                       174        9e-42
+PGEN_.00g057850                                                       58.4       1e-06
+PGEN_.00g239850                                                       51.0       2e-04
+PGEN_.00g239430                                                       51.0       2e-04
+
+
+>PGEN_.00g142400 
+Length=14576
+
+ Score = 174 bits (94),  Expect = 9e-42
+ Identities = 133/152 (88%), Gaps = 1/152 (1%)
+ Strand=Plus/Minus
+
+Query  136    AGTCGGGTTGTTTGGGAATGCAGCCCCAAGCGGGTGGTAAACTCCACCTAAGGCTAAATA  195
+              |||| |||||||||| |||||||||  || |||||||||||||||| |||||||||||||
+Sbjct  13409  AGTCAGGTTGTTTGGAAATGCAGCC-GAATCGGGTGGTAAACTCCATCTAAGGCTAAATA  13351
+
+Query  196    CTGGCACGAGTCCGATAGCGGACAAGTACCGTGAGGGAAAGTTGAAAAGAACTTTGAAGA  255
+              | ||||| |||||||||||||| ||||||||||| ||||||||||||| |||| ||||||
+Sbjct  13350  CAGGCACAAGTCCGATAGCGGATAAGTACCGTGAAGGAAAGTTGAAAATAACTGTGAAGA  13291
+
+Query  256    GAGAGTTCAAGAGTACGTGAAACTGTGCAGAG  287
+              || |||||||||  || |||||| ||  ||||
+Sbjct  13290  GATAGTTCAAGAACACATGAAACCGTATAGAG  13259
+
+
+ Score = 80.5 bits (43),  Expect = 2e-13
+ Identities = 70/83 (84%), Gaps = 2/83 (2%)
+ Strand=Plus/Minus
+
+Query  228    GAGGGAAAGTTGAAAAGAACTTTGAAG--AGAGAGTTCAAGAGTACGTGAAACTGTGCAG  285
+              |||| ||| ||||||||||||  ||||  |||||||||||||||||||||||| |   ||
+Sbjct  13261  GAGGCAAATTTGAAAAGAACTGCGAAGGGAGAGAGTTCAAGAGTACGTGAAACCGCATAG  13202
+
+Query  286    AGCTAAACGGGTGGATCCGCAGT  308
+              ||  |||||| ||||||||||||
+Sbjct  13201  AGTCAAACGGTTGGATCCGCAGT  13179
+
+
+>PGEN_.00g057850 
+Length=19642
+
+ Score = 58.4 bits (31),  Expect = 1e-06
+ Identities = 87/114 (76%), Gaps = 4/114 (4%)
+ Strand=Plus/Plus
+
+Query  740   CGGTTGGCCTAGGCAGGATCGCGTACTCCGCAAGGGGTGTGCGCACTGCCGGCCCGTCTC  799
+             ||||||||| |||||||||| |  | |  ||  | || | | ||| ||||||| ||||| 
+Sbjct  1309  CGGTTGGCCCAGGCAGGATC-C--AAT-AGCTTGCGGCGGGTGCATTGCCGGCTCGTCTT  1364
+
+Query  800   GACGGCATTGCCCGCGAGGCGGAGCAAGAGCGCACACGCTGGGACCCGAAAGAT  853
+             ||| |||||| | |||   || ||||| |||||| ||| | |||||||||||||
+Sbjct  1365  GACAGCATTGGCTGCGGAACGAAGCAAAAGCGCATACGTTAGGACCCGAAAGAT  1418
+
+
+>PGEN_.00g239850 
+Length=12395
+
+ Score = 51.0 bits (27),  Expect = 2e-04
+ Identities = 46/55 (84%), Gaps = 2/55 (4%)
+ Strand=Plus/Minus
+
+Query  641    TCCACCCGACCCGTCTTGAAACACGGACCAAGGAGTCTAGCATGTGCGCGAGTCA  695
+              |||| ||||||||||  | | |||| | |||||| |||||||||||| |||||||
+Sbjct  10851  TCCAACCGACCCGTCGGGTACCACG-A-CAAGGACTCTAGCATGTGCACGAGTCA  10799
+
+
+>PGEN_.00g239430 
+Length=16459
+
+ Score = 51.0 bits (27),  Expect = 2e-04
+ Identities = 46/55 (84%), Gaps = 2/55 (4%)
+ Strand=Plus/Minus
+
+Query  641    TCCACCCGACCCGTCTTGAAACACGGACCAAGGAGTCTAGCATGTGCGCGAGTCA  695
+              |||| ||||||||||  | | |||| | |||||| |||||||||||| |||||||
+Sbjct  12988  TCCAACCGACCCGTCGGGTACCACG-A-CAAGGACTCTAGCATGTGCACGAGTCA  12936
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 356485966760
+
+
+Query= XM_011429483.1 PREDICTED: Crassostrea gigas 28S ribosomal protein
+S22, mitochondrial (LOC105328561), mRNA
+
+Length=751
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 272853885068
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

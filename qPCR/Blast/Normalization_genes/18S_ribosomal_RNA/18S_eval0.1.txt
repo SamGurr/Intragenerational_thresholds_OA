@@ -1,0 +1,1117 @@
+BLASTN 2.9.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= AH001762.2 Spisula solidissima 18S ribosomal RNA, partial sequence
+
+Length=1137
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g334400                                                       171        1e-40
+PGEN_.00g133000                                                       82.4       7e-14
+PGEN_.00g336410                                                       78.7       9e-13
+PGEN_.00g080250                                                       73.1       4e-11
+PGEN_.00g282400                                                       67.6       2e-09
+
+
+>PGEN_.00g334400 
+Length=94360
+
+ Score = 171 bits (92),  Expect = 1e-40
+ Identities = 148/174 (85%), Gaps = 7/174 (4%)
+ Strand=Plus/Minus
+
+Query  69    TGACTCCGAACAACTTTGTGCCGATCGCATGGCCCTAGCG-GCGGCGACGCATCTTTCAA  127
+             |||||| |||||||||||||| ||||||| |||| |  || || | |||| |||||||||
+Sbjct  9362  TGACTCTGAACAACTTTGTGCTGATCGCACGGCC-T--CGTGCCG-GACGTATCTTTCAA  9307
+
+Query  128   GTGTCTGCCCTATCAACTTTCGATGGTACGTGCTATGCCTACCATGGTGATAACGGGTAA  187
+              |||||||||||   ||| ||| ||||||||| |||||||||||||||  | ||||||||
+Sbjct  9306  ATGTCTGCCCTA--GACTGTCGGTGGTACGTGATATGCCTACCATGGTTTTCACGGGTAA  9249
+
+Query  188   CGGGGAATCAGGGTTCGGTTCCGGAGAGGGAGCATGAGATACGGCTACCACATC  241
+             ||  ||||||||||||| ||||||| || |||||||||| ||||||||||||||
+Sbjct  9248  CGATGAATCAGGGTTCGATTCCGGAAAGAGAGCATGAGAAACGGCTACCACATC  9195
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 82.4 bits (44),  Expect = 7e-14
+ Identities = 49/53 (92%), Gaps = 0/53 (0%)
+ Strand=Plus/Plus
+
+Query  769  CCGGAGTTGCTTCNATGACTCGGCGGSCAGACTCCGGGAAACCAAAGTNTTTG  821
+            ||||||||||||| |||||||||||| ||| ||||||||||||||||| ||||
+Sbjct  116  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTG  168
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 78.7 bits (42),  Expect = 9e-13
+ Identities = 58/66 (88%), Gaps = 0/66 (0%)
+ Strand=Plus/Plus
+
+Query  1064  TTGAACCCCATTCGTACTAGGGATTGGGGCTTGCAATTGTTCCCCATGAACGAGGAATTC  1123
+             ||||||  ||||| | |||||||||||| ||||  ||| |||||||||||||||||||||
+Sbjct  2696  TTGAACTGCATTCATGCTAGGGATTGGGACTTGTTATTCTTCCCCATGAACGAGGAATTC  2755
+
+Query  1124  CCAGTA  1129
+             ||||||
+Sbjct  2756  CCAGTA  2761
+
+
+ Score = 73.1 bits (39),  Expect = 4e-11
+ Identities = 76/93 (82%), Gaps = 7/93 (8%)
+ Strand=Plus/Plus
+
+Query  950   ACGAGATTGAGCAATAACAGGTCTGTGATGCCCTTA---GAT-G-T-TCGGG-GCCGCAC  1002
+             || |||||||||||||||||||||||||||||||||   ||| | | |  || |||||||
+Sbjct  2602  ACCAGATTGAGCAATAACAGGTCTGTGATGCCCTTAAATGATAGATGTTTGGAGCCGCAC  2661
+
+Query  1003  ATGCGCTACNATGAATGGATCAGCGTGCGTCTC  1035
+             |   |||||  |||||| ||||||||| |||||
+Sbjct  2662  ACATGCTACACTGAATGCATCAGCGTGTGTCTC  2694
+
+
+>PGEN_.00g080250 
+Length=9736
+
+ Score = 73.1 bits (39),  Expect = 4e-11
+ Identities = 108/141 (77%), Gaps = 6/141 (4%)
+ Strand=Plus/Plus
+
+Query  119   ATCTTTCAAGTGTCTGCCCTATCAACT-TTCG-ATGGTACGTGCTATGCCTACCATGGTG  176
+             |||||  |||  |||||||||||||||  | | ||| || |   ||||||||||||||| 
+Sbjct  9563  ATCTTGTAAGCATCTGCCCTATCAACTGATAGTATGTTAAGCTATATGCCTACCATGGTT  9622
+
+Query  177   ATAACGGGTAACGGGGAATCAGGGTTCGGTTCC-G-GAGAGGGAGCATGAGATACGGCTA  234
+              | | |||||     ||||| |||||||  ||| | |||||||||| ||| | | |||| 
+Sbjct  9623  TTTATGGGTATTCTAGAATC-GGGTTCGTATCCAGAGAGAGGGAGCCTGAAA-ATGGCTT  9680
+
+Query  235   CCACATCCAAGGAAGGCAGCA  255
+             |||| ||||||||||||||||
+Sbjct  9681  CCACGTCCAAGGAAGGCAGCA  9701
+
+
+>PGEN_.00g282400 
+Length=6158
+
+ Score = 67.6 bits (36),  Expect = 2e-09
+ Identities = 56/67 (84%), Gaps = 0/67 (0%)
+ Strand=Plus/Minus
+
+Query  748   ACGATGCCAACTGTCGATCCGCCGGAGTTGCTTCNATGACTCGGCGGSCAGACTCCGGGA  807
+             ||||||||||||  | ||||||| || ||| ||| |||||||  ||| ||| ||||||||
+Sbjct  1448  ACGATGCCAACTAACAATCCGCCAGATTTGTTTCAATGACTCAACGGGCAGCCTCCGGGA  1389
+
+Query  808   AACCAAA  814
+             |||||||
+Sbjct  1388  AACCAAA  1382
+
+
+
+Lambda      K        H
+    1.33    0.622     1.13 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 417910081540
+
+
+Query= AH001707.2 Mya arenaria 18S ribosomal RNA and, partial sequence
+
+Length=1127
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g334400                                                       182        6e-44
+PGEN_.00g336410                                                       89.8       4e-16
+PGEN_.00g133000                                                       87.9       1e-15
+PGEN_.00g282400                                                       75.0       1e-11
+PGEN_.00g080250                                                       67.6       2e-09
+
+
+>PGEN_.00g334400 
+Length=94360
+
+ Score = 182 bits (98),  Expect = 6e-44
+ Identities = 148/173 (86%), Gaps = 5/173 (3%)
+ Strand=Plus/Minus
+
+Query  61    TGACTCTNGACAACTTTGTGCCGATCGCACGGCCCTAGCGCCGGCGACGTATCTTTCAAG  120
+             |||||||  |||||||||||| |||||||||||| | | ||| | |||||||||||||| 
+Sbjct  9362  TGACTCTGAACAACTTTGTGCTGATCGCACGGCC-TCGTGCC-G-GACGTATCTTTCAAA  9306
+
+Query  121   TGTCTGCCCTATCAACTTTCGATGGTACGTGCTATGCCTACCATGGTGATAACGGGTNAC  180
+             |||||||||||   ||| ||| ||||||||| |||||||||||||||  | |||||| ||
+Sbjct  9305  TGTCTGCCCTA--GACTGTCGGTGGTACGTGATATGCCTACCATGGTTTTCACGGGTAAC  9248
+
+Query  181   GGGGAATCAGGNTTCGATTCCGGAGAGGGAGCATGAGATACGGCTACCACATC  233
+             |  |||||||| |||||||||||| || |||||||||| ||||||||||||||
+Sbjct  9247  GATGAATCAGGGTTCGATTCCGGAAAGAGAGCATGAGAAACGGCTACCACATC  9195
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 89.8 bits (48),  Expect = 4e-16
+ Identities = 62/69 (90%), Gaps = 0/69 (0%)
+ Strand=Plus/Plus
+
+Query  1054  TTGAACCCCATTCGTGCTAGGGATTGGGGCTTGCAATTGTTCCCCATGAACGAGGAATTC  1113
+             ||||||  ||||| |||||||||||||| ||||  ||| |||||||||||||||||||||
+Sbjct  2696  TTGAACTGCATTCATGCTAGGGATTGGGACTTGTTATTCTTCCCCATGAACGAGGAATTC  2755
+
+Query  1114  CCAGTAAGC  1122
+             |||||||||
+Sbjct  2756  CCAGTAAGC  2764
+
+
+ Score = 73.1 bits (39),  Expect = 4e-11
+ Identities = 76/93 (82%), Gaps = 7/93 (8%)
+ Strand=Plus/Plus
+
+Query  942   ACGAGATTGAGCAATAACAGGTCTGTGATGCCCTTA---GAT-G-T-TCGGG-GCTGCAC  994
+             || |||||||||||||||||||||||||||||||||   ||| | | |  || || ||||
+Sbjct  2602  ACCAGATTGAGCAATAACAGGTCTGTGATGCCCTTAAATGATAGATGTTTGGAGCCGCAC  2661
+
+Query  995   ATGCGCTACAATGAATGGATCAGCGTGNGTCTC  1027
+             |   |||||| |||||| ||||||||| |||||
+Sbjct  2662  ACATGCTACACTGAATGCATCAGCGTGTGTCTC  2694
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 87.9 bits (47),  Expect = 1e-15
+ Identities = 49/50 (98%), Gaps = 0/50 (0%)
+ Strand=Plus/Plus
+
+Query  761  CCGGAGTTGCTTCAATGACTCGGCGGGCAGACTCCGGGAAACCAAAGTTT  810
+            |||||||||||||||||||||||||||||| |||||||||||||||||||
+Sbjct  116  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTT  165
+
+
+>PGEN_.00g282400 
+Length=6158
+
+ Score = 75.0 bits (40),  Expect = 1e-11
+ Identities = 61/71 (86%), Gaps = 1/71 (1%)
+ Strand=Plus/Minus
+
+Query  740   ACGATGCCAACTGTCGATCCGCCGGAGTTGCTTCAATGACTCGGCGGGCAGACTCCGGGA  799
+             ||||||||||||  | ||||||| || ||| |||||||||||  ||||||| ||||||||
+Sbjct  1448  ACGATGCCAACTAACAATCCGCCAGATTTGTTTCAATGACTCAACGGGCAGCCTCCGGGA  1389
+
+Query  800   AACCAAA-GTT  809
+             ||||||| |||
+Sbjct  1388  AACCAAACGTT  1378
+
+
+>PGEN_.00g080250 
+Length=9736
+
+ Score = 67.6 bits (36),  Expect = 2e-09
+ Identities = 112/149 (75%), Gaps = 7/149 (5%)
+ Strand=Plus/Plus
+
+Query  104   GCGAC-GTATCTTTCAAGTGTCTGCCCTATCAACT-TTCG-ATGGTACGTGCTATGCCTA  160
+             |||||  ||||||  |||  |||||||||||||||  | | ||| || |   ||||||||
+Sbjct  9555  GCGACTTTATCTTGTAAGCATCTGCCCTATCAACTGATAGTATGTTAAGCTATATGCCTA  9614
+
+Query  161   CCATGGTGATAACGGGTNACGGGGAATCAGGNTTCGATTCC-G-GAGAGGGAGCATGAGA  218
+             |||||||  | | ||||      ||||| || ||||  ||| | |||||||||| ||| |
+Sbjct  9615  CCATGGTTTTTATGGGTATTCTAGAATC-GGGTTCGTATCCAGAGAGAGGGAGCCTGA-A  9672
+
+Query  219   TACGGCTACCACATCCAAGGAAGGCAGCA  247
+              | |||| |||| ||||||||||||||||
+Sbjct  9673  AATGGCTTCCACGTCCAAGGAAGGCAGCA  9701
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 414141730940
+
+
+Query= AH005590.2 Barbatia cancellaria 18S ribosomal RNA genes, partial
+sequence
+
+Length=900
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g133000                                                       230        2e-58
+PGEN_.00g282400                                                       80.5       2e-13
+PGEN_.00g336410                                                       76.8       2e-12
+PGEN_.00g025610                                                       54.7       1e-05
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 230 bits (124),  Expect = 2e-58
+ Identities = 133/137 (97%), Gaps = 1/137 (1%)
+ Strand=Plus/Plus
+
+Query  691  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCTTCCGGGAAACCAAAGTTTTTGGGTTCCG  750
+            ||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||
+Sbjct  116  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTGGGTTCCG  175
+
+Query  751  GGGGAAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGCCGGAAGGGCACCACCAGGAG  810
+            |||| |||||||||||||||||||||||||||||||||| ||||||||||||||||||||
+Sbjct  176  GGGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  235
+
+Query  811  TGGAGCCTGTG-CTTAA  826
+            ||||||||||| |||||
+Sbjct  236  TGGAGCCTGTGGCTTAA  252
+
+
+>PGEN_.00g282400 
+Length=6158
+
+ Score = 80.5 bits (43),  Expect = 2e-13
+ Identities = 62/71 (87%), Gaps = 1/71 (1%)
+ Strand=Plus/Minus
+
+Query  670   ACGATGCCAACTAGCGATCCGCCGGAGTTGCTTCAATGACTCGGCGGGCAGCTTCCGGGA  729
+             ||||||||||||| | ||||||| || ||| |||||||||||  |||||||| |||||||
+Sbjct  1448  ACGATGCCAACTAACAATCCGCCAGATTTGTTTCAATGACTCAACGGGCAGCCTCCGGGA  1389
+
+Query  730   AACCAAA-GTT  739
+             ||||||| |||
+Sbjct  1388  AACCAAACGTT  1378
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 76.8 bits (41),  Expect = 2e-12
+ Identities = 41/41 (100%), Gaps = 0/41 (0%)
+ Strand=Plus/Plus
+
+Query  860   GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATT  900
+             |||||||||||||||||||||||||||||||||||||||||
+Sbjct  2420  GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATT  2460
+
+
+ Score = 41.7 bits (22),  Expect = 0.089
+ Identities = 24/25 (96%), Gaps = 0/25 (0%)
+ Strand=Plus/Plus
+
+Query  860   GACACTGTAAGGATTGACAGATTGA  884
+             |||||||||||||||||||| ||||
+Sbjct  2309  GACACTGTAAGGATTGACAGTTTGA  2333
+
+
+>PGEN_.00g025610 
+Length=20689
+
+ Score = 54.7 bits (29),  Expect = 1e-05
+ Identities = 35/38 (92%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  861   ACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGA  898
+             |||||||| |||||| |||||||| |||||||||||||
+Sbjct  5452  ACACTGTATGGATTGTCAGATTGATAGCTCTTTCTTGA  5489
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 328600172320
+
+
+Query= AH005593.2 Nucula proxima 18S ribosomal RNA genes, partial sequence
+
+Length=866
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g133000                                                       191        8e-47
+PGEN_.00g336410                                                       76.8       2e-12
+PGEN_.00g282400                                                       69.4       4e-10
+PGEN_.00g025610                                                       54.7       1e-05
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 191 bits (103),  Expect = 8e-47
+ Identities = 127/138 (92%), Gaps = 3/138 (2%)
+ Strand=Plus/Plus
+
+Query  657  CCGGAGTTGCTTCAATGACTCGGCTGGCAGCTTCCGGGAAACCAAAGTCTTTGGGTTCTG  716
+            |||||||||||||||||||||||| |||||| |||||||||||||||| ||||||||| |
+Sbjct  116  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTGGGTTCCG  175
+
+Query  717  GGGGAAGTATGGCCGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCCACCACCA-GA  775
+            |||| |||||||  ||||||||||||||||||||||||||||||||||| ||||||| ||
+Sbjct  176  GGGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGC-ACCACCAGGA  234
+
+Query  776  GTGGAGCCTGCG-CTTAA  792
+            |||||||||| | |||||
+Sbjct  235  GTGGAGCCTGTGGCTTAA  252
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 76.8 bits (41),  Expect = 2e-12
+ Identities = 41/41 (100%), Gaps = 0/41 (0%)
+ Strand=Plus/Plus
+
+Query  826   GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATT  866
+             |||||||||||||||||||||||||||||||||||||||||
+Sbjct  2420  GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATT  2460
+
+
+ Score = 41.7 bits (22),  Expect = 0.086
+ Identities = 24/25 (96%), Gaps = 0/25 (0%)
+ Strand=Plus/Plus
+
+Query  826   GACACTGTAAGGATTGACAGATTGA  850
+             |||||||||||||||||||| ||||
+Sbjct  2309  GACACTGTAAGGATTGACAGTTTGA  2333
+
+
+>PGEN_.00g282400 
+Length=6158
+
+ Score = 69.4 bits (37),  Expect = 4e-10
+ Identities = 57/67 (85%), Gaps = 0/67 (0%)
+ Strand=Plus/Minus
+
+Query  636   ACGATGCCAACTAGCGATCAGCCGGAGTTGCTTCAATGACTCGGCTGGCAGCTTCCGGGA  695
+             ||||||||||||| | ||| ||| || ||| |||||||||||  | |||||| |||||||
+Sbjct  1448  ACGATGCCAACTAACAATCCGCCAGATTTGTTTCAATGACTCAACGGGCAGCCTCCGGGA  1389
+
+Query  696   AACCAAA  702
+             |||||||
+Sbjct  1388  AACCAAA  1382
+
+
+>PGEN_.00g025610 
+Length=20689
+
+ Score = 54.7 bits (29),  Expect = 1e-05
+ Identities = 35/38 (92%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  827   ACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGA  864
+             |||||||| |||||| |||||||| |||||||||||||
+Sbjct  5452  ACACTGTATGGATTGTCAGATTGATAGCTCTTTCTTGA  5489
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 315787780280
+
+
+Query= AH005592.2 Solemya velum 18S ribosomal RNA genes, partial sequence
+
+Length=817
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g133000                                                       219        3e-55
+PGEN_.00g336410                                                       76.8       2e-12
+PGEN_.00g282400                                                       69.4       4e-10
+PGEN_.00g025610                                                       54.7       1e-05
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 219 bits (118),  Expect = 3e-55
+ Identities = 131/137 (96%), Gaps = 1/137 (1%)
+ Strand=Plus/Plus
+
+Query  608  CCGTAGTTGCTTCAATGACTCGGCGGGCAGCTTCCGGGAAACCAAAGTCTTTGGGTTCCG  667
+            ||| ||||||||||||||||||||||||||| |||||||||||||||| |||||||||||
+Sbjct  116  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTGGGTTCCG  175
+
+Query  668  GGGGAAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  727
+            |||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  176  GGGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  235
+
+Query  728  TGGAGCCTGCG-CTTAA  743
+            ||||||||| | |||||
+Sbjct  236  TGGAGCCTGTGGCTTAA  252
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 76.8 bits (41),  Expect = 2e-12
+ Identities = 41/41 (100%), Gaps = 0/41 (0%)
+ Strand=Plus/Plus
+
+Query  777   GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATT  817
+             |||||||||||||||||||||||||||||||||||||||||
+Sbjct  2420  GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATT  2460
+
+
+ Score = 41.7 bits (22),  Expect = 0.081
+ Identities = 24/25 (96%), Gaps = 0/25 (0%)
+ Strand=Plus/Plus
+
+Query  777   GACACTGTAAGGATTGACAGATTGA  801
+             |||||||||||||||||||| ||||
+Sbjct  2309  GACACTGTAAGGATTGACAGTTTGA  2333
+
+
+>PGEN_.00g282400 
+Length=6158
+
+ Score = 69.4 bits (37),  Expect = 4e-10
+ Identities = 57/67 (85%), Gaps = 0/67 (0%)
+ Strand=Plus/Minus
+
+Query  587   ACGATGCCGACTAGCGATCCGCCGTAGTTGCTTCAATGACTCGGCGGGCAGCTTCCGGGA  646
+             |||||||| |||| | |||||||  | ||| |||||||||||  |||||||| |||||||
+Sbjct  1448  ACGATGCCAACTAACAATCCGCCAGATTTGTTTCAATGACTCAACGGGCAGCCTCCGGGA  1389
+
+Query  647   AACCAAA  653
+             |||||||
+Sbjct  1388  AACCAAA  1382
+
+
+>PGEN_.00g025610 
+Length=20689
+
+ Score = 54.7 bits (29),  Expect = 1e-05
+ Identities = 35/38 (92%), Gaps = 0/38 (0%)
+ Strand=Plus/Plus
+
+Query  778   ACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGA  815
+             |||||||| |||||| |||||||| |||||||||||||
+Sbjct  5452  ACACTGTATGGATTGTCAGATTGATAGCTCTTTCTTGA  5489
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 297322862340
+
+
+Query= AH005591.2 Pinctada imbricata 18S ribosomal RNA genes, partial
+sequence
+
+Length=794
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g133000                                                       215        4e-54
+PGEN_.00g282400                                                       78.7       6e-13
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 215 bits (116),  Expect = 4e-54
+ Identities = 129/137 (94%), Gaps = 1/137 (1%)
+ Strand=Plus/Plus
+
+Query  656  CCGGAGTTGCTTCAATGACTCGGNGGGCAGCCTCCGGGAAACCAAAGTNTTTGGGTTCCG  715
+            ||||||||||||||||||||||| |||||||||||||||||||||||| |||||||||||
+Sbjct  116  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTGGGTTCCG  175
+
+Query  716  GGGGGAAGATGGNNGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  775
+            ||||||  ||||  ||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  176  GGGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  235
+
+Query  776  TGGAGCCTGCG-CTTAA  791
+            ||||||||| | |||||
+Sbjct  236  TGGAGCCTGTGGCTTAA  252
+
+
+>PGEN_.00g282400 
+Length=6158
+
+ Score = 78.7 bits (42),  Expect = 6e-13
+ Identities = 58/67 (87%), Gaps = 0/67 (0%)
+ Strand=Plus/Minus
+
+Query  635   ACGATGCCAACTNGCGATCCGCCGGAGTTGCTTCAATGACTCGGNGGGCAGCCTCCGGGA  694
+             ||||||||||||  | ||||||| || ||| |||||||||||   |||||||||||||||
+Sbjct  1448  ACGATGCCAACTAACAATCCGCCAGATTTGTTTCAATGACTCAACGGGCAGCCTCCGGGA  1389
+
+Query  695   AACCAAA  701
+             |||||||
+Sbjct  1388  AACCAAA  1382
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 288655655960
+
+
+Query= AH005582.2 Ostrea stentina 18S ribosomal RNA gene, partial sequence
+
+Length=534
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g133000                                                       222        2e-56
+PGEN_.00g282400                                                       80.5       1e-13
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 222 bits (120),  Expect = 2e-56
+ Identities = 124/126 (98%), Gaps = 0/126 (0%)
+ Strand=Plus/Plus
+
+Query  409  CCGGAGTTGCTTCAATGACTCGGCGAGCAGCCCCCGGGAAACCAAAGTTTTTGGGTTCCG  468
+            ||||||||||||||||||||||||| |||||| |||||||||||||||||||||||||||
+Sbjct  116  CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTGGGTTCCG  175
+
+Query  469  GGGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  528
+            ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  176  GGGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  235
+
+Query  529  TGGAGC  534
+            ||||||
+Sbjct  236  TGGAGC  241
+
+
+>PGEN_.00g282400 
+Length=6158
+
+ Score = 80.5 bits (43),  Expect = 1e-13
+ Identities = 62/71 (87%), Gaps = 1/71 (1%)
+ Strand=Plus/Minus
+
+Query  388   ACGATGCCAACTAGCAATCCGCCGGAGTTGCTTCAATGACTCGGCGAGCAGCCCCCGGGA  447
+             ||||||||||||| ||||||||| || ||| |||||||||||  || |||||| ||||||
+Sbjct  1448  ACGATGCCAACTAACAATCCGCCAGATTTGTTTCAATGACTCAACGGGCAGCCTCCGGGA  1389
+
+Query  448   AACCAAA-GTT  457
+             ||||||| |||
+Sbjct  1388  AACCAAACGTT  1378
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 191073093549
+
+
+Query= MF668497.1 Donax variegatus isolate Dvar 18S Hap3 18S ribosomal RNA
+gene, partial sequence
+
+Length=1700
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g133000                                                       220        2e-55
+PGEN_.00g334400                                                       202        7e-50
+PGEN_.00g336410                                                       180        3e-43
+PGEN_.00g133010                                                       158        2e-36
+PGEN_.00g080250                                                       89.8       6e-16
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 220 bits (119),  Expect = 2e-55
+ Identities = 131/137 (96%), Gaps = 0/137 (0%)
+ Strand=Plus/Plus
+
+Query  1018  CCGGAGTTACTACCATGACTCGGCGGGAAGCCTCCGGGAAACCAAAGTCTTTGGGTTCCG  1077
+             |||||||| || | ||||||||||||| |||||||||||||||||||| |||||||||||
+Sbjct  116   CCGGAGTTGCTTCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTGGGTTCCG  175
+
+Query  1078  GGGGGAGTATGGTTGCAAAACTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  1137
+             ||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||
+Sbjct  176   GGGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAG  235
+
+Query  1138  TGGAGCCTGTGGCTTAA  1154
+             |||||||||||||||||
+Sbjct  236   TGGAGCCTGTGGCTTAA  252
+
+
+>PGEN_.00g334400 
+Length=94360
+
+ Score = 202 bits (109),  Expect = 7e-50
+ Identities = 155/177 (88%), Gaps = 4/177 (2%)
+ Strand=Plus/Minus
+
+Query  200   CTTGGTGACTCTGAACAACCTTTAGCCGATCGCACGGCCTTGCGCCGGCGACGCATCTTT  259
+             |||| |||||||||||||| ||  || ||||||||||||| | |||||  ||| ||||||
+Sbjct  9367  CTTGATGACTCTGAACAACTTTGTGCTGATCGCACGGCCTCGTGCCGG--ACGTATCTTT  9310
+
+Query  260   CAAATGTCTGCCCTATCAACTGTCGATGGTACGTGCTATGCGTACCATGGTTCTCACGGG  319
+             |||||||||||||||   ||||||| ||||||||| ||||| |||||||||| |||||||
+Sbjct  9309  CAAATGTCTGCCCTA--GACTGTCGGTGGTACGTGATATGCCTACCATGGTTTTCACGGG  9252
+
+Query  320   TAACGGGGAATCAGGGTTCGATTCCGGAGAGGGAGCCTGAGAAACGGCTACCACATC  376
+             |||||  ||||||||||||||||||||| || |||| ||||||||||||||||||||
+Sbjct  9251  TAACGATGAATCAGGGTTCGATTCCGGAAAGAGAGCATGAGAAACGGCTACCACATC  9195
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 180 bits (97),  Expect = 3e-43
+ Identities = 194/238 (82%), Gaps = 17/238 (7%)
+ Strand=Plus/Plus
+
+Query  1188  GACACTGCAAGGATTGACAGATTGAGAGCTCTTTCTTGATTCGGTGAGTGGTGGTGCATG  1247
+             ||||||| |||||||||||||||||||||||||||||||||||||| ||||| |    ||
+Sbjct  2420  GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATTCGGTGGGTGGTAG----TG  2475
+
+Query  1248  GCCGTTCTTAGTTGGTGGAGCGATTTGTCTGGTCAATTCCGATAACGAACGAGACTCTAG  1307
+             ||||||||||||| |||||| |||||||||||| |||||| ||||| || ||||||||||
+Sbjct  2476  GCCGTTCTTAGTTTGTGGAGTGATTTGTCTGGTTAATTCCTATAACAAATGAGACTCTAG  2535
+
+Query  1308  CCTGCTAAATAGTTCGGGGCTCTCCTAACA-GAGACCCCGCTCGCAACTTCTTAGAGGGA  1366
+             |||||||| ||||| |  | || | |  || | |  |  ||   |||| |||||||||||
+Sbjct  2536  CCTGCTAAGTAGTTTGAAGATC-CTTT-CATGCGTTCTTGC---CAACCTCTTAGAGGGA  2590
+
+Query  1367  CAGGTGGCGTTTAGCCACACGAGATTGAGCAATAACAGGTCTGTGATGCCCTTAGATG  1424
+             ||       ||||| |  || ||||||||||||||||||||||||||||||||| |||
+Sbjct  2591  CA-------TTTAGTCTTACCAGATTGAGCAATAACAGGTCTGTGATGCCCTTAAATG  2641
+
+
+ Score = 135 bits (73),  Expect = 8e-30
+ Identities = 115/136 (85%), Gaps = 0/136 (0%)
+ Strand=Plus/Plus
+
+Query  1517  AGGGATTGGGGCTTGCAACTGTTCCCCATGAACGAGGAATTCCCAGTAGGCGCGAGTCAT  1576
+             |||||||||| ||||  | | ||||||||||||||||||||||||||| ||  |||||||
+Sbjct  2714  AGGGATTGGGACTTGTTATTCTTCCCCATGAACGAGGAATTCCCAGTAAGCAGGAGTCAT  2773
+
+Query  1577  TAGCTCGCGTCGATTACGTCCCTGCCCTTTGTACACACCGCCCGTCGCTACGACCGATTG  1636
+              |||| | || |  |  ||||||| |||||||||||||||||| ||||||| || ||| |
+Sbjct  2774  CAGCTTGTGTTGGCTGTGTCCCTGTCCTTTGTACACACCGCCCATCGCTACTACTGATCG  2833
+
+Query  1637  TTCCAGTTAATGAGCG  1652
+             ||||||||||||||||
+Sbjct  2834  TTCCAGTTAATGAGCG  2849
+
+
+>PGEN_.00g133010 
+Length=453
+
+ Score = 158 bits (85),  Expect = 2e-36
+ Identities = 101/109 (93%), Gaps = 0/109 (0%)
+ Strand=Plus/Plus
+
+Query  1544  ATGAACGAGGAATTCCCAGTAGGCGCGAGTCATTAGCTCGCGTCGATTACGTCCCTGCCC  1603
+             ||||||||||||||||||||| || |||||||| |||||| || ||||||||||||||||
+Sbjct  1     ATGAACGAGGAATTCCCAGTAAGCACGAGTCATCAGCTCGTGTTGATTACGTCCCTGCCC  60
+
+Query  1604  TTTGTACACACCGCCCGTCGCTACGACCGATTGTTCCAGTTAATGAGCG  1652
+             |||||||||||||||||||||||| || ||| |||||||||||||||||
+Sbjct  61    TTTGTACACACCGCCCGTCGCTACTACGGATCGTTCCAGTTAATGAGCG  109
+
+
+>PGEN_.00g080250 
+Length=9736
+
+ Score = 89.8 bits (48),  Expect = 6e-16
+ Identities = 103/129 (80%), Gaps = 6/129 (5%)
+ Strand=Plus/Plus
+
+Query  266   TCTGCCCTATCAACTG-TCG-ATGGTACGTGCTATGCGTACCATGGTTCTCACGGGTAAC  323
+             |||||||||||||||| | | ||| || |   ||||| |||||||||| | | |||||  
+Sbjct  9575  TCTGCCCTATCAACTGATAGTATGTTAAGCTATATGCCTACCATGGTTTTTATGGGTATT  9634
+
+Query  324   GGGGAATCAGGGTTCGATTCC-G-GAGAGGGAGCCTGAGAAACGGCTACCACATCCAAGG  381
+                ||||| |||||||  ||| | |||||||||||||| ||| |||| |||| |||||||
+Sbjct  9635  CTAGAATC-GGGTTCGTATCCAGAGAGAGGGAGCCTGA-AAATGGCTTCCACGTCCAAGG  9692
+
+Query  382   AAGGCAGCA  390
+             |||||||||
+Sbjct  9693  AAGGCAGCA  9701
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 630068220320
+
+
+Query= FJ617208.1 Venerupis decussatus 18S ribosomal RNA gene, partial
+sequence
+
+Length=379
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g336410                                                       134        6e-30
+PGEN_.00g133010                                                       134        6e-30
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 134 bits (72),  Expect = 6e-30
+ Identities = 110/129 (85%), Gaps = 0/129 (0%)
+ Strand=Plus/Plus
+
+Query  251   TTGAACCCCATTCGTGCTAGGGATTGGGGCTTGCAATTATTCCCCATGAACGAGGAATTC  310
+             ||||||  ||||| |||||||||||||| ||||  ||| |||||||||||||||||||||
+Sbjct  2696  TTGAACTGCATTCATGCTAGGGATTGGGACTTGTTATTCTTCCCCATGAACGAGGAATTC  2755
+
+Query  311   CCAGTAAGCGCGGGTCATAAGCTCGCGTTGATTACGTCCCTGCCCTTTGTACACACCGCC  370
+             |||||||||  | ||||| |||| | ||||  |  ||||||| |||||||||||||||||
+Sbjct  2756  CCAGTAAGCAGGAGTCATCAGCTTGTGTTGGCTGTGTCCCTGTCCTTTGTACACACCGCC  2815
+
+Query  371   CGTCGCTAC  379
+             | |||||||
+Sbjct  2816  CATCGCTAC  2824
+
+
+ Score = 97.1 bits (52),  Expect = 8e-19
+ Identities = 159/208 (76%), Gaps = 18/208 (9%)
+ Strand=Plus/Plus
+
+Query  23    GATTTGTCTGGTTAATTCCGATAACGAACGAGACTCCGGCCTGCTAAATAGTTCGGGGCC  82
+             ||||||||||||||||||| ||||| || |||||||  ||||||||| ||||| |  |  
+Sbjct  2497  GATTTGTCTGGTTAATTCCTATAACAAATGAGACTCTAGCCTGCTAAGTAGTTTGAAGAT  2556
+
+Query  83    CCTCT-ATCGTCGGTCCCCGTAAACTCTTTAGAGGGACAAGTGGCGCTTAGCCACACGAG  141
+             ||| | || | || ||     || ||| |||||||||||  | |  |||| ||     ||
+Sbjct  2557  CCTTTCAT-G-CGTTCTTGCCAACCTC-TTAGAGGGACATTTAGT-CTTA-CC-----AG  2606
+
+Query  142   ATTGAGCAATAACAGGTCTGTGATGCCCTTA---GAT-G-T-TCGGG-GCCGCACGCGCG  194
+             |||||||||||||||||||||||||||||||   ||| | | |  || ||||||| |  |
+Sbjct  2607  ATTGAGCAATAACAGGTCTGTGATGCCCTTAAATGATAGATGTTTGGAGCCGCACACATG  2666
+
+Query  195   CCACACTGAGTGGATCAGCGTGTGTCTC  222
+             | ||||||| || |||||||||||||||
+Sbjct  2667  CTACACTGAATGCATCAGCGTGTGTCTC  2694
+
+
+>PGEN_.00g133010 
+Length=453
+
+ Score = 134 bits (72),  Expect = 6e-30
+ Identities = 80/84 (95%), Gaps = 0/84 (0%)
+ Strand=Plus/Plus
+
+Query  296  ATGAACGAGGAATTCCCAGTAAGCGCGGGTCATAAGCTCGCGTTGATTACGTCCCTGCCC  355
+            |||||||||||||||||||||||| || ||||| |||||| |||||||||||||||||||
+Sbjct  1    ATGAACGAGGAATTCCCAGTAAGCACGAGTCATCAGCTCGTGTTGATTACGTCCCTGCCC  60
+
+Query  356  TTTGTACACACCGCCCGTCGCTAC  379
+            ||||||||||||||||||||||||
+Sbjct  61   TTTGTACACACCGCCCGTCGCTAC  84
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 132658242464
+
+
+Query= AB294685.1 Fragum fragum gene for 18S rRNA, ITS1, 5.8S rRNA, ITS2,
+28S rRNA, partial and complete sequence, clone: 09Ff-18S+ITS
+
+Length=2458
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g133010                                                       244        2e-62
+PGEN_.00g133000                                                       189        8e-46
+PGEN_.00g336410                                                       137        3e-30
+PGEN_.00g334400                                                       108        2e-21
+PGEN_.00g018330                                                       67.6       4e-09
+
+
+>PGEN_.00g133010 
+Length=453
+
+ Score = 244 bits (132),  Expect = 2e-62
+ Identities = 211/248 (85%), Gaps = 9/248 (4%)
+ Strand=Plus/Plus
+
+Query  1682  ATGAACACGGAATTCCTAGTAGGCGCCAGTCATCAGCTGGCGTCGATTGAGTCCCTGCCC  1741
+             ||||||  |||||||| |||| || | ||||||||||| | || ||||  ||||||||||
+Sbjct  1     ATGAACGAGGAATTCCCAGTAAGCACGAGTCATCAGCTCGTGTTGATTACGTCCCTGCCC  60
+
+Query  1742  TTTGTACACACCGCCCGTCGCTACTACCGATCGCTCTCGTTAATGAGCCCGTCGGATTGG  1801
+             ||||||||||||||||||||||||||| ||||| ||  |||||||||| | |||||||||
+Sbjct  61    TTTGTACACACCGCCCGTCGCTACTACGGATCGTTCCAGTTAATGAGCGCCTCGGATTGG  120
+
+Query  1802  ACCCGGTGGGGCGCGTTCGCGTGCCCCGCGTC-CTGGTGTTTGCCGAGAAGATGGGCGAA  1860
+              |||| |   |||  |||||||   | || || |||| |  ||||||||||||| || ||
+Sbjct  121   TCCCG-T-AAGCGGATTCGCGT---CTGC-TCTCTGGCG--TGCCGAGAAGATGTGCAAA  172
+
+Query  1861  TTATCGGGAGTAGAGGAAGTAAAAGTCGTAACAAGGTATCCGTAGGTGAACCTGCGGATG  1920
+             ||||| ||| ||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  173   TTATCTGGAATAGAGGAAGTAAAAGTCGTAACAAGGTATCCGTAGGTGAACCTGCGGATG  232
+
+Query  1921  GATCATTA  1928
+             ||||||||
+Sbjct  233   GATCATTA  240
+
+
+>PGEN_.00g133000 
+Length=252
+
+ Score = 189 bits (102),  Expect = 8e-46
+ Identities = 118/126 (94%), Gaps = 0/126 (0%)
+ Strand=Plus/Plus
+
+Query  1138  TCAACGACTCGGCGAGCGGCCTACGGGAAACCAAAGTGTTTGGGTTCCGGGGGGAGTACG  1197
+             |||| ||||||||| || |||| |||||||||||||| |||||||||||||||||||| |
+Sbjct  127   TCAATGACTCGGCGGGCAGCCTCCGGGAAACCAAAGTTTTTGGGTTCCGGGGGGAGTATG  186
+
+Query  1198  GTCGCAAGGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAGTGGAGCCTGTG  1257
+             || |||| ||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sbjct  187   GTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCACCACCAGGAGTGGAGCCTGTG  246
+
+Query  1258  GCTTAA  1263
+             ||||||
+Sbjct  247   GCTTAA  252
+
+
+>PGEN_.00g336410 
+Length=11032
+
+ Score = 137 bits (74),  Expect = 3e-30
+ Identities = 115/134 (86%), Gaps = 5/134 (4%)
+ Strand=Plus/Plus
+
+Query  1297  GACACTGGTAGGATTGACAGACT-AACGCTCTTTCTTAATTCAGTGGGTGGTGGTGCATG  1355
+             |||||||  |||||||||||| | |  |||||||||| |||| |||||||||   |  ||
+Sbjct  2420  GACACTGTAAGGATTGACAGATTGAGAGCTCTTTCTTGATTCGGTGGGTGGT--AG--TG  2475
+
+Query  1356  GCCGTTCTTAGTTGGTGGAGTGATTTGTCTGGTTAATTCCGATAACGAACGAGACTCTTG  1415
+             ||||||||||||| |||||||||||||||||||||||||| ||||| || |||||||| |
+Sbjct  2476  GCCGTTCTTAGTTTGTGGAGTGATTTGTCTGGTTAATTCCTATAACAAATGAGACTCTAG  2535
+
+Query  1416  CCTGCTAAATAGTT  1429
+             |||||||| |||||
+Sbjct  2536  CCTGCTAAGTAGTT  2549
+
+
+ Score = 113 bits (61),  Expect = 5e-23
+ Identities = 107/130 (82%), Gaps = 0/130 (0%)
+ Strand=Plus/Plus
+
+Query  1678  CCCCATGAACACGGAATTCCTAGTAGGCGCCAGTCATCAGCTGGCGTCGATTGAGTCCCT  1737
+             ||||||||||  |||||||| |||| ||   ||||||||||| | || |  || ||||||
+Sbjct  2737  CCCCATGAACGAGGAATTCCCAGTAAGCAGGAGTCATCAGCTTGTGTTGGCTGTGTCCCT  2796
+
+Query  1738  GCCCTTTGTACACACCGCCCGTCGCTACTACCGATCGCTCTCGTTAATGAGCCCGTCGGA  1797
+             | |||||||||||||||||| |||||||||| ||||| ||  |||||||||| | |||| 
+Sbjct  2797  GTCCTTTGTACACACCGCCCATCGCTACTACTGATCGTTCCAGTTAATGAGCGCCTCGGT  2856
+
+Query  1798  TTGGACCCGG  1807
+             |||| |||||
+Sbjct  2857  TTGGTCCCGG  2866
+
+
+ Score = 54.7 bits (29),  Expect = 3e-05
+ Identities = 31/32 (97%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  1537  GAGCAATAACAGGTCTGTGATGCCCTTAGATG  1568
+             |||||||||||||||||||||||||||| |||
+Sbjct  2610  GAGCAATAACAGGTCTGTGATGCCCTTAAATG  2641
+
+
+ Score = 49.1 bits (26),  Expect = 0.001
+ Identities = 38/44 (86%), Gaps = 0/44 (0%)
+ Strand=Plus/Plus
+
+Query  1842  TGCCGAGAAGATGGGCGAATTATCGGGAGTAGAGGAAGTAAAAG  1885
+             ||| ||||||||| || | ||||| ||| |||||||||||||||
+Sbjct  2893  TGCTGAGAAGATGTGCAATTTATCTGGAATAGAGGAAGTAAAAG  2936
+
+
+>PGEN_.00g334400 
+Length=94360
+
+ Score = 108 bits (58),  Expect = 2e-21
+ Identities = 138/176 (78%), Gaps = 8/176 (5%)
+ Strand=Plus/Minus
+
+Query  265   GATGAATTCTGGACAGCTTTG--CCGATCGCACGGCCTTTTGAGCCGGCGACGTACCTTT  322
+             |||| | |||| ||| |||||  | |||||||||||||   | ||| | |||||| ||||
+Sbjct  9364  GATG-ACTCTGAACAACTTTGTGCTGATCGCACGGCCT--CGTGCC-G-GACGTATCTTT  9310
+
+Query  323   CAAGTGTCTGACCTATCATACTAGATGGTTTGCGATCTGCGCACCATGGTTGCAACGGGT  382
+             ||| |||||| ||||  |   | | ||||  | ||| |||  |||||||||   ||||||
+Sbjct  9309  CAAATGTCTGCCCTA-GACTGTCGGTGGTACGTGATATGCCTACCATGGTTTTCACGGGT  9251
+
+Query  383   GACGGGGAATCAGGGTTCGATTCCGGAGAGGGAGCATGAGAAACGGCTGCCACATC  438
+              |||  ||||||||||||||||||||| || ||||||||||||||||| |||||||
+Sbjct  9250  AACGATGAATCAGGGTTCGATTCCGGAAAGAGAGCATGAGAAACGGCTACCACATC  9195
+
+
+>PGEN_.00g018330 
+Length=34499
+
+ Score = 67.6 bits (36),  Expect = 4e-09
+ Identities = 48/54 (89%), Gaps = 0/54 (0%)
+ Strand=Plus/Plus
+
+Query  2081  TCGGCTCGTGCGTCGATGAAGAGCGCAGCTAGCTGCGAGAGTTAATGTGAATTG  2134
+             || |||||||||||||||||| ||||||| ||||||| || ||||||||| |||
+Sbjct  1436  TCCGCTCGTGCGTCGATGAAGGGCGCAGCCAGCTGCGGGAATTAATGTGATTTG  1489
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 915247474477
+
+
+Query= JQ071893.1 Panopea generosa isolate Wash101 18S ribosomal RNA gene,
+partial sequence
+
+Length=450
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g334400                                                       233        7e-60
+PGEN_.00g080250                                                       49.1       3e-04
+PGEN_.00g018990                                                       43.6       0.012
+
+
+>PGEN_.00g334400 
+Length=94360
+
+ Score = 233 bits (126),  Expect = 7e-60
+ Identities = 174/197 (88%), Gaps = 4/197 (2%)
+ Strand=Plus/Minus
+
+Query  126   CAAAACCAATCCGGGCTCCGGTCCGGTCCCCTTGGGGACTTTGAACAATTTTGTGCTGAT  185
+             |||||||||||||| |||||||||||||| ||||  |||| ||||||| |||||||||||
+Sbjct  9397  CAAAACCAATCCGGACTCCGGTCCGGTCCACTTGATGACTCTGAACAACTTTGTGCTGAT  9338
+
+Query  186   CGCACGGCCTGGGGCCGGGGACGTATTTTTCAAATGTCTGCCCTATAACTTTCGATGGTA  245
+             |||||||||| | |||||  |||||| ||||||||||||||||||  ||| ||| |||||
+Sbjct  9337  CGCACGGCCTCGTGCCGG--ACGTATCTTTCAAATGTCTGCCCTA-GACTGTCGGTGGTA  9281
+
+Query  246   CGTGATATCGCCTCCCAGGGTTTTCCCGGGTAACGGGGAATCAGGGTTCGATTCCGGAAA  305
+             |||||||| |||| ||| ||||||| |||||||||  |||||||||||||||||||||||
+Sbjct  9280  CGTGATAT-GCCTACCATGGTTTTCACGGGTAACGATGAATCAGGGTTCGATTCCGGAAA  9222
+
+Query  306   GGGAGCATGAAAAACGG  322
+             | |||||||| ||||||
+Sbjct  9221  GAGAGCATGAGAAACGG  9205
+
+
+>PGEN_.00g080250 
+Length=9736
+
+ Score = 49.1 bits (26),  Expect = 3e-04
+ Identities = 71/91 (78%), Gaps = 9/91 (10%)
+ Strand=Plus/Plus
+
+Query  5     GTCTCATTAAATCAGTTATGGTTCCTTAGATCGTACAATCCTACTTGGATAACTGTGGCA  64
+             |||||  |||||||| |||||||| |||||| ||||||| | | || | |   |||   |
+Sbjct  9429  GTCTCTCTAAATCAGATATGGTTCATTAGATAGTACAATAC-ATTTTG-T---TGT---A  9480
+
+Query  65    ATTCTAGAGCTAATACATGCTACCCAGCTCC  95
+             ||| |||||||||||||||| ||  ||||||
+Sbjct  9481  ATT-TAGAGCTAATACATGCAACAAAGCTCC  9510
+
+
+>PGEN_.00g018990 
+Length=1971
+
+ Score = 43.6 bits (23),  Expect = 0.012
+ Identities = 49/62 (79%), Gaps = 0/62 (0%)
+ Strand=Plus/Minus
+
+Query  22   ATGGTTCCTTAGATCGTACAATCCTACTTGGATAACTGTGGCAATTCTAGAGCTAATACA  81
+            |||| || ||| || |||||||||||||| || |||||||   ||   |||||| |||||
+Sbjct  490  ATGGGTCATTATATGGTACAATCCTACTTCGACAACTGTGCTTATGAAAGAGCTTATACA  431
+
+Query  82   TG  83
+            ||
+Sbjct  430  TG  429
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 159416012961
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5

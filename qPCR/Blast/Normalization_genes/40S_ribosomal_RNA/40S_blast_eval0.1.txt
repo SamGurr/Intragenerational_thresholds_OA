@@ -1,0 +1,231 @@
+TBLASTN 2.9.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= XP_011438171.1 PREDICTED: 40S ribosomal protein SA [Crassostrea
+gigas]
+
+Length=304
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.135    0.435    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 22914193128
+
+
+Query= AVN67032.1 40S ribosomal protein SA [Diplodon chilensis]
+
+Length=300
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.315    0.131    0.410    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 22426657104
+
+
+Query= CCC42233.1 40S ribosomal protein SA, partial [Pecten maximus]
+
+Length=192
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.314    0.131    0.427    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 9886758021
+
+
+Query= OWF53735.1 40S ribosomal protein SA [Mizuhopecten yessoensis]
+
+Length=319
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.318    0.133    0.426    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 24613509918
+
+
+Query= XP_021339557.1 40S ribosomal protein S0-like [Mizuhopecten
+yessoensis]
+
+Length=264
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g287530                                                       51.6       2e-06
+
+
+>PGEN_.00g287530 
+Length=4135
+
+ Score = 51.6 bits (122),  Expect = 2e-06, Method: Compositional matrix adjust.
+ Identities = 48/191 (25%), Positives = 84/191 (44%), Gaps = 13/191 (7%)
+ Frame = +2
+
+Query  14    DIHDLLAAQAHIGSKNV--NFQMKPYIWKRRNDGVHIINIQKTYEKMVLAARIIATIENP  71
+             ++ D+     H G      N  MKPY++  R  G+ I+++++T      A    A I   
+Sbjct  3560  NVEDMFNNLVHYGHNEGCRNEYMKPYLFGSRM-GIDILDLEQTVPLFQDALNFTAHIAYR  3736
+
+Query  72    SDVVI-ISARSYGQRAALKYAKYTGAQAIAGRFTPGTFT---NYITRSFKEPRLVIVTDP  127
+               +++ IS   Y        AK  G  A    ++PG FT   N      + P L I    
+Sbjct  3737  KGIILFISRHKYTMPLVESIAKECGEYAHCRYWSPGLFTDSKNVFGLVTRLPDLCIFVHT  3916
+
+Query  128   RTD----HQAIIEASYVNIPVIALCDADSPLRYVDCAIPTNNKSKHAIGYLVWLLAREVL  183
+             +      H A+++++ + IP I + D++   R +   +P N+ S ++I Y +    +E +
+Sbjct  3917  QNSVFQTHTAVVDSAKLLIPTIGIVDSNCDPRLISYPVPGNDDSFNSIEYYLNCF-KEAI  4093
+
+Query  184   RLRGTISRDEE  194
+             R RG   R E+
+Sbjct  4094  R-RGKKKRKED  4123
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.133    0.401    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 18165923997
+
+
+Query= OWF36970.1 40S ribosomal protein S0 [Mizuhopecten yessoensis]
+
+Length=264
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g287530                                                       51.6       2e-06
+
+
+>PGEN_.00g287530 
+Length=4135
+
+ Score = 51.6 bits (122),  Expect = 2e-06, Method: Compositional matrix adjust.
+ Identities = 48/191 (25%), Positives = 84/191 (44%), Gaps = 13/191 (7%)
+ Frame = +2
+
+Query  14    DIHDLLAAQAHIGSKNV--NFQMKPYIWKRRNDGVHIINIQKTYEKMVLAARIIATIENP  71
+             ++ D+     H G      N  MKPY++  R  G+ I+++++T      A    A I   
+Sbjct  3560  NVEDMFNNLVHYGHNEGCRNEYMKPYLFGSRM-GIDILDLEQTVPLFQDALNFTAHIAYR  3736
+
+Query  72    SDVVI-ISARSYGQRAALKYAKYTGAQAIAGRFTPGTFT---NYITRSFKEPRLVIVTDP  127
+               +++ IS   Y        AK  G  A    ++PG FT   N      + P L I    
+Sbjct  3737  KGIILFISRHKYTMPLVESIAKECGEYAHCRYWSPGLFTDSKNVFGLVTRLPDLCIFVHT  3916
+
+Query  128   RTD----HQAIIEASYVNIPVIALCDADSPLRYVDCAIPTNNKSKHAIGYLVWLLAREVL  183
+             +      H A+++++ + IP I + D++   R +   +P N+ S ++I Y +    +E +
+Sbjct  3917  QNSVFQTHTAVVDSAKLLIPTIGIVDSNCDPRLISYPVPGNDDSFNSIEYYLNCF-KEAI  4093
+
+Query  184   RLRGTISRDEE  194
+             R RG   R E+
+Sbjct  4094  R-RGKKKRKED  4123
+
+
+
+Lambda      K        H        a         alpha
+   0.319    0.133    0.401    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 18165923997
+
+
+Query= XP_022313762.1 40S ribosomal protein SA-like [Crassostrea virginica]
+
+Length=335
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.321    0.136    0.435    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 26433662304
+
+
+Query= XP_021346605.1 40S ribosomal protein SA-like [Mizuhopecten
+yessoensis]
+
+Length=319
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H        a         alpha
+   0.318    0.133    0.426    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 24613509918
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 13
+Window for multiple hits: 40
