@@ -201,7 +201,6 @@ Sequences producing significant alignments:                          (Bits)     
 PGEN_.00g142400                                                       206        4e-51
 PGEN_.00g057850                                                       115        8e-24
 PGEN_.00g218620                                                       54.7       2e-05
-PGEN_.00g218330                                                       54.7       2e-05
 
 
 >PGEN_.00g142400 
@@ -298,8 +297,6 @@ Sequences producing significant alignments:                          (Bits)     
 PGEN_.00g254950                                                       124        6e-27
 PGEN_.00g262300                                                       104        7e-21
 PGEN_.00g314810                                                       82.4       3e-14
-PGEN_.00g155530                                                       71.3       7e-11
-PGEN_.00g030340                                                       69.4       3e-10
 
 
 >PGEN_.00g254950 
@@ -428,8 +425,6 @@ Sequences producing significant alignments:                          (Bits)     
 PGEN_.00g254950                                                       119        3e-25
 PGEN_.00g262300                                                       115        3e-24
 PGEN_.00g155530                                                       82.4       3e-14
-PGEN_.00g314810                                                       76.8       2e-12
-PGEN_.00g186790                                                       76.8       2e-12
 
 
 >PGEN_.00g254950 
@@ -646,7 +641,6 @@ Sequences producing significant alignments:                          (Bits)     
 PGEN_.00g142400                                                       174        9e-42
 PGEN_.00g057850                                                       58.4       1e-06
 PGEN_.00g239850                                                       51.0       2e-04
-PGEN_.00g239430                                                       51.0       2e-04
 
 
 >PGEN_.00g142400 
