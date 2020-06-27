@@ -1,0 +1,1174 @@
+BLASTN 2.9.0+
+
+
+Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
+Miller (2000), "A greedy algorithm for aligning DNA sequences", J
+Comput Biol 2000; 7(1-2):203-14.
+
+
+
+Database: Pgenerosa.GENES
+           34,947 sequences; 377,813,576 total letters
+
+
+
+Query= JX169851.1 Cellana toreuma NAD-dependent deacetylase sirtuin-1
+(SIRT1) mRNA, partial cds
+
+Length=1575
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g048200                                                       91.6       2e-16
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 91.6 bits (49),  Expect = 2e-16
+ Identities = 113/144 (78%), Gaps = 4/144 (3%)
+ Strand=Plus/Plus
+
+Query  87     AGGAAATTTATCCAGGACAGCTTGAACCTTCAAAATGTCACAAATTCATTAAGTTAT--T  144
+              ||||||| |||||||| ||| |||| ||||| ||||| ||||| || || | |  ||  |
+Sbjct  17863  AGGAAATATATCCAGGTCAGTTTGAGCCTTCCAAATGCCACAAGTTTAT-ACG-CATGAT  17920
+
+Query  145    GGAAGATCATGGTAAACTTCTGCAGAATTACACTCAGAATATAGACACGCTAGAACAAGT  204
+               ||| | ||||| |||||||| |  || ||||| || ||||||||||| |||||||||||
+Sbjct  17921  AGAAAACCATGGCAAACTTCTTCGTAACTACACACAAAATATAGACACCCTAGAACAAGT  17980
+
+Query  205    TGCTGGTATAAAAAATGTTATACA  228
+               ||||| || || ||| | |||||
+Sbjct  17981  GGCTGGCATTAAGAATATAATACA  18004
+
+
+ Score = 63.9 bits (34),  Expect = 3e-08
+ Identities = 104/139 (75%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  365    ATGAAACCTAACATTGTGTTTTTTGGTGAAAGTTTGCCTGAAGAATTTCATCGTCAAATG  424
+              ||||| ||  | ||||| |||||||| |||||| | || || || ||||||   || |||
+Sbjct  21456  ATGAAGCCAGATATTGTATTTTTTGGAGAAAGTCTTCCCGAGGAGTTTCATGACCAGATG  21515
+
+Query  425    GCTGCTGATAAGGATGAGTGTGATCTACTTATAGTAATAGGCTCCTCTCTCAAAGTTCGT  484
+               |||  || || || || || ||||||||| | || ||||| || || || || ||||||
+Sbjct  21516  ACTGTAGACAAAGACGACTGCGATCTACTTGTGGTTATAGGATCATCCCTGAAGGTTCGT  21575
+
+Query  485    CCAGTTGCACTAATTCCAA  503
+              || || ||||| || ||||
+Sbjct  21576  CCTGTGGCACTTATCCCAA  21594
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 582963837820
+
+
+Query= XM_011457973.2 PREDICTED: Crassostrea gigas active regulator of
+SIRT1 (LOC105348509), mRNA
+
+Length=832
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g030310                                                       41.7       0.082
+
+
+>PGEN_.00g030310 
+Length=42844
+
+ Score = 41.7 bits (22),  Expect = 0.082
+ Identities = 29/32 (91%), Gaps = 2/32 (6%)
+ Strand=Plus/Minus
+
+Query  728    tttttttt-tttAAAGAATGATTAATCAAAAC  758
+              |||||||| ||||||  |||||||||||||||
+Sbjct  36523  TTTTTTTTCTTTAAA-TATGATTAATCAAAAC  36493
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 302975388240
+
+
+Query= XM_011449843.2 PREDICTED: Crassostrea gigas NAD-dependent protein
+deacetylase sirtuin-2 (LOC105342789), mRNA
+
+Length=1244
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g012350                                                       43.6       0.035
+
+
+>PGEN_.00g012350 
+Length=14073
+
+ Score = 43.6 bits (23),  Expect = 0.035
+ Identities = 51/65 (78%), Gaps = 0/65 (0%)
+ Strand=Plus/Plus
+
+Query  387    CATCTGCTGGTATCCCAGACTTCAGATCTCCAGAGACGGGACTTTACCACAACTTAGAGA  446
+              || |||||||||||||||||||| | || ||||  |  || || ||  ||||| ||||||
+Sbjct  12982  CAGCTGCTGGTATCCCAGACTTCCGGTCACCAGGTAGTGGTCTCTATGACAACCTAGAGA  13041
+
+Query  447    AATAT  451
+              | |||
+Sbjct  13042  AGTAT  13046
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 458231432960
+
+
+Query= XM_011444630.2 PREDICTED: Crassostrea gigas NAD-dependent protein
+deacetylase sirtuin-1 (LOC105339186), mRNA
+
+Length=2360
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g048200                                                       102        1e-19
+PGEN_.00g244610                                                       49.1       0.001
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 102 bits (55),  Expect = 1e-19
+ Identities = 113/141 (80%), Gaps = 3/141 (2%)
+ Strand=Plus/Plus
+
+Query  1009   ATGAAGCCAGACATTGTGTTTTTTGGAGAAAGTCTACCAGAAGAGTTTCATCAGCAGATG  1068
+              ||||||||||| ||||| ||||||||||||||||| || || ||||||||| | ||||||
+Sbjct  21456  ATGAAGCCAGATATTGTATTTTTTGGAGAAAGTCTTCCCGAGGAGTTTCATGACCAGATG  21515
+
+Query  1069   GCTGAAGATAAACAAGATTGTGACCTT-TTGATTGTGATTGGCTCGTCCCTTAAAGTTCG  1127
+               ||| ||| ||| | || || || ||  ||| | || || || || ||||| || |||||
+Sbjct  21516  ACTGTAGACAAAGACGACTGCGATCTACTTG-TGGTTATAGGATCATCCCTGAAGGTTCG  21574
+
+Query  1128   ACCTGTGGCTCTTATTCCCAA  1148
+               |||||||| ||||| |||||
+Sbjct  21575  TCCTGTGGCACTTAT-CCCAA  21594
+
+
+ Score = 80.5 bits (43),  Expect = 5e-13
+ Identities = 98/125 (78%), Gaps = 2/125 (2%)
+ Strand=Plus/Plus
+
+Query  731    AGGAAATATACCCAGGTCAGTTTGAGCCATC-AAGGTCTCACAAATTTATTAGATTGCTG  789
+              |||||||||| ||||||||||||||||| || ||   | ||||| |||||  |  || | 
+Sbjct  17863  AGGAAATATATCCAGGTCAGTTTGAGCCTTCCAAATGC-CACAAGTTTATACGCATGATA  17921
+
+Query  790    GAAACCCATGAAAAGCTACTCAGAAACTACACACAGAATATAGATACTCTGGAACAAGTT  849
+              |||| |||||  || || ||  | ||||||||||| |||||||| || || |||||||| 
+Sbjct  17922  GAAAACCATGGCAAACTTCTTCGTAACTACACACAAAATATAGACACCCTAGAACAAGTG  17981
+
+Query  850    GCTGG  854
+              |||||
+Sbjct  17982  GCTGG  17986
+
+
+ Score = 51.0 bits (27),  Expect = 4e-04
+ Identities = 81/108 (75%), Gaps = 0/108 (0%)
+ Strand=Plus/Plus
+
+Query  579    GGTGTCAGTTTCCTGCGGAATTCCAGATTTTAGGTCAAGAGATGGTATCTACGCCAGGTT  638
+              |||||| ||||| || || ||||| || ||| | ||| |  | ||| |||| ||| |  |
+Sbjct  10426  GGTGTCTGTTTCGTGTGGCATTCCCGACTTTCGTTCACGGAACGGTGTCTATGCCCGACT  10485
+
+Query  639    AGCTGTGGATTTTCCAAATCTGCCTGACCCACAGGCCATGTTTGATAT  686
+               || || || || ||| ||||||||||||| ||| | ||||| |||||
+Sbjct  10486  TGCAGTTGACTTCCCAGATCTGCCTGACCCCCAGTCAATGTTCGATAT  10533
+
+
+>PGEN_.00g244610 
+Length=16489
+
+ Score = 49.1 bits (26),  Expect = 0.001
+ Identities = 26/26 (100%), Gaps = 0/26 (0%)
+ Strand=Plus/Plus
+
+Query  89    TTGACAAAGATGATGATGATTATGGT  114
+             ||||||||||||||||||||||||||
+Sbjct  3809  TTGACAAAGATGATGATGATTATGGT  3834
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 878321063403
+
+
+Query= XM_011444630.2 PREDICTED: Crassostrea gigas NAD-dependent protein
+deacetylase sirtuin-1 (LOC105339186), mRNA
+
+Length=2360
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g048200                                                       102        1e-19
+PGEN_.00g244610                                                       49.1       0.001
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 102 bits (55),  Expect = 1e-19
+ Identities = 113/141 (80%), Gaps = 3/141 (2%)
+ Strand=Plus/Plus
+
+Query  1009   ATGAAGCCAGACATTGTGTTTTTTGGAGAAAGTCTACCAGAAGAGTTTCATCAGCAGATG  1068
+              ||||||||||| ||||| ||||||||||||||||| || || ||||||||| | ||||||
+Sbjct  21456  ATGAAGCCAGATATTGTATTTTTTGGAGAAAGTCTTCCCGAGGAGTTTCATGACCAGATG  21515
+
+Query  1069   GCTGAAGATAAACAAGATTGTGACCTT-TTGATTGTGATTGGCTCGTCCCTTAAAGTTCG  1127
+               ||| ||| ||| | || || || ||  ||| | || || || || ||||| || |||||
+Sbjct  21516  ACTGTAGACAAAGACGACTGCGATCTACTTG-TGGTTATAGGATCATCCCTGAAGGTTCG  21574
+
+Query  1128   ACCTGTGGCTCTTATTCCCAA  1148
+               |||||||| ||||| |||||
+Sbjct  21575  TCCTGTGGCACTTAT-CCCAA  21594
+
+
+ Score = 80.5 bits (43),  Expect = 5e-13
+ Identities = 98/125 (78%), Gaps = 2/125 (2%)
+ Strand=Plus/Plus
+
+Query  731    AGGAAATATACCCAGGTCAGTTTGAGCCATC-AAGGTCTCACAAATTTATTAGATTGCTG  789
+              |||||||||| ||||||||||||||||| || ||   | ||||| |||||  |  || | 
+Sbjct  17863  AGGAAATATATCCAGGTCAGTTTGAGCCTTCCAAATGC-CACAAGTTTATACGCATGATA  17921
+
+Query  790    GAAACCCATGAAAAGCTACTCAGAAACTACACACAGAATATAGATACTCTGGAACAAGTT  849
+              |||| |||||  || || ||  | ||||||||||| |||||||| || || |||||||| 
+Sbjct  17922  GAAAACCATGGCAAACTTCTTCGTAACTACACACAAAATATAGACACCCTAGAACAAGTG  17981
+
+Query  850    GCTGG  854
+              |||||
+Sbjct  17982  GCTGG  17986
+
+
+ Score = 51.0 bits (27),  Expect = 4e-04
+ Identities = 81/108 (75%), Gaps = 0/108 (0%)
+ Strand=Plus/Plus
+
+Query  579    GGTGTCAGTTTCCTGCGGAATTCCAGATTTTAGGTCAAGAGATGGTATCTACGCCAGGTT  638
+              |||||| ||||| || || ||||| || ||| | ||| |  | ||| |||| ||| |  |
+Sbjct  10426  GGTGTCTGTTTCGTGTGGCATTCCCGACTTTCGTTCACGGAACGGTGTCTATGCCCGACT  10485
+
+Query  639    AGCTGTGGATTTTCCAAATCTGCCTGACCCACAGGCCATGTTTGATAT  686
+               || || || || ||| ||||||||||||| ||| | ||||| |||||
+Sbjct  10486  TGCAGTTGACTTCCCAGATCTGCCTGACCCCCAGTCAATGTTCGATAT  10533
+
+
+>PGEN_.00g244610 
+Length=16489
+
+ Score = 49.1 bits (26),  Expect = 0.001
+ Identities = 26/26 (100%), Gaps = 0/26 (0%)
+ Strand=Plus/Plus
+
+Query  89    TTGACAAAGATGATGATGATTATGGT  114
+             ||||||||||||||||||||||||||
+Sbjct  3809  TTGACAAAGATGATGATGATTATGGT  3834
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 878321063403
+
+
+Query= XM_014932161.1 PREDICTED: Octopus bimaculoides NAD-dependent protein
+deacetylase sirtuin-1-like (LOC106881695), mRNA
+
+Length=2957
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g185610                                                       71.3       4e-10
+PGEN_.00g299140                                                       69.4       1e-09
+PGEN_.00g190830                                                       69.4       1e-09
+
+
+>PGEN_.00g185610 
+Length=18728
+
+ Score = 71.3 bits (38),  Expect = 4e-10
+ Identities = 52/59 (88%), Gaps = 0/59 (0%)
+ Strand=Plus/Plus
+
+Query  376    GCAGCAGTAGAAGAatcatcatcatcatcatcatcatcgccatcgtcaacatcatcatc  434
+              |||||||||| |  ||||||||||||||||||||||||  |||| ||| ||||||||||
+Sbjct  12390  GCAGCAGTAGCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATC  12448
+
+
+>PGEN_.00g299140 
+Length=29911
+
+ Score = 69.4 bits (37),  Expect = 1e-09
+ Identities = 55/64 (86%), Gaps = 0/64 (0%)
+ Strand=Plus/Plus
+
+Query  390   atcatcatcatcatcatcatcatcgccatcgtcaacatcatcatcatcaccgtcatcgtc  449
+             ||||||||||||||||||||||||  |||| ||| || ||||||||||| | ||||| ||
+Sbjct  5140  ATCATCATCATCATCATCATCATCATCATCTTCATCACCATCATCATCATCTTCATCATC  5199
+
+Query  450   gtca  453
+              |||
+Sbjct  5200  TTCA  5203
+
+
+>PGEN_.00g190830 
+Length=2743
+
+ Score = 69.4 bits (37),  Expect = 1e-09
+ Identities = 55/64 (86%), Gaps = 0/64 (0%)
+ Strand=Plus/Plus
+
+Query  390   atcatcatcatcatcatcatcatcgccatcgtcaacatcatcatcatcaccgtcatcgtc  449
+             ||||||||||||||||||||||||  |||| ||| |||||||||||| | | ||||| ||
+Sbjct  1010  ATCATCATCATCATCATCATCATCATCATCATCATCATCATCATCATTATCATCATCATC  1069
+
+Query  450   gtca  453
+              |||
+Sbjct  1070  ATCA  1073
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 58.4 bits (31),  Expect = 3e-06
+ Identities = 114/155 (74%), Gaps = 1/155 (1%)
+ Strand=Plus/Plus
+
+Query  900    GGTATCTGTATCTTGTGGTATTCCAGATTTCCGGTCGCGTAATGGCATTTATGCCAGATT  959
+              ||| ||||| || ||||| ||||| || || || || || || ||  | |||||| || |
+Sbjct  10426  GGTGTCTGTTTCGTGTGGCATTCCCGACTTTCGTTCACGGAACGGTGTCTATGCCCGACT  10485
+
+Query  960    AGCTGTTGACTTTCCTGATCTACCTGATCCTCAAGCAATGTTTGACATCCATTATTTCCG  1019
+               || |||||||| || ||||| ||||| || ||  ||||||| || || |  || ||| |
+Sbjct  10486  TGCAGTTGACTTCCCAGATCTGCCTGACCCCCAGTCAATGTTCGATATTCGCTACTTCAG  10545
+
+Query  1020   GAACGATCCTCGGCCATTTTTTAAGTTCGCCAAAG  1054
+              |   || |   |||||||||| |||||||| ||||
+Sbjct  10546  GCGTGACCAGAGGCCATTTTTCAAGTTCGC-AAAG  10579
+
+
+ Score = 51.0 bits (27),  Expect = 5e-04
+ Identities = 54/67 (81%), Gaps = 2/67 (3%)
+ Strand=Plus/Plus
+
+Query  1054   GAAATTTATCCCGGTCAATTTGAACCCTCAAAGTGCCACAAGTTTATCAAGT-TGATTGA  1112
+              ||||| ||||| ||||| ||||| || || || |||||||||||||| | |  |||| ||
+Sbjct  17865  GAAATATATCCAGGTCAGTTTGAGCCTTCCAAATGCCACAAGTTTAT-ACGCATGATAGA  17923
+
+Query  1113   AGACCAT  1119
+              | |||||
+Sbjct  17924  AAACCAT  17930
+
+
+ Score = 45.4 bits (24),  Expect = 0.023
+ Identities = 62/81 (77%), Gaps = 0/81 (0%)
+ Strand=Plus/Plus
+
+Query  1481   CACATGTACCCCAGATCCTCATCAATAGAGAACCTTTGAAGCACATGACCTTTGATGTGG  1540
+              ||||  |||||||||| |||||||| |  |||||  |||   |||||| ||||||||| |
+Sbjct  22398  CACACATACCCCAGATACTCATCAACAAGGAACCACTGAGAAACATGAACTTTGATGTAG  22457
+
+Query  1541   AATTGTTAGGGGACGGAGACA  1561
+              | ||| | || ||| | ||||
+Sbjct  22458  AGTTGCTTGGTGACTGTGACA  22478
+
+
+>PGEN_.00g174300 
+Length=37654
+
+ Score = 49.1 bits (26),  Expect = 0.002
+ Identities = 48/58 (83%), Gaps = 3/58 (5%)
+ Strand=Plus/Minus
+
+Query  392    catcatcatcatcatcatcatcgccatcgtcaaca-t--catcatcatcaccgtcatc  446
+              ||||||||||||||||||||||  |||| ||| || |  || |||||||| | |||||
+Sbjct  28393  CATCATCATCATCATCATCATCATCATCATCATCAGTACCAGCATCATCATCATCATC  28336
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1103270730864
+
+
+Query= XM_014931037.1 PREDICTED: Octopus bimaculoides NAD-dependent protein
+deacetylase sirtuin-3-like (LOC106880884), mRNA
+
+Length=1482
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g230900                                                       45.4       0.011
+
+
+>PGEN_.00g230900 
+Length=14910
+
+ Score = 45.4 bits (24),  Expect = 0.011
+ Identities = 46/56 (82%), Gaps = 4/56 (7%)
+ Strand=Plus/Plus
+
+Query  53    ATTTCTCTGAAATtatatagtcaatataaatatacatatacagatatatactttat  108
+             |||||||||| || ||||| |  ||||| ||||| ||||| | ||||||| |||||
+Sbjct  9371  ATTTCTCTGAGATCATATA-T--ATATATATATATATATATATATATATA-TTTAT  9422
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 547918177240
+
+
+Query= XM_014925697.1 PREDICTED: Octopus bimaculoides NAD-dependent protein
+deacetylase sirtuin-2-like (LOC106876924), transcript variant X3,
+mRNA
+
+Length=1290
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g270240                                                       45.4       0.010
+PGEN_.00g048200                                                       45.4       0.010
+PGEN_.00g143200                                                       43.6       0.036
+
+
+>PGEN_.00g270240 
+Length=62176
+
+ Score = 45.4 bits (24),  Expect = 0.010
+ Identities = 40/47 (85%), Gaps = 3/47 (6%)
+ Strand=Plus/Plus
+
+Query  950    GATTATCA-AAAAGAATTGAAAGAAAT-AATT-ACAAAAGAATGGAA  993
+              ||| |||| | ||||||||| |||||| | || ||||||||||||||
+Sbjct  52998  GATAATCATATAAGAATTGATAGAAATTATTTGACAAAAGAATGGAA  53044
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 45.4 bits (24),  Expect = 0.010
+ Identities = 26/27 (96%), Gaps = 0/27 (0%)
+ Strand=Plus/Plus
+
+Query  656    AAACCAGATATTGTATTTTTTGGAGAA  682
+              || ||||||||||||||||||||||||
+Sbjct  21459  AAGCCAGATATTGTATTTTTTGGAGAA  21485
+
+
+>PGEN_.00g143200 
+Length=35978
+
+ Score = 43.6 bits (23),  Expect = 0.036
+ Identities = 42/51 (82%), Gaps = 2/51 (4%)
+ Strand=Plus/Plus
+
+Query  1226  AATGATTTATTTTTAGCTTTTTGTTTTGTATACAATATCTAGGAATAATAA  1276
+             |||||  || ||||| |||||| |||| |||||||||| || ||| |||||
+Sbjct  820   AATGACATAGTTTTACCTTTTTTTTTTTTATACAATAT-TATGAA-AATAA  868
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 475565845720
+
+
+Query= XM_014925680.1 PREDICTED: Octopus bimaculoides NAD-dependent protein
+deacetylase sirtuin-2-like (LOC106876924), transcript variant X1,
+mRNA
+
+Length=1773
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g062350                                                       49.1       0.001
+PGEN_.00g270240                                                       45.4       0.014
+PGEN_.00g048200                                                       45.4       0.014
+
+
+>PGEN_.00g062350 
+Length=8430
+
+ Score = 49.1 bits (26),  Expect = 0.001
+ Identities = 40/46 (87%), Gaps = 3/46 (7%)
+ Strand=Plus/Minus
+
+Query  273   GAT-TTaaaaaaaaaaaaTTTTTTAAATATCATTTT-CGATATCAG  316
+             ||| |||||||||||||||||||||| ||| ||||| | ||| |||
+Sbjct  4969  GATATTAAAAAAAAAAAATTTTTTAATTAT-ATTTTACAATAACAG  4925
+
+
+>PGEN_.00g270240 
+Length=62176
+
+ Score = 45.4 bits (24),  Expect = 0.014
+ Identities = 40/47 (85%), Gaps = 3/47 (6%)
+ Strand=Plus/Plus
+
+Query  1433   GATTATCA-AAAAGAATTGAAAGAAAT-AATT-ACAAAAGAATGGAA  1476
+              ||| |||| | ||||||||| |||||| | || ||||||||||||||
+Sbjct  52998  GATAATCATATAAGAATTGATAGAAATTATTTGACAAAAGAATGGAA  53044
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 45.4 bits (24),  Expect = 0.014
+ Identities = 26/27 (96%), Gaps = 0/27 (0%)
+ Strand=Plus/Plus
+
+Query  1139   AAACCAGATATTGTATTTTTTGGAGAA  1165
+              || ||||||||||||||||||||||||
+Sbjct  21459  AAGCCAGATATTGTATTTTTTGGAGAA  21485
+
+
+>PGEN_.00g290800 
+Length=20319
+
+ Score = 43.6 bits (23),  Expect = 0.050
+ Identities = 25/26 (96%), Gaps = 0/26 (0%)
+ Strand=Plus/Plus
+
+Query  274    ATTTaaaaaaaaaaaaTTTTTTAAAT  299
+              |||||||||||||||| |||||||||
+Sbjct  12041  ATTTAAAAAAAAAAAAGTTTTTAAAT  12066
+
+
+>PGEN_.00g255920 
+Length=35179
+
+ Score = 43.6 bits (23),  Expect = 0.050
+ Identities = 30/33 (91%), Gaps = 1/33 (3%)
+ Strand=Plus/Plus
+
+Query  275    TTTaaaaaaaaaaaaTTTTTTAAATATCATTTT  307
+              ||| ||||||||||||| ||||||||| |||||
+Sbjct  28051  TTTTAAAAAAAAAAATTCTTTAAATAT-ATTTT  28082
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 657577179700
+
+
+Query= XM_013211456.1 PREDICTED: Biomphalaria glabrata NAD-dependent
+protein deacetylase sirtuin-1-like (LOC106055258), transcript
+variant X2, mRNA
+
+Length=3043
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g048200                                                       91.6       3e-16
+PGEN_.00g282910                                                       51.0       5e-04
+PGEN_.00g037900                                                       51.0       5e-04
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 91.6 bits (49),  Expect = 3e-16
+ Identities = 109/139 (78%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1157   CTGTAATGAAACCAGATATTGTCTTCTTTGGGGAAAGTCTTCCAGAGCATTTTCACAACC  1216
+              |||||||||| ||||||||||| || ||||| ||||||||||| ||| | |||||  |||
+Sbjct  21451  CTGTAATGAAGCCAGATATTGTATTTTTTGGAGAAAGTCTTCCCGAGGAGTTTCATGACC  21510
+
+Query  1217   AAATGGCAGCGGATAAAGATGAATGTGACCTTCTTATTGTTATTGGTTCATCTCTTAAAG  1276
+              | ||| | |  || ||||| || || || || ||| | ||||| || ||||| || || |
+Sbjct  21511  AGATGACTGTAGACAAAGACGACTGCGATCTACTTGTGGTTATAGGATCATCCCTGAAGG  21570
+
+Query  1277   TTCGCCCTGTCGCCCTTAT  1295
+              |||| ||||| || |||||
+Sbjct  21571  TTCGTCCTGTGGCACTTAT  21589
+
+
+ Score = 73.1 bits (39),  Expect = 1e-10
+ Identities = 59/69 (86%), Gaps = 0/69 (0%)
+ Strand=Plus/Plus
+
+Query  967    AACTATACGCAAAACATAGACACACTAGAACAAGTGGCTGGGATACAGAATGTGATACAG  1026
+              ||||| || ||||| |||||||| ||||||||||||||||| ||  ||||| | ||||||
+Sbjct  17946  AACTACACACAAAATATAGACACCCTAGAACAAGTGGCTGGCATTAAGAATATAATACAG  18005
+
+Query  1027   TGCCATGGT  1035
+              ||||| |||
+Sbjct  18006  TGCCACGGT  18014
+
+
+>PGEN_.00g282910 
+Length=53346
+
+ Score = 51.0 bits (27),  Expect = 5e-04
+ Identities = 29/30 (97%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  1872   TGATGATGATGATGAGGAGGAGGATGAAGA  1901
+              |||||||||||||||||||||||| |||||
+Sbjct  44917  TGATGATGATGATGAGGAGGAGGAGGAAGA  44946
+
+
+>PGEN_.00g037900 
+Length=26009
+
+ Score = 51.0 bits (27),  Expect = 5e-04
+ Identities = 29/30 (97%), Gaps = 0/30 (0%)
+ Strand=Plus/Minus
+
+Query  1872  TGATGATGATGATGAGGAGGAGGATGAAGA  1901
+             ||||||||||||||| ||||||||||||||
+Sbjct  1521  TGATGATGATGATGACGAGGAGGATGAAGA  1492
+
+
+>PGEN_.00g344570 
+Length=17792
+
+ Score = 49.1 bits (26),  Expect = 0.002
+ Identities = 30/32 (94%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  1872   TGATGATGATGATGAGGAGGAGGATGAAGATG  1903
+              ||||||||||||||| || |||||||||||||
+Sbjct  11398  TGATGATGATGATGATGATGAGGATGAAGATG  11429
+
+
+ Score = 49.1 bits (26),  Expect = 0.002
+ Identities = 30/32 (94%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  1872   TGATGATGATGATGAGGAGGAGGATGAAGATG  1903
+              ||||||||||||||| || |||||||||||||
+Sbjct  11560  TGATGATGATGATGATGATGAGGATGAAGATG  11591
+
+
+ Score = 45.4 bits (24),  Expect = 0.024
+ Identities = 36/42 (86%), Gaps = 0/42 (0%)
+ Strand=Plus/Plus
+
+Query  1872   TGATGATGATGATGAGGAGGAGGATGAAGATGCCAATGAAGA  1913
+              ||||||||||||||| || || ||||||||||   |||||||
+Sbjct  11245  TGATGATGATGATGATGATGATGATGAAGATGAAGATGAAGA  11286
+
+
+ Score = 45.4 bits (24),  Expect = 0.024
+ Identities = 36/42 (86%), Gaps = 0/42 (0%)
+ Strand=Plus/Plus
+
+Query  1872   TGATGATGATGATGAGGAGGAGGATGAAGATGCCAATGAAGA  1913
+              ||||||||||||||| || || ||||||||||   |||||||
+Sbjct  11251  TGATGATGATGATGATGATGAAGATGAAGATGAAGATGAAGA  11292
+
+
+ Score = 43.6 bits (23),  Expect = 0.086
+ Identities = 29/32 (91%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  1872   TGATGATGATGATGAGGAGGAGGATGAAGATG  1903
+              ||||||||||||||| || || ||||||||||
+Sbjct  11257  TGATGATGATGATGAAGATGAAGATGAAGATG  11288
+
+
+>PGEN_.00g213560 
+Length=48141
+
+ Score = 49.1 bits (26),  Expect = 0.002
+ Identities = 30/32 (94%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  1872   TGATGATGATGATGAGGAGGAGGATGAAGATG  1903
+              |||| |||||||||||||||||||||| ||||
+Sbjct  45556  TGATAATGATGATGAGGAGGAGGATGAGGATG  45587
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1135675540582
+
+
+Query= XM_013211449.1 PREDICTED: Biomphalaria glabrata NAD-dependent
+protein deacetylase sirtuin-1-like (LOC106055258), transcript
+variant X1, mRNA
+
+Length=3607
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g048200                                                       91.6       4e-16
+PGEN_.00g282910                                                       51.0       6e-04
+PGEN_.00g037900                                                       51.0       6e-04
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 91.6 bits (49),  Expect = 4e-16
+ Identities = 109/139 (78%), Gaps = 0/139 (0%)
+ Strand=Plus/Plus
+
+Query  1157   CTGTAATGAAACCAGATATTGTCTTCTTTGGGGAAAGTCTTCCAGAGCATTTTCACAACC  1216
+              |||||||||| ||||||||||| || ||||| ||||||||||| ||| | |||||  |||
+Sbjct  21451  CTGTAATGAAGCCAGATATTGTATTTTTTGGAGAAAGTCTTCCCGAGGAGTTTCATGACC  21510
+
+Query  1217   AAATGGCAGCGGATAAAGATGAATGTGACCTTCTTATTGTTATTGGTTCATCTCTTAAAG  1276
+              | ||| | |  || ||||| || || || || ||| | ||||| || ||||| || || |
+Sbjct  21511  AGATGACTGTAGACAAAGACGACTGCGATCTACTTGTGGTTATAGGATCATCCCTGAAGG  21570
+
+Query  1277   TTCGCCCTGTCGCCCTTAT  1295
+              |||| ||||| || |||||
+Sbjct  21571  TTCGTCCTGTGGCACTTAT  21589
+
+
+ Score = 73.1 bits (39),  Expect = 1e-10
+ Identities = 59/69 (86%), Gaps = 0/69 (0%)
+ Strand=Plus/Plus
+
+Query  967    AACTATACGCAAAACATAGACACACTAGAACAAGTGGCTGGGATACAGAATGTGATACAG  1026
+              ||||| || ||||| |||||||| ||||||||||||||||| ||  ||||| | ||||||
+Sbjct  17946  AACTACACACAAAATATAGACACCCTAGAACAAGTGGCTGGCATTAAGAATATAATACAG  18005
+
+Query  1027   TGCCATGGT  1035
+              ||||| |||
+Sbjct  18006  TGCCACGGT  18014
+
+
+>PGEN_.00g282910 
+Length=53346
+
+ Score = 51.0 bits (27),  Expect = 6e-04
+ Identities = 29/30 (97%), Gaps = 0/30 (0%)
+ Strand=Plus/Plus
+
+Query  2436   TGATGATGATGATGAGGAGGAGGATGAAGA  2465
+              |||||||||||||||||||||||| |||||
+Sbjct  44917  TGATGATGATGATGAGGAGGAGGAGGAAGA  44946
+
+
+>PGEN_.00g037900 
+Length=26009
+
+ Score = 51.0 bits (27),  Expect = 6e-04
+ Identities = 29/30 (97%), Gaps = 0/30 (0%)
+ Strand=Plus/Minus
+
+Query  2436  TGATGATGATGATGAGGAGGAGGATGAAGA  2465
+             ||||||||||||||| ||||||||||||||
+Sbjct  1521  TGATGATGATGATGACGAGGAGGATGAAGA  1492
+
+
+>PGEN_.00g344570 
+Length=17792
+
+ Score = 49.1 bits (26),  Expect = 0.002
+ Identities = 30/32 (94%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  2436   TGATGATGATGATGAGGAGGAGGATGAAGATG  2467
+              ||||||||||||||| || |||||||||||||
+Sbjct  11398  TGATGATGATGATGATGATGAGGATGAAGATG  11429
+
+
+ Score = 49.1 bits (26),  Expect = 0.002
+ Identities = 30/32 (94%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  2436   TGATGATGATGATGAGGAGGAGGATGAAGATG  2467
+              ||||||||||||||| || |||||||||||||
+Sbjct  11560  TGATGATGATGATGATGATGAGGATGAAGATG  11591
+
+
+ Score = 45.4 bits (24),  Expect = 0.028
+ Identities = 36/42 (86%), Gaps = 0/42 (0%)
+ Strand=Plus/Plus
+
+Query  2436   TGATGATGATGATGAGGAGGAGGATGAAGATGCCAATGAAGA  2477
+              ||||||||||||||| || || ||||||||||   |||||||
+Sbjct  11245  TGATGATGATGATGATGATGATGATGAAGATGAAGATGAAGA  11286
+
+
+ Score = 45.4 bits (24),  Expect = 0.028
+ Identities = 36/42 (86%), Gaps = 0/42 (0%)
+ Strand=Plus/Plus
+
+Query  2436   TGATGATGATGATGAGGAGGAGGATGAAGATGCCAATGAAGA  2477
+              ||||||||||||||| || || ||||||||||   |||||||
+Sbjct  11251  TGATGATGATGATGATGATGAAGATGAAGATGAAGATGAAGA  11292
+
+
+>PGEN_.00g213560 
+Length=48141
+
+ Score = 49.1 bits (26),  Expect = 0.002
+ Identities = 30/32 (94%), Gaps = 0/32 (0%)
+ Strand=Plus/Plus
+
+Query  2436   TGATGATGATGATGAGGAGGAGGATGAAGATG  2467
+              |||| |||||||||||||||||||||| ||||
+Sbjct  45556  TGATAATGATGATGAGGAGGAGGATGAGGATG  45587
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1348190804314
+
+
+Query= XM_005104301.2 PREDICTED: Aplysia californica NAD-dependent protein
+deacetylase sirtuin-2-like (LOC101852342), mRNA
+
+Length=2978
+
+
+***** No hits found *****
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1111183533237
+
+
+Query= XM_005099423.2 PREDICTED: Aplysia californica NAD-dependent protein
+deacetylase sirtuin-2-like (LOC101848753), transcript variant X2,
+mRNA
+
+Length=9967
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g284130                                                       69.4       5e-09
+PGEN_.00g231140                                                       67.6       2e-08
+PGEN_.00g224010                                                       62.1       8e-07
+
+
+>PGEN_.00g284130 
+Length=90480
+
+ Score = 69.4 bits (37),  Expect = 5e-09
+ Identities = 52/58 (90%), Gaps = 5/58 (9%)
+ Strand=Plus/Plus
+
+Query  4756   TGTTTAAAtgtgttgtgtgtgtgtgtgtgaacatgtgtgtgtgtgtgtgtgtgtgtgt  4813
+              |||||||||||| ||||||||||||||||    |||||||||||||||||||| ||||
+Sbjct  56404  TGTTTAAATGTG-TGTGTGTGTGTGTGTG----TGTGTGTGTGTGTGTGTGTGCGTGT  56456
+
+
+>PGEN_.00g231140 
+Length=33014
+
+ Score = 67.6 bits (36),  Expect = 2e-08
+ Identities = 56/65 (86%), Gaps = 4/65 (6%)
+ Strand=Plus/Plus
+
+Query  4750  TGTATCTGTTTA-AAtgtgt-tgtgtgtgtgtgtgtgaacatgtgtgtgtgtgtgtgtgt  4807
+             ||| |||||||| | ||||| |||||||| |||||||   | ||||||||||||||||||
+Sbjct  2758  TGTTTCTGTTTAGATTGTGTGTGTGTGTGAGTGTGTG-TGA-GTGTGTGTGTGTGTGTGT  2815
+
+Query  4808  gtgtg  4812
+             |||||
+Sbjct  2816  GTGTG  2820
+
+
+>PGEN_.00g224010 
+Length=11544
+
+ Score = 62.1 bits (33),  Expect = 8e-07
+ Identities = 35/36 (97%), Gaps = 0/36 (0%)
+ Strand=Plus/Minus
+
+Query  9725  aataatgataataataataataataataataataat  9760
+             |||||| |||||||||||||||||||||||||||||
+Sbjct  6938  AATAATAATAATAATAATAATAATAATAATAATAAT  6903
+
+
+>PGEN_.00g067660 
+Length=8628
+
+ Score = 60.2 bits (32),  Expect = 3e-06
+ Identities = 47/53 (89%), Gaps = 6/53 (11%)
+ Strand=Plus/Plus
+
+Query  4756  TGTTTAAA-tgtgttgtgtgtgtgtgtgtgaacatgtgtgtgtgtgtgtgtgt  4807
+             |||||||| |||| ||||||||||||||||    |||||||||||||||||||
+Sbjct  627   TGTTTAAATTGTG-TGTGTGTGTGTGTGTG----TGTGTGTGTGTGTGTGTGT  674
+
+
+>PGEN_.00g034250 
+Length=49485
+
+ Score = 56.5 bits (30),  Expect = 4e-05
+ Identities = 34/36 (94%), Gaps = 0/36 (0%)
+ Strand=Plus/Minus
+
+Query  9725   aataatgataataataataataataataataataat  9760
+              ||||||  ||||||||||||||||||||||||||||
+Sbjct  44282  AATAATAGTAATAATAATAATAATAATAATAATAAT  44247
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 3743191455984
+
+
+Query= XM_005099422.2 PREDICTED: Aplysia californica NAD-dependent protein
+deacetylase sirtuin-2-like (LOC101848753), transcript variant X1,
+mRNA
+
+Length=9973
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g284130                                                       69.4       5e-09
+PGEN_.00g231140                                                       67.6       2e-08
+PGEN_.00g224010                                                       62.1       8e-07
+
+
+>PGEN_.00g284130 
+Length=90480
+
+ Score = 69.4 bits (37),  Expect = 5e-09
+ Identities = 52/58 (90%), Gaps = 5/58 (9%)
+ Strand=Plus/Plus
+
+Query  4762   TGTTTAAAtgtgttgtgtgtgtgtgtgtgaacatgtgtgtgtgtgtgtgtgtgtgtgt  4819
+              |||||||||||| ||||||||||||||||    |||||||||||||||||||| ||||
+Sbjct  56404  TGTTTAAATGTG-TGTGTGTGTGTGTGTG----TGTGTGTGTGTGTGTGTGTGCGTGT  56456
+
+
+>PGEN_.00g231140 
+Length=33014
+
+ Score = 67.6 bits (36),  Expect = 2e-08
+ Identities = 56/65 (86%), Gaps = 4/65 (6%)
+ Strand=Plus/Plus
+
+Query  4756  TGTATCTGTTTA-AAtgtgt-tgtgtgtgtgtgtgtgaacatgtgtgtgtgtgtgtgtgt  4813
+             ||| |||||||| | ||||| |||||||| |||||||   | ||||||||||||||||||
+Sbjct  2758  TGTTTCTGTTTAGATTGTGTGTGTGTGTGAGTGTGTG-TGA-GTGTGTGTGTGTGTGTGT  2815
+
+Query  4814  gtgtg  4818
+             |||||
+Sbjct  2816  GTGTG  2820
+
+
+>PGEN_.00g224010 
+Length=11544
+
+ Score = 62.1 bits (33),  Expect = 8e-07
+ Identities = 35/36 (97%), Gaps = 0/36 (0%)
+ Strand=Plus/Minus
+
+Query  9731  aataatgataataataataataataataataataat  9766
+             |||||| |||||||||||||||||||||||||||||
+Sbjct  6938  AATAATAATAATAATAATAATAATAATAATAATAAT  6903
+
+
+>PGEN_.00g067660 
+Length=8628
+
+ Score = 60.2 bits (32),  Expect = 3e-06
+ Identities = 47/53 (89%), Gaps = 6/53 (11%)
+ Strand=Plus/Plus
+
+Query  4762  TGTTTAAA-tgtgttgtgtgtgtgtgtgtgaacatgtgtgtgtgtgtgtgtgt  4813
+             |||||||| |||| ||||||||||||||||    |||||||||||||||||||
+Sbjct  627   TGTTTAAATTGTG-TGTGTGTGTGTGTGTG----TGTGTGTGTGTGTGTGTGT  674
+
+
+>PGEN_.00g034250 
+Length=49485
+
+ Score = 56.5 bits (30),  Expect = 4e-05
+ Identities = 34/36 (94%), Gaps = 0/36 (0%)
+ Strand=Plus/Minus
+
+Query  9731   aataatgataataataataataataataataataat  9766
+              ||||||  ||||||||||||||||||||||||||||
+Sbjct  44282  AATAATAGTAATAATAATAATAATAATAATAATAAT  44247
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 3745451837298
+
+
+Query= XM_005095087.2 PREDICTED: Aplysia californica NAD-dependent protein
+deacetylase sirtuin-1-like (LOC101852758), mRNA
+
+Length=3768
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
+
+PGEN_.00g048200                                                       67.6       6e-09
+PGEN_.00g102930                                                       52.8       2e-04
+
+
+>PGEN_.00g048200 
+Length=27766
+
+ Score = 67.6 bits (36),  Expect = 6e-09
+ Identities = 109/145 (75%), Gaps = 2/145 (1%)
+ Strand=Plus/Plus
+
+Query  1467   CTGTCATGAAACCAGACATTGTGTTCTTCGGGGAGAGTTTGCCAGAACAGTTCCATAATC  1526
+              |||| ||||| ||||| ||||| || || || || ||| | || ||  |||| ||| | |
+Sbjct  21451  CTGTAATGAAGCCAGATATTGTATTTTTTGGAGAAAGTCTTCCCGAGGAGTTTCATGACC  21510
+
+Query  1527   TGATGGCTTTAGACAAGGATGAATGTGACCTTCTGATTGTCATTGGTTCTTCCCTGAAAG  1586
+               |||| || ||||||| || || || || || ||  | || || || || |||||||| |
+Sbjct  21511  AGATGACTGTAGACAAAGACGACTGCGATCTACTTGTGGTTATAGGATCATCCCTGAAGG  21570
+
+Query  1587   TTCGTCCTGTGGC-CTTGATTCCAA  1610
+              ||||||||||||| ||| || ||||
+Sbjct  21571  TTCGTCCTGTGGCACTT-ATCCCAA  21594
+
+
+ Score = 65.8 bits (35),  Expect = 2e-08
+ Identities = 118/159 (74%), Gaps = 1/159 (1%)
+ Strand=Plus/Plus
+
+Query  1042   GGTGTCTGTGTCCTGCGGGATTCCGGATTTCCGCTCCCGGGATGGAGTGTACTCCAGGCT  1101
+              ||||||||| || || || ||||| || || || || ||| | || || ||  || | ||
+Sbjct  10426  GGTGTCTGTTTCGTGTGGCATTCCCGACTTTCGTTCACGGAACGGTGTCTATGCCCGACT  10485
+
+Query  1102   TGCAAAAGATTTCCCGAATCTTCCAGATCCTCAGGCGATGTTTGATATTCATTTCTTCAG  1161
+              ||||   || |||||  |||| || || || ||| | ||||| |||||||  | ||||||
+Sbjct  10486  TGCAGTTGACTTCCCAGATCTGCCTGACCCCCAGTCAATGTTCGATATTCGCTACTTCAG  10545
+
+Query  1162   AAGTGATCCCAGGCCTTTTTTCAAGTTTGCAAAGG-AAA  1199
+                |||| |  ||||| ||||||||||| ||||||| |||
+Sbjct  10546  GCGTGACCAGAGGCCATTTTTCAAGTTCGCAAAGGTAAA  10584
+
+
+ Score = 45.4 bits (24),  Expect = 0.030
+ Identities = 64/83 (77%), Gaps = 4/83 (5%)
+ Strand=Plus/Plus
+
+Query  911   CTTTGGAAAATAATCATCAACATCGTGTCAGAACCA-C-CAAAGCGCAAAAAGCTTCCCA  968
+             || ||||| ||  |||||||||| |||||||||||| | |  || | | ||| ||  |||
+Sbjct  5670  CTGTGGAAGATTGTCATCAACATTGTGTCAGAACCAGCGCCGAGGG-AGAAA-CTAACCA  5727
+
+Query  969   ACATCAATACTCTGGATGATGTG  991
+             | ||||| || |||| |||||||
+Sbjct  5728  ATATCAACACCCTGGCTGATGTG  5750
+
+
+>PGEN_.00g102930 
+Length=23740
+
+ Score = 52.8 bits (28),  Expect = 2e-04
+ Identities = 39/44 (89%), Gaps = 2/44 (5%)
+ Strand=Plus/Plus
+
+Query  2337  CACAACAACAGCAA-AACAGTAGTCACCATCATCACCACCACCA  2379
+             |||||||||||||| ||||| || || ||||| |||||||||||
+Sbjct  7581  CACAACAACAGCAACAACAGGAG-CAGCATCACCACCACCACCA  7623
+
+
+
+Lambda      K        H
+    1.33    0.621     1.12 
+
+Gapped
+Lambda      K        H
+    1.28    0.460    0.850 
+
+Effective search space used: 1408855622507
+
+
+  Database: Pgenerosa.GENES
+    Posted date:  Feb 25, 2020  4:48 PM
+  Number of letters in database: 377,813,576
+  Number of sequences in database:  34,947
+
+
+
+Matrix: blastn matrix 1 -2
+Gap Penalties: Existence: 0, Extension: 2.5
