@@ -46,7 +46,10 @@ heathstack.TRAY.CHEM <- heathstack.chem.APEX %>%
   filter(Treatment %in% c("AMBIENT_tray","MODERATE_tray")) # call only sensors in the trays (ommit the conical sensors)
 
 heathstack.TRAY.CHEM$datehour <- as.POSIXct(heathstack.TRAY.CHEM$datehour, format="%Y-%m-%d %H:%M:%S") #format datehour 
-FIG.pH.Apex.heathstack <- ggplot(heathstack.TRAY.CHEM, aes(x=datehour, y=mean.ph , group=Treatment, color=Treatment)) +#Plot average diurnal cycle of temperature data
+heathstack.TRAY.CHEM[4461,] # 7/24 is the first day of the 21 day experiment, do all days 96 and after should be ommitted for this figure 
+heathstack.TRAY.CHEM <- heathstack.TRAY.CHEM %>%  filter(heathstack.TRAY.CHEM$days < 96)
+
+FIG.pH.Apex.heathstack <- ggplot(heathstack.TRAY.CHEM, aes(x=datehour, y=mean.ph , group=Treatment, color=Treatment)) + #Plot average diurnal cycle of temperature data
   #geom_line() +
   geom_point(aes(x = datehour, y = mean.ph, group=Treatment, color=Treatment),cex=1) + #Plot points using time as the x axis, light as the Y axis and black dots
   geom_errorbar(aes(x=datehour, ymax=mean.ph + se.ph, ymin=mean.ph - se.ph), 
@@ -290,12 +293,12 @@ FIG.temp.DAYS.15.to.21 <- FIG.temp.DAYS.15.to.21 + scale_color_manual(values=c("
 FIG.temp.DAYS.15.to.21 # view figure
 
 #compile figures and output 
-FIG.FINAL.pH.temp <- grid.arrange(arrangeGrob(FIG.pH.DAYS.1.to.7, FIG.temp.DAYS.1.to.7,FIG.pH.DAYS.8.to.14,
-                                              FIG.temp.DAYS.8.to.14, FIG.pH.DAYS.15.to.21, FIG.temp.DAYS.15.to.21, ncol=2, nrow =3))
+FIG.FINAL.pH.temp <- grid.arrange(arrangeGrob(FIG.pH.Apex.heathstack_2, FIG.temp.Apex.heathstack_2,FIG.pH.DAYS.1.to.7, FIG.temp.DAYS.1.to.7,FIG.pH.DAYS.8.to.14,
+                                              FIG.temp.DAYS.8.to.14, FIG.pH.DAYS.15.to.21, FIG.temp.DAYS.15.to.21, ncol=2, nrow =4))
 FIG.FINAL.pH.temp # view figure
 
 # output figure
-ggsave(file="Output/Fig.pH.temp.pdf", FIG.FINAL.pH.temp, width = 12, height = 8, units = c("in"))
+ggsave(file="Output/Fig.pH.temp.pdf", FIG.FINAL.pH.temp, width = 12, height = 20, units = c("in"))
 
 # ---------------------------------- Discrete chemistry table and figures =---------------------------- #
 # call chem tables to get the mean and standard error discrete measurements 
