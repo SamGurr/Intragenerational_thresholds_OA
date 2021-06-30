@@ -200,6 +200,43 @@ Day1.7_violin.treathist <- ggpar(Day1.7_violin.treathist, ylim = c(4,12))
 Day1.7_violin.treathist
 
 PLOTS.D.1.7 <- ggarrange(Day8.14_violin.DATE,Day1.7_violin.treathist, nrow = 1, ncol = 2)
+
+
+
+
+
+
+# note: address time as a random factor! in this case, we will require a Linear mixed effects model! 
+
+
+
+
+# LINEAR MIXED EFFECTS MODEL  (time as random and treatmetn(s) as fized factors) 
+Day7_lme_mod1 <- lme(Length ~ Treatment_history*Treatment.EXP_1,random=~1|Date,data=Size.D.1.7) # with random effect of Site
+anova(Day7_lme_mod1) # model with time as random factor
+
+Day7_lmer_mod1 <- lmer(Length~Treatment_history*Treatment.EXP_1+(1|Date),Size.D.1.7, REML=T)
+anova(Day7_lmer_mod1) # model with time as random factor - interceot is significant
+summary(Day7_lmer_mod1)
+
+Day7_lm_mod0 <- lm(Length~Treatment_history*Treatment.EXP_1,data=Size.D.1.7) # NULL model without time as random factor! 
+anova(Day7_lm_mod0) # NULL model results 
+
+AIC(Day7_lmer_mod1,Day7_lm_mod0) # AIC test
+bbmle::AICtab(Day7_lmer_mod1,Day7_lm_mod0) # delta AIC - AIC NULL > AIC w/random factor (time) - difference == 4.2
+# note: the result of the lmer analysis says that the inclusion of the random factor (time) was insufficent to include in the 
+# most parsimonious modle (without time) due to a delta AIC of < 10 between the full vesus NULL model
+# lowest AIC is the preferred especially when the differnce is > 10! 
+
+
+
+
+
+
+
+
+
+
 # MODELS FOR DAYS 8 - 14 ------------------------------------------------------------------------------------------ #
 
 # interaction plots
@@ -239,6 +276,32 @@ Day8.14_violin.DATE <- ggviolin(Size.D.8.14, x = "Date", y = "Length", fill = "D
 Day8.14_violin.DATE <- Day8.14_violin.DATE %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
 Day8.14_violin.DATE <- ggpar(Day8.14_violin.DATE, ylim = c(4,12))
 Day8.14_violin.DATE
+
+
+
+# note: address time as a random factor! in this case, we will require a Linear mixed effects model! 
+
+
+
+
+# LINEAR MIXED EFFECTS MODEL  (time as random and treatmetn(s) as fized factors) 
+Day14_lme_mod1 <- lme(Length ~ Treatment_history*Treatment.EXP_1,random=~1|Date,data=Size.D.8.14) # with random effect of Site
+anova(Day14_lme_mod1) # model with time as random factor
+
+Day14_lmer_mod1 <- lmer(Length~Treatment_history*Treatment.EXP_1+(1|Date),Size.D.8.14, REML=T)
+anova(Day14_lmer_mod1) # model with time as random factor - interceot is significant
+summary(Day14_lmer_mod1)
+
+Day14_lm_mod0 <- lm(Length~Treatment_history*Treatment.EXP_1,data=Size.D.8.14) # NULL model without time as random factor! 
+anova(Day14_lm_mod0) # NULL model results 
+
+AIC(Day14_lmer_mod1,Day14_lm_mod0) # AIC test
+bbmle::AICtab(Day14_lmer_mod1,Day14_lm_mod0) # delta AIC - AIC NULL > AIC w/random factor (time) - difference == 4.2
+# note: the result of the lmer analysis says that the inclusion of the random factor (time) was insufficent to include in the 
+# most parsimonious modle (without time) due to a delta AIC of < 10 between the full vesus NULL model
+# lowest AIC is the preferred especially when the differnce is > 10! 
+
+
 
 
 # MODELS FOR DAYS 15 - 21  --------------------------------------------------------------------------------------- #
@@ -313,6 +376,37 @@ Day15.21_violin.treathist <- ggviolin(Size.D.8.14, x = "Treatment_history", y = 
 Day15.21_violin.treathist <- Day15.21_violin.treathist %>% ggadd(c("boxplot", "jitter"), fill ="white")  # Add box plot
 Day15.21_violin.treathist <- ggpar(Day15.21_violin.treathist, ylim = c(4,12))
 Day15.21_violin.treathist
+
+
+
+# note: address time as a random factor! in this case, we will require a Linear mixed effects model! 
+
+
+
+
+# LINEAR MIXED EFFECTS MODEL  (time as random and treatmetn(s) as fized factors) 
+Day21_lme_mod1 <- lme(Length ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2,random=~1|Date,data=Size.D.15.21) # with random effect of Site
+anova(Day21_lme_mod1) # model with time as random factor
+
+Day21_lmer_mod1 <- lmer(Length~Treatment_history*Treatment.EXP_1*Treatment.EXP_2+(1|Date),Size.D.15.21, REML=T)
+anova(Day21_lmer_mod1) # model with time as random factor - interceot is significant
+summary(Day21_lmer_mod1)
+library(emmeans)
+emmeans(Day21_lmer_mod1, list(pairwise ~ Treatment_history*Treatment.EXP_1*Treatment.EXP_2), adjust = "tukey")
+
+
+Day21_lm_mod0 <- lm(Length~Treatment_history*Treatment.EXP_1*Treatment.EXP_2,data=Size.D.15.21) # NULL model without time as random factor! 
+anova(Day21_lm_mod0) # NULL model results 
+
+AIC(Day21_lmer_mod1,Day21_lm_mod0) # AIC test
+bbmle::AICtab(Day21_lmer_mod1,Day21_lm_mod0) # delta AIC - AIC NULL > AIC w/random factor (time) - difference == 4.2
+# note: the result of the lmer analysis says that the inclusion of the random factor (time) was insufficent to include in the 
+# most parsimonious modle (without time) due to a delta AIC of < 10 between the full vesus NULL model
+# lowest AIC is the preferred especially when the differnce is > 10! 
+
+
+
+
 
 
 PLOT.D.15.21 <- ggarrange(Day15.21_violin.DATE,Day15.21_violin.treathist, nrow = 1, ncol = 2)
@@ -495,14 +589,13 @@ Size.DIFF.D.15.21 #  DAYS 15 - 21 DATA
 
 Size.DIFF.D.1.7$Treat.hist.second <- paste(Size.DIFF.D.1.7$Treatment_history, Size.DIFF.D.1.7$Treatment.EXP_1, sept = "")
 Size.DIFF.D.8.14$Treat.hist.second <- paste(Size.DIFF.D.1.7$Treatment_history, Size.DIFF.D.1.7$Treatment.EXP_1, sept = "")
-# secondary exposure day 1 - 7
-# Days.1.7.PLOTbox.length <- ggboxplot(Size.DIFF.D.1.7, x = "Treatment.EXP_1", y = "Length",  ylab = "mm shell length (raw)",
-#                                       fill = "Treatment_history",add = "jitter",  
-#                                       palette = c("#00AFBB", "#FC4E07"), title = "A. Secondary exposure (raw)")
-# Days.1.7.PLOTbox.length
 
-Days.1.7.PLOTbox.length <- ggplot(Size.DIFF.D.1.7, aes(x=Treatment.EXP_1, y=Length, fill = Treatment_history, colour=Treat.hist.second)) +
-  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+# plot secondary exposure day 1 - 7
+Days.1.7.PLOTbox.length <- ggplot(Size.DIFF.D.1.7, aes(x=Treatment.EXP_1, y=Length, fill = factor(Treatment_history), colour=Treat.hist.second)) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) +
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 5,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Shell Growth"~(mm)), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment_history))), size = 2, position = position_jitterdodge(jitter.width = 0.1))+
@@ -514,12 +607,26 @@ Days.1.7.PLOTbox.length <- ggplot(Size.DIFF.D.1.7, aes(x=Treatment.EXP_1, y=Leng
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 Days.1.7.PLOTbox.length 
-
-# Days.1.7.PLOTbox.lengthDIFF <- ggboxplot(Size.DIFF.D.1.7, x = "Treatment.EXP_1", y = "length.DIFF",  ylab = "mm shell length (averrage corrected)",
-#                                           fill = "Treatment_history",add = "jitter", 
-#                                           palette = c("#00AFBB", "#FC4E07"), title = "A. Secondary exposure (av. corrected)")
-# Days.1.7.PLOTbox.lengthDIFF
-
+# FACET WRAPPED
+Days.1.7.PLOTbox.length.facet <- ggplot(Size.DIFF.D.1.7, aes(Treatment.EXP_1, Length, fill = factor(Treatment.EXP_1))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.5))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Shell Length",
+       subtitle = "(Secondary exposure period)",
+       y=expression("Shell Length"~(mm)), 
+       x=expression("Secondary pCO"[2]~"Exposure")) + 
+  ylim(5,11) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("A","M", "S")) +
+  facet_wrap(~ Treatment_history)
+Days.1.7.PLOTbox.length.facet
+# plot length difference
 Days.1.7.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.1.7, aes(x=Treatment.EXP_1, y=length.DIFF, fill = Treatment_history, colour=Treat.hist.second)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
   theme_classic() +
@@ -534,13 +641,9 @@ Days.1.7.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.1.7, aes(x=Treatment.EXP_1, y=
   theme(legend.position = "none")
 Days.1.7.PLOTbox.lengthDIFF 
 
-# ambient recovery - effect of secondary exposure d 8 - 14
 
-# Days.8.14.PLOTbox.length <- ggboxplot(Size.DIFF.D.8.14, x = "Treatment.EXP_1", y = "Length",  ylab = "mm shell length (raw)",
-#                                         fill = "Treatment_history",add = "jitter",  
-#                                         palette = c("#00AFBB", "#FC4E07"), title = "B. Amb recovery Secondary exposure (raw)")
-# Days.8.14.PLOTbox.length
 
+# plot ambient recovery - effect of secondary exposure d 8 - 14
 Days.8.14.PLOTbox.length <- ggplot(Size.DIFF.D.8.14, aes(x=Treatment.EXP_1, y=Length, fill = Treatment_history, colour=Treat.hist.second)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
   theme_classic() +
@@ -554,14 +657,12 @@ Days.8.14.PLOTbox.length <- ggplot(Size.DIFF.D.8.14, aes(x=Treatment.EXP_1, y=Le
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 Days.8.14.PLOTbox.length 
-
-# Days.8.14.PLOTbox.lengthDIFF <- ggboxplot(Size.DIFF.D.8.14, x = "Treatment.EXP_1", y = "length.DIFF",  ylab = "mm shell length (averrage corrected)",
-#                                            fill = "Treatment_history",add = "jitter", 
-#                                            palette = c("#00AFBB", "#FC4E07"), title = "B. Amb recovery Secondary exposure (av. corrected)")
-# Days.8.14.PLOTbox.lengthDIFF
-
-Days.8.14.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.8.14, aes(x=Treatment.EXP_1, y=length.DIFF, fill = Treatment_history, colour=Treat.hist.second)) +
+# plot length difference
+Days.8.14.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.8.14, aes(x=Treatment.EXP_1, y=length.DIFF, fill = factor(Treatment_history), colour=Treat.hist.second)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Shell Growth"~(mm)), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment_history))), size = 2, position = position_jitterdodge(jitter.width = 0.1))+
@@ -575,14 +676,14 @@ Days.8.14.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.8.14, aes(x=Treatment.EXP_1, 
 Days.8.14.PLOTbox.lengthDIFF 
 
 
-# tertiary exposure d 15 - 21
-
-
- 
- Days.15.21.PLOTbox.length <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_2, y=Length, fill = TREATMENT.ID.TOTAL, shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
+# plot tertiary exposure d 15 - 21
+ Days.15.21.PLOTbox.length <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_2, y=Length, fill = factor(TREATMENT.ID.TOTAL), shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
    geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+   stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+                geom = "point", shape = 18, size = 3,
+                show.legend = FALSE) +
    theme_classic() +
-   labs(y=expression("Shell Growth"~(mm)), x=expression("Secondary pCO"[2]~"Exposure")) +
+   labs(y=expression("Shell Growth"~(mm)), x=expression("Tertiary pCO"[2]~"Exposure")) +
    geom_point((aes(shape = factor(Treatment_history ))), size = 1, position = position_jitterdodge(jitter.width = 0.2)) +
    scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
                                 "blue", "blue","tomato1","tomato1", 
@@ -598,13 +699,27 @@ Days.8.14.PLOTbox.lengthDIFF
    # theme(legend.title = element_blank()) just ommit the legend title
    theme(legend.position = "none")
  Days.15.21.PLOTbox.length
-
-# Days.15.21.PLOTbox.lengthDIFF <- ggboxplot(Size.DIFF.D.15.21, x = "Treatment.EXP_1", y = "length.DIFF",  ylab = "mm shell length (averrage corrected)",
-#                                 fill = "Treatment_history",add = "jitter", shape = "Treatment.EXP_2", 
-#                                 palette = c("#00AFBB", "#FC4E07"), title = "C.Secondary exposure (av. corrected)")
-# Days.15.21.PLOTbox.lengthDIFF
-
-Days.15.21.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_2, y=length.DIFF, fill = TREATMENT.ID.TOTAL, shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
+ # FACET WRAPPED
+ Days.15.21.PLOTbox.length.facet <- ggplot(Size.DIFF.D.15.21, aes(Treatment.EXP_2, Length, fill = factor(Treatment.EXP_1))) +
+   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+   stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+                geom = "point", shape = 15, size = 4,
+                show.legend = FALSE) +
+   geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+   scale_color_manual(values=c("black", "black", "black")) +  
+   scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+   labs(title = "Shell Length",
+        subtitle = "(Tertiary exposure period)",
+        y=expression("Shell Length"~(mm)), 
+        x=expression("Tertiary pCO"[2]~"Exposure")) + 
+   ylim(5,11) + 
+   theme_classic() +
+   theme(legend.position = "none") +
+   scale_x_discrete(labels = c("A","M", "S")) +
+   facet_wrap(~ Treatment_history)
+ Days.15.21.PLOTbox.length.facet
+ # plot length difference
+ Days.15.21.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_2, y=length.DIFF, fill = TREATMENT.ID.TOTAL, shape=TREATMENT.ID.TOTAL, colour=TREATMENT.ID.TOTAL)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
   theme_classic() +
   labs(y=expression("Shell Growth"~(mm)), x=expression("Secondary pCO"[2]~"Exposure")) +
@@ -624,9 +739,14 @@ Days.15.21.PLOTbox.lengthDIFF <- ggplot(Size.DIFF.D.15.21, aes(x=Treatment.EXP_2
   theme(legend.position = "none")
 Days.15.21.PLOTbox.lengthDIFF 
 
+# ggarrange
+Length.plots.facet <- ggarrange(Days.1.7.PLOTbox.length.facet, Days.15.21.PLOTbox.length.facet, nrow = 1, widths = c(0.5, 1, 1), labels = c("A","B"))
+
+# ggsave
+ggsave(file="Output/ShellLength.plots.facet.pdf", Length.plots.facet, width = 12, height = 8, units = c("in")) # respiration rate plots
+
 
 # EXPERIMENTAL DESIGN KEY------------------------------------- #
-
 
 schematic.data <- read.csv(file="Data/SDR_data/Experimental.design.data_2.csv", header=T) #read Size.info data
 schematic.data$x.val

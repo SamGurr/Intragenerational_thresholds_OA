@@ -191,8 +191,11 @@ DATA.pre.PLOTbox # view the plot
 DATA.Days.1.7$Treat.initial <- substr(DATA.Days.1.7$Treatment.history, 1,1)
 DATA.Days.1.7$treat.hist.secondary <- paste(DATA.Days.1.7$Treatment.history, DATA.Days.1.7$Treatment.EXP_1, sep ="")
 
-Days.1.7.PLOTbox <- ggplot(DATA.Days.1.7, aes(x=Treatment.EXP_1, y=resp.COUNT.µg.L.hr.indiv, fill =Treatment.history, colour=treat.hist.secondary)) +
+Days.1.7.PLOTbox <- ggplot(DATA.Days.1.7, aes(x=Treatment.EXP_1, y=resp.COUNT.µg.L.hr.indiv, fill =factor(Treatment.history), colour=treat.hist.secondary)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.5))+
@@ -204,14 +207,36 @@ Days.1.7.PLOTbox <- ggplot(DATA.Days.1.7, aes(x=Treatment.EXP_1, y=resp.COUNT.µg
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 Days.1.7.PLOTbox # view the plot
+# FACET WRAPPED
+Days.1.7.PLOTbox.facet <- ggplot(DATA.Days.1.7, aes(Treatment.EXP_1, resp.COUNT.µg.L.hr.indiv, fill = factor(Treatment.EXP_1))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.2),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.5)) +
+  scale_color_manual(values=c("black", "black", "black")) + 
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Respiration rate",
+       subtitle = "(Secondary exposure period)",
+       y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), 
+       x=expression("Secondary pCO"[2]~"Exposure")) + 
+  ylim(0,20) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("A","M", "S")) +
+  facet_wrap(~ Treat.initial)
+Days.1.7.PLOTbox.facet
 
 # TREATMENT HISTORY (INITIAL EXPOSURE) - NO DIFFERENCE BTWN TREATMENT
 DATA_Days.15.21$Treat.initial <- substr(DATA_Days.15.21$Treatment.history, 1,1)
 DATA_Days.15.21$treat.TOTAL <- paste(DATA_Days.15.21$Treatment.history, DATA_Days.15.21$Treatment.EXP_1,DATA_Days.15.21$Treatment.EXP_2, sep ="")
 
 
-Days.15.21.PLOTbox <- ggplot(DATA_Days.15.21, aes(x=Treatment.EXP_2, y=resp.COUNT.µg.L.hr.indiv, fill = treat.TOTAL, shape=treat.TOTAL, colour=treat.TOTAL)) +
+Days.15.21.PLOTbox <- ggplot(DATA_Days.15.21, aes(x=Treatment.EXP_2, y=resp.COUNT.µg.L.hr.indiv, fill = factor(treat.TOTAL), shape=treat.TOTAL, colour=treat.TOTAL)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.15)) +
@@ -229,11 +254,34 @@ Days.15.21.PLOTbox <- ggplot(DATA_Days.15.21, aes(x=Treatment.EXP_2, y=resp.COUN
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 Days.15.21.PLOTbox # view the plot
+# FACET WRAPPED
+Days.15.21.PLOTbox.facet <- ggplot(DATA_Days.15.21, aes(Treatment.EXP_2, resp.COUNT.µg.L.hr.indiv, fill = factor(Treatment.EXP_1))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.5))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Respiration rate",
+       subtitle = "(Tertiary exposure period)",
+       y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), 
+       x=expression("Tertiary pCO"[2]~"Exposure")) + 
+  ylim(0,20) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("A","M", "S")) +
+  facet_wrap(~ Treat.initial)
+Days.15.21.PLOTbox.facet
 
+# ggarrange
 Resp.plots <- ggarrange(DATA.pre.PLOTbox, Days.1.7.PLOTbox, Days.15.21.PLOTbox, nrow = 1, widths = c(0.5, 1, 1), labels = c("A","B","C"))
+Resp.plots.facet <- ggarrange(Days.1.7.PLOTbox.facet, Days.15.21.PLOTbox.facet, nrow = 1, widths = c(0.5, 1, 1), labels = c("A","B"))
 
+# ggsave
 RESP.days.plot.with.schematic <- ggarrange(FIG.schematic.data, Resp.plots,ncol = 1, nrow = 2, heights = c(1, 2.0), labels = "A") # combine plots
 ggsave(file="Output/Resp.plots.pdf", RESP.days.plot.with.schematic, width = 12, height = 8, units = c("in")) # respiration rate plots
+ggsave(file="Output/Resp.plots.facet.pdf", Resp.plots.facet, width = 12, height = 8, units = c("in")) # respiration rate plots
 
 
 

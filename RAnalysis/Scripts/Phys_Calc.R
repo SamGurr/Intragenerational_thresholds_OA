@@ -422,7 +422,12 @@ MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected <- (MASTER.PHYS.ASSAY$mean.mg
 MASTER.PHYS.ASSAY$mean.CRE <- as.numeric(MASTER.PHYS.ASSAY$mean.CRE) # uM concentration NOT DILUTED convert to numeric
 
 MASTER.PHYS.ASSAY$Dil.factor.TAC <- as.numeric(MASTER.PHYS.ASSAY$Dil.factor.TAC) # convert to numeric dilution factor for a few samples that were additionally diluted prior to NaOH and HCl
-MASTER.PHYS.ASSAY$然.CRE.mg.protein<- (MASTER.PHYS.ASSAY$mean.CRE*MASTER.PHYS.ASSAY$Dil.factor.TAC) / (MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected) # 然 CRE mg protein = concentration of CRE in the 20 痞 sample / protein in 20 ul sample
+MASTER.PHYS.ASSAY$然.CRE.mg.protein <- (MASTER.PHYS.ASSAY$mean.CRE*MASTER.PHYS.ASSAY$Dil.factor.TAC) / (MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected) # 然 CRE mg protein = concentration of CRE in the 20 痞 sample / mg protein in 20 ul sample
+MASTER.PHYS.ASSAY$痠ol.CRE.mg.protein <- (MASTER.PHYS.ASSAY$然.CRE.mg.protein) * 0.00002 # 然 CRE mg protein * 0.00002 L = umol CRE mg protein-1; TAOC assay contained well volume of 20 ul per sample
+
+MASTER.PHYS.ASSAY$然.CRE.g.protein <- (MASTER.PHYS.ASSAY$mean.CRE*MASTER.PHYS.ASSAY$Dil.factor.TAC) / (MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected/1000) # 然 CRE g protein = concentration of CRE in the 20 痞 sample / g protein in 20 ul sample [as mg /1000]
+MASTER.PHYS.ASSAY$痠ol.CRE.g.protein <- (MASTER.PHYS.ASSAY$然.CRE.g.protein) * 0.00002 # 然 CRE g protein * 0.00002 L = umol CRE g protein-1; TAOC assay contained well volume of 20 ul per sample
+
 
 # Total protein WHOLE ANIMALS corrected for AFDW (AS mgProtein.mgAFDW)
 MASTER.PHYS.ASSAY$TOTAL.PROTEIN_whole.animal.mg <- (MASTER.PHYS.ASSAY$痞.Total.Homog.Volume/20)*MASTER.PHYS.ASSAY$TOTAL_PROTEIN_per_well_corrected
@@ -431,8 +436,8 @@ MASTER.PHYS.ASSAY$mgProtein.mgAFDW <- MASTER.PHYS.ASSAY$TOTAL.PROTEIN_whole.anim
 PHYS.DATA <- MASTER.PHYS.ASSAY %>% dplyr::select(Date.fixed, ID, Treatment, Exprmt.Day, Tank.ID, 
                                                  mgTOTAL_AFDW,
                                                  mgProtein.mgAFDW,
-                                                 然.CRE.mg.protein)
-
+                                                 痠ol.CRE.g.protein)
+tail(PHYS.DATA)
 #PHYS.DATA <- na.omit(PHYS.DATA)
 
 count.days <- PHYS.DATA %>%  dplyr::group_by(Exprmt.Day) %>% 

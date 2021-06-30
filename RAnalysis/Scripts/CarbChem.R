@@ -112,10 +112,10 @@ carb.output$CO2 <- carb.output$CO2*1000000 #convert to µmol kg-1
 carb.output$HCO3 <- carb.output$HCO3*1000000 #convert to µmol kg-1
 carb.output$CO3 <- carb.output$CO3*1000000 #convert to µmol kg-1
 carb.output$DIC <- carb.output$DIC*1000000 #convert to µmol kg-1
-carb.output <- carb.output[,-c(1,4,5,8,10:13,19)] #subset variables of interest
+carb.output <- carb.output[,-c(1,4,5,8,10:13)] #subset variables of interest
 carb.output <- cbind(SW.chem$Date,  SW.chem$Sample.ID,  SW.chem$Treatment, carb.output) #combine the sample information with the seacarb output
-colnames(carb.output) <- c("Date",  "Tank",  "Treatment",	"Salinity",	"Temperature", "pH",	"CO2",	"pCO2","HCO3",	"CO3",	"DIC", "TA",	"Aragonite.Sat") #Rename columns to describe contents
-
+colnames(carb.output) <- c("Date",  "Tank",  "Treatment",	"Salinity",	"Temperature", "pH",	"CO2",	"pCO2","HCO3",	"CO3",	"DIC", "TA",	"Aragonite.Sat" , "Calcite.Sat") #Rename columns to describe contents
+View(carb.output)
 # write.table(carb.output, "~/MyProjects/BioMin_HIS/RAnalysis/Output/Seawater_chemistry_table_Output_All.csv", sep=",", row.names = FALSE) #save data
 write.table(carb.output, "C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/Output/Seawater_chemistry_table_Output_All.csv", sep=",", row.names = FALSE) #save data
 

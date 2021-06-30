@@ -1,6 +1,6 @@
 #Author: Sam Gurr 
 #Edited by: Sam Gurr
-#Date Last Modified: 20191107
+#Date Last Modified: 20210303
 #Purpose: Calls the Table (From Phys_Calc.R, output as "Phys.Assay.Table.csv")
 #See Readme file for details
 
@@ -42,8 +42,8 @@ resp.data_Days.15.21 <- resp.data %>% dplyr::filter(Date %in% 20190808:20190814)
 ################ (~6 CUPS PER TREATMENT) ####################### #
 ################################################################ #
 
-# negative values for all datasets
-negative_TAOC_rows <- PHYS.DATA %>% dplyr::filter(µM.CRE.mg.protein < 0) # ID rows with TAOC < 0
+# Call the values that resulted in negative TAOC - we ran another replicate (if available) for all cases 
+negative_TAOC_rows <- PHYS.DATA %>% dplyr::filter(µmol.CRE.g.protein < 0) # ID rows with TAOC < 0
 negative_TAOC_rows # view rows with negative TAOC values - note these and assign more samples to homogenize
 # NOTE: negative values for Day 21 and Day  data was repeated with biological replicates (animals fixed from same Tank.ID)
 # ID 1483 (negative) replaced with 1636 -  day 21
@@ -53,25 +53,25 @@ negative_TAOC_rows # view rows with negative TAOC values - note these and assign
 
 
 # find the outliers FOR TAOC on days 7 and 21
-PHYS.OM <- dplyr::filter(PHYS.DATA, µM.CRE.mg.protein > 0) # ommit the negative values (above)
+PHYS.OM <- dplyr::filter(PHYS.DATA, µmol.CRE.g.protein > 0) # ommit the negative values for TAOC (above)
 Day.7.PHYS <- PHYS.OM %>% dplyr::filter(Date.fixed  %in% 20190731) # day 7 data - negatives ommitted
-boxplot(Day.7.PHYS$µM.CRE.mg.protein) # view boxplot
-D.7.OUTLIERS <- boxplot(Day.7.PHYS$µM.CRE.mg.protein , plot=FALSE)$out # id the outlier(s)
-D.7.OUTLIERS # view outlier(s) #  9.739665   0.263706 385.208675
-min.values_TAOC_D.7 <- dplyr::filter(Day.7.PHYS, µM.CRE.mg.protein == (min(D.7.OUTLIERS)))
+boxplot(Day.7.PHYS$µmol.CRE.g.protein) # view boxplot
+D.7.OUTLIERS <- boxplot(Day.7.PHYS$µmol.CRE.g.protein , plot=FALSE)$out # id the outlier(s)
+D.7.OUTLIERS # view outlier(s) #   0.19479330 0.00527412 7.70417350
+min.values_TAOC_D.7 <- dplyr::filter(Day.7.PHYS, µmol.CRE.g.protein == (min(D.7.OUTLIERS)))
 min.values_TAOC_D.7 # view row(s) of the outlier(s) # 349 replaced with 351
-high.values_TAOC_D.7 <- dplyr::filter(Day.7.PHYS, µM.CRE.mg.protein > (max(D.7.OUTLIERS-1)))
+high.values_TAOC_D.7 <- dplyr::filter(Day.7.PHYS, µmol.CRE.g.protein > (max(D.7.OUTLIERS-1)))
 high.values_TAOC_D.7 # view row(s) of the outlier(s) # 357 replaced with 358
 
 Day.21.PHYS <- PHYS.OM %>% dplyr::filter(Date.fixed  %in% 20190814) # day 21 data - negatives ommitted
-boxplot(Day.21.PHYS$µM.CRE.mg.protein) # view boxplot
-D.21.OUTLIERS <- boxplot(Day.21.PHYS$µM.CRE.mg.protein , plot=FALSE)$out # id the outlier(s)
-D.21.OUTLIERS # view outlier(s)
-high.values_TAOC_D.21 <- dplyr::filter(Day.21.PHYS, µM.CRE.mg.protein > 170) # two other values that can be re done
+boxplot(Day.21.PHYS$µmol.CRE.g.protein) # view boxplot
+D.21.OUTLIERS <- boxplot(Day.21.PHYS$µmol.CRE.g.protein , plot=FALSE)$out # id the outlier(s)
+D.21.OUTLIERS # view outlier(s) 3.7909676 0.1818389 0.0752641 0.1693204 3.4807203 3.5497513 3.8697833
+high.values_TAOC_D.21 <- dplyr::filter(Day.21.PHYS, µmol.CRE.g.protein > 3.7) #  two other values that can be re done (note this line was was 170 for uM mg prot)
 high.values_TAOC_D.21 # view rows of outlier(s) - contains the two outliers in D.21.OUTLIERS and two other values ID as outliers in the three way anova
 # ID 1438 replaced with 1437
 # ID 1642 was not replaced
-min.values_TAOC_D.21 <- dplyr::filter(Day.21.PHYS, µM.CRE.mg.protein == (min(D.21.OUTLIERS))) # two other values that can be re done
+min.values_TAOC_D.21 <- dplyr::filter(Day.21.PHYS, µmol.CRE.g.protein == (min(D.21.OUTLIERS))) # two other values that can be re done
 min.values_TAOC_D.21 # view rows of outlier(s) - contains the two outliers in D.21.OUTLIERS and two other values ID as outliers in the three way anova
 # ID 1477 replaced with 1476
 
@@ -79,45 +79,6 @@ min.values_TAOC_D.21 # view rows of outlier(s) - contains the two outliers in D.
 Day.7.PHYS <- Day.7.PHYS %>%  dplyr::filter(!ID %in% c('349', '357')) # ommit IDs 349, 357 (337 and 450 are negatives already ommited)
 Day.21.PHYS <- Day.21.PHYS %>%  dplyr::filter(!ID %in% c('1477', '1438', '1594')) # ommit IDs 1477, 1438 (1588 and 1483 are negatives already ommited)
 
-################################################################ #
-################################################################ #
-################################################################ #
-######     DAY 1 -7 initial exposure × history       ###########
-##########       RESP RATES EHM > AHM  ######################### #
-################################################################ #
-################################################################ #
-
-#initial effect
-Model_1_RESP.rate <- aov(resp.MEAN.µg.L.hr.mm~Treatment.history*Treatment.EXP_1*Date, data = resp.data.Days.1.7) # run model 
-summary(Model_1_RESP.rate)
-shapiro.test(residuals(Model_1_RESP.rate)) # p-value = 0.2751; normal via shapiro wilk test
-hist((residuals(Model_1_RESP.rate))) # histogram of residuals
-qqnorm(residuals(Model_1_RESP.rate)) # qqplot
-# post-hoc 
-Model_1_RESP.rate.MEANS <- lsmeans(Model_1_RESP.rate, pairwise ~  Treatment.history:Treatment.EXP_1)# pariwise Tukey Post-hoc test between repeated treatments
-# AH,M - EH,M -1.07408508 0.3831895 98  -2.803  0.0654 MARGINAL DIFF BETWEEN AHM AND EHM
-resp.data.Days.1.7$Treatment.initial <- paste(resp.data.Days.1.7$Treatment.history, resp.data.Days.1.7$Treatment.EXP_1, sep="")
-resp.data.Days.1.7.EFFECT <- resp.data.Days.1.7 %>%  dplyr::filter(Treatment.initial %in% c("EHM", "AHM"))
-plot_initial.resp <- ggviolin(resp.data.Days.1.7.EFFECT, ylab =expression("Respiration rate"~(~µg~O[2]*hr^{-1}*indiv^{-1})),  
-                              x = "Treatment.initial", y = "resp.COUNT.µg.L.hr.indiv",  fill = "Treatment.initial",  
-                              palette = c("#FC4E07", "#00AFBB"), add = "none", title = "Respiration rate")
-plot_initial.resp
-
-# stat.test.RESP<- compare_means(
-# resp.MEAN.µg.L.hr.mm~Treatment.initial, data = resp.data.Days.1.7.EFFECT,
-# method = "t.test")
-# stat.test.RESP <- stat.test.RESP %>%# Add manually p-values from stat.test data
-# Insert the results of the tukey test in the Resp.Analysis.R Script
-# result from three way anova history × exposure = p = 0.0647; tukey test EH:M > AH:M p = 0.0408
-threewayanova.resp.table <- data.frame(matrix(nrow = 1, ncol = 4))
-colnames(threewayanova.resp.table)<-c('test', 'group1', 'group2', 'p-val_tukey') # column names, matches all data
-threewayanova.resp.table[1,] <- c("initial", "EHM", "AHM", 0.0408)
-threewayanova.resp.table <- threewayanova.resp.table %>%# Add manually p-values from stat.test data
-  mutate(y.position = c(22))
-plot_initial.resp <- plot_initial.resp %>% ggadd(c("boxplot", "jitter"), fill = "white")  + 
-  stat_pvalue_manual(threewayanova.resp.table, label ="p-val_tukey") # Add box plot
-plot_initial.resp <- ggpar(plot_initial.resp, ylim = c(0,35))
-plot_initial.resp
 
 ##################################################################################################### #
 ##################################################################################################### #
@@ -148,8 +109,11 @@ leveneTest(model_Day7_RESP) # p = 0.9121; homogenity of variance
 # D.7.PLOTboxRESP <- ggpar(D.7.PLOTboxRESP, ylim = c(0,12))
 # D.7.PLOTboxRESP
 
-D.7.PLOTboxRESP<-ggplot(Data.D.7.Resp, aes(x=Treatment.EXP_1, y=resp.COUNT.µg.L.hr.indiv, fill =Treatment.history, colour=Treatment.initial)) +
+D.7.PLOTboxRESP<-ggplot(Data.D.7.Resp, aes(x=Treatment.EXP_1, y=resp.COUNT.µg.L.hr.indiv, fill = factor(Treatment.history), colour=Treatment.history)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.5))+
@@ -166,57 +130,76 @@ D.7.PLOTboxRESP
 
 # TAOC ##################################################################################################### #
 # data prep
-# diagnostic
+# view counts by rep
 count.treat_1 <- Data.D.7 %>%  dplyr::group_by(Treatment) %>% # diagnostic of coutns for TAOC - still have more samples to run
   dplyr::summarise(count_replicated.by.day =n())
 count.treat_1 # 6 for each 
 count.treat_1.TANK <- Data.D.7 %>%  dplyr::group_by(Tank.ID) %>% # diagnostic of coutns for TAOC - still have more samples to run
   dplyr::summarise(count_replicated.by.day =n())
-count.treat_1.TANK # 1 fir each tank replicate
+count.treat_1.TANK # 1 for each tank replicate
 # run the model on raw data
-model_Day7_TAC <- aov(µM.CRE.mg.protein ~ Treat_history * secondary, data = Data.D.7)
+model_Day7_TAC <- aov(µmol.CRE.g.protein ~ Treat_history * secondary, data = Data.D.7)
 summary(model_Day7_TAC) # no sig difference
 shapiro.test(residuals(model_Day7_TAC)) # p-value =  0.5338; normal via shapiro wilk test
+par(mfrow=c(2,2)) # diagnostic plits
 hist((residuals(model_Day7_TAC))) # histogram of residuals - left skew appears to have an outlier
-qqnorm(residuals(model_Day7_TAC)) # qqplot
+plot(model_Day7_TAC) # diagnotic plots 
 leveneTest(model_Day7_TAC) # p = 0.3634; homogenity of variance 
-# plot the data
-# D.7.PLOTbox<- ggboxplot(Data.D.7, x = "secondary", y = "µM.CRE.mg.protein",  ylab = "µM.CRE.mg.protein",  fill = "Treat_history",
-#                              palette = c( "#00AFBB", "#FC4E07"),add = "jitter", title = "TAOC Day 7", xlab = "Secondary pCO2 Treatment")
-# D.7.PLOTbox <- ggpar(D.7.PLOTbox, ylim = c(0,200))
-# D.7.PLOTbox
 
-D.7.PLOTbox <- ggplot(Data.D.7, aes(x=secondary, y=µM.CRE.mg.protein, fill = Treat_history, colour=Treatment)) +
+# plot the tAOC Data from Day 7
+D.7.PLOTbox <- ggplot(Data.D.7, aes(x=secondary, y=µmol.CRE.g.protein, fill = factor(Treat_history), colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 5,
+               show.legend = FALSE) +
   theme_classic() +
-  labs(y=expression("Total Antioxidant Capacity"~(~µM~CRE~Reducing~Equivalents^{-1}*mg~total~protein^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
-  geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 1))+
+  labs(y=expression("Total Antioxidant Capacity"~(~µM~CRE[red]^{-1}*g~total~protein^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
+  #geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 1))+
   #scale_colour_manual(values=c("skyblue1", "deepskyblue3","blue", "tomato1",  "red1", "firebrick4")) +
+  geom_point(shape = 21,  fill = 'black', size = 4, position = position_jitterdodge(jitter.width = 0.2))+
   scale_colour_manual(values=c("#56B4E9", "#009E73", "#0072B2", "#F0E441",  "#E69F00", "#D55E00")) +
-  scale_shape_manual(values=c(24, 21)) + 
+  scale_shape_manual(values=c(21, 21)) + 
   scale_fill_manual(values=c("white", "white")) +
-  ylim(0,200) + 
+  ylim(0,4) + 
   scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 D.7.PLOTbox
+# FACET WRAPPED
+D.7.PLOTbox.TAOC.facet <- ggplot(Data.D.7, aes(secondary, µmol.CRE.g.protein, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Total Antioxidant Capacity",
+       subtitle = "(Secondary exposure period)",
+       y=expression("Total Antioxidant Capacity"~(~µmol~CRE[red]^{-1}*g~total~protein^{-1})), 
+       x=expression("Secondary pCO"[2]~"Exposure")) + 
+  ylim(0,4) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  facet_wrap(~ Treat_history)
+D.7.PLOTbox.TAOC.facet
 
 # Protein ##################################################################################################### #
 # run the model on raw data
 model_Day7_TotalProtein <- aov(mgProtein.mgAFDW  ~ Treat_history * secondary, data = Data.D.7)
 summary(model_Day7_TotalProtein) # no significant difference
 shapiro.test(residuals(model_Day7_TotalProtein)) # p-value = 0.7918; normal via shapiro wilk test
+par(mfrow=c(2,2)) # diagnostic plits
 hist((residuals(model_Day7_TotalProtein))) # histogram of residuals
-qqnorm(residuals(model_Day7_TotalProtein)) # qqplot
+plot(model_Day7_TotalProtein) # diagnotic plots 
 leveneTest(model_Day7_TotalProtein) # p = 0.1243; homogenity of variance 
 # plot data
-# D.7.PLOTbox.Protein<- ggboxplot(Data.D.7, x = "secondary", y = "mgProtein.mgAFDW",  ylab = "mgProtein.mgAFDW",  fill = "Treat_history",
-#                         palette = c( "#00AFBB", "#FC4E07"),add = "jitter", title = "TP Day 7",xlab = "Secondary pCO2 Treatment")
-# D.7.PLOTbox.Protein <- ggpar(D.7.PLOTbox.Protein, ylim = c(0,35))
-# D.7.PLOTbox.Protein
-
-D.7.PLOTbox.Protein<- ggplot(Data.D.7, aes(x=secondary, y=mgProtein.mgAFDW, fill = Treat_history, colour=Treatment)) +
+D.7.PLOTbox.Protein<- ggplot(Data.D.7, aes(x=secondary, y=mgProtein.mgAFDW, fill = factor(Treat_history), colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Total Protein"~(~µg~protein^{-1}*mg~AFDW^{-1})), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 1))+
@@ -229,14 +212,34 @@ D.7.PLOTbox.Protein<- ggplot(Data.D.7, aes(x=secondary, y=mgProtein.mgAFDW, fill
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 D.7.PLOTbox.Protein
+# FACET WRAPPED
+D.7.PLOTbox.Protein.facet <- ggplot(Data.D.7, aes(secondary, mgProtein.mgAFDW, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Total Protein",
+       subtitle = "(Secondary exposure period)",
+       y=expression("Total Protein"~(~µg~protein^{-1}*mg~AFDW^{-1})), 
+       x=expression("Secondary pCO"[2]~"Exposure")) + 
+  ylim(0,35) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  facet_wrap(~ Treat_history)
+D.7.PLOTbox.Protein.facet
 
 # AFDW ##################################################################################################### #
 # run the model on raw data
 model_Day7_AFDW <- aov(mgTOTAL_AFDW  ~ Treat_history * secondary, data = Data.D.7)
 summary(model_Day7_AFDW) # significant difference
 shapiro.test(residuals(model_Day7_AFDW)) # p-value = 0.4076; normal via shapiro wilk test
+par(mfrow=c(2,2)) # diagnostic plits
 hist((residuals(model_Day7_AFDW))) # histogram of residuals
-qqnorm(residuals(model_Day7_AFDW)) # qqplot
+plot(model_Day7_AFDW) # diagnotic plots 
 leveneTest(model_Day7_AFDW) # p = 0.6027; homogenity of variance 
 # POST HOC
 TukeyHSD(model_Day7_AFDW, conf.level=0.95) # Treat_history E-A av diff = 2.608801 (E > A); p = 0.0047298 # S < A -2.349025 p = 0.0800328
@@ -247,10 +250,12 @@ Data.D.7_AFDW_grouped <- Data.D.7 %>%
   dplyr::summarise_each(funs(mean,sd))
 Data.D.7_AFDW_grouped # view the mean and sd error data
 (((Data.D.7_AFDW_grouped[2,2])-(Data.D.7_AFDW_grouped[1,2]))/Data.D.7_AFDW_grouped[2,2])*100 # calculate % difference
-
-
-D.7.PLOTbox.AFDW<- ggplot(Data.D.7, aes(x=secondary, y=mgTOTAL_AFDW, fill = Treat_history, colour=Treatment)) +
+#plot the data
+D.7.PLOTbox.AFDW<- ggplot(Data.D.7, aes(x=secondary, y=mgTOTAL_AFDW, fill = factor(Treat_history), colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Ash Free Dry Weight"~(mg)), x=expression("Secondary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 1))+
@@ -263,6 +268,45 @@ D.7.PLOTbox.AFDW<- ggplot(Data.D.7, aes(x=secondary, y=mgTOTAL_AFDW, fill = Trea
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 D.7.PLOTbox.AFDW
+# FACET WRAPPED
+D.7.PLOTbox.AFDW.facet <- ggplot(Data.D.7, aes(secondary, mgTOTAL_AFDW, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "AFDW",
+       subtitle = "(Secondary exposure period)",
+       y=expression("Ash Free Dry Weight"~(mg)), 
+       x=expression("Secondary pCO"[2]~"Exposure")) + 
+  ylim(0,20) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  facet_wrap(~ Treat_history)
+D.7.PLOTbox.AFDW.facet
+
+# to match the ylim in AFDW d21 (0,26)
+D.7.PLOTbox.AFDW.facet_2 <- ggplot(Data.D.7, aes(secondary, mgTOTAL_AFDW, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "AFDW",
+       subtitle = "(Secondary exposure period)",
+       y=expression("Ash Free Dry Weight"~(mg)), 
+       x=expression("Secondary pCO"[2]~"Exposure")) + 
+  ylim(0,26) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
+  facet_wrap(~ Treat_history)
+D.7.PLOTbox.AFDW.facet_2
 
 ##################################################################################################### #
 #DAY 21 TEST ######################################################################################## #
@@ -282,7 +326,7 @@ count.treat_2 # 6 for each
 count.treat_2.TANK <- Data.D.21 %>%  dplyr::group_by(Tank.ID) %>% # diagnostic of coutns for TAOC - still have more samples to run
   dplyr::summarise(count_replicated =n())
 count.treat_2.TANK # 1  each tank replicate
-count.treat_2.TANK %>% dplyr::filter(count_replicated > 1) #re there duplicates?
+count.treat_2.TANK %>% dplyr::filter(count_replicated > 1) #are there duplicates?
 Day.21.PHYS %>%  dplyr::filter(Tank.ID %in% c('13','21', '27','55')) # look at the duplicated values
 Day.21.PHYS.2 <- Day.21.PHYS %>%  dplyr::filter(!ID %in% c('1570', '1606', '1551', '1563')) # duplicates and are ommited based on duplication for later assay
 
@@ -295,19 +339,18 @@ Day.21.PHYS.2$secondary <- factor(Day.21.PHYS.2$secondary , levels = c("A", "M",
 # run the model on raw data
 model_Day21_RESP<- aov(resp.COUNT.µg.L.hr.indiv  ~ Treat_hist * Treatment.EXP_1 * Treatment.EXP_2, data = Data.D.21.Resp)
 summary(model_Day21_RESP) # no sig difference
-shapiro.test(residuals(model_Day21_RESP)) # p-value = 0.2533; non normal via shapiro wilk test - likely due to single outlier
-hist((residuals(model_Day21_RESP))) # histogram of residuals - left skew appears to have an outlier
-qqnorm(residuals(model_Day21_RESP)) # qqplot
+shapiro.test(residuals(model_Day21_RESP)) # p-value = 0.2533;  normal via shapiro wilk test 
+hist((residuals(model_Day21_RESP))) # histogram of residuals
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_RESP) # diagnotic plots 
 leveneTest(model_Day21_RESP) # p = 0.5439; homogenity of variance 
-# plot the data
-# D.21.PLOTboxRESP<- ggboxplot(Data.D.21.Resp, x = "Treatment.EXP_1", y = "resp.COUNT.µg.L.hr.indiv",  ylab = "µg.L.hr.indiv",  fill = "Treat_hist",
-#                             palette = c( "#00AFBB", "#FC4E07"),add = "jitter", shape = 'Treatment.EXP_2',  title ="Respiration rate Day 21", 
-#                             xlab = "Secondary pCO2 Treatment")
-# D.21.PLOTboxRESP <- ggpar(D.21.PLOTboxRESP, ylim = c(0,12))
-# D.21.PLOTboxRESP
 
-D.21.PLOTboxRESP<-ggplot(Data.D.21.Resp, aes(x=Treatment.EXP_2, y=resp.COUNT.µg.L.hr.indiv, fill = TOTAL, shape=TOTAL, colour=TOTAL)) +
-  geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+D.21.PLOTboxRESP<-ggplot(Data.D.21.Resp, aes(x=Treatment.EXP_2, y=resp.COUNT.µg.L.hr.indiv, fill = factor(TOTAL), shape=TOTAL, colour=TOTAL)) +
+  geom_boxplot(aes(middle = mean(resp.COUNT.µg.L.hr.indiv)), position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
+  #stat_summary(fun.y=mean, geom="point", shape=20, size=14, color="red", fill="red") +
   theme_classic() +
   labs(y=expression("Respiration rate"~(~µg~O[2]*hr^{-1}*individual^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treatment.history))), size = 2, position = position_jitterdodge(jitter.width = 0.1)) +
@@ -334,15 +377,16 @@ D.21.PLOTboxRESP
 
 # TAOC ##################################################################################################### #
 # model with raw data
-model_Day21_TAC <- aov(µM.CRE.mg.protein ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2) # run model for TAOC raw data
-summary(model_Day21_TAC) # marginal difference due to treatment history
-shapiro.test(residuals(model_Day21_TAC)) # p-value = 0.03158;  normal via shapiro wilk test
-hist((residuals(model_Day21_TAC))) # histogram of residuals - LEFT SKEW
-qqnorm(residuals(model_Day21_TAC)) # qqplot
+model_Day21_TAC <- aov(µmol.CRE.g.protein ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2) # run model for TAOC raw data
+summary(model_Day21_TAC) # significant difference due to treatment history
+shapiro.test(residuals(model_Day21_TAC)) # p-value = 0.03158;  non-normal via shapiro wilk test
+hist((residuals(model_Day21_TAC))) # histogram appears normal
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_TAC) # diagnotic plots 
 leveneTest(model_Day21_TAC) # p = 0.9197; homogenity of variance 
 TukeyHSD(model_Day21_TAC) # E-A av. diff = -22.92171; p = 0.0062659
 mean_TAC_D21.initial_effect <- Day.21.PHYS.2 %>% 
-  dplyr::select(µM.CRE.mg.protein,Treat_history)  %>% 
+  dplyr::select(µmol.CRE.g.protein,Treat_history)  %>% 
   dplyr::group_by(Treat_history) %>% # call column to summarize 
   dplyr::summarise_each(funs(mean,std.error))
 mean_TAC_D21.initial_effect # intital
@@ -350,22 +394,13 @@ mean_TAC_D21.initial_effect # intital
 # E = 82.9 ± 5.19
 ((106-82.9)/106)*100 # percent difference 21.79245 %
 # plot the data
-# plot.DAY21.TAC <- ggboxplot(Day.21.PHYS.2, x = "Treat_history", y = "µM.CRE.mg.protein",  ylab = "µM.CRE.mg.protein", fill = "Treat_history",
-#                                palette = c("#00AFBB", "#FC4E07"), add = "jitter",  title ="TAOC Day 21", xlab = "Initial pCO2 Treatment")
-# plot.DAY21.TAC <- ggpar(plot.DAY21.TAC, ylim = c(0,200)) + geom_bracket(xmin = "A", xmax = "E", y.position = 220, label = "*", tip.length = 0.01)
-# plot.DAY21.TAC # main effect plot
-# D.21.PLOTbox<- ggboxplot(Day.21.PHYS.2, x = "secondary", y = "µM.CRE.mg.protein",  ylab = "µM.CRE.mg.protein",  fill = "Treat_history",
-#                          palette = c( "#00AFBB", "#FC4E07"),add = "jitter", shape = "tertiary",
-#                         xlab = "Secondary pCO2 Treatment", title = "TAOC Day 21")
-# D.21.PLOTbox <- ggpar(D.21.PLOTbox, ylim = c(0,200)) 
-# D.21.PLOTbox
-# PLOTS.TAC.D21 <- ggarrange(plot.DAY21.TAC,D.21.PLOTbox, nrow = 1, widths = c(0.5, 1))
-# PLOTS.TAC.D21 # view arranged plots
-
-plot.DAY21.TAC <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=µM.CRE.mg.protein, fill = Treatment, shape=Treatment, colour=Treatment)) +
+plot.DAY21.TAC <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=µmol.CRE.g.protein, fill = factor(Treatment), shape=Treatment, colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
-  labs(y=expression("Total Antioxidant Capacity"~(~µM~CRE~Reducing~Equivalents^{-1}*mg~total~protein^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
+  labs(y=expression("Total Antioxidant Capacity"~(~µM~CRE[red]^{-1}*mg~total~protein^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 0.2)) +
   scale_colour_manual(values=c("skyblue1", "skyblue1", "deepskyblue3", "deepskyblue3", 
                                "blue", "blue","tomato1","tomato1", 
@@ -376,49 +411,79 @@ plot.DAY21.TAC <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=µM.CRE.mg.protein, fil
   scale_fill_manual(values=c("white", "red1","white", "red1",
                              "white", "red1", "white", "red1", 
                              "white", "red1", "white", "red1","white", "red1")) +
-  ylim(0,200) + 
+  ylim(0,4) + 
   scale_x_discrete(labels = c("Ambient","Moderate")) +
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 plot.DAY21.TAC
-
+# FACET WRAPPED
+D.21.PLOTbox.TAOC.facet <- ggplot(Day.21.PHYS.2, aes(tertiary, µmol.CRE.g.protein, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Total Antioxidant Capacity",
+       subtitle = "(Tertiary exposure period)",
+       y=expression("Total Antioxidant Capacity"~(~µM~CRE[red]^{-1}*mg~total~protein^{-1})), 
+       x=expression("Tertiary pCO"[2]~"Exposure")) + 
+  ylim(0,4) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
+  facet_wrap(~ Treat_history)
+D.21.PLOTbox.TAOC.facet
 
 # Protein ##################################################################################################### #
-# run the model on raw data
+
+# Run the model on raw data
 model_Day21_Protein <- aov(mgProtein.mgAFDW  ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2)
-summary(model_Day21_Protein)
+summary(model_Day21_Protein) # NO SIGNIFICANT EFFECT: marginal p = 0.0628 interaction between primary and third exposure
 shapiro.test(residuals(model_Day21_Protein)) # p-value = 3.147e-08; non normal via shapiro wilk test
-hist((residuals(model_Day21_Protein))) # histogram of residuals left skew
-qqnorm(residuals(model_Day21_Protein)) # qqplot - very bad outliers might be the reason for non normality
-leveneTest(model_Day21_Protein) # p = 0.5965; homogenity of variance 
-# look for outliers (seems like there are in qqnorm plot)
+hist((residuals(model_Day21_Protein))) # histogram of residuals shows 2 outliers
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_Protein) # diagnotic plots - looks like two outliers 57 and 45
+leveneTest(model_Day21_Protein) # p = 0.5965; homogenity of variance passess
+
+# Run outliers (seems like there are in qqnorm plot), ommit them and repeat  shapiro-wilk and anova; 
+# Q: is the raw data anova robust to outlier ommision?
 outliers.d21_protein <- boxplot(Data.D.21$mgProtein.mgAFDW , plot=FALSE)$out # id the outlier
-print(outliers.d21_protein) # view the outlier(s)  26.62622 24.47385 50.82861 27.01706 62.79815
-Data.D.21.OM <- Day.21.PHYS.2[-which(Day.21.PHYS.2$mgProtein.mgAFDW %in% outliers.d21_protein),] # remove outlier from new data frame
-# run model with ommitted outliers
-model_Day21_Protein.OM <- aov(mgProtein.mgAFDW  ~ Treat_history * secondary * tertiary, data = Data.D.21.OM)
-summary(model_Day21_Protein.OM)
-shapiro.test(residuals(model_Day21_Protein.OM)) # p-value = 0.7229; non normal via shapiro wilk test
+print(outliers.d21_protein) # view the outlier(s)  26.62622 24.47385 50.82861 27.01706 62.79815 - via qq-plot two major outliers are  > 50
+Data.D.21.OM <- Day.21.PHYS.2[-which(Day.21.PHYS.2$mgProtein.mgAFDW > 50),] # remove outlier from new data frame
+model_Day21_Protein.OM <- aov(mgProtein.mgAFDW  ~ Treat_history * secondary * tertiary, data = Data.D.21.OM) # run model with ommitted outliers
+summary(model_Day21_Protein.OM) # # NO SIGNIFICANT EFFECT: marginal effect of treatment history 0.0611 - however, no appearance of new significant effects
+shapiro.test(residuals(model_Day21_Protein.OM)) # p-value = 0.1859; normal via shapiro wilk test, outliers ommited resolved normality assumption
 hist((residuals(model_Day21_Protein.OM))) # histogram of residuals left skew
-qqnorm(residuals(model_Day21_Protein.OM)) # qqplot
-leveneTest(model_Day21_Protein.OM) # p = 0.4608; homogenity of variance 
-# run model with LOG transformation
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_Protein.OM) # diagnotic plots 
+leveneTest(model_Day21_Protein.OM) # p = 0.6776; homogenity of variance in the dataset with outliers > 50 mg protein ommitted
+
+# Run model with LOG transformation to resolve normality 
+# Q: is the raw data anova robust to log transformation?
 Day.21.PHYS.2$mgProtein.mgAFDW.LOG <- log(Day.21.PHYS.2$mgProtein.mgAFDW)
 model_Day21_Protein.LOG <- aov(mgProtein.mgAFDW.LOG  ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2)
-summary(model_Day21_Protein.LOG)
-shapiro.test(residuals(model_Day21_Protein.LOG)) # p-value = 0.08939; non normal via shapiro wilk test
+summary(model_Day21_Protein.LOG) # NO SIGNIFICANT EFFECT:
+shapiro.test(residuals(model_Day21_Protein.LOG)) # p-value = 0.08939; non normal via shapiro wilk test; log transformation resolves normality 
 hist((residuals(model_Day21_Protein.LOG))) # histogram of residuals left skew
-qqnorm(residuals(model_Day21_Protein.LOG)) # qqplot
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_Protein.LOG) # diagnotic plots 
 leveneTest(model_Day21_Protein.LOG) # p = 0.09729; homogenity of variance 
-# plot the data
-# D.21.PLOTbox.Protein<- ggboxplot(Day.21.PHYS.2, x = "secondary", y = "mgProtein.mgAFDW",  ylab = "mgProtein.mgAFDW",  fill = "Treat_history",
-#                                 palette = c( "#00AFBB", "#FC4E07"),add = "jitter",shape = "tertiary", title = "TP Day 21",
-#                                xlab = "Secondary pCO2 Treatment")
-# D.21.PLOTbox.Protein <- ggpar(D.21.PLOTbox.Protein, ylim = c(0,35))
-# D.21.PLOTbox.Protein
 
-D.21.PLOTbox.Protein <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgProtein.mgAFDW, fill = Treatment, shape=Treatment, colour=Treatment)) +
+# In summary....
+# The raw data, although did not pass shapiro-wilk test, passed Levene's test. Residual histogram and qqnrom plot show 2 major outliers
+# outliers ommitted and log transformation (of raw data) both resolved normality (via shapiro-wilk)BUT DID NOT CHANGE ANOVA RESULT
+# Thus, the raw data model will be reported, we will report in the manuscript that the our raw data anova
+#was robust to transformations (outliers ommited and log) that resolved normality via shapiro-wilk test. 
+
+
+# plot the data
+D.21.PLOTbox.Protein <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgProtein.mgAFDW, fill = factor(Treatment), shape=Treatment, colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Total Protein"~(~µg~protein^{-1}*mg~AFDW^{-1})), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 0.2)) +
@@ -431,22 +496,114 @@ D.21.PLOTbox.Protein <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgProtein.mgAFDW
   scale_fill_manual(values=c("white", "red1","white", "red1",
                              "white", "red1", "white", "red1", 
                              "white", "red1", "white", "red1","white", "red1")) +
-  ylim(0,35) + 
+  ylim(0,70) + 
   scale_x_discrete(labels = c("Ambient","Moderate", "Severe")) +
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 D.21.PLOTbox.Protein
+# FACET WRAPPED
+D.21.PLOTbox.Protein.facet <- ggplot(Day.21.PHYS.2, aes(tertiary, mgProtein.mgAFDW, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Total Protein",
+       subtitle = "(Tertiary exposure period)",
+       y=expression("Total Protein"~(~µg~protein^{-1}*mg~AFDW^{-1})), 
+       x=expression("Tertiary pCO"[2]~"Exposure")) + 
+  ylim(0,65) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
+  facet_wrap(~ Treat_history)
+D.21.PLOTbox.Protein.facet
 
+
+D.21.PLOTbox.Protein.facet_2 <- ggplot(Day.21.PHYS.2, aes(tertiary, mgProtein.mgAFDW, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Total Protein",
+       subtitle = "(Tertiary exposure period)",
+       y=expression("Total Protein"~(~µg~protein^{-1}*mg~AFDW^{-1})), 
+       x=expression("Tertiary pCO"[2]~"Exposure")) + 
+  ylim(0,65) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
+  facet_wrap(~ Treat_history)
+D.21.PLOTbox.Protein.facet_2
+
+# FACET WRAPPED LOG TRANSFORMED
+LOG_D.21.PLOTbox.Protein.facet <- ggplot(Day.21.PHYS.2, aes(tertiary, mgProtein.mgAFDW.LOG, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "Total Protein",
+       subtitle = "(Tertiary exposure period)",
+       y=expression("Total Protein"~(~µg~protein^{-1}*mg~AFDW^{-1})), 
+       x=expression("Tertiary pCO"[2]~"Exposure")) + 
+  ylim(0,5) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
+  facet_wrap(~ Treat_history)
+LOG_D.21.PLOTbox.Protein.facet
+
+boxplot(Day.21.PHYS.2$mgProtein.mgAFDW , plot=FALSE)$out
+dplyr::filter(Day.21.PHYS.2, mgProtein.mgAFDW > 50) 
 # AFDW ##################################################################################################### #
 # run the model on raw data
 model_Day21_AFDW <- aov(mgTOTAL_AFDW  ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2)
-summary(model_Day21_AFDW) # significant difference
+summary(model_Day21_AFDW) # significant difference from primary exposure
 shapiro.test(residuals(model_Day21_AFDW)) # p-value = 9.291e-06; normal via shapiro wilk test
-hist((residuals(model_Day21_AFDW))) # histogram of residuals - negative skewed
-qqnorm(residuals(model_Day21_AFDW)) # qqplot
+hist((residuals(model_Day21_AFDW))) # histogram of residuals shows 2 outliers
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_AFDW) # diagnotic plots 
 leveneTest(model_Day21_AFDW) # p = 0.4519; homogenity of variance 
 TukeyHSD(model_Day21_AFDW, conf.level=0.95) # Treat_history E-A av diff = 3.346883 (E > A); p = 0.0004911
 
+# run the model on ommitted outliter data
+Day.21.PHYS.2[which(Day.21.PHYS.2$mgTOTAL_AFDW < 2),]
+model_Day21_AFDW <- aov(mgTOTAL_AFDW  ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2)
+summary(model_Day21_AFDW) # significant difference from primary exposure
+shapiro.test(residuals(model_Day21_AFDW)) # p-value = 9.291e-06; normal via shapiro wilk test
+hist((residuals(model_Day21_AFDW))) # histogram of residuals shows 2 outliers
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_AFDW) # diagnotic plots 
+leveneTest(model_Day21_AFDW) # p = 0.4519; homogenity of variance 
+TukeyHSD(model_Day21_AFDW, conf.level=0.95) # Treat_history E-A av diff = 3.346883 (E > A); p = 0.0004911
+
+
+# transform cube root transformed
+# Q: is the raw data anova robust to transformation?
+Day.21.PHYS.2$mgTOTAL_AFDW.cbrt <- (Day.21.PHYS.2$mgTOTAL_AFDW)^(1/3)
+model_Day21_AFDW.cbrt <- aov(mgTOTAL_AFDW.cbrt  ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2)
+summary(model_Day21_AFDW.cbrt) # significant difference
+shapiro.test(residuals(model_Day21_AFDW.cbrt)) # p-value = 0.1901; normal via shapiro wilk test
+hist((residuals(model_Day21_AFDW.cbrt))) # histogram of residuals left skew
+par(mfrow=c(2,2)) # diagnostic plits
+plot(model_Day21_AFDW.cbrt) # diagnotic plots 
+leveneTest(model_Day21_AFDW.cbrt) # p = 0.8736; homogenity of variance 
+
+# In summary....
+# The raw data, although did not pass shapiro-wilk test, passed Levene's test. Residual histogram and qqnrom plot show a couple major outliers
+#  transformation (of raw data)  resolved normality (via shapiro-wilk) BUT DID NOT CHANGE ANOVA RESULT
+# Thus, the raw data model will be reported, we will report in the manuscript that the our raw data anova
+#was robust to transformations that resolved normality via shapiro-wilk test. 
+
+# investigate the raw data anova further...
 mean_AFDW_D21.tertiary_effect <- Day.21.PHYS.2 %>% 
   dplyr::select(mgTOTAL_AFDW,tertiary)  %>% 
   dplyr::group_by(tertiary) %>% # call column to summarize 
@@ -465,24 +622,12 @@ mean_AFDW_D21.initial_effect # intital
 # E = 8.21 ± 0.920
 ((8.21-4.03)/8.21)*100 # percent difference 50.91352 %
 
-# transform square root trans
-Day.21.PHYS.2$mgTOTAL_AFDW.cbrt <- (Day.21.PHYS.2$mgTOTAL_AFDW)^(1/3)
-model_Day21_AFDW.cbrt <- aov(mgTOTAL_AFDW.cbrt  ~ Treat_history * secondary * tertiary, data = Day.21.PHYS.2)
-summary(model_Day21_AFDW.cbrt) # significant difference
-shapiro.test(residuals(model_Day21_AFDW.cbrt)) # p-value = 0.1901; normal via shapiro wilk test
-hist((residuals(model_Day21_AFDW.cbrt))) # histogram of residuals - negative skewed
-qqnorm(residuals(model_Day21_AFDW.cbrt)) # qqplot
-leveneTest(model_Day21_AFDW.cbrt) # p = 0.8736; homogenity of variance 
-# POST HOC
-TukeyHSD(model_Day21_AFDW.sqrt, conf.level=0.95) # Treat_history E-A av diff = 3.346883 (E > A); p = 0.0004911
 # PLOTS
-# D.21.PLOTbox.AFDW<- ggboxplot(Day.21.PHYS.2, x = "secondary", y = "mgTOTAL_AFDW",  ylab = "mgAFDW",  fill = "Treat_history",
-#                              palette = c( "#00AFBB", "#FC4E07"),add = "jitter", shape = "tertiary", title = "AFDW Day 21",xlab = "Secondary pCO2 Treatment")
-# D.21.PLOTbox.AFDW <- ggpar(D.21.PLOTbox.AFDW, ylim = c(0,25))
-# D.21.PLOTbox.AFDW
-
-D.21.PLOTbox.AFDW <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgTOTAL_AFDW, fill = Treatment, shape=Treatment, colour=Treatment)) +
+D.21.PLOTbox.AFDW <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgTOTAL_AFDW, fill = factor(Treatment), shape=Treatment, colour=Treatment)) +
   geom_boxplot(position=position_dodge(0.8), outlier.size = 0, fill = "white") + 
+  stat_summary(fun.y = mean, color = "darkred", position = position_dodge(0.75),
+               geom = "point", shape = 18, size = 3,
+               show.legend = FALSE) +
   theme_classic() +
   labs(y=expression("Ash Free Dry Weight"~(mg)), x=expression("Tertiary pCO"[2]~"Exposure")) +
   geom_point((aes(shape = factor(Treat_history))), size = 2, position = position_jitterdodge(jitter.width = 0.2)) +
@@ -500,15 +645,57 @@ D.21.PLOTbox.AFDW <- ggplot(Day.21.PHYS.2, aes(x=tertiary, y=mgTOTAL_AFDW, fill 
   # theme(legend.title = element_blank()) just ommit the legend title
   theme(legend.position = "none")
 D.21.PLOTbox.AFDW
+# FACET WRAPPED
+D.21.PLOTbox.AFDW.facet <- ggplot(Day.21.PHYS.2, aes(tertiary, mgTOTAL_AFDW, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "AFDW",
+       subtitle = "(Tertiary exposure period)",
+       y=expression("Ash Free Dry Weight"~(mg)), 
+       x=expression("Tertiary pCO"[2]~"Exposure")) + 
+  ylim(0,20) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
+  facet_wrap(~ Treat_history)
+D.21.PLOTbox.AFDW.facet
+
+boxplot(Day.21.PHYS.2$mgTOTAL_AFDW , plot=FALSE)$out # need to increase the y axis to 26
+dplyr::filter(Day.21.PHYS.2, mgTOTAL_AFDW > 24) 
+
+D.21.PLOTbox.AFDW.facet_2 <- ggplot(Day.21.PHYS.2, aes(tertiary, mgTOTAL_AFDW, fill = factor(secondary))) +
+  geom_boxplot(position=position_dodge(0.8), outlier.size = 0) + 
+  stat_summary(fun.y = mean, color = "black", position = position_dodge(0.75),
+               geom = "point", shape = 15, size = 4,
+               show.legend = FALSE) +
+  geom_point(shape = 21, size = 2, position = position_jitterdodge(jitter.width = 0.2))+
+  scale_color_manual(values=c("black", "black", "black")) +  
+  scale_fill_manual(values=c("white", "grey54", "grey30")) +  
+  labs(title = "AFDW",
+       subtitle = "(Tertiary exposure period)",
+       y=expression("Ash Free Dry Weight"~(mg)), 
+       x=expression("Tertiary pCO"[2]~"Exposure")) + 
+  ylim(0,26) + 
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_discrete(labels = c("Ambient","Moderate")) +
+  facet_wrap(~ Treat_history)
+D.21.PLOTbox.AFDW.facet_2
 
 
-
-
+# ggarrange and ggsave to output folder
+Phys_facetwrap_PLOTS <- ggarrange(D.7.PLOTbox.TAOC.facet, D.21.PLOTbox.TAOC.facet, 
+                                  D.7.PLOTbox.Protein.facet, D.21.PLOTbox.Protein.facet,
+                                  D.7.PLOTbox.AFDW.facet_2, D.21.PLOTbox.AFDW.facet_2, nrow = 3, ncol = 2, widths = c(1, 1, 1, 1, 1, 1, 1, 1))
+ggsave(file="Output/PHYSIOLOGY_plots_d7.and.d21_facetwrapped.pdf", Phys_facetwrap_PLOTS, width = 8, height = 11, units = c("in")) # respiration rate plots
 
 
 # EXPERIMENTAL DESIGN KEY------------------------------------- #
-
-
 
 schematic.data <- read.csv(file="Data/SDR_data/Experimental.design.data_2.csv", header=T) #read Size.info data
 schematic.data$x.val

@@ -114,6 +114,7 @@ FINAL.TABLE.pre$CO3 <- paste(TABLE.pre.WIDE$mean.CO3, TABLE.pre.WIDE$sem.CO3, se
 FINAL.TABLE.pre$DIC <- paste(TABLE.pre.WIDE$mean.DIC, TABLE.pre.WIDE$sem.DIC, sep=" ± ")
 FINAL.TABLE.pre$TA <- paste(TABLE.pre.WIDE$mean.TA, TABLE.pre.WIDE$sem.TA, sep=" ± ")
 FINAL.TABLE.pre$Aragonite.Sat <- paste(TABLE.pre.WIDE$mean.Aragonite.Sat, TABLE.pre.WIDE$sem.Aragonite.Sat, sep=" ± ")
+FINAL.TABLE.pre$Calcite.Sat <- paste(TABLE.pre.WIDE$mean.Calcite.Sat, TABLE.pre.WIDE$sem.Calcite.Sat, sep=" ± ")
 FINAL.TABLE.pre <- FINAL.TABLE.pre[,-1] # view table
 # final table D.1.7 - 3 rows 12 columns
 FINAL.TABLE.D.1.7 <- data.frame(matrix(nrow = 3, ncol = 1))
@@ -129,6 +130,7 @@ FINAL.TABLE.D.1.7$CO3 <- paste(TABLE.D.1.7.WIDE$mean.CO3, TABLE.D.1.7.WIDE$sem.C
 FINAL.TABLE.D.1.7$DIC <- paste(TABLE.D.1.7.WIDE$mean.DIC, TABLE.D.1.7.WIDE$sem.DIC, sep=" ± ")
 FINAL.TABLE.D.1.7$TA <- paste(TABLE.D.1.7.WIDE$mean.TA, TABLE.D.1.7.WIDE$sem.TA, sep=" ± ")
 FINAL.TABLE.D.1.7$Aragonite.Sat <- paste(TABLE.D.1.7.WIDE$mean.Aragonite.Sat, TABLE.D.1.7.WIDE$sem.Aragonite.Sat, sep=" ± ")
+FINAL.TABLE.D.1.7$Calcite.Sat <- paste(TABLE.D.1.7.WIDE$mean.Calcite.Sat, TABLE.D.1.7.WIDE$sem.Calcite.Sat, sep=" ± ")
 FINAL.TABLE.D.1.7 <- FINAL.TABLE.D.1.7[,-1] # view table
 # final table D.8.14 - 1 row 12 columns
 FINAL.TABLE.D.8.14 <- data.frame(matrix(nrow = 1, ncol = 1))
@@ -144,6 +146,7 @@ FINAL.TABLE.D.8.14$CO3 <- paste(TABLE.D.8.14.WIDE$mean.CO3, TABLE.D.8.14.WIDE$se
 FINAL.TABLE.D.8.14$DIC <- paste(TABLE.D.8.14.WIDE$mean.DIC, TABLE.D.8.14.WIDE$sem.DIC, sep=" ± ")
 FINAL.TABLE.D.8.14$TA <- paste(TABLE.D.8.14.WIDE$mean.TA, TABLE.D.8.14.WIDE$sem.TA, sep=" ± ")
 FINAL.TABLE.D.8.14$Aragonite.Sat <- paste(TABLE.D.8.14.WIDE$mean.Aragonite.Sat, TABLE.D.8.14.WIDE$sem.Aragonite.Sat, sep=" ± ")
+FINAL.TABLE.D.8.14$Calcite.Sat <- paste(TABLE.D.8.14.WIDE$mean.Calcite.Sat, TABLE.D.8.14.WIDE$sem.Calcite.Sat, sep=" ± ")
 FINAL.TABLE.D.8.14 <- FINAL.TABLE.D.8.14[,-1] # view table
 # final table D.15.21 - 2 rows 12 columns
 FINAL.TABLE.D.15.21 <- data.frame(matrix(nrow = 2, ncol = 1))
@@ -159,6 +162,7 @@ FINAL.TABLE.D.15.21$CO3 <- paste(TABLE.D.15.21.WIDE$mean.CO3, TABLE.D.15.21.WIDE
 FINAL.TABLE.D.15.21$DIC <- paste(TABLE.D.15.21.WIDE$mean.DIC, TABLE.D.15.21.WIDE$sem.DIC, sep=" ± ")
 FINAL.TABLE.D.15.21$TA <- paste(TABLE.D.15.21.WIDE$mean.TA, TABLE.D.15.21.WIDE$sem.TA, sep=" ± ")
 FINAL.TABLE.D.15.21$Aragonite.Sat <- paste(TABLE.D.15.21.WIDE$mean.Aragonite.Sat, TABLE.D.15.21.WIDE$sem.Aragonite.Sat, sep=" ± ")
+FINAL.TABLE.D.15.21$Calcite.Sat <- paste(TABLE.D.15.21.WIDE$mean.Calcite.Sat, TABLE.D.15.21.WIDE$sem.Calcite.Sat, sep=" ± ")
 FINAL.TABLE.D.15.21 <- FINAL.TABLE.D.15.21[,-1] # view table
 
 # save output table

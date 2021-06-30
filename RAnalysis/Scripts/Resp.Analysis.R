@@ -50,7 +50,8 @@ library(ggpubr)         # Version: 0.1.8 Date: 2018-08-30, Depends: R (>= 3.1.0)
 library(Rmisc)          # Version: 1.5 Packaged: 2013-10-21, Depends: lattice, plyr
 library(plotrix)        # Version: 3.7-4, Date/Publication: 2018-10-03
 library(lsmeans)        # Version: 2.27-62, Date/Publication: 2018-05-11, Depends: methods, R (>= 3.2)
-
+library(lme4) # for LME models
+library(nlme) # for LME models
 # Set Working Directory:
 setwd("C:/Users/samjg/Documents/My_Projects/Inragenerational_thresholds_OA/RAnalysis/")
 
@@ -121,6 +122,29 @@ percent.diff.EHMandAHM <- ((EHMandAHM.D.1.7.MEANS[2,2] - EHMandAHM.D.1.7.MEANS[1
 # EH:M-AH:M p = 0.0408163
 
 
+# note: address time as a random factor! in this case, we will require a Linear mixed effects model! 
+
+
+
+
+# LINEAR MIXED EFFECTS MODEL  (time as random and treatmetn(s) as fized factors) 
+Day7_lme_mod1 <- lme(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1,random=~1|Date,data=Days.1.7) # with random effect of Site
+anova(Day7_lme_mod1) # model with time as random factor
+
+Day7_lmer_mod1 <- lmer(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1+(1|Date),Days.1.7, REML=T)
+anova(Day7_lmer_mod1) # model with time as random factor - interceot is significant
+summary(Day7_lmer_mod1)
+
+Day7_lm_mod0 <- lm(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1,data=Days.1.7) # NULL model without time as random factor! 
+anova(Day7_lm_mod0) # NULL model results 
+
+AIC(Day7_lmer_mod1,Day7_lm_mod0) # AIC test
+bbmle::AICtab(Day7_lmer_mod1,Day7_lm_mod0) # delta AIC - AIC NULL > AIC w/random factor (time) - difference == 4.2
+# note: the result of the lmer analysis says that the inclusion of the random factor (time) was insufficent to include in the 
+# most parsimonious modle (without time) due to a delta AIC of < 10 between the full vesus NULL model
+# lowest AIC is the preferred especially when the differnce is > 10! 
+
+
 # MODELS FOR DAYS 8 - 14 -------------------------------------------------------- #
 
 Days.8.14 <- DATA_Days.1.14 %>% 
@@ -143,6 +167,26 @@ TukeyHSD(threewayanova_D8.14, 'Date', conf.level=0.95) # tukey test on the effec
 # D8.14_posthoc <- lsmeans(twowayanova_D8.14, pairwise ~ Date)# pariwise Tukey Post-hoc test between repeated treatments
 # D8.14_posthoc.05 <- cld(D8.14_posthoc, alpha=.05, Letters=letters) #letters
 # D8.14_posthoc.05
+
+
+
+# LINEAR MIXED EFFECTS MODEL  (time as random and treatmetn(s) as fized factors) 
+Day14_lme_mod1 <- lme(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1,random=~1|Date,data=Days.8.14) # with random effect of Site
+anova(Day14_lme_mod1) # model with time as random factor
+
+Day14_lmer_mod1 <- lmer(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1+(1|Date),Days.8.14, REML=T)
+anova(Day14_lmer_mod1) # model with time as random factor - interceot is significant
+summary(Day14_lmer_mod1)
+
+Day14_lm_mod0 <- lm(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1,data=Days.8.14) # NULL model without time as random factor! 
+anova(Day14_lm_mod0) # NULL model results 
+summary(Day14_lm_mod0)
+
+AIC(Day14_lmer_mod1,Day14_lm_mod0) # AIC test
+bbmle::AICtab(Day14_lmer_mod1,Day14_lm_mod0) # delta AIC - AIC NULL > AIC w/random factor (time) - difference == 4.6
+# note: the result of the lmer analysis says that the inclusion of the random factor (time) was insufficent to include in the 
+# most parsimonious modle (without time) due to a delta AIC of < 10 between the full vesus NULL model
+# lowest AIC is the preferred especially when the differnce is > 10! 
 
 
 # MODELS FOR DAYS 15 - 21 -------------------------------------------------------- #
@@ -168,6 +212,34 @@ RESP_Days.15.21.final <- DATA_Days.15.21 %>%
 # EHS  = 7.98
 # EHA = 6.35
 #20.426% greater resp rate in EHS than EHA
+
+
+
+
+# LINEAR MIXED EFFECTS MODEL  (time as random and treatmetn(s) as fized factors) 
+Day21_lme_mod1 <- lme(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1*Treatment.EXP_2,random=~1|Date,data=DATA_Days.15.21) # with random effect of Site
+anova(Day21_lme_mod1) # model with time as random factor
+
+Day21_lmer_mod1 <- lmer(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1*Treatment.EXP_2+(1|Date),DATA_Days.15.21, REML=T)
+anova(Day21_lmer_mod1) # model with time as random factor - interceot is significant
+summary(Day21_lmer_mod1)
+library(emmeans)
+emmeans(Day21_lmer_mod1, list(pairwise ~ Treatment.history:Treatment.EXP_1 ), adjust = "tukey")
+TukeyHSD(Day21_lmer_mod1, conf.level=0.95) 
+
+Day21_lm_mod0 <- lm(resp.COUNT.µg.L.hr.indiv~Treatment.history*Treatment.EXP_1*Treatment.EXP_2,data=DATA_Days.15.21) # NULL model without time as random factor! 
+anova(Day21_lm_mod0) # NULL model results 
+summary(Day21_lm_mod0)
+
+AIC(Day21_lmer_mod1,Day21_lm_mod0) # AIC test
+bbmle::AICtab(Day21_lmer_mod1,Day21_lm_mod0) # delta AIC - AIC NULL > AIC w/random factor (time) - difference == 6.5
+# note: the result of the lmer analysis says that the inclusion of the random factor (time) was insufficent to include in the 
+# most parsimonious modle (without time) due to a delta AIC of < 10 between the full vesus NULL model
+# lowest AIC is the preferred especially when the differnce is > 10! 
+
+
+
+
 
 
 ###############################################################################  #
